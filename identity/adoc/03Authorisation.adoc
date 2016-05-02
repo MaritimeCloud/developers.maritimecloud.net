@@ -1,0 +1,15 @@
+== Authorization
+Another central aspect of Identity Management is the concept of authorization which is the process of determining a set of permissions that is granted to a specific trusted identity. In all practical senses, authorization follows authentication. Once a system knows who you are, the system can determine what is appropriate for you to be able to see or do. authorization can be determined based on the user identity alone, but in most cases requires additional attributes about the user, such as role, title, flag state, etc.
+
+Authorization can typically be handled in two ways.
+
+* Locally by the application or service that is being accessed.
+* Centralizing the authorization policy decisions regardless of the location of the user or the application/service
+
+Since authorization can always be done locally by the application that is being accessed, for example by storing user rights in a local database. We have decided that the Maritime Cloud will not prioritize central support for authorization for the next milestones. Instead focusing on getting authentication right. 
+
+Before implementation of centralized support for authorization can begin there are some obstacles that lie ahead. Mainly because there, unlike authentication, are no good standards for doing authorization. 
+
+Even though there are no real standards there are a number of approaches that are commonly used. The most commonly used probably being role-based access control (RBAC). RBAC is an access control mechanism defined around roles and privileges. The components of RBAC such as role-permissions, user-role and role-role relationships make it simple to do user assignments of entitlements. However, adopting RBAC for the Maritime Cloud opens some questions. For example, who defines the roles and are they global roles. Or are they local to a particular service or a particular organization. For example, an “administrator” role might entail a list of certain privileges in one organization and another list of privileges in another organization. 
+
+Given these issues and many other we have to decide to wait on the various to sub projects to implement authorization and then compile all the different approaches and try and make something generic.

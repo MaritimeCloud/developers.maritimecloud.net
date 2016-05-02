@@ -1,0 +1,92 @@
+== Authentication
+Authentication is any process by which a system verifies the identity of a user (human or machine) who wishes to access it. Since access control is normally based on the identity of the user who requests access to a resource, Authentication is essential to effective security. In contrast to identification which refers to the act of stating a person or thing's identity, authentication is the process of actually confirming that stated identity. It might involve verifying the authenticity of a website by a digital certificate that is provides, or validating a persons identity documents.
+
+=== Overview
+The way in which a human user or machine may be authenticated typically falls into three different categories, based on what is commonly known as the factors of authentication: something the user knows, something the user has, and something the user is. Each authentication factor covers a range of elements used to authenticate or verify a person's identity prior to being granted access, approving a transaction request, signing a document or other work product, granting authority to others, and establishing a chain of authority.
+
+* Knowledge factors: Passwords, passphrases, pins, challenge response,
+* Ownership factors: ID card, Cell phone, certificates,
+* Inheritance factors: Fingerprint, retinal patterns, face, voice,
+
+Currently the implementation effort in the Maritime Cloud is concentrating on passwords for human users and certificates for machine users. In the future we will probably add more methods. As well as combinations of these factors into what it commonly called multi factor security.
+
+While the difference of using certificates or passwords might seem minor from a user perspective the underlying implementation is radically different which is why it has been split into to different sections. 
+
+=== OpenID Connect
+OpenID Connect is based on OAuth2 and uses signed (or encrypted) JWT tokens to provider user information to the webservice. The MaritimeCloud expects to provide the following attributes:
+
+|===
+|Attribute|Description
+|preferred_username|The users username in the parent organization.
+|email|The email of the user.
+|given_name|Firstname of the user.
+|family_name|Lastname of the user.
+|name|Full name of the user.
+|org|Id of the organization the user is a member of.
+|permissions|List of permissions for this user assigned by the organization the user is a member of.
+|mrn|The Maritime Resource Name of the user.
+|===
+The Maritime Cloud does not assign roles to the users. See the section about Authorization for how to authorize users.
+
+=== OpenID Federation
+The Maritime Cloud supports Identity Federation.
+
+
+=== X.509
+An X.509 certificate is a digital certificate that uses the most widely accepted international public key infrastructure (PKI) standard for verifying that a public key belongs to the user, computer or service identity contained within the certificate.
+
+The current PKI architecture of the Maritime Cloud is a very simple architecture with a single issuer (The Maritime Cloud). We envision that in the future each country might be their own issuer of certificates for a vessel. However, for the time being the simple architecture should be enough for almost all use cases.
+
+The Maritime Cloud does not mandate any particular use of certificates. Instead it issues them for general use. For example, for use in signing documents or for enabling secure communication between two parties via TLS/SSL.
+Since the Maritime Cloud has its own root certificate that are not general recognized. The certificates issued should not be used on websites. Because no browsers has included the certificate in the list of recognized authorities.
+
+Almost any modern programming language have standard or general available libraries for working with X.509 certificates. And we refer to these for detailed information about integrating digital certificates into applications.
+
+==== Creating a new Certificate
+Currently, the only way to generate a new certificate is to log into the Maritime Cloud portal and create a new entity.
+XXXXXXXXXXXXXXXX
+
+There are currently no support for generating certificates using a certificate signing request. However, this is a feature being worked on and it will be available in future releases.
+
+==== Certificate Attributes
+The MaritimeCloud can issue X.509 certificates for the users which can then be used for authentication. Service providers relying on X.509 certificate authentication must obtain and install the MaritimeCloud root certificate into their webservice. 
+
+The standard information present in an X.509 certificate includes:
+
+** *Version* – which X.509 version applies to the certificate (which indicates what data the certificate must include)
+** *Serial number* – A unique assigned serial number that distinguishes it from other certificates
+** *Algorithm information* – the algorithm used to sign the certificate
+** *Issuer distinguished name* – the name of the entity issuing the certificate (The Maritime Cloud)
+** *Validity period of the certificate* – start/end date and time
+** *Subject distinguished name* – the name of the identity the certificate is issued to
+
+** *Subject public key information* – the public key associated with the identity
+
+The Subject distinguished name field will consists of the following items:
+
+|===
+|Field|User|Vessel|Device
+|CN (CommonName)|Full name|Vessel name|Device name
+|O (Organization)|Organization Id+Name, separated by ';'|Organization Id+Name, separated by ';'|Organization Id+Name, separated by ';'
+|OU (Organizational Unit)|"user"|"vessel"|"device"
+|C (Country)|Organization country code|Organization country code|Organization country code
+|E (Email)|User email||
+|===
+
+An example of the fields for a vessel could look like this:
+****
+C=DK, O=DMA;Danish Maritime Authority, OU=vessel, CN=JENS SØRENSEN
+****
+Finally, In additions to the information stored in the standard X.509 attributes listed above. The X509v3 extension SubjectAlternativeName (SAN) extension is used to store extra information. There already exists some predefined fields for the SAN extension, but they do not match the need we have for maritime related fields. Therefore the “otherName” field is used, which allows for using a Object Identifier (OID) to define custom fields. The OIDs currently used are not registered at ITU, but is randomly generated using a tool provided by ITU (see http://www.itu.int/en/ITU-T/asn1/Pages/UUID/uuids.aspx). See the table below for the fields defined, the OID of the fields and which kind of entity that uses the fields. We know this is not very elegant but unfortunantely there are few alternatives in the X.509 standard.
+
+|===
+|Name|OID|Used by
+|Flagstate|2.25.323100633285601570573910217875371967771|Vessels
+|Callsign|2.25.208070283325144527098121348946972755227|Vessels
+|IMO number|2.25.291283622413876360871493815653100799259|Vessels
+|MMSI number|2.25.328433707816814908768060331477217690907|Vessels
+|AIS shiptype|2.25.107857171638679641902842130101018412315|Vessels
+|MRN|2.25.271477598449775373676560215839310464283|Vessels, Users, Devices
+|Permissions|2.25.174437629172304915481663724171734402331|Vessels, Users, Devices
+|===
+
