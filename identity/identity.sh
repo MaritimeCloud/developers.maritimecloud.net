@@ -19,9 +19,9 @@ elif [ "$1" = "site" ]; then
 #   cp images/*.png target/images
 #   cp images/*.svg target/images
    git checkout gh-pages
-#   cp target/identity.html ../../identity/index.html
+   cp target/identity.html ../identity/index.html
 #   cp target/images/* ../../images/
-   git add ../../identity/index.html
+   git add ../identity/index.html
 #   git add ../../images/*
    git commit -m "update identity documentation"
    git push
