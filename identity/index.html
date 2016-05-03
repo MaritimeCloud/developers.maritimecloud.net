@@ -537,7 +537,7 @@ MathJax.Hub.Config({
 <li><a href="#overview-2">3.1. Overview</a></li>
 <li><a href="#openid-connect">3.2. OpenID Connect</a></li>
 <li><a href="#openid-federation">3.3. OpenID Federation</a></li>
-<li><a href="#x-509">3.4. X.509</a></li>
+<li><a href="#x-509-certificates">3.4. X.509 Certificates</a></li>
 </ul>
 </li>
 <li><a href="#authorization">4. Authorization</a></li>
@@ -617,37 +617,24 @@ MathJax.Hub.Config({
 </div>
 </div>
 <div class="sect3">
-<h4 id="signup"><a class="anchor" href="#signup"></a>2.1.2. Signup</h4>
+<h4 id="signing-up-for-the-maritime-cloud"><a class="anchor" href="#signing-up-for-the-maritime-cloud"></a>2.1.2. Signing up for the Maritime Cloud</h4>
 <div class="paragraph">
-<p>In order to get an organization, its users and any ships the
-organization might own on to the Maritime Cloud. The organization needs to  There needs to be
-some kind of signup procedure.</p>
+<p>In order to get an organization, its users and any ships the organization might own on to the Maritime Cloud. The organization needs to  There needs to be some kind of signup procedure.</p>
 </div>
 <div class="paragraph">
-<p>For now, we (DMA) will validate all organizations that sign up in some
-kind of best effort basis. I do not expect we reach more than a 100
-organizations within the next 1-2 years on our current test bed.</p>
+<p>For now, we (DMA) will validate all organizations that sign up in some kind of best effort basis. I do not expect we reach more than a 100 organizations within the next 1-2 years on our current test bed.</p>
 </div>
 <div class="paragraph">
-<p>How all this vetting is going to be done in the end is up for grabs.
-But to avoid getting stalled in the development process. I think we
-will just go with simplest solution possible for now.</p>
+<p>How all this vetting is going to be done in the end is up for grabs. But to avoid getting stalled in the development process. I think we will just go with simplest solution possible for now.</p>
 </div>
 <div class="paragraph">
-<p>At a some later point a central Maritime Cloud authority might only
-need to verify international organizations and national authorities.
-Letting national authorities verify individual companies that try and
-sign up. Or something else we decide on.</p>
+<p>At a some later point a central Maritime Cloud authority might only need to verify international organizations and national authorities. Letting national authorities verify individual companies that try and sign up. Or something else we decide on.</p>
 </div>
 <div class="paragraph">
-<p>Most large organizations are divided into departments or suborganizations of some kind. There is currently no support for hirachical organizations.</p>
+<p>Most large organizations are divided into departments or suborganizations  f some kind. There is currently no support for hirachical organizations.</p>
 </div>
 <div class="paragraph">
-<p>All organizations have a single root user who has full access to everything in the account (much like a Linux root user). The user is
-not meant for day to day operations but only in special cases. For
-example, setting up a link to an organizations federated identity
-broker where all the organizations users are registered. Or deleting
-the organization.</p>
+<p>All organizations have a single root user who has full access to everything in the account (much like a Linux root user). The user is not meant for day to day operations but only in special cases. For example, setting up a link to an organizations federated identity broker where all the organizations users are registered. Or deleting the organization.</p>
 </div>
 <div class="paragraph">
 <p>A user of the Maritime Cloud can belong to one and only one organization. For example, if you have to two functions in the maritime sector. One as an employee of a particular company and another as a chairman of a non-profit association. You will have two different users and separate  logins. One that belongs to company and another user that belongs to IALA. Just like you will two different emails @company.com and another at @non-profit-association.org depending on which role you have.</p>
@@ -751,7 +738,7 @@ the organization.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="x-509"><a class="anchor" href="#x-509"></a>3.4. X.509</h3>
+<h3 id="x-509-certificates"><a class="anchor" href="#x-509-certificates"></a>3.4. X.509 Certificates</h3>
 <div class="paragraph">
 <p>An X.509 certificate is a digital certificate that uses the most widely accepted international public key infrastructure (PKI) standard for verifying that a public key belongs to the user, computer or service identity contained within the certificate.</p>
 </div>
@@ -768,8 +755,32 @@ Since the Maritime Cloud has its own root certificate that are not general recog
 <div class="sect3">
 <h4 id="creating-a-new-certificate"><a class="anchor" href="#creating-a-new-certificate"></a>3.4.1. Creating a new Certificate</h4>
 <div class="paragraph">
-<p>Currently, the only way to generate a new certificate is to log into the Maritime Cloud portal and create a new entity.
-XXXXXXXXXXXXXXXX</p>
+<p>Currently, the only way to generate a new certificate is to log into the Maritime Cloud portal and create the certificate in a browser.</p>
+</div>
+<div class="paragraph">
+<p>This is done by first select the entity for which you wish to create a certificate. In this example we have created a vessel called "Harmony of the Seas". As can be seen from the screenshot the vessel currently has no certificates.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/new-certificate-step-1.png" alt="Overview">
+</div>
+</div>
+<div class="paragraph">
+<p>In order to create a new certificat for the vessel select "+New Certificate". A new dialog box asking for confirmation is displayed. After having confirmed the generation. A new dialog box will de displayed where it is
+possible to download a zip file consisting of the generated certificate and its private and public key. It is important to remember to download the file as the the private key is no longer available after the page is closed.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/new-certificate-step-3.png" alt="Overview">
+</div>
+</div>
+<div class="paragraph">
+<p>After the certificate has been generated it can be seen in the list of registered certificates for the vessel. Where it is also possible to revoke it.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/new-certificate-step-4.png" alt="Overview">
+</div>
 </div>
 <div class="paragraph">
 <p>There are currently no support for generating certificates using a certificate signing request. However, this is a feature being worked on and it will be available in future releases.</p>
@@ -961,7 +972,7 @@ XXXXXXXXXXXXXXXX</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-05-03 10:15:38 CEST
+Last updated 2016-05-03 12:05:59 CEST
 </div>
 </div>
 </body>
