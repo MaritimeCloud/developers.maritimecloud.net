@@ -5,10 +5,6 @@ Please do not email us directly about usage questions. Instead use our Google Gr
 
 This developer guide is intended to make you familiar with developing secure applications and services for the Maritime Cloud. In addition to this developer guide the whitepaper available at http://dev.maritimecloud.net/apidocs/ is a good read.
 
-////
-Some experience with developing for the Java platform is required for using this development guide.
-Developers should as minimum be able to write short single file Java programs. Some sections requires usage of the Apache Maven build tool. 
-
 === A Bit of History
 The Maritime Cloud project started out as an internal project at the Danish Maritime Authority in the autumn of 2012.
 As part of the e-Navigation process the Danish Maritime Authority had been working on an e-Navigation Prototype Display system called EPD. The EPD consist of two applications for demonstrating potential e-navigation solutions. An ECDIS like ship side application and a shore side application. 
@@ -21,19 +17,19 @@ During the development it was clear that AIS was a severe limiting factor when c
 
 The first prototype was built in the winter of 2012 and was implemented in the EPD in spring 2013. It just featured basic point to point communication. This is basically what is the Maritime Message Service now. During the summer of 2013 the vision for a general framework for maritime communication was created. Including registries for services and identities in addition to the message based framework. It also got its name the “Maritime Cloud” as a sort of umbralle name for the various underlying services. In 2014 the first release of the Maritime Cloud reference implementation was made available for the public.
 
+=== Overview
+Here is 10000 foot overview of the Maritime Cloud:
 
+image::maritimecloud.png[Overview]
 
-=== Organization of this guide 
-Chapter 2 shows how to connect to an MMS Server.
+There are 3 different core services provided by the Maritime Cloud
 
-Chapter 3 describes how to implement and invoke predefined remote services.
+* *Maritime Identity Registry.* A centralized authority for identities of persons, organizations or ships that are using the Maritime Cloud. 
+* *Maritime Service Registry.* A centralized repository of service standards and provisioned services world wide.
+* *Maritime Messaging Service (MMS).* A communication protocol on top of TCP/IP. Supporting reliable delivery of messages and geocastingfootnote:[Geocasting refers to the delivery of information to a group of actors identified by their geographical locations.].
 
-Chapter 4 describes how messages can be broadcast to a subset of actors within a specific area.
+This guide will predominantly discuss the identity registry.
 
-Chapter 5 specifies the Maritime Service Definition Language. Which is the language for defining services that can be registered with a MMS Server.
-
-Chapter 6 describes how you can develop your own services with MSDL.
-////
 
 === Feedback
 Readers may send feedback about errors, omissions, and ambiguities in this guide to kasperni@gmail.com or even better submit a pull request to the documentation available at https://github.com/MaritimeCloud/Documentation/tree/master/developer-guide/adoc.

@@ -57,24 +57,3 @@ include::02Authentication.adoc[]
 <<<
 
 include::03Authorisation.adoc[]
-
-//
-//<<<
-//
-//include::02Connecting.adoc[]
-//
-//<<<
-//
-//include::03FirstService.adoc[]
-//
-//<<<
-//
-//include::04Broadcast.adoc[]
-//
-//<<<
-//
-//include::05MSDL.adoc[]
-//
-<<<
-
-//include::06CreateNewServices.adoc[]
