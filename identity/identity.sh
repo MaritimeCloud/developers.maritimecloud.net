@@ -16,13 +16,13 @@ elif [ "$1" = "site" ]; then
      exit 1
    fi
    asciidoctor -r asciidoctor-diagram adoc/identity.adoc -D target
-#   cp images/*.png target/images
+   cp images/*.png target/images
 #   cp images/*.svg target/images
    git checkout gh-pages
    cp target/identity.html ../identity/index.html
-#   cp target/images/* ../../images/
+   cp target/images/* ../identity/images/
    git add ../identity/index.html
-#   git add ../../images/*
+   git add ../identity/images/*
    git commit -m "update identity documentation"
    git push
    git checkout master
