@@ -527,15 +527,20 @@ MathJax.Hub.Config({
 <li><a href="#feedback">1.1. Feedback</a></li>
 </ul>
 </li>
-<li><a href="#authentication">2. Authentication</a>
+<li><a href="#overview">2. Overview</a>
 <ul class="sectlevel2">
-<li><a href="#overview">2.1. Overview</a></li>
-<li><a href="#openid-connect">2.2. OpenID Connect</a></li>
-<li><a href="#openid-federation">2.3. OpenID Federation</a></li>
-<li><a href="#x-509">2.4. X.509</a></li>
+<li><a href="#organization">2.1. Organization</a></li>
 </ul>
 </li>
-<li><a href="#authorization">3. Authorization</a></li>
+<li><a href="#authentication">3. Authentication</a>
+<ul class="sectlevel2">
+<li><a href="#overview-2">3.1. Overview</a></li>
+<li><a href="#openid-connect">3.2. OpenID Connect</a></li>
+<li><a href="#openid-federation">3.3. OpenID Federation</a></li>
+<li><a href="#x-509">3.4. X.509</a></li>
+</ul>
+</li>
+<li><a href="#authorization">4. Authorization</a></li>
 </ul>
 </div>
 </div>
@@ -570,13 +575,99 @@ MathJax.Hub.Config({
 </div>
 </div>
 <div class="sect1">
-<h2 id="authentication"><a class="anchor" href="#authentication"></a>2. Authentication</h2>
+<h2 id="overview"><a class="anchor" href="#overview"></a>2. Overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Before going into detail with the setup. There are some important topics we need to review.</p>
+</div>
+<div class="sect2">
+<h3 id="organization"><a class="anchor" href="#organization"></a>2.1. Organization</h3>
+<div class="paragraph">
+<p>In the Maritime Cloud an organization is an entity, such as an institution, company or an association, that has a collective goal and is linked to an external environment. Examples, include international organizations such as IMO, IALA, IHO. National authorities such as US Coastguard, Swedish Maritime Administration. Local authorities such as VTS-Oersund, Port Of Rotterdam, Hong Kong SAR. Or commercial companies such as Transas or Maris.</p>
+</div>
+<div class="sect3">
+<h4 id="organization-id"><a class="anchor" href="#organization-id"></a>2.1.1. Organization ID</h4>
+<div class="paragraph">
+<p>All organizations that are registered in the Maritime Cloud must be registered with a unique &gt;=3 letter alphanumeric id.</p>
+</div>
+<div class="paragraph">
+<p>The id is used in numerous places. For example,  all service specifications from a given organization is prefixed by the organization id. Likewise must all MSDL files from a given organization be organized under the a namespace that starts with the organization id. For example, "package dma.mmsi;" In order to allow easy and consistent sharing and import of MSDL files between organizations.</p>
+</div>
+<div class="paragraph">
+<p>Examples of valid organizations ids:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>IMO</p>
+</li>
+<li>
+<p>IALA</p>
+</li>
+<li>
+<p>DMA</p>
+</li>
+<li>
+<p>PortOfRotterdam</p>
+</li>
+<li>
+<p>VTS-Oeresund</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="signup"><a class="anchor" href="#signup"></a>2.1.2. Signup</h4>
+<div class="paragraph">
+<p>In order to get an organization, its users and any ships the
+organization might own on to the Maritime Cloud. The organization needs to  There needs to be
+some kind of signup procedure.</p>
+</div>
+<div class="paragraph">
+<p>For now, we (DMA) will validate all organizations that sign up in some
+kind of best effort basis. I do not expect we reach more than a 100
+organizations within the next 1-2 years on our current test bed.</p>
+</div>
+<div class="paragraph">
+<p>How all this vetting is going to be done in the end is up for grabs.
+But to avoid getting stalled in the development process. I think we
+will just go with simplest solution possible for now.</p>
+</div>
+<div class="paragraph">
+<p>At a some later point a central Maritime Cloud authority might only
+need to verify international organizations and national authorities.
+Letting national authorities verify individual companies that try and
+sign up. Or something else we decide on.</p>
+</div>
+<div class="paragraph">
+<p>Most large organizations are divided into departments or suborganizations of some kind. There is currently no support for hirachical organizations.</p>
+</div>
+<div class="paragraph">
+<p>All organizations have a single root user who has full access to everything in the account (much like a Linux root user). The user is
+not meant for day to day operations but only in special cases. For
+example, setting up a link to an organizations federated identity
+broker where all the organizations users are registered. Or deleting
+the organization.</p>
+</div>
+<div class="paragraph">
+<p>A user of the Maritime Cloud can belong to one and only one organization. For example, if you have to two functions in the maritime sector. One as an employee of a particular company and another as a chairman of a non-profit association. You will have two different users and separate  logins. One that belongs to company and another user that belongs to IALA. Just like you will two different emails @company.com and another at @non-profit-association.org depending on which role you have.</p>
+</div>
+<div class="paragraph">
+<p>This does not mean that one cannot give a user from one organization access to read a document owned in another organization. Only that a single user can have only a single function within a single organization.</p>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="authentication"><a class="anchor" href="#authentication"></a>3. Authentication</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Authentication is any process by which a system verifies the identity of a user (human or machine) who wishes to access it. Since access control is normally based on the identity of the user who requests access to a resource, Authentication is essential to effective security. In contrast to identification which refers to the act of stating a person or thing&#8217;s identity, authentication is the process of actually confirming that stated identity. It might involve verifying the authenticity of a website by a digital certificate that is provides, or validating a persons identity documents.</p>
 </div>
 <div class="sect2">
-<h3 id="overview"><a class="anchor" href="#overview"></a>2.1. Overview</h3>
+<h3 id="overview-2"><a class="anchor" href="#overview-2"></a>3.1. Overview</h3>
 <div class="paragraph">
 <p>The way in which a human user or machine may be authenticated typically falls into three different categories, based on what is commonly known as the factors of authentication: something the user knows, something the user has, and something the user is. Each authentication factor covers a range of elements used to authenticate or verify a person&#8217;s identity prior to being granted access, approving a transaction request, signing a document or other work product, granting authority to others, and establishing a chain of authority.</p>
 </div>
@@ -601,7 +692,7 @@ MathJax.Hub.Config({
 </div>
 </div>
 <div class="sect2">
-<h3 id="openid-connect"><a class="anchor" href="#openid-connect"></a>2.2. OpenID Connect</h3>
+<h3 id="openid-connect"><a class="anchor" href="#openid-connect"></a>3.2. OpenID Connect</h3>
 <div class="paragraph">
 <p>OpenID Connect is based on OAuth2 and uses signed (or encrypted) JWT tokens to provider user information to the webservice. The MaritimeCloud expects to provide the following attributes:</p>
 </div>
@@ -654,13 +745,13 @@ MathJax.Hub.Config({
 </div>
 </div>
 <div class="sect2">
-<h3 id="openid-federation"><a class="anchor" href="#openid-federation"></a>2.3. OpenID Federation</h3>
+<h3 id="openid-federation"><a class="anchor" href="#openid-federation"></a>3.3. OpenID Federation</h3>
 <div class="paragraph">
 <p>The Maritime Cloud supports Identity Federation.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="x-509"><a class="anchor" href="#x-509"></a>2.4. X.509</h3>
+<h3 id="x-509"><a class="anchor" href="#x-509"></a>3.4. X.509</h3>
 <div class="paragraph">
 <p>An X.509 certificate is a digital certificate that uses the most widely accepted international public key infrastructure (PKI) standard for verifying that a public key belongs to the user, computer or service identity contained within the certificate.</p>
 </div>
@@ -675,7 +766,7 @@ Since the Maritime Cloud has its own root certificate that are not general recog
 <p>Almost any modern programming language have standard or general available libraries for working with X.509 certificates. And we refer to these for detailed information about integrating digital certificates into applications.</p>
 </div>
 <div class="sect3">
-<h4 id="creating-a-new-certificate"><a class="anchor" href="#creating-a-new-certificate"></a>2.4.1. Creating a new Certificate</h4>
+<h4 id="creating-a-new-certificate"><a class="anchor" href="#creating-a-new-certificate"></a>3.4.1. Creating a new Certificate</h4>
 <div class="paragraph">
 <p>Currently, the only way to generate a new certificate is to log into the Maritime Cloud portal and create a new entity.
 XXXXXXXXXXXXXXXX</p>
@@ -685,7 +776,7 @@ XXXXXXXXXXXXXXXX</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="certificate-attributes"><a class="anchor" href="#certificate-attributes"></a>2.4.2. Certificate Attributes</h4>
+<h4 id="certificate-attributes"><a class="anchor" href="#certificate-attributes"></a>3.4.2. Certificate Attributes</h4>
 <div class="paragraph">
 <p>The MaritimeCloud can issue X.509 certificates for the users which can then be used for authentication. Service providers relying on X.509 certificate authentication must obtain and install the MaritimeCloud root certificate into their webservice.</p>
 </div>
@@ -834,7 +925,7 @@ XXXXXXXXXXXXXXXX</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="authorization"><a class="anchor" href="#authorization"></a>3. Authorization</h2>
+<h2 id="authorization"><a class="anchor" href="#authorization"></a>4. Authorization</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Another central aspect of Identity Management is the concept of authorization which is the process of determining a set of permissions that is granted to a specific trusted identity. In all practical senses, authorization follows authentication. Once a system knows who you are, the system can determine what is appropriate for you to be able to see or do. authorization can be determined based on the user identity alone, but in most cases requires additional attributes about the user, such as role, title, flag state, etc.</p>
@@ -870,7 +961,7 @@ XXXXXXXXXXXXXXXX</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-05-02 19:43:52 CEST
+Last updated 2016-05-03 09:42:38 CEST
 </div>
 </div>
 </body>
