@@ -17,7 +17,9 @@ elif [ "$1" = "site" ]; then
    fi
    asciidoctor -r asciidoctor-diagram adoc/identity.adoc -D target
    cp images/*.png target/images
+   echo "XXXXXXXXXX"
    exit
+   
    git checkout gh-pages
    cp target/identity.html ../identity/index.html
    mkdir ../identity/images
