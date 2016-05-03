@@ -3,7 +3,7 @@ This development guide on the Maritime Cloud identity platform describes the cur
 
 Please do not email us directly about usage questions. Instead use our Google Group at https://groups.google.com/forum/#!forum/maritimecloud for general usage questions. In this way future users can see answers to commonly asked questions. Google Groups is also where we post information about new releases and updated documentation.
 
-This developer guide is intended to make you familiar with developing secure applications and services for the Maritime Cloud. In addition to this developer guide the whitepaper available at http://dev.maritimecloud.net/apidocs/ is a good read.
+This developer guide is intended to make you familiar with developing secure applications and services for the Maritime Cloud. In addition to this developer guide the whitepaper available at http://developers.maritimecloud.net/Identity%20Management%20and%20Security%20White%20Paper.docx is a good read.
 
 === A Bit of History
 The Maritime Cloud project started out as an internal project at the Danish Maritime Authority in the autumn of 2012.
@@ -32,7 +32,7 @@ This guide will predominantly discuss the identity registry.
 
 
 === Feedback
-Readers may send feedback about errors, omissions, and ambiguities in this guide to kasperni@gmail.com or even better submit a pull request to the documentation available at http://developers.maritimecloud.net/Identity%20Management%20and%20Security%20White%20Paper.docx
+Readers may send feedback about errors, omissions, and ambiguities in this guide to kasperni@gmail.com or even better submit a pull request to the documentation available at https://github.com/MaritimeCloud/Documentation/tree/master/developer-guide/adoc.
 
 As previously mentioned questions about usage of the Maritime Cloud should be directed to our Google Group at https://groups.google.com/forum/#!forum/maritimecloud
 
