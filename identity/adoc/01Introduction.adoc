@@ -32,7 +32,7 @@ This guide will predominantly discuss the identity registry.
 
 
 === Feedback
-Readers may send feedback about errors, omissions, and ambiguities in this guide to kasperni@gmail.com or even better submit a pull request to the documentation available at https://github.com/MaritimeCloud/Documentation/tree/master/developer-guide/adoc.
+Readers may send feedback about errors, omissions, and ambiguities in this guide to kasperni@gmail.com or even better submit a pull request to the documentation available at http://developers.maritimecloud.net/Identity%20Management%20and%20Security%20White%20Paper.docx
 
 As previously mentioned questions about usage of the Maritime Cloud should be directed to our Google Group at https://groups.google.com/forum/#!forum/maritimecloud
 
