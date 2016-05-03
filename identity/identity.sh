@@ -23,6 +23,8 @@ elif [ "$1" = "site" ]; then
    cp target/images/* ../identity/images/
    git add ../identity/index.html
    git add ../identity/images/*
+   exit
+
    git commit -m "update identity documentation"
    git push
    git checkout master
