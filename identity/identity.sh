@@ -16,7 +16,7 @@ elif [ "$1" = "site" ]; then
      exit 1
    fi
    asciidoctor -r asciidoctor-diagram adoc/identity.adoc -D target
-   cp images/*.png target/images
+   cp images/*.png target/images/
    echo "XXXXXXXXXX"
    exit
    
