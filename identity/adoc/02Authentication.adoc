@@ -32,7 +32,7 @@ The Maritime Cloud does not assign roles to the users. See the section about Aut
 The Maritime Cloud supports Identity Federation.
 
 
-=== X.509
+=== X.509 Certificates
 An X.509 certificate is a digital certificate that uses the most widely accepted international public key infrastructure (PKI) standard for verifying that a public key belongs to the user, computer or service identity contained within the certificate.
 
 The current PKI architecture of the Maritime Cloud is a very simple architecture with a single issuer (The Maritime Cloud). We envision that in the future each country might be their own issuer of certificates for a vessel. However, for the time being the simple architecture should be enough for almost all use cases.
@@ -43,8 +43,20 @@ Since the Maritime Cloud has its own root certificate that are not general recog
 Almost any modern programming language have standard or general available libraries for working with X.509 certificates. And we refer to these for detailed information about integrating digital certificates into applications.
 
 ==== Creating a new Certificate
-Currently, the only way to generate a new certificate is to log into the Maritime Cloud portal and create a new entity.
-XXXXXXXXXXXXXXXX
+Currently, the only way to generate a new certificate is to log into the Maritime Cloud portal and create the certificate in a browser.
+
+This is done by first select the entity for which you wish to create a certificate. In this example we have created a vessel called "Harmony of the Seas". As can be seen from the screenshot the vessel currently has no certificates.
+
+image::new-certificate-step-1.png[Overview]
+
+In order to create a new certificat for the vessel select "+New Certificate". A new dialog box asking for confirmation is displayed. After having confirmed the generation. A new dialog box will de displayed where it is 
+possible to download a zip file consisting of the generated certificate and its private and public key. It is important to remember to download the file as the the private key is no longer available after the page is closed.
+
+image::new-certificate-step-3.png[Overview]
+
+After the certificate has been generated it can be seen in the list of registered certificates for the vessel. Where it is also possible to revoke it.
+
+image::new-certificate-step-4.png[Overview]
 
 There are currently no support for generating certificates using a certificate signing request. However, this is a feature being worked on and it will be available in future releases.
 

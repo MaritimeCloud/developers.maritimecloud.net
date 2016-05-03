@@ -27,7 +27,6 @@ elif [ "$1" = "site" ]; then
    git add ../identity/images/*
    git commit -m "update identity documentation"
    git push
-   exit
    git checkout master
    exit   
 elif [ -z "$1" ]; then 

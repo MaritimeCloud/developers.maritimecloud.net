@@ -17,31 +17,18 @@ Examples of valid organizations ids:
 ** PortOfRotterdam
 ** VTS-Oeresund
 
-==== Signup
-In order to get an organization, its users and any ships the
-organization might own on to the Maritime Cloud. The organization needs to  There needs to be
-some kind of signup procedure.
+==== Signing up for the Maritime Cloud
+In order to get an organization, its users and any ships the organization might own on to the Maritime Cloud. The organization needs to  There needs to be some kind of signup procedure.
 
-For now, we (DMA) will validate all organizations that sign up in some
-kind of best effort basis. I do not expect we reach more than a 100
-organizations within the next 1-2 years on our current test bed.
+For now, we (DMA) will validate all organizations that sign up in some kind of best effort basis. I do not expect we reach more than a 100 organizations within the next 1-2 years on our current test bed.
 
-How all this vetting is going to be done in the end is up for grabs.
-But to avoid getting stalled in the development process. I think we
-will just go with simplest solution possible for now.
+How all this vetting is going to be done in the end is up for grabs. But to avoid getting stalled in the development process. I think we will just go with simplest solution possible for now.
 
-At a some later point a central Maritime Cloud authority might only
-need to verify international organizations and national authorities.
-Letting national authorities verify individual companies that try and
-sign up. Or something else we decide on.
+At a some later point a central Maritime Cloud authority might only need to verify international organizations and national authorities. Letting national authorities verify individual companies that try and sign up. Or something else we decide on.
 
-Most large organizations are divided into departments or suborganizations of some kind. There is currently no support for hirachical organizations.
+Most large organizations are divided into departments or suborganizations  f some kind. There is currently no support for hirachical organizations.
 
-All organizations have a single root user who has full access to everything in the account (much like a Linux root user). The user is
-not meant for day to day operations but only in special cases. For
-example, setting up a link to an organizations federated identity
-broker where all the organizations users are registered. Or deleting
-the organization.
+All organizations have a single root user who has full access to everything in the account (much like a Linux root user). The user is not meant for day to day operations but only in special cases. For example, setting up a link to an organizations federated identity broker where all the organizations users are registered. Or deleting the organization.
 
 A user of the Maritime Cloud can belong to one and only one organization. For example, if you have to two functions in the maritime sector. One as an employee of a particular company and another as a chairman of a non-profit association. You will have two different users and separate  logins. One that belongs to company and another user that belongs to IALA. Just like you will two different emails @company.com and another at @non-profit-association.org depending on which role you have.
 
