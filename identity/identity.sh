@@ -18,12 +18,10 @@ elif [ "$1" = "site" ]; then
    asciidoctor -r asciidoctor-diagram adoc/identity.adoc -D target
    mkdir -p target/images
    cp images/*.png target/images/
-   echo "XXXXXXXXXX"
-   exit
    
    git checkout gh-pages
    cp target/identity.html ../identity/index.html
-   mkdir ../identity/images
+   mkdir -p ../identity/images
    cp target/images/* ../identity/images/
    git add ../identity/index.html
    git add ../identity/images/*
