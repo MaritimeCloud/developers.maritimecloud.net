@@ -524,17 +524,19 @@ MathJax.Hub.Config({
 <ul class="sectlevel1">
 <li><a href="#introduction">1. Introduction</a>
 <ul class="sectlevel2">
-<li><a href="#feedback">1.1. Feedback</a></li>
+<li><a href="#a-bit-of-history">1.1. A Bit of History</a></li>
+<li><a href="#overview">1.2. Overview</a></li>
+<li><a href="#feedback">1.3. Feedback</a></li>
 </ul>
 </li>
-<li><a href="#overview">2. Overview</a>
+<li><a href="#overview-2">2. Overview</a>
 <ul class="sectlevel2">
 <li><a href="#organization">2.1. Organization</a></li>
 </ul>
 </li>
 <li><a href="#authentication">3. Authentication</a>
 <ul class="sectlevel2">
-<li><a href="#overview-2">3.1. Overview</a></li>
+<li><a href="#overview-3">3.1. Overview</a></li>
 <li><a href="#openid-connect">3.2. OpenID Connect</a></li>
 <li><a href="#openid-federation">3.3. OpenID Federation</a></li>
 <li><a href="#x-509-certificates">3.4. X.509 Certificates</a></li>
@@ -563,7 +565,63 @@ MathJax.Hub.Config({
 <p>This developer guide is intended to make you familiar with developing secure applications and services for the Maritime Cloud. In addition to this developer guide the whitepaper available at <a href="http://dev.maritimecloud.net/apidocs/" class="bare">http://dev.maritimecloud.net/apidocs/</a> is a good read.</p>
 </div>
 <div class="sect2">
-<h3 id="feedback"><a class="anchor" href="#feedback"></a>1.1. Feedback</h3>
+<h3 id="a-bit-of-history"><a class="anchor" href="#a-bit-of-history"></a>1.1. A Bit of History</h3>
+<div class="paragraph">
+<p>The Maritime Cloud project started out as an internal project at the Danish Maritime Authority in the autumn of 2012.
+As part of the e-Navigation process the Danish Maritime Authority had been working on an e-Navigation Prototype Display system called EPD. The EPD consist of two applications for demonstrating potential e-navigation solutions. An ECDIS like ship side application and a shore side application.</p>
+</div>
+<div class="paragraph">
+<p>During the development it was clear that AIS was a severe limiting factor when communicating between the ship side and the shore side. Putting a lot of limitations of the different kind of maritime services that could be developed. Especially three issues was identified.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Lack of bandwidth.</strong> Only limited amounts of data could be transfered. Often using complex encoding schemes such as application specific AIS messages.</p>
+</li>
+<li>
+<p><strong>Ease of development.</strong> There was no easy way to simulate AIS communication without a very complex developer environment.</p>
+</li>
+<li>
+<p><strong>Limited Signal Coverage.</strong> There are certain types of services where the actors communicating might not all be within reach of radio signals.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The first prototype was built in the winter of 2012 and was implemented in the EPD in spring 2013. It just featured basic point to point communication. This is basically what is the Maritime Message Service now. During the summer of 2013 the vision for a general framework for maritime communication was created. Including registries for services and identities in addition to the message based framework. It also got its name the “Maritime Cloud” as a sort of umbralle name for the various underlying services. In 2014 the first release of the Maritime Cloud reference implementation was made available for the public.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="overview"><a class="anchor" href="#overview"></a>1.2. Overview</h3>
+<div class="paragraph">
+<p>Here is 10000 foot overview of the Maritime Cloud:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/maritimecloud.png" alt="Overview">
+</div>
+</div>
+<div class="paragraph">
+<p>There are 3 different core services provided by the Maritime Cloud</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Maritime Identity Registry.</strong> A centralized authority for identities of persons, organizations or ships that are using the Maritime Cloud.</p>
+</li>
+<li>
+<p><strong>Maritime Service Registry.</strong> A centralized repository of service standards and provisioned services world wide.</p>
+</li>
+<li>
+<p><strong>Maritime Messaging Service (MMS).</strong> A communication protocol on top of TCP/IP. Supporting reliable delivery of messages and geocasting<span class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</span>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This guide will predominantly discuss the identity registry.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="feedback"><a class="anchor" href="#feedback"></a>1.3. Feedback</h3>
 <div class="paragraph">
 <p>Readers may send feedback about errors, omissions, and ambiguities in this guide to <a href="mailto:kasperni@gmail.com">kasperni@gmail.com</a> or even better submit a pull request to the documentation available at <a href="https://github.com/MaritimeCloud/Documentation/tree/master/developer-guide/adoc" class="bare">https://github.com/MaritimeCloud/Documentation/tree/master/developer-guide/adoc</a>.</p>
 </div>
@@ -575,7 +633,7 @@ MathJax.Hub.Config({
 </div>
 </div>
 <div class="sect1">
-<h2 id="overview"><a class="anchor" href="#overview"></a>2. Overview</h2>
+<h2 id="overview-2"><a class="anchor" href="#overview-2"></a>2. Overview</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Before going into detail with the setup. There are some important topics we need to review.</p>
@@ -651,10 +709,10 @@ MathJax.Hub.Config({
 <h2 id="authentication"><a class="anchor" href="#authentication"></a>3. Authentication</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Authentication is any process by which a system verifies the identity of a user (human or machine) who wishes to access it. Since access control is normally based on the identity of the user who requests access to a resource, Authentication is essential to effective security. In contrast to identification which refers to the act of stating a person or thing&#8217;s identity, authentication is the process of actually confirming that stated identity. It might involve verifying the authenticity of a website by a digital certificate that is provides, or validating a persons identity documents.</p>
+<p>Authentication is any process by which a system verifies the identity of a user (human or machine) who wishes to access it. Since access control is normally based on the identity of the user who requests access to a resource. Authentication is essential to effective security. In contrast to identification which refers to the act of stating a person or thing&#8217;s identity, authentication is the process of actually confirming that stated identity. It might involve verifying the authenticity of a website by a digital certificate that is provides, or validating a persons identity documents.</p>
 </div>
 <div class="sect2">
-<h3 id="overview-2"><a class="anchor" href="#overview-2"></a>3.1. Overview</h3>
+<h3 id="overview-3"><a class="anchor" href="#overview-3"></a>3.1. Overview</h3>
 <div class="paragraph">
 <p>The way in which a human user or machine may be authenticated typically falls into three different categories, based on what is commonly known as the factors of authentication: something the user knows, something the user has, and something the user is. Each authentication factor covers a range of elements used to authenticate or verify a person&#8217;s identity prior to being granted access, approving a transaction request, signing a document or other work product, granting authority to others, and establishing a chain of authority.</p>
 </div>
@@ -675,7 +733,7 @@ MathJax.Hub.Config({
 <p>Currently the implementation effort in the Maritime Cloud is concentrating on passwords for human users and certificates for machine users. In the future we will probably add more methods. As well as combinations of these factors into what it commonly called multi factor security.</p>
 </div>
 <div class="paragraph">
-<p>While the difference of using certificates or passwords might seem minor from a user perspective the underlying implementation is radically different which is why it has been split into to different sections.</p>
+<p>While the difference of using certificates or passwords might seem minor from a user perspective the underlying implementation and usage is radically different which is why it has been split into to different sections.</p>
 </div>
 </div>
 <div class="sect2">
@@ -746,8 +804,7 @@ MathJax.Hub.Config({
 <p>The current PKI architecture of the Maritime Cloud is a very simple architecture with a single issuer (The Maritime Cloud). We envision that in the future each country might be their own issuer of certificates for a vessel. However, for the time being the simple architecture should be enough for almost all use cases.</p>
 </div>
 <div class="paragraph">
-<p>The Maritime Cloud does not mandate any particular use of certificates. Instead it issues them for general use. For example, for use in signing documents or for enabling secure communication between two parties via TLS/SSL.
-Since the Maritime Cloud has its own root certificate that are not general recognized. The certificates issued should not be used on websites. Because no browsers has included the certificate in the list of recognized authorities.</p>
+<p>The Maritime Cloud does not mandate any particular use of certificates. Instead it issues them for general use. For example, for use in signing documents or for enabling secure communication between two parties via TLS/SSL. Since the Maritime Cloud has its own root certificate that are not general recognized. The certificates issued should not be used on websites. Because no browsers has included the certificate in the list of recognized authorities.</p>
 </div>
 <div class="paragraph">
 <p>Almost any modern programming language have standard or general available libraries for working with X.509 certificates. And we refer to these for detailed information about integrating digital certificates into applications.</p>
@@ -766,8 +823,7 @@ Since the Maritime Cloud has its own root certificate that are not general recog
 </div>
 </div>
 <div class="paragraph">
-<p>In order to create a new certificat for the vessel select "+New Certificate". A new dialog box asking for confirmation is displayed. After having confirmed the generation. A new dialog box will de displayed where it is
-possible to download a zip file consisting of the generated certificate and its private and public key. It is important to remember to download the file as the the private key is no longer available after the page is closed.</p>
+<p>In order to create a new certificat for the vessel select <strong>+New Certificate</strong>. A new dialog box asking for confirmation is displayed. After having confirmed the generation. A new dialog box will de displayed where it is possible to download a zip file consisting of the generated certificate and its private and public key. It is important to remember to download the file as the the private key is no longer available after the page is closed.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -775,7 +831,7 @@ possible to download a zip file consisting of the generated certificate and its 
 </div>
 </div>
 <div class="paragraph">
-<p>After the certificate has been generated it can be seen in the list of registered certificates for the vessel. Where it is also possible to revoke it.</p>
+<p>After the certificate has been generated it can be seen in the list of registered certificates for the vessel. This can be used for revoking the certificate at a later stage.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -789,7 +845,7 @@ possible to download a zip file consisting of the generated certificate and its 
 <div class="sect3">
 <h4 id="certificate-attributes"><a class="anchor" href="#certificate-attributes"></a>3.4.2. Certificate Attributes</h4>
 <div class="paragraph">
-<p>The MaritimeCloud can issue X.509 certificates for the users which can then be used for authentication. Service providers relying on X.509 certificate authentication must obtain and install the MaritimeCloud root certificate into their webservice.</p>
+<p>The Maritime Cloud can issue X.509 certificates for the users which can then be used for authentication. Service providers relying on X.509 certificate authentication must obtain and install the MaritimeCloud root certificate into their webservice.</p>
 </div>
 <div class="paragraph">
 <p>The standard information present in an X.509 certificate includes:</p>
@@ -879,7 +935,7 @@ possible to download a zip file consisting of the generated certificate and its 
 </div>
 </div>
 <div class="paragraph">
-<p>Finally, In additions to the information stored in the standard X.509 attributes listed above. The X509v3 extension SubjectAlternativeName (SAN) extension is used to store extra information. There already exists some predefined fields for the SAN extension, but they do not match the need we have for maritime related fields. Therefore the “otherName” field is used, which allows for using a Object Identifier (OID) to define custom fields. The OIDs currently used are not registered at ITU, but is randomly generated using a tool provided by ITU (see <a href="http://www.itu.int/en/ITU-T/asn1/Pages/UUID/uuids.aspx" class="bare">http://www.itu.int/en/ITU-T/asn1/Pages/UUID/uuids.aspx</a>). See the table below for the fields defined, the OID of the fields and which kind of entity that uses the fields. We know this is not very elegant but unfortunantely there are few alternatives in the X.509 standard.</p>
+<p>Finally, In additions to the information stored in the standard X.509 attributes listed above. The X509v3 extension SubjectAlternativeName (SAN) extension is used to store extra information. There already exists some predefined fields for the SAN extension, but they do not match the need we have for maritime related fields. Therefore the “otherName” field is used, which allows for using a Object Identifier (OID) to define custom fields. The OIDs currently used are not registered at ITU, but is randomly generated using a tool provided by ITU (see <a href="http://www.itu.int/en/ITU-T/asn1/Pages/UUID/uuids.aspx" class="bare">http://www.itu.int/en/ITU-T/asn1/Pages/UUID/uuids.aspx</a>). See the table below for the fields defined, the OID of the fields and which kind of entity that uses the fields. We know this is not a very elegant solution but unfortunantely there are few alternatives in the X.509 standard.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
@@ -966,13 +1022,18 @@ possible to download a zip file consisting of the generated certificate and its 
 <div class="paragraph">
 <p>Given these issues and many other we have to decide to wait on the various to sub projects to implement authorization and then compile all the different approaches and try and make something generic.</p>
 </div>
-<div style="page-break-after: always;"></div>
 </div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnote_1">
+<a href="#_footnoteref_1">1</a>. Geocasting refers to the delivery of information to a group of actors identified by their geographical locations.
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-05-03 12:05:59 CEST
+Last updated 2016-05-03 14:38:31 CEST
 </div>
 </div>
 </body>
