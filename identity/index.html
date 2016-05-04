@@ -526,23 +526,34 @@ MathJax.Hub.Config({
 <ul class="sectlevel2">
 <li><a href="#a-bit-of-history">1.1. A Bit of History</a></li>
 <li><a href="#overview">1.2. Overview</a></li>
-<li><a href="#feedback">1.3. Feedback</a></li>
+<li><a href="#signing-up">1.3. Signing up</a></li>
+<li><a href="#feedback">1.4. Feedback</a></li>
 </ul>
 </li>
-<li><a href="#overview-2">2. Overview</a>
+<li><a href="#identity-management">2. Identity Management</a>
 <ul class="sectlevel2">
-<li><a href="#organization">2.1. Organization</a></li>
+<li><a href="#the-identity-registry">2.1. The Identity Registry</a></li>
+<li><a href="#key-actor-concepts">2.2. Key Actor Concepts</a></li>
 </ul>
 </li>
 <li><a href="#authentication">3. Authentication</a>
 <ul class="sectlevel2">
-<li><a href="#overview-3">3.1. Overview</a></li>
-<li><a href="#openid-connect">3.2. OpenID Connect</a></li>
-<li><a href="#openid-federation">3.3. OpenID Federation</a></li>
-<li><a href="#x-509-certificates">3.4. X.509 Certificates</a></li>
+<li><a href="#overview-2">3.1. Overview</a></li>
 </ul>
 </li>
-<li><a href="#authorization">4. Authorization</a></li>
+<li><a href="#openid-connect">4. OpenID Connect</a></li>
+<li><a href="#user-federation">5. User Federation</a>
+<ul class="sectlevel2">
+<li><a href="#keycloack">5.1. Keycloack</a></li>
+</ul>
+</li>
+<li><a href="#pki-and-x-509-certificates">6. PKI and X.509 Certificates</a>
+<ul class="sectlevel2">
+<li><a href="#creating-a-new-certificate">6.1. Creating a new Certificate</a></li>
+<li><a href="#certificate-attributes">6.2. Certificate Attributes</a></li>
+</ul>
+</li>
+<li><a href="#authorization">7. Authorization</a></li>
 </ul>
 </div>
 </div>
@@ -562,7 +573,7 @@ MathJax.Hub.Config({
 <p>Please do not email us directly about usage questions. Instead use our Google Group at <a href="https://groups.google.com/forum/#!forum/maritimecloud" class="bare">https://groups.google.com/forum/#!forum/maritimecloud</a> for general usage questions. In this way future users can see answers to commonly asked questions. Google Groups is also where we post information about new releases and updated documentation.</p>
 </div>
 <div class="paragraph">
-<p>This developer guide is intended to make you familiar with developing secure applications and services for the Maritime Cloud. In addition to this developer guide this <a href="http://developers.maritimecloud.net/Identity%20Management%20and%20Security%20White%20Paper.docx">whitepaper</a> is a good read.</p>
+<p>This developer guide is intended to make you familiar with developing secure applications and services for the Maritime Cloud in particular with regards to Identity Management.</p>
 </div>
 <div class="sect2">
 <h3 id="a-bit-of-history"><a class="anchor" href="#a-bit-of-history"></a>1.1. A Bit of History</h3>
@@ -621,9 +632,18 @@ As part of the e-Navigation process the Danish Maritime Authority had been worki
 </div>
 </div>
 <div class="sect2">
-<h3 id="feedback"><a class="anchor" href="#feedback"></a>1.3. Feedback</h3>
+<h3 id="signing-up"><a class="anchor" href="#signing-up"></a>1.3. Signing up</h3>
 <div class="paragraph">
-<p>Readers may send feedback about errors, omissions, and ambiguities in this guide to <a href="mailto:kasperni@gmail.com">kasperni@gmail.com</a> or even better submit a pull request to the documentation available at <a href="https://github.com/MaritimeCloud/Documentation/tree/master/developer-guide/adoc" class="bare">https://github.com/MaritimeCloud/Documentation/tree/master/developer-guide/adoc</a>.</p>
+<p>In order to get an organization, its users and any ships the organization might own on to the Maritime Cloud. The organization wishing to use the Maritime Cloud needs to perform a signup process. The process is currently manual but will be replaced with an automatic one in the future.</p>
+</div>
+<div class="paragraph">
+<p>Send a email to Tomas Christensen at <a href="mailto:tgc@dma.dk">tgc@dma.dk</a> with the name of your organization and whom will be the main administrator in order to signup.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="feedback"><a class="anchor" href="#feedback"></a>1.4. Feedback</h3>
+<div class="paragraph">
+<p>Readers may send feedback about errors, omissions, and ambiguities in this guide to <a href="mailto:tgc@dma.dk">tgc@dma.dk</a> or even better submit a pull request to the documentation available at <a href="https://github.com/MaritimeCloud/Documentation/tree/master/developer-guide/adoc" class="bare">https://github.com/MaritimeCloud/Documentation/tree/master/developer-guide/adoc</a>.</p>
 </div>
 <div class="paragraph">
 <p>As previously mentioned questions about usage of the Maritime Cloud should be directed to our Google Group at <a href="https://groups.google.com/forum/#!forum/maritimecloud" class="bare">https://groups.google.com/forum/#!forum/maritimecloud</a></p>
@@ -633,23 +653,77 @@ As part of the e-Navigation process the Danish Maritime Authority had been worki
 </div>
 </div>
 <div class="sect1">
-<h2 id="overview-2"><a class="anchor" href="#overview-2"></a>2. Overview</h2>
+<h2 id="identity-management"><a class="anchor" href="#identity-management"></a>2. Identity Management</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Before going into detail with the setup. There are some important topics we need to review.</p>
+<p>Identity management refers to the process of employing emerging technologies
+to manage information about the identity of users and control access to company
+resources. The goal of identity management is to improve productivity and
+security while lowering costs associated with managing users and their identities,
+attributes, and credentials.</p>
+</div>
+<div class="paragraph">
+<p>The goal of the Maritime Clouds Identity Registry is to create a solution that satisfies the most common identification needs for the entire maritime industry on a global scale.</p>
+</div>
+<div class="paragraph">
+<p>This is not a simple task as any solution must support every possible user scenarios from small leisure sailors to multinational companies. The complexity of this task is why the functionality will be delivered over multiple milestones in the coming years. With the most important things such as support for authentication being implemented first. Additional functionality being added based on user needs in the projects supported by the Maritime Cloud.</p>
 </div>
 <div class="sect2">
-<h3 id="organization"><a class="anchor" href="#organization"></a>2.1. Organization</h3>
+<h3 id="the-identity-registry"><a class="anchor" href="#the-identity-registry"></a>2.1. The Identity Registry</h3>
 <div class="paragraph">
-<p>In the Maritime Cloud an organization is an entity, such as an institution, company or an association, that has a collective goal and is linked to an external environment. Examples, include international organizations such as IMO, IALA, IHO. National authorities such as US Coastguard, Swedish Maritime Administration. Local authorities such as VTS-Oersund, Port Of Rotterdam, Hong Kong SAR. Or commercial companies such as Transas or Maris.</p>
+<p>In most of the documents that describe the Maritime Cloud there is the concept of an Identity Registry. In reality there are numerous systems both internal to the Maritime Cloud as well as external to the Maritime Cloud that makes up the identity registry. Not only are there multiple registries but the interaction with them can also depend on, for example, the type of authentication used. Something like digital certificates can be used offline for authentication, that is, there is no need to contact the identity registry to validate a digital certificate. But if a username/password combination is used, both the Identity registry and possible an external company server needs to be contacted. Hence a better description of the Identity Registry would be probably be an <strong>Identity Platform</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Within the scope of the EfficienSea 2.0 and STM validation projects, the digital identities of actors can be registered in a project Identity Register, unless those actors are already registered in another identity registry, which has been recognized as a part of the Maritime Cloud collaboration (federated identity management).</p>
+</div>
+<div class="paragraph">
+<p>This will enable the participants in the projects to register actors to validate specific service concepts in testbed trials or utilize the operational services established by the projects, as well as validate the identity management concept of the Maritime Cloud. Beyond the scope of the project, it is foreseen that several identity registers will collaborate to form the global federated Maritime Cloud Identity Registry.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="key-actor-concepts"><a class="anchor" href="#key-actor-concepts"></a>2.2. Key Actor Concepts</h3>
+<div class="paragraph">
+<p>In order to be able to describe some of the concepts we are working with, here is a short introduction of the various actors we envision will interact with the identity registry.</p>
+</div>
+<div class="paragraph">
+<p>Identity management and security is a very complex and comprehensive field. So wherever possible we must limit non-essential functionality. So clearly, there are some maritime entities that should not be a part of the identity registry. Therefore, the Identity Registry should not be:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Managing information about entities that does not need to have access rights. For example, route or container information. While information about routes can be accessed by various users and systems. Routes by them self does not need access rights to access other information. It is only users and systems/devices that need access right.</p>
+</li>
+<li>
+<p>Maintaining information about entities that are not security related. For example, business addresses of users and organizations. Or location information about entities that can be used, for example, for routing messages to the right location.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The main reason for excluding all but non-essential security related information is that it opens up the never ending discussion about what exactly should be maintained in the identity registry. If we make a generalized information store that maintains and provides query capabilities for all kinds of information about users and systems/devices. For example, business addresses, geographical location. We might as well use this functionality for storing other queryable information. For example, maintaining information about routes or cargo.</p>
+</div>
+<div class="paragraph">
+<p>This does not prohibit a later revisiting of these goals. Or prohibit including work from other groups into a general framework at a later time. But for time being the identity registry will revolve about the 4 entities listed below.</p>
 </div>
 <div class="sect3">
-<h4 id="organization-id"><a class="anchor" href="#organization-id"></a>2.1.1. Organization ID</h4>
+<h4 id="organization"><a class="anchor" href="#organization"></a>2.2.1. Organization</h4>
+<div class="paragraph">
+<p>In the Maritime Cloud an organization is an entity, such as an institution, company or an association, that has a collective goal and is linked to an external environment. Examples, include international organizations such as IMO, IALA, IHO. National authorities such as US
+Coastguard, Swedish Maritime Administration. Local authorities such as VTS-Oeresund, Port of Rotterdam, Hong Kong SAR. Or commercial companies such as Transas or Maris.</p>
+</div>
+<div class="paragraph">
+<p>In order to able to use the functions of the Maritime Cloud in any way, an organization needs to be signed up to the Maritime Cloud. In the context of the EfficienSea 2.0 and STM projects, this is currently done be sending an email with various information about the organization to a Maritime Cloud test bed administrator.</p>
+</div>
+<div class="paragraph">
+<p>In the future a more automated process involving a validation workflow by some organization may validate the relationship between an organization in the real world, and the issued maritime digital identity. How this validation is to take place is still up for discussion. However, one possible solution would be for the maritime authorities in which a given organization is registered to put the stamp of approval on the signup application.</p>
+</div>
+<div class="paragraph">
+<p>Once an organization has been registered (and validated), an identity administrator of that organization will be able to create and manage maritime identities that belong to this organization, such as Users, Vessels or Services. This administration is typically done via the Maritime Cloud Portal which is a web based client. For some larger organizations it might make sense to integrate directly via the underlying APIs.</p>
+</div>
 <div class="paragraph">
 <p>All organizations that are registered in the Maritime Cloud must be registered with a unique &gt;=3 letter alphanumeric id.</p>
 </div>
 <div class="paragraph">
-<p>The id is used in numerous places. For example,  all service specifications from a given organization is prefixed by the organization id. Likewise must all MSDL files from a given organization be organized under the a namespace that starts with the organization id. For example, "package dma.mmsi;" In order to allow easy and consistent sharing and import of MSDL files between organizations.</p>
+<p>The id is used in numerous places. For example, all service specifications from a given organization is prefixed by the organization id. Likewise must all MSDL files from a given organization be organized under the a namespace that starts with the organization id. For example, "package dma.mmsi;" In order to allow easy and consistent sharing and import of MSDL files between organizations.</p>
 </div>
 <div class="paragraph">
 <p>Examples of valid organizations ids:</p>
@@ -675,30 +749,27 @@ As part of the e-Navigation process the Danish Maritime Authority had been worki
 </div>
 </div>
 <div class="sect3">
-<h4 id="signing-up-for-the-maritime-cloud"><a class="anchor" href="#signing-up-for-the-maritime-cloud"></a>2.1.2. Signing up for the Maritime Cloud</h4>
+<h4 id="vessels"><a class="anchor" href="#vessels"></a>2.2.2. Vessels</h4>
 <div class="paragraph">
-<p>In order to get an organization, its users and any ships the organization might own on to the Maritime Cloud. The organization needs to  There needs to be some kind of signup procedure.</p>
+<p>Vessels describes any floating object used for the carriage of people or goods.</p>
 </div>
 <div class="paragraph">
-<p>For now, we (DMA) will validate all organizations that sign up in some kind of best effort basis. I do not expect we reach more than a 100 organizations within the next 1-2 years on our current test bed.</p>
+<p>The main need for registering vessels in the Maritime Cloud is so that digital certificates can be issued for them. Thereby enabling secure communication between vessels as well as digitally signing of documents. Users might also use these certificates for other purposes. The important thing is that the functionality is there.</p>
 </div>
 <div class="paragraph">
-<p>How all this vetting is going to be done in the end is up for grabs. But to avoid getting stalled in the development process. I think we will just go with simplest solution possible for now.</p>
+<p>As part of the certificate of a vessel its name, MMSI number, IMO number, callsign and possible other attributes is included in the header of the certificate.</p>
 </div>
-<div class="paragraph">
-<p>At a some later point a central Maritime Cloud authority might only need to verify international organizations and national authorities. Letting national authorities verify individual companies that try and sign up. Or something else we decide on.</p>
 </div>
+<div class="sect3">
+<h4 id="services"><a class="anchor" href="#services"></a>2.2.3. Services</h4>
 <div class="paragraph">
-<p>Most large organizations are divided into departments or suborganizations  f some kind. There is currently no support for hirachical organizations.</p>
+<p>Services refers to digital services. For example, a weather service that is available to other services for machine to machine communication. Services needs to be registered in such a way that it can successfully authenticate users.</p>
 </div>
-<div class="paragraph">
-<p>All organizations have a single root user who has full access to everything in the account (much like a Linux root user). The user is not meant for day to day operations but only in special cases. For example, setting up a link to an organizations federated identity broker where all the organizations users are registered. Or deleting the organization.</p>
 </div>
+<div class="sect3">
+<h4 id="users"><a class="anchor" href="#users"></a>2.2.4. Users</h4>
 <div class="paragraph">
-<p>A user of the Maritime Cloud can belong to one and only one organization. For example, if you have to two functions in the maritime sector. One as an employee of a particular company and another as a chairman of a non-profit association. You will have two different users and separate  logins. One that belongs to company and another user that belongs to IALA. Just like you will two different emails @company.com and another at @non-profit-association.org depending on which role you have.</p>
-</div>
-<div class="paragraph">
-<p>This does not mean that one cannot give a user from one organization access to read a document owned in another organization. Only that a single user can have only a single function within a single organization.</p>
+<p>Users mainly refers to human users. Human users differ from other actors in that they typically use a username/password to login which implies a different interaction pattern with the identity registry then say communication between vessels.</p>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
@@ -712,7 +783,7 @@ As part of the e-Navigation process the Danish Maritime Authority had been worki
 <p>Authentication is any process by which a system verifies the identity of a user (human or machine) who wishes to access it. Since access control is normally based on the identity of the user who requests access to a resource. Authentication is essential to effective security. In contrast to identification which refers to the act of stating a person or thing&#8217;s identity, authentication is the process of actually confirming that stated identity. It might involve verifying the authenticity of a website by a digital certificate that is provides, or validating a persons identity documents.</p>
 </div>
 <div class="sect2">
-<h3 id="overview-3"><a class="anchor" href="#overview-3"></a>3.1. Overview</h3>
+<h3 id="overview-2"><a class="anchor" href="#overview-2"></a>3.1. Overview</h3>
 <div class="paragraph">
 <p>The way in which a human user or machine may be authenticated typically falls into three different categories, based on what is commonly known as the factors of authentication: something the user knows, something the user has, and something the user is. Each authentication factor covers a range of elements used to authenticate or verify a person&#8217;s identity prior to being granted access, approving a transaction request, signing a document or other work product, granting authority to others, and establishing a chain of authority.</p>
 </div>
@@ -735,11 +806,27 @@ As part of the e-Navigation process the Danish Maritime Authority had been worki
 <div class="paragraph">
 <p>While the difference of using certificates or passwords might seem minor from a user perspective the underlying implementation and usage is radically different which is why it has been split into to different sections.</p>
 </div>
+<div style="page-break-after: always;"></div>
 </div>
-<div class="sect2">
-<h3 id="openid-connect"><a class="anchor" href="#openid-connect"></a>3.2. OpenID Connect</h3>
+</div>
+</div>
+<div class="sect1">
+<h2 id="openid-connect"><a class="anchor" href="#openid-connect"></a>4. OpenID Connect</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>OpenID Connect is based on OAuth2 and uses signed (or encrypted) JWT tokens to provider user information to the webservice. The MaritimeCloud expects to provide the following attributes:</p>
+<p><a href="http://openid.net/">OpenID Connect</a> is an interoperable authentication protocol based on the <a href="http://oauth.net/2/">OAuth 2.0</a> family of specifications. It uses straightforward REST/JSON message flows with a design goal of “making simple things simple and complicated things possible”. It’s uniquely easy for developers to integrate, compared to any preceding Identity protocol.</p>
+</div>
+<div class="paragraph">
+<p>OpenID Connect lets developers authenticate their users across websites and apps without having to own and manage password files. For the app builder, it provides a secure verifiable, answer to the question: “What is the identity of the person currently using the browser or native app that is connected to me?”</p>
+</div>
+<div class="paragraph">
+<p>OpenID Connect allows for clients of all types, including browser-based JavaScript and native mobile apps, to launch sign-in flows and receive verifiable assertions about the identity of signed-in users.</p>
+</div>
+<div class="paragraph">
+<p>(Identity, Authentication) + OAuth 2.0 = OpenID Connect</p>
+</div>
+<div class="paragraph">
+<p>The MaritimeCloud expects to provide the following attributes:</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
@@ -785,32 +872,58 @@ As part of the e-Navigation process the Danish Maritime Authority had been worki
 </tr>
 </tbody>
 </table>
-<div class="paragraph">
-<p>The Maritime Cloud does not assign roles to the users. See the section about Authorization for how to authorize users.</p>
 </div>
+</div>
+<div class="sect1">
+<h2 id="user-federation"><a class="anchor" href="#user-federation"></a>5. User Federation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Federation is the means of linking distinct identity management systems to a person&#8217;s electronic identity and attributes. For example, a shipping company might expose all their users via LDAP or Active Directory to the Maritime Cloud in such a way as they appear as Maritime Cloud users. Thereby bypassing the need to manage their users directly in the Maritime Cloud.</p>
+</div>
+<div class="paragraph">
+<p>If your organizations wishes to make use of their existing user database please contact Tomas Christensen at <a href="mailto:tmc@dma.dk">tmc@dma.dk</a> in order to set it up.</p>
 </div>
 <div class="sect2">
-<h3 id="openid-federation"><a class="anchor" href="#openid-federation"></a>3.3. OpenID Federation</h3>
+<h3 id="keycloack"><a class="anchor" href="#keycloack"></a>5.1. Keycloack</h3>
 <div class="paragraph">
-<p>The Maritime Cloud supports Identity Federation.</p>
+<p>Keycloak is one of many products that includes support for OpenID Connect. It is an open source product developed by RedHat. Keycloak can be set up to work in different ways. It can be set up to work as an Identity Provider, using either a database or LDAP/AD as a backend. Or it can be set up as an Identity Broker in which case it will link to other Identity Providers. When acting as an Identity Broker the diagram for authentication as seen above becomes a bit more complicated since another step is added where the service first redirects to the Identity Broker where the user has to choose which Identity Provider he wants to use. Before being redirected to the Identity Provides login page.
+The functionality of the Identity Broker is the cornerstone in the Maritime Cloud user federation. Enabling outside organizations to act as Identity Provides via the Identity Broker.</p>
 </div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="pki-and-x-509-certificates"><a class="anchor" href="#pki-and-x-509-certificates"></a>6. PKI and X.509 Certificates</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A <strong>public key infrastructure (PKI)</strong> is a set of hardware, software, people, policies, and procedures needed to create, manage, distribute, use, store, and revoke digital certificates and manage public-key encryption. Thereby helping an organization establish and maintain a trustworthy networking environment. There is no inherent requirement for using a PKI based solution for enabling secure machine to machine (M2M) communication. But it is the most commonly used solution and lots of software, standards and best practices exists for utilizing it. The choice of using PKI based on the X.509 standard for M2M communication in the Maritime Cloud was thus straightforward.</p>
+</div>
+<div class="paragraph">
+<p>The key piece in a PKI architecture is a PKI CA (Certificate Authority) which is an entity that issues digital certificates. A digital certificate that certifies the ownership of a public key by the named subject of the certificate. An obvious example would be creating a certificate for a vessel, which can serve to certify that a given document was indeed signed by someone in possession of the certificate issued to that vessel.</p>
+</div>
+<div class="paragraph">
+<p>One of the most important aspects of designing a PKI based architecture is the certificate hierarchy planning because the design will affect how certificates are validated and used by PKI-enabled actors. Normally a PKI based architecture is arranged in a tree like hierarchy with a single root entity in the top and with numerous leaves called sub CAs. Each sub CA can have their own sub CA thereby forming a tree with a single entity at the top. Each leave in the tree is responsible for creating certificates, for example, ships or organizations. The reason for doing this is to be able to delegate the responsibility to different parties. For example, in the case of the Maritime Cloud one could envision that at some point in the future every flag state would be their own sub CA. Having the sole responsibility of issuing certificates for vessels registered under their own flag.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ca.png" alt="Overview">
+</div>
+</div>
+<div class="paragraph">
+<p>In the current version of the Maritime Cloud we are working with a single sub CA that has the responsibility for issuing all certificates. However, this can gradually be changed to support another PKI hierarchy design.</p>
+</div>
+<div class="paragraph">
+<p>The most important functionality of a CA is issuing digital certificates. A digital certificate certifies the ownership of a public key by the named subject of the certificate. This allows others (relying parties) to rely upon signatures or on assertions made about the private key that corresponds to the certified public key. In this model of trust relationships, a CA is a trusted third party—trusted both by the subject (owner) of the certificate and by the party relying upon the certificate. In the case of the Maritime Cloud these certificates are typically used to make secure connections between maritime actors over the Internet. A certificate is required in order to avoid the case that a malicious party which happens to be on the path to the target server pretends to be the actual target. Such a scenario is commonly referred to as a man-in-the-middle attack. The client uses the CA certificate to verify the CA signature on the server certificate, as part of the checks before establishing a secure connection. Likewise, the server has the option of inspecting the clients certificate before allowing it to connect.</p>
+</div>
+<div class="paragraph">
+<p>To issue a new certificate for, for example, a vessel. The administrator the organization who owns the ship will need to log in to the Maritime Cloud Portal and use its functionality for issuing new certificates. The certificate being issued will contain information about the name of the ship, the owner, the flag state and other attributes such as MMSI and IMO number. In the current implementation there is no validation of this information other than that the organization must have been accepted when signing up. We do not expect this to be a problem for the foreseeable future as the number of participating parties is still relatively small. In the future where a lot of more organizations has been added it might, for example, be possible to integrate with national registries. So an automated check of these information can be made.</p>
+</div>
+<div class="paragraph">
+<p>After having issued a certificate the administrator can now install it on the ship in some way. The actual logistics about how and where to install it is outside of the scope of the identity registry as this might vary a lot between organizations and projects. This also reduces the functionality of the identity registry to just provide the core functionality of Identity management. Allowing users to be able to build innovative solutions on top of it. This also applies directly to machine to machine communication. The identity registry places no restrictions about what kind of machine to machine communication protocols that should be used. It just provides the basic infrastructure to allow for each machine to authenticate the host in the other end. Letting each project select their protocols if needed.</p>
 </div>
 <div class="sect2">
-<h3 id="x-509-certificates"><a class="anchor" href="#x-509-certificates"></a>3.4. X.509 Certificates</h3>
-<div class="paragraph">
-<p>An X.509 certificate is a digital certificate that uses the most widely accepted international public key infrastructure (PKI) standard for verifying that a public key belongs to the user, computer or service identity contained within the certificate.</p>
-</div>
-<div class="paragraph">
-<p>The current PKI architecture of the Maritime Cloud is a very simple architecture with a single issuer (The Maritime Cloud). We envision that in the future each country might be their own issuer of certificates for a vessel. However, for the time being the simple architecture should be enough for almost all use cases.</p>
-</div>
-<div class="paragraph">
-<p>The Maritime Cloud does not mandate any particular use of certificates. Instead it issues them for general use. For example, for use in signing documents or for enabling secure communication between two parties via TLS/SSL. Since the Maritime Cloud has its own root certificate that are not general recognized. The certificates issued should not be used on websites. Because no browsers has included the certificate in the list of recognized authorities.</p>
-</div>
-<div class="paragraph">
-<p>Almost any modern programming language have standard or general available libraries for working with X.509 certificates. And we refer to these for detailed information about integrating digital certificates into applications.</p>
-</div>
-<div class="sect3">
-<h4 id="creating-a-new-certificate"><a class="anchor" href="#creating-a-new-certificate"></a>3.4.1. Creating a new Certificate</h4>
+<h3 id="creating-a-new-certificate"><a class="anchor" href="#creating-a-new-certificate"></a>6.1. Creating a new Certificate</h3>
 <div class="paragraph">
 <p>Currently, the only way to generate a new certificate is to log into the Maritime Cloud portal and create the certificate in a browser.</p>
 </div>
@@ -842,8 +955,8 @@ As part of the e-Navigation process the Danish Maritime Authority had been worki
 <p>There are currently no support for generating certificates using a certificate signing request. However, this is a feature being worked on and it will be available in future releases.</p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="certificate-attributes"><a class="anchor" href="#certificate-attributes"></a>3.4.2. Certificate Attributes</h4>
+<div class="sect2">
+<h3 id="certificate-attributes"><a class="anchor" href="#certificate-attributes"></a>6.2. Certificate Attributes</h3>
 <div class="paragraph">
 <p>The Maritime Cloud can issue X.509 certificates for the users which can then be used for authentication. Service providers relying on X.509 certificate authentication must obtain and install the MaritimeCloud root certificate into their webservice.</p>
 </div>
@@ -990,9 +1103,8 @@ As part of the e-Navigation process the Danish Maritime Authority had been worki
 </div>
 </div>
 </div>
-</div>
 <div class="sect1">
-<h2 id="authorization"><a class="anchor" href="#authorization"></a>4. Authorization</h2>
+<h2 id="authorization"><a class="anchor" href="#authorization"></a>7. Authorization</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Another central aspect of Identity Management is the concept of authorization which is the process of determining a set of permissions that is granted to a specific trusted identity. In all practical senses, authorization follows authentication. Once a system knows who you are, the system can determine what is appropriate for you to be able to see or do. authorization can be determined based on the user identity alone, but in most cases requires additional attributes about the user, such as role, title, flag state, etc.</p>
@@ -1033,7 +1145,7 @@ As part of the e-Navigation process the Danish Maritime Authority had been worki
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-05-03 21:22:00 CEST
+Last updated 2016-05-04 14:21:36 CEST
 </div>
 </div>
 </body>
