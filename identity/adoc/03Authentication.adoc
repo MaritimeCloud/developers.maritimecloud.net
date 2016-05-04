@@ -1,0 +1,13 @@
+== Authentication
+Authentication is any process by which a system verifies the identity of a user (human or machine) who wishes to access it. Since access control is normally based on the identity of the user who requests access to a resource. Authentication is essential to effective security. In contrast to identification which refers to the act of stating a person or thing's identity, authentication is the process of actually confirming that stated identity. It might involve verifying the authenticity of a website by a digital certificate that is provides, or validating a persons identity documents.
+
+=== Overview
+The way in which a human user or machine may be authenticated typically falls into three different categories, based on what is commonly known as the factors of authentication: something the user knows, something the user has, and something the user is. Each authentication factor covers a range of elements used to authenticate or verify a person's identity prior to being granted access, approving a transaction request, signing a document or other work product, granting authority to others, and establishing a chain of authority.
+
+* Knowledge factors: Passwords, passphrases, pins, challenge response,
+* Ownership factors: ID card, Cell phone, certificates,
+* Inheritance factors: Fingerprint, retinal patterns, face, voice,
+
+Currently the implementation effort in the Maritime Cloud is concentrating on passwords for human users and certificates for machine users. In the future we will probably add more methods. As well as combinations of these factors into what it commonly called multi factor security.
+
+While the difference of using certificates or passwords might seem minor from a user perspective the underlying implementation and usage is radically different which is why it has been split into to different sections. 

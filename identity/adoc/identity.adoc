@@ -48,12 +48,20 @@ include::01introduction.adoc[]
 
 <<<
 
-include::015Overview.adoc[]
+include::02IdentityManagement.adoc[]
 
 <<<
 
-include::02Authentication.adoc[]
+include::03Authentication.adoc[]
 
 <<<
 
-include::03Authorisation.adoc[]
+include::04OpenIDConnect.adoc[]
+
+<<<
+
+include::05X509Certificates.adoc[]
+
+<<<
+
+include::06Authorisation.adoc[]

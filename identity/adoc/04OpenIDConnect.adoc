@@ -1,0 +1,32 @@
+== OpenID Connect
+http://openid.net/[OpenID Connect] is an interoperable authentication protocol based on the http://oauth.net/2/[OAuth 2.0] family of specifications. It uses straightforward REST/JSON message flows with a design goal of “making simple things simple and complicated things possible”. It’s uniquely easy for developers to integrate, compared to any preceding Identity protocol.
+
+OpenID Connect lets developers authenticate their users across websites and apps without having to own and manage password files. For the app builder, it provides a secure verifiable, answer to the question: “What is the identity of the person currently using the browser or native app that is connected to me?”
+
+OpenID Connect allows for clients of all types, including browser-based JavaScript and native mobile apps, to launch sign-in flows and receive verifiable assertions about the identity of signed-in users.
+
+(Identity, Authentication) + OAuth 2.0 = OpenID Connect
+
+
+The MaritimeCloud expects to provide the following attributes:
+
+|===
+|Attribute|Description
+|preferred_username|The users username in the parent organization.
+|email|The email of the user.
+|given_name|Firstname of the user.
+|family_name|Lastname of the user.
+|name|Full name of the user.
+|org|Id of the organization the user is a member of.
+|permissions|List of permissions for this user assigned by the organization the user is a member of.
+|mrn|The Maritime Resource Name of the user.
+|===
+
+== User Federation
+Federation is the means of linking distinct identity management systems to a person's electronic identity and attributes. For example, a shipping company might expose all their users via LDAP or Active Directory to the Maritime Cloud in such a way as they appear as Maritime Cloud users. Thereby bypassing the need to manage their users directly in the Maritime Cloud.
+
+If your organizations wishes to make use of their existing user database please contact Tomas Christensen at tmc@dma.dk in order to set it up.
+
+=== Keycloack
+Keycloak is one of many products that includes support for OpenID Connect. It is an open source product developed by RedHat. Keycloak can be set up to work in different ways. It can be set up to work as an Identity Provider, using either a database or LDAP/AD as a backend. Or it can be set up as an Identity Broker in which case it will link to other Identity Providers. When acting as an Identity Broker the diagram for authentication as seen above becomes a bit more complicated since another step is added where the service first redirects to the Identity Broker where the user has to choose which Identity Provider he wants to use. Before being redirected to the Identity Provides login page.
+The functionality of the Identity Broker is the cornerstone in the Maritime Cloud user federation. Enabling outside organizations to act as Identity Provides via the Identity Broker.

@@ -1,0 +1,65 @@
+== Identity Management
+Identity management refers to the process of employing emerging technologies
+to manage information about the identity of users and control access to company
+resources. The goal of identity management is to improve productivity and
+security while lowering costs associated with managing users and their identities,
+attributes, and credentials.
+
+The goal of the Maritime Clouds Identity Registry is to create a solution that satisfies the most common identification needs for the entire maritime industry on a global scale.
+
+This is not a simple task as any solution must support every possible user scenarios from small leisure sailors to multinational companies. The complexity of this task is why the functionality will be delivered over multiple milestones in the coming years. With the most important things such as support for authentication being implemented first. Additional functionality being added based on user needs in the projects supported by the Maritime Cloud.
+
+=== The Identity Registry
+In most of the documents that describe the Maritime Cloud there is the concept of an Identity Registry. In reality there are numerous systems both internal to the Maritime Cloud as well as external to the Maritime Cloud that makes up the identity registry. Not only are there multiple registries but the interaction with them can also depend on, for example, the type of authentication used. Something like digital certificates can be used offline for authentication, that is, there is no need to contact the identity registry to validate a digital certificate. But if a username/password combination is used, both the Identity registry and possible an external company server needs to be contacted. Hence a better description of the Identity Registry would be probably be an *Identity Platform*.
+
+Within the scope of the EfficienSea 2.0 and STM validation projects, the digital identities of actors can be registered in a project Identity Register, unless those actors are already registered in another identity registry, which has been recognized as a part of the Maritime Cloud collaboration (federated identity management). 
+
+This will enable the participants in the projects to register actors to validate specific service concepts in testbed trials or utilize the operational services established by the projects, as well as validate the identity management concept of the Maritime Cloud. Beyond the scope of the project, it is foreseen that several identity registers will collaborate to form the global federated Maritime Cloud Identity Registry.
+
+=== Key Actor Concepts
+In order to be able to describe some of the concepts we are working with, here is a short introduction of the various actors we envision will interact with the identity registry. 
+
+Identity management and security is a very complex and comprehensive field. So wherever possible we must limit non-essential functionality. So clearly, there are some maritime entities that should not be a part of the identity registry. Therefore, the Identity Registry should not be:
+
+** Managing information about entities that does not need to have access rights. For example, route or container information. While information about routes can be accessed by various users and systems. Routes by them self does not need access rights to access other information. It is only users and systems/devices that need access right.
+**	Maintaining information about entities that are not security related. For example, business addresses of users and organizations. Or location information about entities that can be used, for example, for routing messages to the right location.
+
+The main reason for excluding all but non-essential security related information is that it opens up the never ending discussion about what exactly should be maintained in the identity registry. If we make a generalized information store that maintains and provides query capabilities for all kinds of information about users and systems/devices. For example, business addresses, geographical location. We might as well use this functionality for storing other queryable information. For example, maintaining information about routes or cargo. 
+
+This does not prohibit a later revisiting of these goals. Or prohibit including work from other groups into a general framework at a later time. But for time being the identity registry will revolve about the 4 entities listed below.
+
+
+==== Organization
+In the Maritime Cloud an organization is an entity, such as an institution, company or an association, that has a collective goal and is linked to an external environment. Examples, include international organizations such as IMO, IALA, IHO. National authorities such as US
+Coastguard, Swedish Maritime Administration. Local authorities such as VTS-Oeresund, Port of Rotterdam, Hong Kong SAR. Or commercial companies such as Transas or Maris.
+
+In order to able to use the functions of the Maritime Cloud in any way, an organization needs to be signed up to the Maritime Cloud. In the context of the EfficienSea 2.0 and STM projects, this is currently done be sending an email with various information about the organization to a Maritime Cloud test bed administrator.
+
+In the future a more automated process involving a validation workflow by some organization may validate the relationship between an organization in the real world, and the issued maritime digital identity. How this validation is to take place is still up for discussion. However, one possible solution would be for the maritime authorities in which a given organization is registered to put the stamp of approval on the signup application.
+
+Once an organization has been registered (and validated), an identity administrator of that organization will be able to create and manage maritime identities that belong to this organization, such as Users, Vessels or Services. This administration is typically done via the Maritime Cloud Portal which is a web based client. For some larger organizations it might make sense to integrate directly via the underlying APIs.
+
+All organizations that are registered in the Maritime Cloud must be registered with a unique >=3 letter alphanumeric id.
+
+The id is used in numerous places. For example, all service specifications from a given organization is prefixed by the organization id. Likewise must all MSDL files from a given organization be organized under the a namespace that starts with the organization id. For example, "package dma.mmsi;" In order to allow easy and consistent sharing and import of MSDL files between organizations.
+
+Examples of valid organizations ids:
+
+** IMO
+** IALA
+** DMA
+** PortOfRotterdam
+** VTS-Oeresund
+
+==== Vessels
+Vessels describes any floating object used for the carriage of people or goods.
+
+The main need for registering vessels in the Maritime Cloud is so that digital certificates can be issued for them. Thereby enabling secure communication between vessels as well as digitally signing of documents. Users might also use these certificates for other purposes. The important thing is that the functionality is there.
+
+As part of the certificate of a vessel its name, MMSI number, IMO number, callsign and possible other attributes is included in the header of the certificate.  
+
+==== Services
+Services refers to digital services. For example, a weather service that is available to other services for machine to machine communication. Services needs to be registered in such a way that it can successfully authenticate users. 
+
+==== Users
+Users mainly refers to human users. Human users differ from other actors in that they typically use a username/password to login which implies a different interaction pattern with the identity registry then say communication between vessels. 
