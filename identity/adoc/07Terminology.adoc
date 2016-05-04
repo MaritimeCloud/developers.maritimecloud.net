@@ -1,0 +1,22 @@
+== Terminology
+Most of the terminology in this section has been taken from ISO/IEC 24760-1:2011 - A framework for identity management - Terminology and concepts
+
+** *Authentication:* The process of verifying the identity claimed by an entity based on its credentials.
+
+** *Authorization:* The process of establishing a specific entitlement that is consistent with authorization policies.
+
+** *Authorization policies:* Declarations that define entitlements of a security principal and any constraints related to that entitlement.
+
+** *Entitlements:* The actions an entity in a network is allowed to perform and the resources to which it is allowed access.
+
+** *Federated identity:* Is the means of linking a person's electronic identity and attributes, stored across multiple distinct identity management systems
+
+** *Identity:* The set of attributes that uniquely identifies a security principal. A security principal can have many different accounts that it uses to access various applications in the network. These accounts can be identified by these applications using different attributes of this entity. For example, a user can be known in the e-mail service by an e-mail ID, whereas that same user can be known in the human resource application by an employee number. The global set of such attributes constitutes the identity of the entity.
+
+** *Identity administration:* The act of managing information associated with the identity of a security principal. The information can be used by the identity management infrastructure itself to determine administrative privileges.
+
+** *Identity management policies:* Policies affecting the management of identities which includes naming policies and security policies.
+
+** *Realm:* A collection of identities and associated policies which is typically used when enterprises want to isolate user populations and enforce different identity management policies for each population.
+
+** *Security principals:* The subjects of authorization policies, such as users, user groups, and roles. A security principal can be a human or any application entity with an identity in the network and credentials to assert the identity.

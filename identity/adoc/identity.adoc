@@ -65,3 +65,7 @@ include::05X509Certificates.adoc[]
 <<<
 
 include::06Authorisation.adoc[]
+
+<<<
+
+include::07Terminology.adoc[]
