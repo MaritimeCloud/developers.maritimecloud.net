@@ -1,19 +1,27 @@
-== Users and passwords
-In the previous section we discussed digital certificates for use in machine to machine communication. There are no technical issues to why human users should not be able to use digital certificates to authenticate themselves as well. However, there are some serious practical ones that make it difficult to see them as a general solution for human user authentication. The first issue being that it requires that the certificate must always be present on the computer or mobile phone from which access is made. This is normally not a problem for machine to machine communication. Because, once installed the hardware configuration almost never changes. Unlike human users that uses their computer during the day to access information, their mobile phone on the way back from work and their tablet in the evening from home. Making sure that certificates are all installed on these devices and refreshing them once they expire is a lot of effort to require of users. And we believe having such a complicated setup would be a major barrier towards successful adoption of the Maritime Cloud. So for now, username and passwords are the main technology used for human authentication in the Maritime Cloud. In the future as standards and hardware support for something like biometrics (fingerprints, iris scanning) evolve these will likely be supported as well.
+== User Federation
+In the previous section we discussed digital certificates for use in machine to machine communication. There are no technical reason to why human users should not be able to use digital certificates to authenticate themselves as well. However, there are some serious practical ones that make it difficult to see them as a general solution for human user authentication. The first issue being that it requires that the certificate must always be present on the computer or mobile phone from which access is made. This is normally not a problem for machine to machine communication. Because, once installed the hardware configuration almost never changes. Unlike human users that uses their computer during the day to access information, their mobile phone on the way back from work and their tablet in the evening from home. Making sure that certificates are all installed on these devices and refreshing them once they expire is a lot of effort to require of users. And we believe having such a complicated setup would be a major barrier towards successful adoption of the Maritime Cloud. So for now, authentication of human users in the Maritime Cloud will be based on login through a web browser, using federation.
 
+Federation is the means of linking distinct identity management systems to a person's electronic identity and attributes. For example, a shipping company might expose all their users in LDAP or Active Directory to the Maritime Cloud in such a way as they appear as Maritime Cloud users. Thereby bypassing the need to manage their users directly in the Maritime Cloud. This also means that the Maritime Cloud is not responsible for management of users. In practical terms, federation means that users asked to authenticate in the Maritime CLoud will be redirected to a login webpage supplied by their organization where they can login using their organizational id.
+
+Since the authentication process is the responsibility of the organizations, it is also up to the individual organization to chose an appropriate authentication method. While most will likely use classic username/password authentication, multi factor security, biometric security or other approaches could be used.
 
 === OpenID Connect
-http://openid.net/[OpenID Connect] is an interoperable authentication protocol based on the http://oauth.net/2/[OAuth 2.0] family of specifications. It uses straightforward REST/JSON message flows with a design goal of “making simple things simple and complicated things possible”. It’s uniquely easy for developers to integrate, compared to any preceding Identity protocol.
+http://openid.net/[OpenID Connect] is the protocol chosen to by used for user federation in the Maritime Cloud, and it should be supported by Service Providers. It is an interoperable authentication protocol based on the http://oauth.net/2/[OAuth 2.0] family of specifications. It uses straightforward REST/JSON message flows with a design goal of "making simple things simple and complicated things possible". It’s uniquely easy for developers to integrate, compared to any preceding Identity protocol.
 
-OpenID Connect lets developers authenticate their users across websites and apps without having to own and manage password files. For the app builder, it provides a secure verifiable, answer to the question: “What is the identity of the person currently using the browser or native app that is connected to me?”
+OpenID Connect lets developers authenticate their users across websites and apps without having to own and manage password files. For the app builder, it provides a secure verifiable, answer to the question: "What is the identity of the person currently using the browser or native app that is connected to me?"
 
 OpenID Connect allows for clients of all types, including browser-based JavaScript and native mobile apps, to launch sign-in flows and receive verifiable assertions about the identity of signed-in users.
 
-(Identity, Authentication) + OAuth 2.0 = OpenID Connect
+// (Identity, Authentication) + OAuth 2.0 = OpenID Connect
 
+OpenID Connect provides authentication details in JWT tokens, that can be encrypted or digitally signed.
 
-The MaritimeCloud expects to provide the following attributes:
+=== Maritime Cloud User Federation Setup
+In most federated setups there is 1 step from the website (Service Provider) that need authentication and the Identity Provider, normally presented with a "Log in with X" link, where X could be Facebook, Google, etc. The setup used in the Maritime Cloud has 2 steps, where the first step is the Maritime Cloud Identity Broker which the presents the user with a list of available Identity Providers, which is the second step. For a deeper understanding of how this is actually done please read the  http://keycloak.github.io/docs/userguide/keycloak-server/html/identity-broker.html#identity-broker-overview[Identity Broker overview section from the Keycloak manual]. Keycloak is the software used for the Maritime Cloud Identity Broker.
 
+The Maritime Cloud expects to provide the following attributes in the OpenID Connect JWT Access Token:
+
+[options="header"]
 |===
 |Attribute|Description
 |preferred_username|The users username in the parent organization.
@@ -26,11 +34,14 @@ The MaritimeCloud expects to provide the following attributes:
 |mrn|The Maritime Resource Name of the user.
 |===
 
-== User Federation
-Federation is the means of linking distinct identity management systems to a person's electronic identity and attributes. For example, a shipping company might expose all their users via LDAP or Active Directory to the Maritime Cloud in such a way as they appear as Maritime Cloud users. Thereby bypassing the need to manage their users directly in the Maritime Cloud.
-
-If your organizations wishes to make use of their existing user database please contact Tomas Christensen at tmc@dma.dk in order to set it up.
+These attributes will be directly mapped from attributes provided by the organizations Identity Provider, so the Identity Provider must also provide these attributes, except for the "org"-attribute.
 
 === Keycloack
-Keycloak is one of many products that includes support for OpenID Connect. It is an open source product developed by RedHat. Keycloak can be set up to work in different ways. It can be set up to work as an Identity Provider, using either a database or LDAP/AD as a backend. Or it can be set up as an Identity Broker in which case it will link to other Identity Providers. When acting as an Identity Broker the diagram for authentication as seen above becomes a bit more complicated since another step is added where the service first redirects to the Identity Broker where the user has to choose which Identity Provider he wants to use. Before being redirected to the Identity Provides login page.
-The functionality of the Identity Broker is the cornerstone in the Maritime Cloud user federation. Enabling outside organizations to act as Identity Provides via the Identity Broker.
+Keycloak is one of many products that includes support for OpenID Connect, and it is the product that currently provides the Maritime Cloud Identity Broker which is the cornerstone in the Maritime Cloud user federation.
+
+Keycloak is an open source product developed by RedHat. Keycloak can be set up to work in different ways. It can be set up as an Identity Broker in which case it will link to other Identity Providers, which is what the Maritime Cloud Identity Broker does, or it can be set up to work as an Identity Provider, using either a database or LDAP/AD as a backend. Due the ability to connect to LDAP/AD, Keycloak can be used as quick and easy way to set up a Identity Provider.
+
+=== Getting connected to the Maritime Cloud
+If your organizations wishes to connect to the Maritime Cloud as an Identity Provider, to enable your uses to authenticate in the Maritime Cloud, please contact Tomas Christensen at tgc@dma.dk in order to set it up. Note that currently you need to expose interfaces that supports either OpenID Connect or SAML2.
+
+Within the scope of the EfficienSea2 and STM validation projects, organizations can get users registered in special project Identity Providers, supplied by the Maritime Cloud. EfficienSea2 partners should contact Tomas Christensen at tgc@dma.dk, while STM partners should contact ...?

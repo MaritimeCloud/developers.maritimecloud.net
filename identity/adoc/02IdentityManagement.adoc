@@ -10,7 +10,7 @@ The goal of the Maritime Clouds Identity Registry is to create a solution that s
 This is not a simple task as any solution must support every possible user scenarios from small leisure sailors to multinational companies. The complexity of this task is why the functionality will be delivered over multiple milestones in the coming years. With the most important things such as support for authentication being implemented first. Additional functionality being added based on user needs in the projects supported by the Maritime Cloud.
 
 === The Identity Registry
-In most of the documents that describe the Maritime Cloud there is the concept of an Identity Registry. In reality there are numerous systems both internal to the Maritime Cloud as well as external to the Maritime Cloud that makes up the identity registry. Not only are there multiple registries but the interaction with them can also depend on, for example, the type of authentication used. Something like digital certificates can be used offline for authentication, that is, there is no need to contact the identity registry to validate a digital certificate. But if a username/password combination is used, both the Identity registry and possible an external company server needs to be contacted. Hence a better description of the Identity Registry would be probably be an *Identity Platform*.
+In most of the documents that describe the Maritime Cloud there is the concept of an Identity Registry. In reality there are numerous systems both internal to the Maritime Cloud as well as external to the Maritime Cloud that makes up the identity registry. Not only are there multiple registries but the interaction with them can also depend on, for example, the type of authentication used. Something like digital authentication certificates can be used offline for authentication, that is, there is no need to contact the identity registry to validate a digital authentication certificate. But if a username/password combination is used, both the Identity registry and possible an external company server needs to be contacted. Hence a better description of the Identity Registry would be probably be an *Identity Platform*.
 
 Within the scope of the EfficienSea 2.0 and STM validation projects, the digital identities of actors can be registered in a project Identity Register, unless those actors are already registered in another identity registry, which has been recognized as a part of the Maritime Cloud collaboration (federated identity management). 
 
@@ -54,9 +54,9 @@ Examples of valid organizations ids:
 ==== Vessels
 Vessels describes any floating object used for the carriage of people or goods.
 
-The main need for registering vessels in the Maritime Cloud is so that digital certificates can be issued for them. Thereby enabling secure communication between vessels as well as digitally signing of documents. Users might also use these certificates for other purposes. The important thing is that the functionality is there.
+The main need for registering vessels in the Maritime Cloud is so that digital authentication certificates can be issued for them. Thereby enabling secure communication between vessels as well as digitally signing of documents. Users might also use these authentication certificates for other purposes. The important thing is that the functionality is there.
 
-As part of the certificate of a vessel its name, MMSI number, IMO number, callsign and possible other attributes is included in the header of the certificate.  
+As part of the authentication certificate of a vessel its name, MMSI number, IMO number, callsign and possible other attributes is included in the header of the authentication certificate.
 
 ==== Services
 Services refers to digital services. For example, a weather service that is available to other services for machine to machine communication. Services needs to be registered in such a way that it can successfully authenticate users. 

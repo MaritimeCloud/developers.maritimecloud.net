@@ -1,5 +1,5 @@
 == PKI and X.509 Certificates
-A *public key infrastructure (PKI)* is a set of hardware, software, people, policies, and procedures needed to create, manage, distribute, use, store, and revoke digital certificates and manage public-key encryption. Thereby helping an organization establish and maintain a trustworthy networking environment. There is no inherent requirement for using a PKI based solution for enabling secure machine to machine (M2M) communication. But it is the most commonly used solution and lots of software, standards and best practices exists for utilizing it. The choice of using PKI based on the X.509 standard for M2M communication in the Maritime Cloud was thus straightforward.
+A *public key infrastructure (PKI)* is a set of hardware, software, people, policies, and procedures needed to create, manage, distribute, use, store, and revoke digital authentication certificates and manage public-key encryption. Thereby helping an organization establish and maintain a trustworthy networking environment. There is no inherent requirement for using a PKI based solution for enabling secure machine to machine (M2M) communication. But it is the most commonly used solution and lots of software, standards and best practices exists for utilizing it. The choice of using PKI based on the X.509 standard for M2M communication in the Maritime Cloud was thus straightforward.
 
 The key piece in a PKI architecture is a PKI CA (Certificate Authority) which is an entity that issues digital certificates. A digital certificate that certifies the ownership of a public key by the named subject of the certificate. An obvious example would be creating a certificate for a vessel, which can serve to certify that a given document was indeed signed by someone in possession of the certificate issued to that vessel.
 
@@ -51,13 +51,14 @@ The standard information present in an X.509 certificate includes:
 
 The Subject distinguished name field will consists of the following items:
 
+[options="header"]
 |===
-|Field|User|Vessel|Device
-|CN (CommonName)|Full name|Vessel name|Device name
-|O (Organization)|Organization Id+Name, separated by ';'|Organization Id+Name, separated by ';'|Organization Id+Name, separated by ';'
-|OU (Organizational Unit)|"user"|"vessel"|"device"
-|C (Country)|Organization country code|Organization country code|Organization country code
-|E (Email)|User email||
+|Field|User|Vessel|Device|Service
+|CN (CommonName)|Full name|Vessel name|Device name|Service Name
+|O (Organization)|Organization Id+Name, separated by ";"|Organization Id+Name, separated by ";"|Organization Id+Name, separated by ";"|Organization Id+Name, separated by ";"
+|OU (Organizational Unit)|"user"|"vessel"|"device"|"service"
+|C (Country)|Organization country code|Organization country code|Organization country code|Organization country code
+|E (Email)|User email|||
 |===
 
 An example of the fields for a vessel could look like this:
@@ -66,14 +67,15 @@ C=DK, O=DMA;Danish Maritime Authority, OU=vessel, CN=JENS SØRENSEN
 ****
 Finally, In additions to the information stored in the standard X.509 attributes listed above. The X509v3 extension SubjectAlternativeName (SAN) extension is used to store extra information. There already exists some predefined fields for the SAN extension, but they do not match the need we have for maritime related fields. Therefore the “otherName” field is used, which allows for using a Object Identifier (OID) to define custom fields. The OIDs currently used are not registered at ITU, but is randomly generated using a tool provided by ITU (see http://www.itu.int/en/ITU-T/asn1/Pages/UUID/uuids.aspx). See the table below for the fields defined, the OID of the fields and which kind of entity that uses the fields. We know this is not a very elegant solution but unfortunantely there are few alternatives in the X.509 standard.
 
+[options="header"]
 |===
 |Name|OID|Used by
-|Flagstate|2.25.323100633285601570573910217875371967771|Vessels
-|Callsign|2.25.208070283325144527098121348946972755227|Vessels
-|IMO number|2.25.291283622413876360871493815653100799259|Vessels
-|MMSI number|2.25.328433707816814908768060331477217690907|Vessels
-|AIS shiptype|2.25.107857171638679641902842130101018412315|Vessels
-|MRN|2.25.271477598449775373676560215839310464283|Vessels, Users, Devices
-|Permissions|2.25.174437629172304915481663724171734402331|Vessels, Users, Devices
+|Flagstate|`2.25.323100633285601570573910217875371967771`|Vessels
+|Callsign|`2.25.208070283325144527098121348946972755227`|Vessels
+|IMO number|`2.25.291283622413876360871493815653100799259`|Vessels
+|MMSI number|`2.25.328433707816814908768060331477217690907`|Vessels
+|AIS shiptype|`2.25.107857171638679641902842130101018412315`|Vessels
+|MRN|`2.25.271477598449775373676560215839310464283`|Vessels, Users, Devices, Services
+|Permissions|`2.25.174437629172304915481663724171734402331`|Vessels, Users, Devices, Services
 |===
 

@@ -32,7 +32,7 @@ This guide will predominantly discuss the identity registry.
 
 
 === Signing up
-In order to get an organization, its users and any ships the organization might own on to the Maritime Cloud. The organization wishing to use the Maritime Cloud needs to perform a signup process. The process is currently manual but will be replaced with an automatic one in the future.
+In order to get an organization, its users and any ships the organization might own on to the Maritime Cloud, the organization needs to perform a signup process. The process is currently manual but will be replaced with an automatic one in the future.
 
 Send a email to Tomas Christensen at tgc@dma.dk with the name of your organization and whom will be the main administrator in order to signup.
 
