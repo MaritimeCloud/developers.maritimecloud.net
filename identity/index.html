@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 1.5.2">
+<meta name="generator" content="Asciidoctor 1.5.4">
 <title>Maritime Cloud Identity Platform</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
-/* Remove the comments around the @import statement below when using this as a custom stylesheet */
-/*@import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400";*/
+/* Remove comment around @import statement below when using as a custom stylesheet */
+/*@import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700";*/
 article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}
 audio,canvas,video{display:inline-block}
 audio:not([controls]){display:none;height:0}
@@ -57,7 +57,6 @@ a:hover{cursor:pointer}
 img,object,embed{max-width:100%;height:auto}
 object,embed{height:100%}
 img{-ms-interpolation-mode:bicubic}
-#map_canvas img,#map_canvas embed,#map_canvas object,.map_canvas img,.map_canvas embed,.map_canvas object{max-width:none!important}
 .left{float:left!important}
 .right{float:right!important}
 .text-left{text-align:left!important}
@@ -65,10 +64,12 @@ img{-ms-interpolation-mode:bicubic}
 .text-center{text-align:center!important}
 .text-justify{text-align:justify!important}
 .hide{display:none}
-.antialiased,body{-webkit-font-smoothing:antialiased}
-img{display:inline-block;vertical-align:middle}
+body{-webkit-font-smoothing:antialiased}
+img,object,svg{display:inline-block;vertical-align:middle}
 textarea{height:auto;min-height:50px}
 select{width:100%}
+.center{margin-left:auto;margin-right:auto}
+.spread{width:100%}
 p.lead,.paragraph.lead>p,#preamble>.sectionbody>.paragraph:first-of-type p{font-size:1.21875em;line-height:1.6}
 .subheader,.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{line-height:1.45;color:#7a2518;font-weight:400;margin-top:0;margin-bottom:.25em}
 div,dl,dt,dd,ul,ol,li,h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6,pre,form,p,blockquote,th,td{margin:0;padding:0;direction:ltr}
@@ -111,12 +112,14 @@ blockquote,blockquote p{line-height:1.6;color:rgba(0,0,0,.85)}
 h1{font-size:2.75em}
 h2{font-size:2.3125em}
 h3,#toctitle,.sidebarblock>.content>.title{font-size:1.6875em}
-h4{font-size:1.4375em}}table{background:#fff;margin-bottom:1.25em;border:solid 1px #dedede}
+h4{font-size:1.4375em}}
+table{background:#fff;margin-bottom:1.25em;border:solid 1px #dedede}
 table thead,table tfoot{background:#f7f8f7;font-weight:bold}
 table thead tr th,table thead tr td,table tfoot tr th,table tfoot tr td{padding:.5em .625em .625em;font-size:inherit;color:rgba(0,0,0,.8);text-align:left}
 table tr th,table tr td{padding:.5625em .625em;font-size:inherit;color:rgba(0,0,0,.8)}
 table tr.even,table tr.alt,table tr:nth-of-type(even){background:#f8f8f7}
 table thead tr th,table tfoot tr th,table tbody tr td,table tr td,table tfoot tr td{display:table-cell;line-height:1.6}
+body{tab-size:4}
 h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2;word-spacing:-.05em}
 h1 strong,h2 strong,h3 strong,#toctitle strong,.sidebarblock>.content>.title strong,h4 strong,h5 strong,h6 strong{font-weight:400}
 .clearfix:before,.clearfix:after,.float-group:before,.float-group:after{content:" ";display:table}
@@ -124,7 +127,7 @@ h1 strong,h2 strong,h3 strong,#toctitle strong,.sidebarblock>.content>.title str
 *:not(pre)>code{font-size:.9375em;font-style:normal!important;letter-spacing:0;padding:.1em .5ex;word-spacing:-.15em;background-color:#f7f7f8;-webkit-border-radius:4px;border-radius:4px;line-height:1.45;text-rendering:optimizeSpeed}
 pre,pre>code{line-height:1.45;color:rgba(0,0,0,.9);font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;text-rendering:optimizeSpeed}
 .keyseq{color:rgba(51,51,51,.8)}
-kbd{display:inline-block;color:rgba(0,0,0,.8);font-size:.75em;line-height:1.4;background-color:#f7f7f7;border:1px solid #ccc;-webkit-border-radius:3px;border-radius:3px;-webkit-box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em white inset;box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em #fff inset;margin:-.15em .15em 0 .15em;padding:.2em .6em .2em .5em;vertical-align:middle;white-space:nowrap}
+kbd{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;display:inline-block;color:rgba(0,0,0,.8);font-size:.65em;line-height:1.45;background-color:#f7f7f7;border:1px solid #ccc;-webkit-border-radius:3px;border-radius:3px;-webkit-box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em white inset;box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em #fff inset;margin:0 .15em;padding:.2em .5em;vertical-align:middle;position:relative;top:-.1em;white-space:nowrap}
 .keyseq kbd:first-child{margin-left:0}
 .keyseq kbd:last-child{margin-right:0}
 .menuseq,.menu{color:rgba(0,0,0,.8)}
@@ -155,29 +158,33 @@ p a>code:hover{color:rgba(0,0,0,.9)}
 #toc ul.sectlevel0>li>a{font-style:italic}
 #toc ul.sectlevel0 ul.sectlevel1{margin:.5em 0}
 #toc ul{font-family:"Open Sans","DejaVu Sans",sans-serif;list-style-type:none}
+#toc li{line-height:1.3334;margin-top:.3334em}
 #toc a{text-decoration:none}
 #toc a:active{text-decoration:underline}
 #toctitle{color:#7a2518;font-size:1.2em}
 @media only screen and (min-width:768px){#toctitle{font-size:1.375em}
 body.toc2{padding-left:15em;padding-right:0}
 #toc.toc2{margin-top:0!important;background-color:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #efefed;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
-#toc.toc2 #toctitle{margin-top:0;font-size:1.2em}
+#toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
 #toc.toc2>ul{font-size:.9em;margin-bottom:0}
 #toc.toc2 ul ul{margin-left:0;padding-left:1em}
 #toc.toc2 ul.sectlevel0 ul.sectlevel1{padding-left:0;margin-top:.5em;margin-bottom:.5em}
 body.toc2.toc-right{padding-left:0;padding-right:15em}
-body.toc2.toc-right #toc.toc2{border-right-width:0;border-left:1px solid #efefed;left:auto;right:0}}@media only screen and (min-width:1280px){body.toc2{padding-left:20em;padding-right:0}
+body.toc2.toc-right #toc.toc2{border-right-width:0;border-left:1px solid #efefed;left:auto;right:0}}
+@media only screen and (min-width:1280px){body.toc2{padding-left:20em;padding-right:0}
 #toc.toc2{width:20em}
 #toc.toc2 #toctitle{font-size:1.375em}
 #toc.toc2>ul{font-size:.95em}
 #toc.toc2 ul ul{padding-left:1.25em}
-body.toc2.toc-right{padding-left:0;padding-right:20em}}#content #toc{border-style:solid;border-width:1px;border-color:#e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;-webkit-border-radius:4px;border-radius:4px}
+body.toc2.toc-right{padding-left:0;padding-right:20em}}
+#content #toc{border-style:solid;border-width:1px;border-color:#e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;-webkit-border-radius:4px;border-radius:4px}
 #content #toc>:first-child{margin-top:0}
 #content #toc>:last-child{margin-bottom:0}
 #footer{max-width:100%;background-color:rgba(0,0,0,.8);padding:1.25em}
 #footer-text{color:rgba(255,255,255,.8);line-height:1.44}
 .sect1{padding-bottom:.625em}
-@media only screen and (min-width:768px){.sect1{padding-bottom:1.25em}}.sect1+.sect1{border-top:1px solid #efefed}
+@media only screen and (min-width:768px){.sect1{padding-bottom:1.25em}}
+.sect1+.sect1{border-top:1px solid #efefed}
 #content h1>a.anchor,h2>a.anchor,h3>a.anchor,#toctitle>a.anchor,.sidebarblock>.content>.title>a.anchor,h4>a.anchor,h5>a.anchor,h6>a.anchor{position:absolute;z-index:1001;width:1.5ex;margin-left:-1.5ex;display:block;text-decoration:none!important;visibility:hidden;text-align:center;font-weight:400}
 #content h1>a.anchor:before,h2>a.anchor:before,h3>a.anchor:before,#toctitle>a.anchor:before,.sidebarblock>.content>.title>a.anchor:before,h4>a.anchor:before,h5>a.anchor:before,h6>a.anchor:before{content:"\00A7";font-size:.85em;display:block;padding-top:.1em}
 #content h1:hover>a.anchor,#content h1>a.anchor:hover,h2:hover>a.anchor,h2>a.anchor:hover,h3:hover>a.anchor,#toctitle:hover>a.anchor,.sidebarblock>.content>.title:hover>a.anchor,h3>a.anchor:hover,#toctitle>a.anchor:hover,.sidebarblock>.content>.title>a.anchor:hover,h4:hover>a.anchor,h4>a.anchor:hover,h5:hover>a.anchor,h5>a.anchor:hover,h6:hover>a.anchor,h6>a.anchor:hover{visibility:visible}
@@ -206,7 +213,9 @@ table.tableblock #preamble>.sectionbody>.paragraph:first-of-type p{font-size:inh
 .sidebarblock .literalblock pre,.sidebarblock .listingblock pre:not(.highlight),.sidebarblock .listingblock pre[class="highlight"],.sidebarblock .listingblock pre[class^="highlight "],.sidebarblock .listingblock pre.CodeRay,.sidebarblock .listingblock pre.prettyprint{background:#f2f1f1}
 .literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{-webkit-border-radius:4px;border-radius:4px;word-wrap:break-word;padding:1em;font-size:.8125em}
 .literalblock pre.nowrap,.literalblock pre[class].nowrap,.listingblock pre.nowrap,.listingblock pre[class].nowrap{overflow-x:auto;white-space:pre;word-wrap:normal}
-@media only screen and (min-width:768px){.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{font-size:.90625em}}@media only screen and (min-width:1280px){.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{font-size:1em}}.literalblock.output pre{color:#f7f7f8;background-color:rgba(0,0,0,.9)}
+@media only screen and (min-width:768px){.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{font-size:.90625em}}
+@media only screen and (min-width:1280px){.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{font-size:1em}}
+.literalblock.output pre{color:#f7f7f8;background-color:rgba(0,0,0,.9)}
 .listingblock pre.highlightjs{padding:0}
 .listingblock pre.highlightjs>code{padding:1em;-webkit-border-radius:4px;border-radius:4px}
 .listingblock pre.prettyprint{border-width:0}
@@ -216,7 +225,7 @@ table.tableblock #preamble>.sectionbody>.paragraph:first-of-type p{font-size:inh
 .listingblock.terminal pre .command:before{content:attr(data-prompt);padding-right:.5em;color:#999}
 .listingblock.terminal pre .command:not([data-prompt]):before{content:"$"}
 table.pyhltable{border-collapse:separate;border:0;margin-bottom:0;background:none}
-table.pyhltable td{vertical-align:top;padding-top:0;padding-bottom:0}
+table.pyhltable td{vertical-align:top;padding-top:0;padding-bottom:0;line-height:1.45}
 table.pyhltable td.code{padding-left:.75em;padding-right:0}
 pre.pygments .lineno,table.pyhltable td:not(.code){color:#999;padding-left:0;padding-right:.5em;border-right:1px solid #ddddd8}
 pre.pygments .lineno{display:inline-block;margin-right:.25em}
@@ -237,13 +246,12 @@ table.pyhltable .linenodiv{background:none!important;padding-right:0!important}
 .verseblock .attribution{margin-top:1.25rem;margin-left:.5ex}
 .quoteblock .attribution,.verseblock .attribution{font-size:.9375em;line-height:1.45;font-style:italic}
 .quoteblock .attribution br,.verseblock .attribution br{display:none}
-.quoteblock .attribution cite,.verseblock .attribution cite{display:block;letter-spacing:-.05em;color:rgba(0,0,0,.6)}
+.quoteblock .attribution cite,.verseblock .attribution cite{display:block;letter-spacing:-.025em;color:rgba(0,0,0,.6)}
 .quoteblock.abstract{margin:0 0 1.25em 0;display:block}
 .quoteblock.abstract blockquote,.quoteblock.abstract blockquote p{text-align:left;word-spacing:0}
 .quoteblock.abstract blockquote:before,.quoteblock.abstract blockquote p:first-of-type:before{display:none}
 table.tableblock{max-width:100%;border-collapse:separate}
 table.tableblock td>.paragraph:last-child p>p:last-child,table.tableblock th>p:last-child,table.tableblock td>p:last-child{margin-bottom:0}
-table.spread{width:100%}
 table.tableblock,th.tableblock,td.tableblock{border:0 solid #dedede}
 table.grid-all th.tableblock,table.grid-all td.tableblock{border-width:0 1px 1px 0}
 table.grid-all tfoot>tr>th.tableblock,table.grid-all tfoot>tr>td.tableblock{border-width:1px 1px 0 0}
@@ -289,8 +297,8 @@ ol.upperroman{list-style-type:upper-roman}
 ol.lowergreek{list-style-type:lower-greek}
 .hdlist>table,.colist>table{border:0;background:none}
 .hdlist>table>tbody>tr,.colist>table>tbody>tr{background:none}
-td.hdlist1{padding-right:.75em;font-weight:bold}
-td.hdlist1,td.hdlist2{vertical-align:top}
+td.hdlist1,td.hdlist2{vertical-align:top;padding:0 .625em}
+td.hdlist1{font-weight:bold;padding-bottom:1.25em}
 .literalblock+.colist,.listingblock+.colist{margin-top:-.5em}
 .colist>table tr>td:first-of-type{padding:0 .75em;line-height:1}
 .colist>table tr>td:last-of-type{padding:.25em 0}
@@ -303,13 +311,14 @@ td.hdlist1,td.hdlist2{vertical-align:top}
 .image.left,.image.right{margin-top:.25em;margin-bottom:.25em;display:inline-block;line-height:0}
 .image.left{margin-right:.625em}
 .image.right{margin-left:.625em}
-a.image{text-decoration:none}
-span.footnote,span.footnoteref{vertical-align:super;font-size:.875em}
-span.footnote a,span.footnoteref a{text-decoration:none}
-span.footnote a:active,span.footnoteref a:active{text-decoration:underline}
+a.image{text-decoration:none;display:inline-block}
+a.image object{pointer-events:none}
+sup.footnote,sup.footnoteref{font-size:.875em;position:static;vertical-align:super}
+sup.footnote a,sup.footnoteref a{text-decoration:none}
+sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
 #footnotes{padding-top:.75em;padding-bottom:.75em;margin-bottom:.625em}
 #footnotes hr{width:20%;min-width:6.25em;margin:-.25em 0 .75em 0;border-width:1px 0 0 0}
-#footnotes .footnote{padding:0 .375em;line-height:1.3;font-size:.875em;margin-left:1.2em;text-indent:-1.2em;margin-bottom:.2em}
+#footnotes .footnote{padding:0 .375em 0 .225em;line-height:1.3334;font-size:.875em;margin-left:1.2em;text-indent:-1.05em;margin-bottom:.2em}
 #footnotes .footnote a:first-of-type{font-weight:bold;text-decoration:none}
 #footnotes .footnote:last-of-type{margin-bottom:0}
 #content #footnotes{margin-top:-.625em;margin-bottom:0;padding:.75em 0}
@@ -367,11 +376,10 @@ span.icon>.fa{cursor:default}
 pre .conum[data-value]{position:relative;top:-.125em}
 b.conum *{color:inherit!important}
 .conum:not([data-value]):empty{display:none}
-h1,h2{letter-spacing:-.01em}
-dt,th.tableblock,td.content{text-rendering:optimizeLegibility}
-p,td.content{letter-spacing:-.01em}
-p strong,td.content strong{letter-spacing:-.005em}
-p,blockquote,dt,td.content{font-size:1.0625rem}
+dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}
+h1,h2,p,td.content,span.alt{letter-spacing:-.01em}
+p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
+p,blockquote,dt,td.content,span.alt{font-size:1.0625rem}
 p{margin-bottom:1.25rem}
 .sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
 .exampleblock>.content{background-color:#fffef7;border-color:#e0e0dc;-webkit-box-shadow:0 1px 4px #e0e0dc;box-shadow:0 1px 4px #e0e0dc}
@@ -382,9 +390,9 @@ a{color:inherit!important;text-decoration:underline!important}
 a.bare,a[href^="#"],a[href^="mailto:"]{text-decoration:none!important}
 a[href^="http:"]:not(.bare):after,a[href^="https:"]:not(.bare):after{content:"(" attr(href) ")";display:inline-block;font-size:.875em;padding-left:.25em}
 abbr[title]:after{content:" (" attr(title) ")"}
-pre,blockquote,tr,img{page-break-inside:avoid}
+pre,blockquote,tr,img,object,svg{page-break-inside:avoid}
 thead{display:table-header-group}
-img{max-width:100%!important}
+svg{max-width:100%}
 p,blockquote,dt,td.content{font-size:1em;orphans:3;widows:3}
 h2,h3,#toctitle,.sidebarblock>.content>.title{page-break-after:avoid}
 #toc,.sidebarblock,.exampleblock>.content{background:none!important}
@@ -408,15 +416,15 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 .hide-for-print{display:none!important}
 .show-for-print{display:inherit!important}}
 </style>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
 <style>
 /* Stylesheet for CodeRay to match GitHub theme | MIT License | http://foundation.zurb.com */
 /*pre.CodeRay {background-color:#f7f7f8;}*/
 .CodeRay .line-numbers{border-right:1px solid #d8d8d8;padding:0 0.5em 0 .25em}
 .CodeRay span.line-numbers{display:inline-block;margin-right:.5em;color:rgba(0,0,0,.3)}
-.CodeRay .line-numbers strong{font-weight: normal}
+.CodeRay .line-numbers strong{color:rgba(0,0,0,.4)}
 table.CodeRay{border-collapse:separate;border-spacing:0;margin-bottom:0;border:0;background:none}
-table.CodeRay td{vertical-align: top}
+table.CodeRay td{vertical-align: top;line-height:1.45}
 table.CodeRay td.line-numbers{text-align:right}
 table.CodeRay td.line-numbers>pre{padding:0;color:rgba(0,0,0,.3)}
 table.CodeRay td.code{padding:0 0 0 .5em}
@@ -451,7 +459,7 @@ table.CodeRay td.code>pre{padding:0}
 .CodeRay .hex{color:#058}
 .CodeRay .integer,.CodeRay .float{color:#099}
 .CodeRay .include{color:#555}
-.CodeRay .inline{color:#00}
+.CodeRay .inline{color:#000}
 .CodeRay .inline .inline{background:#ccc}
 .CodeRay .inline .inline .inline{background:#bbb}
 .CodeRay .inline .inline-delimiter{color:#d14}
@@ -500,21 +508,6 @@ table.CodeRay td.code>pre{padding:0}
 .CodeRay .change .change{color:#66f}
 .CodeRay .head .head{color:#f4f}
 </style>
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  tex2jax: {
-    inlineMath: [["\\(", "\\)"]],
-    displayMath: [["\\[", "\\]"]],
-    ignoreClass: "nostem|nolatexmath"
-  },
-  asciimath2jax: {
-    delimiters: [["\\$", "\\$"]],
-    ignoreClass: "nostem|noasciimath"
-  },
-  TeX: { equationNumbers: { autoNumber: "none" } }
-});
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.4.0/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script>
 </head>
 <body class="book toc2 toc-right">
 <div id="header">
@@ -541,24 +534,22 @@ MathJax.Hub.Config({
 <li><a href="#overview-2">3.1. Overview</a></li>
 </ul>
 </li>
-<li><a href="#users-and-passwords">4. Users and passwords</a>
+<li><a href="#user-federation">4. User Federation</a>
 <ul class="sectlevel2">
 <li><a href="#openid-connect">4.1. OpenID Connect</a></li>
+<li><a href="#maritime-cloud-user-federation-setup">4.2. Maritime Cloud User Federation Setup</a></li>
+<li><a href="#keycloack">4.3. Keycloack</a></li>
+<li><a href="#getting-connected-to-the-maritime-cloud">4.4. Getting connected to the Maritime Cloud</a></li>
 </ul>
 </li>
-<li><a href="#user-federation">5. User Federation</a>
+<li><a href="#pki-and-x-509-certificates">5. PKI and X.509 Certificates</a>
 <ul class="sectlevel2">
-<li><a href="#keycloack">5.1. Keycloack</a></li>
+<li><a href="#creating-a-new-certificate">5.1. Creating a new Certificate</a></li>
+<li><a href="#certificate-attributes">5.2. Certificate Attributes</a></li>
 </ul>
 </li>
-<li><a href="#pki-and-x-509-certificates">6. PKI and X.509 Certificates</a>
-<ul class="sectlevel2">
-<li><a href="#creating-a-new-certificate">6.1. Creating a new Certificate</a></li>
-<li><a href="#certificate-attributes">6.2. Certificate Attributes</a></li>
-</ul>
-</li>
-<li><a href="#authorization">7. Authorization</a></li>
-<li><a href="#terminology">8. Terminology</a></li>
+<li><a href="#authorization">6. Authorization</a></li>
+<li><a href="#terminology">7. Terminology</a></li>
 </ul>
 </div>
 </div>
@@ -628,7 +619,7 @@ As part of the e-Navigation process the Danish Maritime Authority had been worki
 <p><strong>Maritime Service Registry.</strong> A centralized repository of service standards and provisioned services world wide.</p>
 </li>
 <li>
-<p><strong>Maritime Messaging Service (MMS).</strong> A communication protocol on top of TCP/IP. Supporting reliable delivery of messages and geocasting<span class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</span>.</p>
+<p><strong>Maritime Messaging Service (MMS).</strong> A communication protocol on top of TCP/IP. Supporting reliable delivery of messages and geocasting<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup>.</p>
 </li>
 </ul>
 </div>
@@ -639,7 +630,7 @@ As part of the e-Navigation process the Danish Maritime Authority had been worki
 <div class="sect2">
 <h3 id="signing-up"><a class="anchor" href="#signing-up"></a>1.3. Signing up</h3>
 <div class="paragraph">
-<p>In order to get an organization, its users and any ships the organization might own on to the Maritime Cloud. The organization wishing to use the Maritime Cloud needs to perform a signup process. The process is currently manual but will be replaced with an automatic one in the future.</p>
+<p>In order to get an organization, its users and any ships the organization might own on to the Maritime Cloud, the organization needs to perform a signup process. The process is currently manual but will be replaced with an automatic one in the future.</p>
 </div>
 <div class="paragraph">
 <p>Send a email to Tomas Christensen at <a href="mailto:tgc@dma.dk">tgc@dma.dk</a> with the name of your organization and whom will be the main administrator in order to signup.</p>
@@ -676,7 +667,7 @@ attributes, and credentials.</p>
 <div class="sect2">
 <h3 id="the-identity-registry"><a class="anchor" href="#the-identity-registry"></a>2.1. The Identity Registry</h3>
 <div class="paragraph">
-<p>In most of the documents that describe the Maritime Cloud there is the concept of an Identity Registry. In reality there are numerous systems both internal to the Maritime Cloud as well as external to the Maritime Cloud that makes up the identity registry. Not only are there multiple registries but the interaction with them can also depend on, for example, the type of authentication used. Something like digital certificates can be used offline for authentication, that is, there is no need to contact the identity registry to validate a digital certificate. But if a username/password combination is used, both the Identity registry and possible an external company server needs to be contacted. Hence a better description of the Identity Registry would be probably be an <strong>Identity Platform</strong>.</p>
+<p>In most of the documents that describe the Maritime Cloud there is the concept of an Identity Registry. In reality there are numerous systems both internal to the Maritime Cloud as well as external to the Maritime Cloud that makes up the identity registry. Not only are there multiple registries but the interaction with them can also depend on, for example, the type of authentication used. Something like digital authentication certificates can be used offline for authentication, that is, there is no need to contact the identity registry to validate a digital authentication certificate. But if a username/password combination is used, both the Identity registry and possible an external company server needs to be contacted. Hence a better description of the Identity Registry would be probably be an <strong>Identity Platform</strong>.</p>
 </div>
 <div class="paragraph">
 <p>Within the scope of the EfficienSea 2.0 and STM validation projects, the digital identities of actors can be registered in a project Identity Register, unless those actors are already registered in another identity registry, which has been recognized as a part of the Maritime Cloud collaboration (federated identity management).</p>
@@ -759,10 +750,10 @@ Coastguard, Swedish Maritime Administration. Local authorities such as VTS-Oeres
 <p>Vessels describes any floating object used for the carriage of people or goods.</p>
 </div>
 <div class="paragraph">
-<p>The main need for registering vessels in the Maritime Cloud is so that digital certificates can be issued for them. Thereby enabling secure communication between vessels as well as digitally signing of documents. Users might also use these certificates for other purposes. The important thing is that the functionality is there.</p>
+<p>The main need for registering vessels in the Maritime Cloud is so that digital authentication certificates can be issued for them. Thereby enabling secure communication between vessels as well as digitally signing of documents. Users might also use these authentication certificates for other purposes. The important thing is that the functionality is there.</p>
 </div>
 <div class="paragraph">
-<p>As part of the certificate of a vessel its name, MMSI number, IMO number, callsign and possible other attributes is included in the header of the certificate.</p>
+<p>As part of the authentication certificate of a vessel its name, MMSI number, IMO number, callsign and possible other attributes is included in the header of the authentication certificate.</p>
 </div>
 </div>
 <div class="sect3">
@@ -785,7 +776,7 @@ Coastguard, Swedish Maritime Administration. Local authorities such as VTS-Oeres
 <h2 id="authentication"><a class="anchor" href="#authentication"></a>3. Authentication</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Authentication is any process by which a system verifies the identity of a user (human or machine) who wishes to access it. Since access control is normally based on the identity of the user who requests access to a resource. Authentication is essential to effective security. In contrast to identification which refers to the act of stating a person or thing&#8217;s identity, authentication is the process of actually confirming that stated identity. It might involve verifying the authenticity of a website by a digital certificate that is provides, or validating a persons identity documents.</p>
+<p>Authentication is any process by which a system verifies the identity of a user (human or machine) who wishes to access it. Since access control is normally based on the identity of the user who requests access to a resource, authentication is essential to effective security. In contrast to identification which refers to the act of stating a person or thing&#8217;s identity, authentication is the process of actually confirming that stated identity. It might involve verifying the authenticity of a website by a digital certificate that is provides, or validating a persons identity documents.</p>
 </div>
 <div class="sect2">
 <h3 id="overview-2"><a class="anchor" href="#overview-2"></a>3.1. Overview</h3>
@@ -798,7 +789,7 @@ Coastguard, Swedish Maritime Administration. Local authorities such as VTS-Oeres
 <p>Knowledge factors: Passwords, passphrases, pins, challenge response,</p>
 </li>
 <li>
-<p>Ownership factors: ID card, Cell phone, certificates,</p>
+<p>Ownership factors: ID card, Cell phone, authentication certificates,</p>
 </li>
 <li>
 <p>Inheritance factors: Fingerprint, retinal patterns, face, voice,</p>
@@ -806,48 +797,62 @@ Coastguard, Swedish Maritime Administration. Local authorities such as VTS-Oeres
 </ul>
 </div>
 <div class="paragraph">
-<p>Currently the implementation effort in the Maritime Cloud is concentrating on passwords for human users and certificates for machine users. In the future we will probably add more methods. As well as combinations of these factors into what it commonly called multi factor security.</p>
+<p>Currently the implementation effort in the Maritime Cloud is concentrating on passwords for human users and authentication certificates for machine users. In the future we will probably add more methods.</p>
 </div>
 <div class="paragraph">
-<p>While the difference of using certificates or passwords might seem minor from a user perspective the underlying implementation and usage is radically different which is why it has been split into to different sections.</p>
+<p>While the difference of using authentication certificates or passwords might seem minor from a user perspective the underlying implementation and usage is radically different which is why it has been split into to different sections.</p>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="users-and-passwords"><a class="anchor" href="#users-and-passwords"></a>4. Users and passwords</h2>
+<h2 id="user-federation"><a class="anchor" href="#user-federation"></a>4. User Federation</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>In the previous section we discussed digital certificates for use in machine to machine communication. There are no technical issues to why human users should not be able to use digital certificates to authenticate themselves as well. However, there are some serious practical ones that make it difficult to see them as a general solution for human user authentication. The first issue being that it requires that the certificate must always be present on the computer or mobile phone from which access is made. This is normally not a problem for machine to machine communication. Because, once installed the hardware configuration almost never changes. Unlike human users that uses their computer during the day to access information, their mobile phone on the way back from work and their tablet in the evening from home. Making sure that certificates are all installed on these devices and refreshing them once they expire is a lot of effort to require of users. And we believe having such a complicated setup would be a major barrier towards successful adoption of the Maritime Cloud. So for now, username and passwords are the main technology used for human authentication in the Maritime Cloud. In the future as standards and hardware support for something like biometrics (fingerprints, iris scanning) evolve these will likely be supported as well.</p>
+<p>In the previous section we discussed digital certificates for use in machine to machine communication. There are no technical reason to why human users should not be able to use digital certificates to authenticate themselves as well. However, there are some serious practical ones that make it difficult to see them as a general solution for human user authentication. The first issue being that it requires that the certificate must always be present on the computer or mobile phone from which access is made. This is normally not a problem for machine to machine communication. Because, once installed the hardware configuration almost never changes. Unlike human users that uses their computer during the day to access information, their mobile phone on the way back from work and their tablet in the evening from home. Making sure that certificates are all installed on these devices and refreshing them once they expire is a lot of effort to require of users. And we believe having such a complicated setup would be a major barrier towards successful adoption of the Maritime Cloud. So for now, authentication of human users in the Maritime Cloud will be based on login through a web browser, using federation.</p>
+</div>
+<div class="paragraph">
+<p>Federation is the means of linking distinct identity management systems to a person&#8217;s electronic identity and attributes. For example, a shipping company might expose all their users in LDAP or Active Directory to the Maritime Cloud in such a way as they appear as Maritime Cloud users. Thereby bypassing the need to manage their users directly in the Maritime Cloud. This also means that the Maritime Cloud is not responsible for management of users. In practical terms, federation means that users asked to authenticate in the Maritime CLoud will be redirected to a login webpage supplied by their organization where they can login using their organizational id.</p>
+</div>
+<div class="paragraph">
+<p>Since the authentication process is the responsibility of the organizations, it is also up to the individual organization to chose an appropriate authentication method. While most will likely use classic username/password authentication, multi factor security, biometric security or other approaches could be used.</p>
 </div>
 <div class="sect2">
 <h3 id="openid-connect"><a class="anchor" href="#openid-connect"></a>4.1. OpenID Connect</h3>
 <div class="paragraph">
-<p><a href="http://openid.net/">OpenID Connect</a> is an interoperable authentication protocol based on the <a href="http://oauth.net/2/">OAuth 2.0</a> family of specifications. It uses straightforward REST/JSON message flows with a design goal of “making simple things simple and complicated things possible”. It’s uniquely easy for developers to integrate, compared to any preceding Identity protocol.</p>
+<p><a href="http://openid.net/">OpenID Connect</a> is the protocol chosen to by used for user federation in the Maritime Cloud, and it should be supported by Service Providers. It is an interoperable authentication protocol based on the <a href="http://oauth.net/2/">OAuth 2.0</a> family of specifications. It uses straightforward REST/JSON message flows with a design goal of "making simple things simple and complicated things possible". It’s uniquely easy for developers to integrate, compared to any preceding Identity protocol.</p>
 </div>
 <div class="paragraph">
-<p>OpenID Connect lets developers authenticate their users across websites and apps without having to own and manage password files. For the app builder, it provides a secure verifiable, answer to the question: “What is the identity of the person currently using the browser or native app that is connected to me?”</p>
+<p>OpenID Connect lets developers authenticate their users across websites and apps without having to own and manage password files. For the app builder, it provides a secure verifiable, answer to the question: "What is the identity of the person currently using the browser or native app that is connected to me?"</p>
 </div>
 <div class="paragraph">
 <p>OpenID Connect allows for clients of all types, including browser-based JavaScript and native mobile apps, to launch sign-in flows and receive verifiable assertions about the identity of signed-in users.</p>
 </div>
 <div class="paragraph">
-<p>(Identity, Authentication) + OAuth 2.0 = OpenID Connect</p>
+<p>OpenID Connect provides authentication details in JWT tokens, that can be encrypted or digitally signed.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="maritime-cloud-user-federation-setup"><a class="anchor" href="#maritime-cloud-user-federation-setup"></a>4.2. Maritime Cloud User Federation Setup</h3>
+<div class="paragraph">
+<p>In most federated setups there is 1 step from the website (Service Provider) that need authentication and the Identity Provider, normally presented with a "Log in with X" link, where X could be Facebook, Google, etc. The setup used in the Maritime Cloud has 2 steps, where the first step is the Maritime Cloud Identity Broker which the presents the user with a list of available Identity Providers, which is the second step. For a deeper understanding of how this is actually done please read the  <a href="http://keycloak.github.io/docs/userguide/keycloak-server/html/identity-broker.html#identity-broker-overview">Identity Broker overview section from the Keycloak manual</a>. Keycloak is the software used for the Maritime Cloud Identity Broker.</p>
 </div>
 <div class="paragraph">
-<p>The MaritimeCloud expects to provide the following attributes:</p>
+<p>The Maritime Cloud expects to provide the following attributes in the OpenID Connect JWT Access Token:</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
 </colgroup>
-<tbody>
+<thead>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Attribute</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Description</p></td>
+<th class="tableblock halign-left valign-top">Attribute</th>
+<th class="tableblock halign-left valign-top">Description</th>
 </tr>
+</thead>
+<tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">preferred_username</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The users username in the parent organization.</p></td>
@@ -882,33 +887,36 @@ Coastguard, Swedish Maritime Administration. Local authorities such as VTS-Oeres
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="user-federation"><a class="anchor" href="#user-federation"></a>5. User Federation</h2>
-<div class="sectionbody">
 <div class="paragraph">
-<p>Federation is the means of linking distinct identity management systems to a person&#8217;s electronic identity and attributes. For example, a shipping company might expose all their users via LDAP or Active Directory to the Maritime Cloud in such a way as they appear as Maritime Cloud users. Thereby bypassing the need to manage their users directly in the Maritime Cloud.</p>
+<p>These attributes will be directly mapped from attributes provided by the organizations Identity Provider, so the Identity Provider must also provide these attributes, except for the "org"-attribute.</p>
 </div>
-<div class="paragraph">
-<p>If your organizations wishes to make use of their existing user database please contact Tomas Christensen at <a href="mailto:tmc@dma.dk">tmc@dma.dk</a> in order to set it up.</p>
 </div>
 <div class="sect2">
-<h3 id="keycloack"><a class="anchor" href="#keycloack"></a>5.1. Keycloack</h3>
+<h3 id="keycloack"><a class="anchor" href="#keycloack"></a>4.3. Keycloack</h3>
 <div class="paragraph">
-<p>Keycloak is one of many products that includes support for OpenID Connect. It is an open source product developed by RedHat. Keycloak can be set up to work in different ways. It can be set up to work as an Identity Provider, using either a database or LDAP/AD as a backend. Or it can be set up as an Identity Broker in which case it will link to other Identity Providers. When acting as an Identity Broker the diagram for authentication as seen above becomes a bit more complicated since another step is added where the service first redirects to the Identity Broker where the user has to choose which Identity Provider he wants to use. Before being redirected to the Identity Provides login page.
-The functionality of the Identity Broker is the cornerstone in the Maritime Cloud user federation. Enabling outside organizations to act as Identity Provides via the Identity Broker.</p>
+<p>Keycloak is one of many products that includes support for OpenID Connect, and it is the product that currently provides the Maritime Cloud Identity Broker which is the cornerstone in the Maritime Cloud user federation.</p>
+</div>
+<div class="paragraph">
+<p>Keycloak is an open source product developed by RedHat. Keycloak can be set up to work in different ways. It can be set up as an Identity Broker in which case it will link to other Identity Providers, which is what the Maritime Cloud Identity Broker does, or it can be set up to work as an Identity Provider, using either a database or LDAP/AD as a backend. Due the ability to connect to LDAP/AD, Keycloak can be used as quick and easy way to set up a Identity Provider.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="getting-connected-to-the-maritime-cloud"><a class="anchor" href="#getting-connected-to-the-maritime-cloud"></a>4.4. Getting connected to the Maritime Cloud</h3>
+<div class="paragraph">
+<p>If your organizations wishes to connect to the Maritime Cloud as an Identity Provider, to enable your uses to authenticate in the Maritime Cloud, please contact Tomas Christensen at <a href="mailto:tgc@dma.dk">tgc@dma.dk</a> in order to set it up. Note that currently you need to expose interfaces that supports either OpenID Connect or SAML2.</p>
+</div>
+<div class="paragraph">
+<p>Within the scope of the EfficienSea2 and STM validation projects, organizations can get users registered in special project Identity Providers, supplied by the Maritime Cloud. EfficienSea2 partners should contact Tomas Christensen at <a href="mailto:tgc@dma.dk">tgc@dma.dk</a>, while STM partners should contact &#8230;&#8203;?</p>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="pki-and-x-509-certificates"><a class="anchor" href="#pki-and-x-509-certificates"></a>6. PKI and X.509 Certificates</h2>
+<h2 id="pki-and-x-509-certificates"><a class="anchor" href="#pki-and-x-509-certificates"></a>5. PKI and X.509 Certificates</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>A <strong>public key infrastructure (PKI)</strong> is a set of hardware, software, people, policies, and procedures needed to create, manage, distribute, use, store, and revoke digital certificates and manage public-key encryption. Thereby helping an organization establish and maintain a trustworthy networking environment. There is no inherent requirement for using a PKI based solution for enabling secure machine to machine (M2M) communication. But it is the most commonly used solution and lots of software, standards and best practices exists for utilizing it. The choice of using PKI based on the X.509 standard for M2M communication in the Maritime Cloud was thus straightforward.</p>
+<p>A <strong>public key infrastructure (PKI)</strong> is a set of hardware, software, people, policies, and procedures needed to create, manage, distribute, use, store, and revoke digital authentication certificates and manage public-key encryption. Thereby helping an organization establish and maintain a trustworthy networking environment. There is no inherent requirement for using a PKI based solution for enabling secure machine to machine (M2M) communication. But it is the most commonly used solution and lots of software, standards and best practices exists for utilizing it. The choice of using PKI based on the X.509 standard for M2M communication in the Maritime Cloud was thus straightforward.</p>
 </div>
 <div class="paragraph">
 <p>The key piece in a PKI architecture is a PKI CA (Certificate Authority) which is an entity that issues digital certificates. A digital certificate that certifies the ownership of a public key by the named subject of the certificate. An obvious example would be creating a certificate for a vessel, which can serve to certify that a given document was indeed signed by someone in possession of the certificate issued to that vessel.</p>
@@ -934,7 +942,7 @@ The functionality of the Identity Broker is the cornerstone in the Maritime Clou
 <p>After having issued a certificate the administrator can now install it on the ship in some way. The actual logistics about how and where to install it is outside of the scope of the identity registry as this might vary a lot between organizations and projects. This also reduces the functionality of the identity registry to just provide the core functionality of Identity management. Allowing users to be able to build innovative solutions on top of it. This also applies directly to machine to machine communication. The identity registry places no restrictions about what kind of machine to machine communication protocols that should be used. It just provides the basic infrastructure to allow for each machine to authenticate the host in the other end. Letting each project select their protocols if needed.</p>
 </div>
 <div class="sect2">
-<h3 id="creating-a-new-certificate"><a class="anchor" href="#creating-a-new-certificate"></a>6.1. Creating a new Certificate</h3>
+<h3 id="creating-a-new-certificate"><a class="anchor" href="#creating-a-new-certificate"></a>5.1. Creating a new Certificate</h3>
 <div class="paragraph">
 <p>Currently, the only way to generate a new certificate is to log into the Maritime Cloud portal and create the certificate in a browser.</p>
 </div>
@@ -967,7 +975,7 @@ The functionality of the Identity Broker is the cornerstone in the Maritime Clou
 </div>
 </div>
 <div class="sect2">
-<h3 id="certificate-attributes"><a class="anchor" href="#certificate-attributes"></a>6.2. Certificate Attributes</h3>
+<h3 id="certificate-attributes"><a class="anchor" href="#certificate-attributes"></a>5.2. Certificate Attributes</h3>
 <div class="paragraph">
 <p>The Maritime Cloud can issue X.509 certificates for the users which can then be used for authentication. Service providers relying on X.509 certificate authentication must obtain and install the MaritimeCloud root certificate into their webservice.</p>
 </div>
@@ -1004,38 +1012,46 @@ The functionality of the Identity Broker is the cornerstone in the Maritime Clou
 </div>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
 </colgroup>
-<tbody>
+<thead>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Field</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">User</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Vessel</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Device</p></td>
+<th class="tableblock halign-left valign-top">Field</th>
+<th class="tableblock halign-left valign-top">User</th>
+<th class="tableblock halign-left valign-top">Vessel</th>
+<th class="tableblock halign-left valign-top">Device</th>
+<th class="tableblock halign-left valign-top">Service</th>
 </tr>
+</thead>
+<tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CN (CommonName)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Full name</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Vessel name</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Device name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Service Name</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">O (Organization)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Organization Id+Name, separated by <em>;</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Organization Id+Name, separated by <em>;</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Organization Id+Name, separated by <em>;</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Organization Id+Name, separated by ";"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Organization Id+Name, separated by ";"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Organization Id+Name, separated by ";"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Organization Id+Name, separated by ";"</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">OU (Organizational Unit)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">"user"</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">"vessel"</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">"device"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"service"</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C (Country)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Organization country code</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Organization country code</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Organization country code</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Organization country code</p></td>
@@ -1043,6 +1059,7 @@ The functionality of the Identity Broker is the cornerstone in the Maritime Clou
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">E (Email)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">User email</p></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
@@ -1063,50 +1080,52 @@ The functionality of the Identity Broker is the cornerstone in the Maritime Clou
 </div>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 33%;">
-<col style="width: 33%;">
-<col style="width: 33%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
 </colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">OID</th>
+<th class="tableblock halign-left valign-top">Used by</th>
+</tr>
+</thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Name</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">OID</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Used by</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Flagstate</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.25.323100633285601570573910217875371967771</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>2.25.323100633285601570573910217875371967771</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Vessels</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Callsign</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.25.208070283325144527098121348946972755227</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>2.25.208070283325144527098121348946972755227</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Vessels</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">IMO number</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.25.291283622413876360871493815653100799259</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>2.25.291283622413876360871493815653100799259</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Vessels</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MMSI number</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.25.328433707816814908768060331477217690907</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>2.25.328433707816814908768060331477217690907</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Vessels</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">AIS shiptype</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.25.107857171638679641902842130101018412315</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>2.25.107857171638679641902842130101018412315</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Vessels</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MRN</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.25.271477598449775373676560215839310464283</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Vessels, Users, Devices</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>2.25.271477598449775373676560215839310464283</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Vessels, Users, Devices, Services</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Permissions</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.25.174437629172304915481663724171734402331</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Vessels, Users, Devices</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>2.25.174437629172304915481663724171734402331</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Vessels, Users, Devices, Services</p></td>
 </tr>
 </tbody>
 </table>
@@ -1115,7 +1134,7 @@ The functionality of the Identity Broker is the cornerstone in the Maritime Clou
 </div>
 </div>
 <div class="sect1">
-<h2 id="authorization"><a class="anchor" href="#authorization"></a>7. Authorization</h2>
+<h2 id="authorization"><a class="anchor" href="#authorization"></a>6. Authorization</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Another central aspect of Identity Management is the concept of authorization which is the process of determining a set of permissions that is granted to a specific trusted identity. In all practical senses, authorization follows authentication. Once a system knows who you are, the system can determine what is appropriate for you to be able to see or do. authorization can be determined based on the user identity alone, but in most cases requires additional attributes about the user, such as role, title, flag state, etc.</p>
@@ -1149,7 +1168,7 @@ The functionality of the Identity Broker is the cornerstone in the Maritime Clou
 </div>
 </div>
 <div class="sect1">
-<h2 id="terminology"><a class="anchor" href="#terminology"></a>8. Terminology</h2>
+<h2 id="terminology"><a class="anchor" href="#terminology"></a>7. Terminology</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Most of the terminology in this section has been taken from ISO/IEC 24760-1:2011 - A framework for identity management - Terminology and concepts</p>
@@ -1199,8 +1218,24 @@ The functionality of the Identity Broker is the cornerstone in the Maritime Clou
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-05-04 14:36:30 CEST
+Last updated 2016-05-23 14:54:46 CEST
 </div>
 </div>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  messageStyle: "none",
+  tex2jax: {
+    inlineMath: [["\\(", "\\)"]],
+    displayMath: [["\\[", "\\]"]],
+    ignoreClass: "nostem|nolatexmath"
+  },
+  asciimath2jax: {
+    delimiters: [["\\$", "\\$"]],
+    ignoreClass: "nostem|noasciimath"
+  },
+  TeX: { equationNumbers: { autoNumber: "none" } }
+});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.0/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script>
 </body>
 </html>
