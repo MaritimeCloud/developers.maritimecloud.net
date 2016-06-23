@@ -538,14 +538,16 @@ table.CodeRay td.code>pre{padding:0}
 <ul class="sectlevel2">
 <li><a href="#openid-connect">4.1. OpenID Connect</a></li>
 <li><a href="#maritime-cloud-user-federation-setup">4.2. Maritime Cloud User Federation Setup</a></li>
-<li><a href="#keycloack">4.3. Keycloack</a></li>
-<li><a href="#getting-connected-to-the-maritime-cloud">4.4. Getting connected to the Maritime Cloud</a></li>
+<li><a href="#openid-connect-authentication-flow">4.3. OpenID Connect Authentication Flow</a></li>
+<li><a href="#keycloack">4.4. Keycloack</a></li>
+<li><a href="#getting-connected-to-the-maritime-cloud">4.5. Getting connected to the Maritime Cloud</a></li>
 </ul>
 </li>
 <li><a href="#pki-and-x-509-certificates">5. PKI and X.509 Certificates</a>
 <ul class="sectlevel2">
 <li><a href="#creating-a-new-certificate">5.1. Creating a new Certificate</a></li>
 <li><a href="#certificate-attributes">5.2. Certificate Attributes</a></li>
+<li><a href="#certificate-authentication-flow">5.3. Certificate Authentication Flow</a></li>
 </ul>
 </li>
 <li><a href="#authorization">6. Authorization</a></li>
@@ -892,7 +894,31 @@ Coastguard, Swedish Maritime Administration. Local authorities such as VTS-Oeres
 </div>
 </div>
 <div class="sect2">
-<h3 id="keycloack"><a class="anchor" href="#keycloack"></a>4.3. Keycloack</h3>
+<h3 id="openid-connect-authentication-flow"><a class="anchor" href="#openid-connect-authentication-flow"></a>4.3. OpenID Connect Authentication Flow</h3>
+<div class="paragraph">
+<p>To illustrate the authentication flows the sequence diagrams below is provided.</p>
+</div>
+<div class="paragraph">
+<p>The first diagram below shows the standard authentication flow involving a browser being used by the user to access a service in the form of a webpage.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/diag-147dbdb001251bcfaaa305f68c12576a.png" alt="Authentication flow" width="1144" height="771">
+</div>
+<div class="title">Authentication flow</div>
+</div>
+<div class="paragraph">
+<p>The second diagram shows the flow used when an authenticated user is accessing a backend service. For browser based services this scenario is often used when the browser retrieves data from backend services. In this scenario since the user is authenticated, the user has a token that is presented for authentication for the backend service.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/diag-061ac4daff71f061adea5a89172c1122.png" alt="Backend service authentication flow" width="1003" height="257">
+</div>
+<div class="title">Backend service authentication flow</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="keycloack"><a class="anchor" href="#keycloack"></a>4.4. Keycloack</h3>
 <div class="paragraph">
 <p>Keycloak is one of many products that includes support for OpenID Connect, and it is the product that currently provides the Maritime Cloud Identity Broker which is the cornerstone in the Maritime Cloud user federation.</p>
 </div>
@@ -901,7 +927,7 @@ Coastguard, Swedish Maritime Administration. Local authorities such as VTS-Oeres
 </div>
 </div>
 <div class="sect2">
-<h3 id="getting-connected-to-the-maritime-cloud"><a class="anchor" href="#getting-connected-to-the-maritime-cloud"></a>4.4. Getting connected to the Maritime Cloud</h3>
+<h3 id="getting-connected-to-the-maritime-cloud"><a class="anchor" href="#getting-connected-to-the-maritime-cloud"></a>4.5. Getting connected to the Maritime Cloud</h3>
 <div class="paragraph">
 <p>If your organizations wishes to connect to the Maritime Cloud as an Identity Provider, to enable your uses to authenticate in the Maritime Cloud, please contact Tomas Christensen at <a href="mailto:tgc@dma.dk">tgc@dma.dk</a> in order to set it up. Note that currently you need to expose interfaces that supports either OpenID Connect or SAML2.</p>
 </div>
@@ -1129,6 +1155,17 @@ Coastguard, Swedish Maritime Administration. Local authorities such as VTS-Oeres
 </tr>
 </tbody>
 </table>
+</div>
+<div class="sect2">
+<h3 id="certificate-authentication-flow"><a class="anchor" href="#certificate-authentication-flow"></a>5.3. Certificate Authentication Flow</h3>
+<div class="paragraph">
+<p>To illustrate the authentication flow the sequence diagram below is provided.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/diag-56292f5a34a76a0c2530c07124c0f33c.png" alt="diag 56292f5a34a76a0c2530c07124c0f33c" width="739" height="299">
+</div>
+</div>
 <div style="page-break-after: always;"></div>
 </div>
 </div>
@@ -1218,7 +1255,7 @@ Coastguard, Swedish Maritime Administration. Local authorities such as VTS-Oeres
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-05-23 14:54:46 CEST
+Last updated 2016-05-23 15:12:40 CEST
 </div>
 </div>
 <script type="text/x-mathjax-config">
