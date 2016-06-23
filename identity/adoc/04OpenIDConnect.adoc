@@ -36,6 +36,66 @@ The Maritime Cloud expects to provide the following attributes in the OpenID Con
 
 These attributes will be directly mapped from attributes provided by the organizations Identity Provider, so the Identity Provider must also provide these attributes, except for the "org"-attribute.
 
+=== OpenID Connect Authentication Flow
+To illustrate the authentication flows the sequence diagrams below is provided.
+
+The first diagram below shows the standard authentication flow involving a browser being used by the user to access a service in the form of a webpage.
+
+[plantuml, title="Authentication flow"]
+....
+autonumber
+"User (Browser)" -> Service: User clicks "Log in" on service webpage
+|||
+Service -> "User (Browser)": Redirect to MC Identity Broker
+autonumber stop
+"User (Browser)" -> "MC Identity Broker"
+|||
+autonumber resume
+"MC Identity Broker" -> "User (Browser)": Present user with list of Identity Providers
+"User (Browser)" -> "MC Identity Broker": User chooses an Identity Provider
+|||
+"MC Identity Broker" -> "User (Browser)": Redirect to Identity Provider
+autonumber stop
+"User (Browser)" -> "Identity Provider"
+|||
+autonumber resume
+"Identity Provider" -> "User (Browser)": Prompt for credentials
+"User (Browser)" -> "Identity Provider": Send credentials
+
+"Identity Provider" -> "Identity Provider": Authenticate user
+
+"Identity Provider" -> "User (Browser)": Redirect to MC Identity Broker with token
+autonumber stop
+"User (Browser)" -> "MC Identity Broker"
+
+autonumber resume
+"MC Identity Broker" -> "Identity Provider": Request token validation
+"Identity Provider" -> "MC Identity Broker": Response for token validation
+
+"MC Identity Broker" -> "User (Browser)": Redirect to Service with token
+autonumber stop
+"User (Browser)" -> Service
+
+autonumber resume
+Service -> "MC Identity Broker": Request token validation
+"MC Identity Broker" -> Service: Response for token validation
+|||
+Service -> Service: Extract Organization name and attributes for authorization
+Service -> "User (Browser)": User is authenticated
+....
+
+The second diagram shows the flow used when an authenticated user is accessing a backend service. For browser based services this scenario is often used when the browser retrieves data from backend services. In this scenario since the user is authenticated, the user has a token that is presented for authentication for the backend service.
+
+[plantuml, title="Backend service authentication flow"]
+....
+autonumber
+"User (Browser)" -> "Backend Service": User accesses Backend Service with data request, includes token
+"Backend Service" -> "MC Identity Broker": Request token validation
+"MC Identity Broker" -> "Backend Service": Response for token validation
+"Backend Service" -> "Backend Service": Extract Organization name and attributes for authorization
+"Backend Service" -> "User (Browser)": Return data response
+....
+
 === Keycloack
 Keycloak is one of many products that includes support for OpenID Connect, and it is the product that currently provides the Maritime Cloud Identity Broker which is the cornerstone in the Maritime Cloud user federation.
 

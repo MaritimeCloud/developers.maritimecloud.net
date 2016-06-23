@@ -79,3 +79,16 @@ Finally, In additions to the information stored in the standard X.509 attributes
 |Permissions|`2.25.174437629172304915481663724171734402331`|Vessels, Users, Devices, Services
 |===
 
+=== Certificate Authentication Flow
+To illustrate the authentication flow the sequence diagram below is provided.
+
+[plantuml]
+....
+autonumber
+User -> Service: User connects using certificate
+Service -> Service: Client certificate is validated
+Service -> "Identity Registry": Request certificate revocation status
+"Identity Registry" -> Service: Revocation status response 
+Service -> Service: Extract Organization name and attributes for authorization
+Service -> User: Return response
+....
