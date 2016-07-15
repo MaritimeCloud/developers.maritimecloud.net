@@ -545,12 +545,16 @@ table.CodeRay td.code>pre{padding:0}
 </li>
 <li><a href="#pki-and-x-509-certificates">5. PKI and X.509 Certificates</a>
 <ul class="sectlevel2">
-<li><a href="#creating-a-new-certificate">5.1. Creating a new Certificate</a></li>
+<li><a href="#issuing-certificates">5.1. Issuing Certificates</a></li>
 <li><a href="#certificate-attributes">5.2. Certificate Attributes</a></li>
 <li><a href="#certificate-authentication-flow">5.3. Certificate Authentication Flow</a></li>
 </ul>
 </li>
-<li><a href="#authorization">6. Authorization</a></li>
+<li><a href="#authorization">6. Authorization</a>
+<ul class="sectlevel2">
+<li><a href="#example-of-authorization">6.1. Example of Authorization</a></li>
+</ul>
+</li>
 <li><a href="#terminology">7. Terminology</a></li>
 </ul>
 </div>
@@ -606,7 +610,7 @@ As part of the e-Navigation process the Danish Maritime Authority had been worki
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/maritimecloud.png" alt="Overview">
+<img src="images/contentimage_TheMaritimeCloud_orange_no_img.png" alt="Overview">
 </div>
 </div>
 <div class="paragraph">
@@ -669,10 +673,10 @@ attributes, and credentials.</p>
 <div class="sect2">
 <h3 id="the-identity-registry"><a class="anchor" href="#the-identity-registry"></a>2.1. The Identity Registry</h3>
 <div class="paragraph">
-<p>In most of the documents that describe the Maritime Cloud there is the concept of an Identity Registry. In reality there are numerous systems both internal to the Maritime Cloud as well as external to the Maritime Cloud that makes up the identity registry. Not only are there multiple registries but the interaction with them can also depend on, for example, the type of authentication used. Something like digital authentication certificates can be used offline for authentication, that is, there is no need to contact the identity registry to validate a digital authentication certificate. But if a username/password combination is used, both the Identity registry and possible an external company server needs to be contacted. Hence a better description of the Identity Registry would be probably be an <strong>Identity Platform</strong>.</p>
+<p>In most of the documents that describe the Maritime Cloud there is the concept of an Identity Registry. In reality there are numerous systems both internal to the Maritime Cloud as well as external to the Maritime Cloud that makes up the identity registry. Not only are there multiple registries but the interaction with them can also depend on, for example, the type of authentication used. Something like digital authentication certificates can be used offline for authentication, that is, there is no need to contact the identity registry to validate a digital authentication certificate. But if user federation is used, both the Identity registry and possible an external company server needs to be contacted. Hence a better description of the Identity Registry would be probably be an <strong>Identity Platform</strong>.</p>
 </div>
 <div class="paragraph">
-<p>Within the scope of the EfficienSea 2.0 and STM validation projects, the digital identities of actors can be registered in a project Identity Register, unless those actors are already registered in another identity registry, which has been recognized as a part of the Maritime Cloud collaboration (federated identity management).</p>
+<p>Within the scope of the EfficienSea 2 and STM validation projects, the digital identities of actors can be registered in a project Identity Register, unless those actors are already registered in another identity registry, which has been recognized as a part of the Maritime Cloud collaboration (federated identity management).</p>
 </div>
 <div class="paragraph">
 <p>This will enable the participants in the projects to register actors to validate specific service concepts in testbed trials or utilize the operational services established by the projects, as well as validate the identity management concept of the Maritime Cloud. Beyond the scope of the project, it is foreseen that several identity registers will collaborate to form the global federated Maritime Cloud Identity Registry.</p>
@@ -700,13 +704,12 @@ attributes, and credentials.</p>
 <p>The main reason for excluding all but non-essential security related information is that it opens up the never ending discussion about what exactly should be maintained in the identity registry. If we make a generalized information store that maintains and provides query capabilities for all kinds of information about users and systems/devices. For example, business addresses, geographical location. We might as well use this functionality for storing other queryable information. For example, maintaining information about routes or cargo.</p>
 </div>
 <div class="paragraph">
-<p>This does not prohibit a later revisiting of these goals. Or prohibit including work from other groups into a general framework at a later time. But for time being the identity registry will revolve about the 4 entities listed below.</p>
+<p>This does not prohibit a later revisiting of these goals. Or prohibit including work from other groups into a general framework at a later time. But for time being the identity registry will revolve about the 5 entities listed below.</p>
 </div>
 <div class="sect3">
 <h4 id="organization"><a class="anchor" href="#organization"></a>2.2.1. Organization</h4>
 <div class="paragraph">
-<p>In the Maritime Cloud an organization is an entity, such as an institution, company or an association, that has a collective goal and is linked to an external environment. Examples, include international organizations such as IMO, IALA, IHO. National authorities such as US
-Coastguard, Swedish Maritime Administration. Local authorities such as VTS-Oeresund, Port of Rotterdam, Hong Kong SAR. Or commercial companies such as Transas or Maris.</p>
+<p>In the Maritime Cloud an organization is an entity, such as an institution, company or an association, that has a collective goal and is linked to an external environment. Examples, include international organizations such as IMO, IALA, IHO. National authorities such as US Coastguard, Swedish Maritime Administration. Local authorities such as VTS-Oeresund, Port of Rotterdam, Hong Kong SAR. Or commercial companies such as Transas or Maris.</p>
 </div>
 <div class="paragraph">
 <p>In order to able to use the functions of the Maritime Cloud in any way, an organization needs to be signed up to the Maritime Cloud. In the context of the EfficienSea 2.0 and STM projects, this is currently done be sending an email with various information about the organization to a Maritime Cloud test bed administrator.</p>
@@ -715,16 +718,16 @@ Coastguard, Swedish Maritime Administration. Local authorities such as VTS-Oeres
 <p>In the future a more automated process involving a validation workflow by some organization may validate the relationship between an organization in the real world, and the issued maritime digital identity. How this validation is to take place is still up for discussion. However, one possible solution would be for the maritime authorities in which a given organization is registered to put the stamp of approval on the signup application.</p>
 </div>
 <div class="paragraph">
-<p>Once an organization has been registered (and validated), an identity administrator of that organization will be able to create and manage maritime identities that belong to this organization, such as Users, Vessels or Services. This administration is typically done via the Maritime Cloud Portal which is a web based client. For some larger organizations it might make sense to integrate directly via the underlying APIs.</p>
+<p>Once an organization has been registered (and validated), an identity administrator of that organization will be able to create and manage maritime identities that belong to this organization, such as Users, Vessels Devices or Services. This administration is typically done via the Maritime Cloud Portal which is a web based client. For some larger organizations it might make sense to integrate directly via the underlying APIs.</p>
 </div>
 <div class="paragraph">
 <p>All organizations that are registered in the Maritime Cloud must be registered with a unique &gt;=3 letter alphanumeric id.</p>
 </div>
 <div class="paragraph">
-<p>The id is used in numerous places. For example, all service specifications from a given organization is prefixed by the organization id. Likewise must all MSDL files from a given organization be organized under the a namespace that starts with the organization id. For example, "package dma.mmsi;" In order to allow easy and consistent sharing and import of MSDL files between organizations.</p>
+<p>The id is used in numerous places. For example, all service specifications from a given organization is prefixed by the organization id.</p>
 </div>
 <div class="paragraph">
-<p>Examples of valid organizations ids:</p>
+<p>Examples of valid organization ids:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -768,6 +771,12 @@ Coastguard, Swedish Maritime Administration. Local authorities such as VTS-Oeres
 <h4 id="users"><a class="anchor" href="#users"></a>2.2.4. Users</h4>
 <div class="paragraph">
 <p>Users mainly refers to human users. Human users differ from other actors in that they typically use a username/password to login which implies a different interaction pattern with the identity registry then say communication between vessels.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="devices"><a class="anchor" href="#devices"></a>2.2.5. Devices</h4>
+<div class="paragraph">
+<p>Devices can be any number of entities that is not covered by the other entity types. It could for example be a lighthouse, an ECDIS or a server that needs to be able to authenticate itself.</p>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
@@ -815,7 +824,7 @@ Coastguard, Swedish Maritime Administration. Local authorities such as VTS-Oeres
 <p>In the previous section we discussed digital certificates for use in machine to machine communication. There are no technical reason to why human users should not be able to use digital certificates to authenticate themselves as well. However, there are some serious practical ones that make it difficult to see them as a general solution for human user authentication. The first issue being that it requires that the certificate must always be present on the computer or mobile phone from which access is made. This is normally not a problem for machine to machine communication. Because, once installed the hardware configuration almost never changes. Unlike human users that uses their computer during the day to access information, their mobile phone on the way back from work and their tablet in the evening from home. Making sure that certificates are all installed on these devices and refreshing them once they expire is a lot of effort to require of users. And we believe having such a complicated setup would be a major barrier towards successful adoption of the Maritime Cloud. So for now, authentication of human users in the Maritime Cloud will be based on login through a web browser, using federation.</p>
 </div>
 <div class="paragraph">
-<p>Federation is the means of linking distinct identity management systems to a person&#8217;s electronic identity and attributes. For example, a shipping company might expose all their users in LDAP or Active Directory to the Maritime Cloud in such a way as they appear as Maritime Cloud users. Thereby bypassing the need to manage their users directly in the Maritime Cloud. This also means that the Maritime Cloud is not responsible for management of users. In practical terms, federation means that users asked to authenticate in the Maritime CLoud will be redirected to a login webpage supplied by their organization where they can login using their organizational id.</p>
+<p>Federation is the means of linking distinct identity management systems to a person&#8217;s electronic identity and attributes. For example, a shipping company might expose all their users in LDAP or Active Directory to the Maritime Cloud in such a way as they appear as Maritime Cloud users. Thereby bypassing the need to manage their users directly in the Maritime Cloud. This also means that the Maritime Cloud is not responsible for management of users. In practical terms, federation means that users asked to authenticate in the Maritime Cloud will be redirected to a login webpage supplied by their organization where they can login using their organizational id.</p>
 </div>
 <div class="paragraph">
 <p>Since the authentication process is the responsibility of the organizations, it is also up to the individual organization to chose an appropriate authentication method. While most will likely use classic username/password authentication, multi factor security, biometric security or other approaches could be used.</p>
@@ -942,10 +951,10 @@ Coastguard, Swedish Maritime Administration. Local authorities such as VTS-Oeres
 <h2 id="pki-and-x-509-certificates"><a class="anchor" href="#pki-and-x-509-certificates"></a>5. PKI and X.509 Certificates</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>A <strong>public key infrastructure (PKI)</strong> is a set of hardware, software, people, policies, and procedures needed to create, manage, distribute, use, store, and revoke digital authentication certificates and manage public-key encryption. Thereby helping an organization establish and maintain a trustworthy networking environment. There is no inherent requirement for using a PKI based solution for enabling secure machine to machine (M2M) communication. But it is the most commonly used solution and lots of software, standards and best practices exists for utilizing it. The choice of using PKI based on the X.509 standard for M2M communication in the Maritime Cloud was thus straightforward.</p>
+<p>A <strong>Public Key Infrastructure (PKI)</strong> is a set of hardware, software, people, policies, and procedures needed to create, manage, distribute, use, store, and revoke digital authentication certificates and manage public-key encryption. Thereby helping an organization establish and maintain a trustworthy networking environment. There is no inherent requirement for using a PKI based solution for enabling secure machine to machine (M2M) communication, but it is the most commonly used solution and lots of software, standards and best practices exists for utilizing it. The choice of using PKI based on the X.509 standard for M2M communication in the Maritime Cloud was thus straightforward.</p>
 </div>
 <div class="paragraph">
-<p>The key piece in a PKI architecture is a PKI CA (Certificate Authority) which is an entity that issues digital certificates. A digital certificate that certifies the ownership of a public key by the named subject of the certificate. An obvious example would be creating a certificate for a vessel, which can serve to certify that a given document was indeed signed by someone in possession of the certificate issued to that vessel.</p>
+<p>The key piece in a PKI architecture is a PKI CA (Certificate Authority) which is an entity that issues digital authentication certificates. A digital certificate that certifies the ownership of a public key by the named subject of the certificate. An obvious example would be creating a certificate for a vessel, which can serve to certify that a given document was indeed signed by someone in possession of the certificate issued to that vessel.</p>
 </div>
 <div class="paragraph">
 <p>One of the most important aspects of designing a PKI based architecture is the certificate hierarchy planning because the design will affect how certificates are validated and used by PKI-enabled actors. Normally a PKI based architecture is arranged in a tree like hierarchy with a single root entity in the top and with numerous leaves called sub CAs. Each sub CA can have their own sub CA thereby forming a tree with a single entity at the top. Each leave in the tree is responsible for creating certificates, for example, ships or organizations. The reason for doing this is to be able to delegate the responsibility to different parties. For example, in the case of the Maritime Cloud one could envision that at some point in the future every flag state would be their own sub CA. Having the sole responsibility of issuing certificates for vessels registered under their own flag.</p>
@@ -956,24 +965,27 @@ Coastguard, Swedish Maritime Administration. Local authorities such as VTS-Oeres
 </div>
 </div>
 <div class="paragraph">
-<p>In the current version of the Maritime Cloud we are working with a single sub CA that has the responsibility for issuing all certificates. However, this can gradually be changed to support another PKI hierarchy design.</p>
+<p>In the current version of the Maritime Cloud we are working with a single sub CA that has the responsibility for issuing all certificates. This sub CA is located at the Maritime Cloud Identity Registry. However, this can gradually be changed to support another PKI hierarchy design.</p>
 </div>
 <div class="paragraph">
 <p>The most important functionality of a CA is issuing digital certificates. A digital certificate certifies the ownership of a public key by the named subject of the certificate. This allows others (relying parties) to rely upon signatures or on assertions made about the private key that corresponds to the certified public key. In this model of trust relationships, a CA is a trusted third party—trusted both by the subject (owner) of the certificate and by the party relying upon the certificate. In the case of the Maritime Cloud these certificates are typically used to make secure connections between maritime actors over the Internet. A certificate is required in order to avoid the case that a malicious party which happens to be on the path to the target server pretends to be the actual target. Such a scenario is commonly referred to as a man-in-the-middle attack. The client uses the CA certificate to verify the CA signature on the server certificate, as part of the checks before establishing a secure connection. Likewise, the server has the option of inspecting the clients certificate before allowing it to connect.</p>
 </div>
 <div class="paragraph">
-<p>To issue a new certificate for, for example, a vessel. The administrator the organization who owns the ship will need to log in to the Maritime Cloud Portal and use its functionality for issuing new certificates. The certificate being issued will contain information about the name of the ship, the owner, the flag state and other attributes such as MMSI and IMO number. In the current implementation there is no validation of this information other than that the organization must have been accepted when signing up. We do not expect this to be a problem for the foreseeable future as the number of participating parties is still relatively small. In the future where a lot of more organizations has been added it might, for example, be possible to integrate with national registries. So an automated check of these information can be made.</p>
+<p>To issue a new certificate for, for example, a vessel. An administrator for the organization who owns the ship will need to log in to the Maritime Cloud Portal and use its functionality for issuing new certificates. The certificate being issued will contain information about the name of the ship, the owner, the flag state and other attributes such as MMSI and IMO number. In the current implementation there is no validation of this information other than that the organization must have been accepted when signing up. We do not expect this to be a problem for the foreseeable future as the number of participating parties is still relatively small. In the future where a lot of more organizations has been added it might, for example, be possible to integrate with national registries. So an automated check of these information can be made.</p>
 </div>
 <div class="paragraph">
 <p>After having issued a certificate the administrator can now install it on the ship in some way. The actual logistics about how and where to install it is outside of the scope of the identity registry as this might vary a lot between organizations and projects. This also reduces the functionality of the identity registry to just provide the core functionality of Identity management. Allowing users to be able to build innovative solutions on top of it. This also applies directly to machine to machine communication. The identity registry places no restrictions about what kind of machine to machine communication protocols that should be used. It just provides the basic infrastructure to allow for each machine to authenticate the host in the other end. Letting each project select their protocols if needed.</p>
 </div>
 <div class="sect2">
-<h3 id="creating-a-new-certificate"><a class="anchor" href="#creating-a-new-certificate"></a>5.1. Creating a new Certificate</h3>
+<h3 id="issuing-certificates"><a class="anchor" href="#issuing-certificates"></a>5.1. Issuing Certificates</h3>
 <div class="paragraph">
-<p>Currently, the only way to generate a new certificate is to log into the Maritime Cloud portal and create the certificate in a browser.</p>
+<p>As mentioned above, it is currently only the Maritime Cloud Identity Registry that can issue valid certificates for use within the Maritime Cloud context. At the moment it is possible to issue certificates for organizations, vessels, users, devices and services. Note that an organization currently cannot function as a sub CA, so it cannot use its certificate to issue other certificates. Also note that there are currently no support for generating certificates using a certificate signing request (CSR).</p>
 </div>
 <div class="paragraph">
-<p>This is done by first select the entity for which you wish to create a certificate. In this example we have created a vessel called "Harmony of the Seas". As can be seen from the screenshot the vessel currently has no certificates.</p>
+<p>To actually get a certificate from the Maritime Cloud Identity Registry, it is recommended to use the Maritime Cloud Management Portal, though it is also possible to directly use the REST interface of the Identity Registry, which is what the management portal does.</p>
+</div>
+<div class="paragraph">
+<p>When in the management portal first select the entity for which you wish to create a certificate. In this example we have created a vessel called "Harmony of the Seas". As can be seen from the screenshot the vessel currently has no certificates.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -981,7 +993,7 @@ Coastguard, Swedish Maritime Administration. Local authorities such as VTS-Oeres
 </div>
 </div>
 <div class="paragraph">
-<p>In order to create a new certificat for the vessel select <strong>+New Certificate</strong>. A new dialog box asking for confirmation is displayed. After having confirmed the generation. A new dialog box will de displayed where it is possible to download a zip file consisting of the generated certificate and its private and public key. It is important to remember to download the file as the the private key is no longer available after the page is closed.</p>
+<p>In order to create a new certificate for the vessel select <strong>+New Certificate</strong>. A new dialog box asking for confirmation is displayed. After having confirmed the generation. A new dialog box will de displayed where it is possible to download a zip file consisting of the generated certificate and its private and public key. It is important to remember to download the file as the the private key is no longer available after the page is closed.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -996,14 +1008,11 @@ Coastguard, Swedish Maritime Administration. Local authorities such as VTS-Oeres
 <img src="images/new-certificate-step-4.png" alt="Overview">
 </div>
 </div>
-<div class="paragraph">
-<p>There are currently no support for generating certificates using a certificate signing request. However, this is a feature being worked on and it will be available in future releases.</p>
-</div>
 </div>
 <div class="sect2">
 <h3 id="certificate-attributes"><a class="anchor" href="#certificate-attributes"></a>5.2. Certificate Attributes</h3>
 <div class="paragraph">
-<p>The Maritime Cloud can issue X.509 certificates for the users which can then be used for authentication. Service providers relying on X.509 certificate authentication must obtain and install the MaritimeCloud root certificate into their webservice.</p>
+<p>The Maritime Cloud can issue X.509 certificates for the users which can then be used for authentication. Service providers relying on X.509 certificate authentication must obtain and install the Maritime Cloud root certificate into their webservice.</p>
 </div>
 <div class="paragraph">
 <p>The standard information present in an X.509 certificate includes:</p>
@@ -1038,11 +1047,12 @@ Coastguard, Swedish Maritime Administration. Local authorities such as VTS-Oeres
 </div>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.667%;">
 </colgroup>
 <thead>
 <tr>
@@ -1051,6 +1061,7 @@ Coastguard, Swedish Maritime Administration. Local authorities such as VTS-Oeres
 <th class="tableblock halign-left valign-top">Vessel</th>
 <th class="tableblock halign-left valign-top">Device</th>
 <th class="tableblock halign-left valign-top">Service</th>
+<th class="tableblock halign-left valign-top">Organization</th>
 </tr>
 </thead>
 <tbody>
@@ -1060,13 +1071,11 @@ Coastguard, Swedish Maritime Administration. Local authorities such as VTS-Oeres
 <td class="tableblock halign-left valign-top"><p class="tableblock">Vessel name</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Device name</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Service Name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Organization Name</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">O (Organization)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Organization Id+Name, separated by ";"</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Organization Id+Name, separated by ";"</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Organization Id+Name, separated by ";"</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Organization Id+Name, separated by ";"</p></td>
+<td class="tableblock halign-center valign-bottom" colspan="5"><p class="tableblock">Organization Id+Name, separated by ";"</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">OU (Organizational Unit)</p></td>
@@ -1074,13 +1083,7 @@ Coastguard, Swedish Maritime Administration. Local authorities such as VTS-Oeres
 <td class="tableblock halign-left valign-top"><p class="tableblock">"vessel"</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">"device"</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">"service"</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C (Country)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Organization country code</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Organization country code</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Organization country code</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Organization country code</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"organization"</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">E (Email)</p></td>
@@ -1088,6 +1091,11 @@ Coastguard, Swedish Maritime Administration. Local authorities such as VTS-Oeres
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Organization email</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C (Country)</p></td>
+<td class="tableblock halign-center valign-bottom" colspan="5"><p class="tableblock">Organization country code</p></td>
 </tr>
 </tbody>
 </table>
@@ -1102,7 +1110,7 @@ Coastguard, Swedish Maritime Administration. Local authorities such as VTS-Oeres
 </div>
 </div>
 <div class="paragraph">
-<p>Finally, In additions to the information stored in the standard X.509 attributes listed above. The X509v3 extension SubjectAlternativeName (SAN) extension is used to store extra information. There already exists some predefined fields for the SAN extension, but they do not match the need we have for maritime related fields. Therefore the “otherName” field is used, which allows for using a Object Identifier (OID) to define custom fields. The OIDs currently used are not registered at ITU, but is randomly generated using a tool provided by ITU (see <a href="http://www.itu.int/en/ITU-T/asn1/Pages/UUID/uuids.aspx" class="bare">http://www.itu.int/en/ITU-T/asn1/Pages/UUID/uuids.aspx</a>). See the table below for the fields defined, the OID of the fields and which kind of entity that uses the fields. We know this is not a very elegant solution but unfortunantely there are few alternatives in the X.509 standard.</p>
+<p>Finally, In additions to the information stored in the standard X.509 attributes listed above, the X509v3 extension SubjectAlternativeName (SAN) extension is used to store extra information. There already exists some predefined fields for the SAN extension, but they do not match the need we have for maritime related fields. Therefore the “otherName” field is used, which allows for using a Object Identifier (OID) to define custom fields. The OIDs currently used are not registered at ITU, but are randomly generated using a tool provided by ITU (see <a href="http://www.itu.int/en/ITU-T/asn1/Pages/UUID/uuids.aspx" class="bare">http://www.itu.int/en/ITU-T/asn1/Pages/UUID/uuids.aspx</a>). See the table below for the fields defined, the OIDs of the fields and which kind of entities that uses the fields.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
@@ -1166,6 +1174,19 @@ Coastguard, Swedish Maritime Administration. Local authorities such as VTS-Oeres
 <img src="images/diag-56292f5a34a76a0c2530c07124c0f33c.png" alt="diag 56292f5a34a76a0c2530c07124c0f33c" width="739" height="299">
 </div>
 </div>
+<div class="paragraph">
+<p>The checking of the certificate revocation status can be done in two ways:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Call the OCSP interface provided by the Identity Registry for each certificate.</p>
+</li>
+<li>
+<p>Periodically download a Certificate Revocation File from the Identity Registry and use it check certificates locally.</p>
+</li>
+</ol>
+</div>
 <div style="page-break-after: always;"></div>
 </div>
 </div>
@@ -1190,18 +1211,59 @@ Coastguard, Swedish Maritime Administration. Local authorities such as VTS-Oeres
 </ul>
 </div>
 <div class="paragraph">
-<p>Since authorization can always be done locally by the application that is being accessed, for example by storing user rights in a local database. We have decided that the Maritime Cloud will not prioritize central support for authorization for the next milestones. Instead focusing on getting authentication right.</p>
+<p>Since authorization can always be done locally by the application that is being accessed, for example by storing user rights in a local database, we have decided that the Maritime Cloud will not prioritize central support for authorization for the next milestones. Instead focusing on getting authentication right.</p>
 </div>
 <div class="paragraph">
 <p>Before implementation of centralized support for authorization can begin there are some obstacles that lie ahead. Mainly because there, unlike authentication, are no good standards for doing authorization.</p>
 </div>
 <div class="paragraph">
-<p>Even though there are no real standards there are a number of approaches that are commonly used. The most commonly used probably being role-based access control (RBAC). RBAC is an access control mechanism defined around roles and privileges. The components of RBAC such as role-permissions, user-role and role-role relationships make it simple to do user assignments of entitlements. However, adopting RBAC for the Maritime Cloud opens some questions. For example, who defines the roles and are they global roles. Or are they local to a particular service or a particular organization. For example, an “administrator” role might entail a list of certain privileges in one organization and another list of privileges in another organization.</p>
+<p>Even though there are no real standards there are a number of approaches that are commonly used. The most commonly used probably being role-based access control (RBAC). RBAC is an access control mechanism defined around roles and privileges. The components of RBAC such as role-permissions, user-role and role-role relationships make it simple to do user assignments of entitlements. However, adopting RBAC for the Maritime Cloud opens some questions. For example, who defines the roles and are they global roles. Or are they local to a particular service or a particular organization. For example, an "administrator" role might entail a list of certain privileges in one organization and another list of privileges in another organization.</p>
 </div>
 <div class="paragraph">
-<p>Given these issues and many other we have to decide to wait on the various to sub projects to implement authorization and then compile all the different approaches and try and make something generic.</p>
+<p>Given these issues and many other we have to decide not to implement central authorization in the Maritime Cloud. Instead the Maritime Cloud will provide the information that can be used for authorization in the services.</p>
+</div>
+<div class="paragraph">
+<p>As described in the sections about <a href="#openid-connect">OpenID Connect</a> and <a href="#certificate-attributes">Certificate Attributes</a>, both authentication methods provides information about the authenticated user that can be used for authorization:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The organization the entity belong to.</p>
+</li>
+<li>
+<p>The permissions/roles/groups the entity has been assigned by the organization.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>When an organization wishes to use a service, the organization will then make an agreement with that about how access levels shall be defined in that service, based on the permissions. This will have to be done for each service the organization wishes to use.</p>
+</div>
+<div class="sect2">
+<h3 id="example-of-authorization"><a class="anchor" href="#example-of-authorization"></a>6.1. Example of Authorization</h3>
+<div class="paragraph">
+<p>As an example of how authorization can be done, let us have a look at how it is handled inside the Maritime Cloud Identity Registry. When it comes to authorization, the Identity Registry will have the same information about its users as any other service in the Maritime Cloud.</p>
+</div>
+<div class="paragraph">
+<p>The Identity Registry currently has three roles:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>ROLE_USER</strong> - Grants read access to information about the organization the user belongs to (will be assigned by default to authenticated users).</p>
+</li>
+<li>
+<p><strong>ROLE_ORG_ADMIN</strong> - Grants read and write access to information about the organization the user belongs to.</p>
+</li>
+<li>
+<p><strong>ROLE_SITE_ADMIN</strong> - Grants access to administrative functions in the Identity Registry.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In this example we will focus on the first two. Let us assume that the Organization wants to grant members of the internal "E-navigation" department administrative rights in the Maritime Cloud Identity Registry. In DMAs Identity Provider setup the department name is automatically added to the "permissions" attribute. So to make this mapping the current DMA administrator sets up a role mapping between the permission "E-navigation" and the role ROLE_ORG_ADMIN. Once this is done, all members of the DMA E-navigation department will have administrative rights for the DMA organization inside the Identity Registry. As noted earlier, these rights only apply inside the Identity Registry. Other services must create a similar setup with mapping of roles and permissions.</p>
 </div>
 <div style="page-break-after: always;"></div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -1255,7 +1317,7 @@ Coastguard, Swedish Maritime Administration. Local authorities such as VTS-Oeres
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-05-23 15:12:40 CEST
+Last updated 2016-06-23 15:25:43 CEST
 </div>
 </div>
 <script type="text/x-mathjax-config">
