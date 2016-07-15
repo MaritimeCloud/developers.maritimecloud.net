@@ -20,7 +20,7 @@ The first prototype was built in the winter of 2012 and was implemented in the E
 === Overview
 Here is 10000 foot overview of the Maritime Cloud:
 
-image::maritimecloud.png[Overview]
+image::contentimage_TheMaritimeCloud_orange_no_img.png[Overview]
 
 There are 3 different core services provided by the Maritime Cloud
 
@@ -29,7 +29,6 @@ There are 3 different core services provided by the Maritime Cloud
 * *Maritime Messaging Service (MMS).* A communication protocol on top of TCP/IP. Supporting reliable delivery of messages and geocastingfootnote:[Geocasting refers to the delivery of information to a group of actors identified by their geographical locations.].
 
 This guide will predominantly discuss the identity registry.
-
 
 === Signing up
 In order to get an organization, its users and any ships the organization might own on to the Maritime Cloud, the organization needs to perform a signup process. The process is currently manual but will be replaced with an automatic one in the future.
