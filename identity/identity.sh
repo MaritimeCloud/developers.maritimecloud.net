@@ -15,6 +15,7 @@ elif [ "$1" = "site" ]; then
      echo "There are uncommitted changes"
      exit 1
    fi
+   rm -rf target/
    asciidoctor -r asciidoctor-diagram adoc/identity.adoc -D target
    mkdir -p target/images
    cp images/*.png target/images/
