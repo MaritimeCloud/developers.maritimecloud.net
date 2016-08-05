@@ -547,7 +547,8 @@ table.CodeRay td.code>pre{padding:0}
 <ul class="sectlevel2">
 <li><a href="#issuing-certificates">5.1. Issuing Certificates</a></li>
 <li><a href="#certificate-attributes">5.2. Certificate Attributes</a></li>
-<li><a href="#certificate-authentication-flow">5.3. Certificate Authentication Flow</a></li>
+<li><a href="#revocation-of-certificates">5.3. Revocation of certificates</a></li>
+<li><a href="#certificate-authentication-flow">5.4. Certificate Authentication Flow</a></li>
 </ul>
 </li>
 <li><a href="#authorization">6. Authorization</a>
@@ -1165,17 +1166,9 @@ attributes, and credentials.</p>
 </table>
 </div>
 <div class="sect2">
-<h3 id="certificate-authentication-flow"><a class="anchor" href="#certificate-authentication-flow"></a>5.3. Certificate Authentication Flow</h3>
+<h3 id="revocation-of-certificates"><a class="anchor" href="#revocation-of-certificates"></a>5.3. Revocation of certificates</h3>
 <div class="paragraph">
-<p>To illustrate the authentication flow the sequence diagram below is provided.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/diag-56292f5a34a76a0c2530c07124c0f33c.png" alt="diag 56292f5a34a76a0c2530c07124c0f33c" width="739" height="299">
-</div>
-</div>
-<div class="paragraph">
-<p>The checking of the certificate revocation status can be done in two ways:</p>
+<p>A crucial part of any PKI is to support revocation of certificates, so that certificates that belongs to entities who is no longer trusted, affiliation has change, etc., can be mark as not trusted any more. Anyone who wishes to validate a certificate can then check if the certificate has been marked as revoked. The checking of the certificate revocation status can be done in two ways:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -1186,6 +1179,20 @@ attributes, and credentials.</p>
 <p>Periodically download a Certificate Revocation File from the Identity Registry and use it check certificates locally.</p>
 </li>
 </ol>
+</div>
+<div class="paragraph">
+<p>The endpoints for both the OCSP interface and the Certificate Revocation File are embedded into the certificates issued by the Maritime Cloud Identity Registry, and are currently <a href="https://api.maritimecloud.net/x509/api/certificates/crl" class="bare">https://api.maritimecloud.net/x509/api/certificates/crl</a> and ocsp-url: <a href="https://api.maritimecloud.net/x509/api/certificates/ocsp" class="bare">https://api.maritimecloud.net/x509/api/certificates/ocsp</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="certificate-authentication-flow"><a class="anchor" href="#certificate-authentication-flow"></a>5.4. Certificate Authentication Flow</h3>
+<div class="paragraph">
+<p>To illustrate the authentication flow the sequence diagram below is provided.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/diag-56292f5a34a76a0c2530c07124c0f33c.png" alt="diag 56292f5a34a76a0c2530c07124c0f33c" width="739" height="299">
+</div>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
@@ -1317,7 +1324,7 @@ attributes, and credentials.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-06-23 15:25:43 CEST
+Last updated 2016-07-15 10:28:18 CEST
 </div>
 </div>
 <script type="text/x-mathjax-config">
