@@ -77,7 +77,19 @@ Finally, In additions to the information stored in the standard X.509 attributes
 |Permissions|`2.25.174437629172304915481663724171734402331`|Vessels, Users, Devices, Services
 |===
 
+
+=== Revocation of certificates
+
+A crucial part of any PKI is to support revocation of certificates, so that certificates that belongs to entities who is no longer trusted, affiliation has change, etc., can be mark as not trusted any more. Anyone who wishes to validate a certificate can then check if the certificate has been marked as revoked. The checking of the certificate revocation status can be done in two ways:
+
+. Call the OCSP interface provided by the Identity Registry for each certificate.
+. Periodically download a Certificate Revocation File from the Identity Registry and use it check certificates locally.
+
+The endpoints for both the OCSP interface and the Certificate Revocation File are embedded into the certificates issued by the Maritime Cloud Identity Registry, and are currently https://api.maritimecloud.net/x509/api/certificates/crl and ocsp-url: https://api.maritimecloud.net/x509/api/certificates/ocsp.
+
+
 === Certificate Authentication Flow
+
 To illustrate the authentication flow the sequence diagram below is provided.
 
 [plantuml]
@@ -90,8 +102,3 @@ Service -> "Identity Registry": Request certificate revocation status
 Service -> Service: Extract Organization name and attributes for authorization
 Service -> User: Return response
 ....
-
-The checking of the certificate revocation status can be done in two ways:
-
-. Call the OCSP interface provided by the Identity Registry for each certificate.
-. Periodically download a Certificate Revocation File from the Identity Registry and use it check certificates locally.
