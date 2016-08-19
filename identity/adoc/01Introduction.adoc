@@ -31,19 +31,9 @@ There are 3 different core services provided by the Maritime Cloud
 This guide will predominantly discuss the identity registry.
 
 === Signing up
-In order to get an organization, its users and any ships the organization might own on to the Maritime Cloud, the organization needs to perform a signup process. The process is currently manual but will be replaced with an automatic one in the future.
-
-Send a email to Tomas Christensen at tgc@dma.dk with the name of your organization and whom will be the main administrator in order to signup.
+In order to get an organization, its users and any ships the organization might own on to the Maritime Cloud, the organization needs to perform a signup process. The process is currently manual. To start the process, please fill out the https://portal.maritimecloud.net/app/index.html#/join[registration form].
 
 === Feedback
 Readers may send feedback about errors, omissions, and ambiguities in this guide to tgc@dma.dk or even better submit a pull request to the documentation available at https://github.com/MaritimeCloud/Documentation/tree/master/developer-guide/adoc.
 
 As previously mentioned questions about usage of the Maritime Cloud should be directed to our Google Group at https://groups.google.com/forum/#!forum/maritimecloud
-
-
-
-
-
-
-
-

@@ -39,16 +39,18 @@ These attributes will be directly mapped from attributes provided by the organiz
 === OpenID Connect Authentication Flow
 To illustrate the authentication flows the sequence diagrams below is provided.
 
-The first diagram below shows the standard authentication flow involving a browser being used by the user to access a service in the form of a webpage.
+The first diagram below shows the standard http://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth[OpenID Connect Authorization Code Flow] involving a browser being used by the user to access a service in the form of a webpage.
 
 [plantuml, title="Authentication flow"]
 ....
 autonumber
 "User (Browser)" -> Service: User clicks "Log in" on service webpage
+activate Service
 |||
 Service -> "User (Browser)": Redirect to MC Identity Broker
 autonumber stop
 "User (Browser)" -> "MC Identity Broker"
+activate "MC Identity Broker"
 |||
 autonumber resume
 "MC Identity Broker" -> "User (Browser)": Present user with list of Identity Providers
@@ -57,6 +59,7 @@ autonumber resume
 "MC Identity Broker" -> "User (Browser)": Redirect to Identity Provider
 autonumber stop
 "User (Browser)" -> "Identity Provider"
+activate "Identity Provider"
 |||
 autonumber resume
 "Identity Provider" -> "User (Browser)": Prompt for credentials
@@ -64,24 +67,31 @@ autonumber resume
 
 "Identity Provider" -> "Identity Provider": Authenticate user
 
-"Identity Provider" -> "User (Browser)": Redirect to MC Identity Broker with token
+"Identity Provider" -> "User (Browser)": Redirect to MC Identity Broker with code
+deactivate "Identity Provider"
 autonumber stop
 "User (Browser)" -> "MC Identity Broker"
 
 autonumber resume
-"MC Identity Broker" -> "Identity Provider": Request token validation
-"Identity Provider" -> "MC Identity Broker": Response for token validation
+"MC Identity Broker" -> "Identity Provider": Request token in exchange for code
+activate "Identity Provider"
+"Identity Provider" -> "MC Identity Broker": Return tokens
+deactivate "Identity Provider"
 
-"MC Identity Broker" -> "User (Browser)": Redirect to Service with token
+"MC Identity Broker" -> "User (Browser)": Redirect to Service with code
+deactivate "MC Identity Broker"
 autonumber stop
 "User (Browser)" -> Service
 
 autonumber resume
-Service -> "MC Identity Broker": Request token validation
-"MC Identity Broker" -> Service: Response for token validation
+Service -> "MC Identity Broker": Request token in exchange for code
+activate "MC Identity Broker"
+"MC Identity Broker" -> Service: Return tokens
+deactivate "MC Identity Broker"
 |||
-Service -> Service: Extract Organization name and attributes for authorization
+Service -> Service: Extract Organization name and\nattributes for authorization
 Service -> "User (Browser)": User is authenticated
+deactivate Service
 ....
 
 The second diagram shows the flow used when an authenticated user is accessing a backend service. For browser based services this scenario is often used when the browser retrieves data from backend services. In this scenario since the user is authenticated, the user has a token that is presented for authentication for the backend service.
@@ -89,11 +99,15 @@ The second diagram shows the flow used when an authenticated user is accessing a
 [plantuml, title="Backend service authentication flow"]
 ....
 autonumber
-"User (Browser)" -> "Backend Service": User accesses Backend Service with data request, includes token
+"User (Browser)" -> "Backend Service": User accesses Backend Service\nwith data request, includes token
+activate "Backend Service"
 "Backend Service" -> "MC Identity Broker": Request token validation
+activate "MC Identity Broker"
 "MC Identity Broker" -> "Backend Service": Response for token validation
-"Backend Service" -> "Backend Service": Extract Organization name and attributes for authorization
+deactivate "MC Identity Broker"
+"Backend Service" -> "Backend Service": Extract Organization name and\nattributes for authorization
 "Backend Service" -> "User (Browser)": Return data response
+deactivate "Backend Service"
 ....
 
 === Keycloack
