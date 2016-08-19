@@ -549,6 +549,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#certificate-attributes">5.2. Certificate Attributes</a></li>
 <li><a href="#revocation-of-certificates">5.3. Revocation of certificates</a></li>
 <li><a href="#certificate-authentication-flow">5.4. Certificate Authentication Flow</a></li>
+<li><a href="#obtaining-a-openid-connect-token-using-a-certificate">5.5. Obtaining a OpenId Connect Token using a Certificate</a></li>
 </ul>
 </li>
 <li><a href="#authorization">6. Authorization</a>
@@ -637,10 +638,7 @@ As part of the e-Navigation process the Danish Maritime Authority had been worki
 <div class="sect2">
 <h3 id="signing-up"><a class="anchor" href="#signing-up"></a>1.3. Signing up</h3>
 <div class="paragraph">
-<p>In order to get an organization, its users and any ships the organization might own on to the Maritime Cloud, the organization needs to perform a signup process. The process is currently manual but will be replaced with an automatic one in the future.</p>
-</div>
-<div class="paragraph">
-<p>Send a email to Tomas Christensen at <a href="mailto:tgc@dma.dk">tgc@dma.dk</a> with the name of your organization and whom will be the main administrator in order to signup.</p>
+<p>In order to get an organization, its users and any ships the organization might own on to the Maritime Cloud, the organization needs to perform a signup process. The process is currently manual. To start the process, please fill out the <a href="https://portal.maritimecloud.net/app/index.html#/join">registration form</a>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -909,11 +907,11 @@ attributes, and credentials.</p>
 <p>To illustrate the authentication flows the sequence diagrams below is provided.</p>
 </div>
 <div class="paragraph">
-<p>The first diagram below shows the standard authentication flow involving a browser being used by the user to access a service in the form of a webpage.</p>
+<p>The first diagram below shows the standard <a href="http://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth">OpenID Connect Authorization Code Flow</a> involving a browser being used by the user to access a service in the form of a webpage.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/diag-147dbdb001251bcfaaa305f68c12576a.png" alt="Authentication flow" width="1144" height="771">
+<img src="images/diag-2dd32a8c4eb9f94a4c2fe1379ab95e1d.png" alt="Authentication flow" width="1065" height="786">
 </div>
 <div class="title">Authentication flow</div>
 </div>
@@ -922,7 +920,7 @@ attributes, and credentials.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/diag-061ac4daff71f061adea5a89172c1122.png" alt="Backend service authentication flow" width="1003" height="257">
+<img src="images/diag-d8689993dbab15217f351828ac681219.png" alt="Backend service authentication flow" width="631" height="287">
 </div>
 <div class="title">Backend service authentication flow</div>
 </div>
@@ -1098,16 +1096,19 @@ attributes, and credentials.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C (Country)</p></td>
 <td class="tableblock halign-center valign-bottom" colspan="5"><p class="tableblock">Organization country code</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UID</p></td>
+<td class="tableblock halign-center valign-bottom" colspan="4"><p class="tableblock">Entity unique organizational Id</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Organization shortname</p></td>
+</tr>
 </tbody>
 </table>
 <div class="paragraph">
 <p>An example of the fields for a vessel could look like this:</p>
 </div>
-<div class="sidebarblock">
+<div class="literalblock">
 <div class="content">
-<div class="paragraph">
-<p>C=DK, O=DMA;Danish Maritime Authority, OU=vessel, CN=JENS SØRENSEN</p>
-</div>
+<pre>C=DK, O=DMA;Danish Maritime Authority, OU=vessel, CN=JENS SØRENSEN, UID=dma.vessel2</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1153,6 +1154,11 @@ attributes, and credentials.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Vessels</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Port of register</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>2.25.285632790821948647314354670918887798603</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Vessels</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MRN</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>2.25.271477598449775373676560215839310464283</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Vessels, Users, Devices, Services</p></td>
@@ -1181,7 +1187,7 @@ attributes, and credentials.</p>
 </ol>
 </div>
 <div class="paragraph">
-<p>The endpoints for both the OCSP interface and the Certificate Revocation File are embedded into the certificates issued by the Maritime Cloud Identity Registry, and are currently <a href="https://api.maritimecloud.net/x509/api/certificates/crl" class="bare">https://api.maritimecloud.net/x509/api/certificates/crl</a> and ocsp-url: <a href="https://api.maritimecloud.net/x509/api/certificates/ocsp" class="bare">https://api.maritimecloud.net/x509/api/certificates/ocsp</a>.</p>
+<p>The endpoints for both the OCSP interface and the Certificate Revocation File are embedded into the certificates issued by the Maritime Cloud Identity Registry, and are currently <a href="https://api.maritimecloud.net/x509/api/certificates/crl" class="bare">https://api.maritimecloud.net/x509/api/certificates/crl</a> and <a href="https://api.maritimecloud.net/x509/api/certificates/ocsp" class="bare">https://api.maritimecloud.net/x509/api/certificates/ocsp</a>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1191,10 +1197,176 @@ attributes, and credentials.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/diag-56292f5a34a76a0c2530c07124c0f33c.png" alt="diag 56292f5a34a76a0c2530c07124c0f33c" width="739" height="299">
+<img src="images/diag-388cdd8d823f784525461566edc8c6de.png" alt="diag 388cdd8d823f784525461566edc8c6de" width="749" height="299">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="obtaining-a-openid-connect-token-using-a-certificate"><a class="anchor" href="#obtaining-a-openid-connect-token-using-a-certificate"></a>5.5. Obtaining a OpenId Connect Token using a Certificate</h3>
+<div class="paragraph">
+<p>It is possible to obtain OpenID Connect Tokens using certificate authentication. The idea is that instead of authenticating by being redirected to an Identity Provider as in the normal OpenID Connect flow, you authenticate at the Identity Broker by using your certificate (that has been issued by the Maritime Cloud Identity Registry). This authentication would work in the same way as when authenticating to any service. When authentication has been succesful the Identity Broker can then issue a JWT-token, which is what the OpenId Connect authentication use. So in effect what we have is a "bridge" between the 2 authentication approaches.</p>
+</div>
+<div class="paragraph">
+<p>An example of use could be that a device (which has been issued certificates) wishes to authenticate securely with a service, but the service only supports OpenId Connect authentication. Using the approach mentioned above, the device can use its certificate to get an OpenId Connect token, which can then be used to authenticate to the service.</p>
+</div>
+<div class="paragraph">
+<p>The flow looks like the diagram below:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/diag-194a1042b4cbf35ffbd268ffb8811ec3.png" alt="diag 194a1042b4cbf35ffbd268ffb8811ec3" width="902" height="552">
+</div>
+</div>
+<div class="sect3">
+<h4 id="example-of-obtaining-a-openid-connect-token-using-a-certificate"><a class="anchor" href="#example-of-obtaining-a-openid-connect-token-using-a-certificate"></a>5.5.1. Example of Obtaining a OpenId Connect Token using a Certificate</h4>
+<div class="paragraph">
+<p>In this simple example we will assume that a certificate and key&#8212;&#8203;pair has been issued to the entity who wishes to authenticate. This example makes use of <code>curl</code> a commandline tool available on Linux and Mac OS X.</p>
+</div>
+<div class="paragraph">
+<p>The authentication involves 2 steps:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Obtaining a temporary Authorization Code using a certificate.</p>
+</li>
+<li>
+<p>Obtaining a OpenId Connect Token using the Authorization Code.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>These 2 steps are actually standard in the <a href="http://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth">OpenID Connect Authorization Code Flow</a>, though normally certificates are not the standard authentication method.</p>
+</div>
+<div class="paragraph">
+<p>First we obtain the code by issuing this command:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>curl -v -L --key PrivateKey.pem --cert Certificate.pem 'https://maritimeid.maritimecloud.net/auth/realms/MaritimeCloud/protocol/openid-connect/auth?client_id=cert2oidc&amp;redirect_uri=http%3A%2F%2Flocalhost%3A99&amp;response_type=code&amp;kc_idp_hint=certificates&amp;scope=openid'</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Let us break down the command:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>curl -v -L</code>: <code>curl</code> is the tool itself. <code>-v</code> means it will be in verbose mode and <code>-L</code> means curl will follow HTTP redirects. We need to follow redirects since that is used by OpenID Connect to go back and forth between servers, and the verbose mode is needed because we would like to see where we are redirected&#8201;&#8212;&#8201;especially the last redirect, but more about that later.</p>
+</li>
+<li>
+<p><code>--key PrivateKey.pem --cert Certificate.pem</code>: Here the private key and the certificate is given to <code>curl</code> in PEM format.</p>
+</li>
+<li>
+<p>The last part is the URL which itself is multiple parts:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Address of the authentication endpoint: <code>https://maritimeid.maritimecloud.net/auth/realms/MaritimeCloud/protocol/openid-connect/auth</code></p>
+</li>
+<li>
+<p>Parameters: <code>client_id=cert2oidc&amp;redirect_uri=http%3A%2F%2Flocalhost&amp;response_type=code&amp;kc_idp_hint=certificates&amp;scope=openid</code>. These can be also be broken down:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>client_id=cert2oidc</code>: This is a special OpenID Connect client setup to be used for certificate authentication.</p>
+</li>
+<li>
+<p><code>redirect_uri=http%3A%2F%2Flocalhost%3A99</code>: This is where the authentication server will redirect to at the end of the authentication. The parameter is URL encoded and decode looks like this: <code>http://localhost:99</code>. This address is meant to be invalid, since we want the last redirect to fail.</p>
+</li>
+<li>
+<p><code>response_type=code</code>: This defines that we uses the Authorization Flow as mentioned above.</p>
+</li>
+<li>
+<p><code>kc_idp_hint=certificates</code>: This tells the Identity Broker that we wants to authenticate using the Certificate Identity Provider.</p>
+</li>
+<li>
+<p><code>scope=openid</code>: And finally, this define that we are using OpenID Connect.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>When the command runs it returns a lot of output, due to being in verbose mode. We will not go into detail, but quite a few redirects happens, as described in the sequences diagram above. The last redirect however fails, which is intended. The final output will look like this:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>* Issue another request to this URL: 'http://localhost:99?code=hzBswPz5iFB1npYE4HpZDRG5eowNM2Uv3Lp7pEjN1do.fb978d60-683c-46be-8c49-9a50ee80c961'
+* Rebuilt URL to: http://localhost:99/?code=hzBswPz5iFB1npYE4HpZDRG5eowNM2Uv3Lp7pEjN1do.fb978d60-683c-46be-8c49-9a50ee80c961
+*   Trying 127.0.0.1...
+* connect to 127.0.0.1 port 99 failed: Connection refused
+* Failed to connect to localhost port 99: Connection refused
+* Closing connection 1
+curl: (7) Failed to connect to localhost port 99: Connection refused</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here we can recognize <code>http://localhost:99</code> from the <code>redirect_uri</code> parameter described earlier. We can also see that a <code>code</code> parameter is in the url, in this case with the value <code>hzBswPz5iFB1npYE4HpZDRG5eowNM2Uv3Lp7pEjN1do.fb978d60-683c-46be-8c49-9a50ee80c961</code>. It is this code we need to in the second step of authentication to get the OpenID Connect Tokens. We will again use <code>curl</code> in the second step:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>curl --data "grant_type=authorization_code&amp;client_id=cert2oidc&amp;code=hzBswPz5iFB1npYE4HpZDRG5eowNM2Uv3Lp7pEjN1do.fb978d60-683c-46be-8c49-9a50ee80c961&amp;redirect_uri=http%3A%2F%2Flocalhost" https://maritimeid.maritimecloud.net/auth/realms/MaritimeCloud/protocol/openid-connect/token</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Again, let us break down the command. In this case the command consist of 3 parts, <code>curl</code>&#8201;&#8212;&#8201;the tool itself, data-parameters and an URL. We will concentrated on the data-parameters. Note that this is a HTTP POST request, which is why the parameters is supplied in a separate argument and not as part of the URL.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>grant_type=authorization_code</code>: This specifies that we will use an authorization code to authenticate ourself in this call.</p>
+</li>
+<li>
+<p><code>client_id=cert2oidc</code>: The id of the special client, as mentioned above.</p>
+</li>
+<li>
+<p><code>code=hzBswPz5iFB1npYE4HpZDRG5eowNM2Uv3Lp7pEjN1do.fb978d60-683c-46be-8c49-9a50ee80c961</code>: The code we obtained earlier.</p>
+</li>
+<li>
+<p><code>redirect_uri=http%3A%2F%2Flocalhost</code>: The redirect url, the same as before, though not actively used in this case.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>When this call runs there will be no redirection, so we do not need to tell <code>curl</code> to follow redirects. Instead the returned output will be the tokens that we wish to use, in a format like this:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>{
+   "access_token":"eyJhbGciOiJ...uXoHudIM1yiDBYj8g",
+   "expires_in":300,
+   "refresh_expires_in":1800,
+   "refresh_token":"eyJhbGciOiJ...iv7rKSa__IKy983Gg",
+   "token_type":"bearer",
+   "id_token":"eyJhbGciOiJ...Ycp2GupfpTTgRkhtnw",
+   "not-before-policy":0,
+   "session_state":"94487eaa-b77f-4b6c-8db1-c574fc6a09da"
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>access_token</code> is the token that should be used we communicating with services in the Maritime Cloud context. The token should be embedded in the HTTP header. When using <code>curl</code> it can be done like this:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>curl -H "Authorization: Bearer eyJhbGciOiJ...uXoHudIM1yiDBYj8g" https://api.maritimecloud.net/oidc/api/org/DMA</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>refresh_token</code> is used to re-authenticate to get a new set of tokens when the access_token has expired, in this case 300 seconds after it has been issued, as seen in the <code>expires_in</code> attribute. The new set of tokens can then be obtain with a HTTP POST like this:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>curl --data "grant_type=refresh_token&amp;client_id=cert2oidc&amp;refresh_token=eyJhbGciOiJ...iv7rKSa__IKy983Gg" https://maritimeid.maritimecloud.net/auth/realms/MaritimeCloud/protocol/openid-connect/token</pre>
 </div>
 </div>
 <div style="page-break-after: always;"></div>
+</div>
 </div>
 </div>
 </div>
@@ -1324,7 +1496,7 @@ attributes, and credentials.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-07-15 10:28:18 CEST
+Last updated 2016-08-19 11:13:07 CEST
 </div>
 </div>
 <script type="text/x-mathjax-config">
