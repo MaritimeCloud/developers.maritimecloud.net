@@ -534,7 +534,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#overview-2">3.1. Overview</a></li>
 </ul>
 </li>
-<li><a href="#user-federation">4. User Federation</a>
+<li><a href="#brokered-user-federation">4. Brokered User Federation</a>
 <ul class="sectlevel2">
 <li><a href="#openid-connect">4.1. OpenID Connect</a></li>
 <li><a href="#maritime-cloud-user-federation-setup">4.2. Maritime Cloud User Federation Setup</a></li>
@@ -657,7 +657,7 @@ As part of the e-Navigation process the Danish Maritime Authority had been worki
 <h2 id="identity-management"><a class="anchor" href="#identity-management"></a>2. Identity Management</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Identity management refers to the process of employing emerging technologies
+<p>Identity management refers to the process of employing technologies
 to manage information about the identity of users and control access to company
 resources. The goal of identity management is to improve productivity and
 security while lowering costs associated with managing users and their identities,
@@ -667,15 +667,28 @@ attributes, and credentials.</p>
 <p>The goal of the Maritime Clouds Identity Registry is to create a solution that satisfies the most common identification needs for the entire maritime industry on a global scale.</p>
 </div>
 <div class="paragraph">
-<p>This is not a simple task as any solution must support every possible user scenarios from small leisure sailors to multinational companies. The complexity of this task is why the functionality will be delivered over multiple milestones in the coming years. With the most important things such as support for authentication being implemented first. Additional functionality being added based on user needs in the projects supported by the Maritime Cloud.</p>
+<p>This is not a simple task as any solution must support every possible user scenarios from small leisure sailors to multinational companies. The complexity of this task is why the functionality will be delivered over multiple milestones in the coming years. The most important things such as support for authentication will be implemented first. Additional functionality will be added based on user needs in the projects supported by the Maritime Cloud.</p>
 </div>
 <div class="sect2">
 <h3 id="the-identity-registry"><a class="anchor" href="#the-identity-registry"></a>2.1. The Identity Registry</h3>
 <div class="paragraph">
-<p>In most of the documents that describe the Maritime Cloud there is the concept of an Identity Registry. In reality there are numerous systems both internal to the Maritime Cloud as well as external to the Maritime Cloud that makes up the identity registry. Not only are there multiple registries but the interaction with them can also depend on, for example, the type of authentication used. Something like digital authentication certificates can be used offline for authentication, that is, there is no need to contact the identity registry to validate a digital authentication certificate. But if user federation is used, both the Identity registry and possible an external company server needs to be contacted. Hence a better description of the Identity Registry would be probably be an <strong>Identity Platform</strong>.</p>
+<p>In most of the documents that describe the Maritime Cloud there is the concept of an Identity Registry. In reality there are numerous systems both internal to the Maritime Cloud as well as external to the Maritime Cloud that makes up the identity registry. The main components of the Identity Registry are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The Identity Registry API</p>
+</li>
+<li>
+<p>The Identity Broker</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>Within the scope of the EfficienSea 2 and STM validation projects, the digital identities of actors can be registered in a project Identity Register, unless those actors are already registered in another identity registry, which has been recognized as a part of the Maritime Cloud collaboration (federated identity management).</p>
+<p>The Identity Registry API provides management of entities in the Maritime Cloud and will be described later in this document.</p>
+</div>
+<div class="paragraph">
+<p>The Identity Broker provides links to trusted Identity Providers, owned by maritime organizations that wish to connect its users to the Maritime Cloud. Within the scope of the EfficienSea 2 and STM validation projects, a special Identity Provider is available where organizations can create users without linking their own Identity Provider.</p>
 </div>
 <div class="paragraph">
 <p>This will enable the participants in the projects to register actors to validate specific service concepts in testbed trials or utilize the operational services established by the projects, as well as validate the identity management concept of the Maritime Cloud. Beyond the scope of the project, it is foreseen that several identity registers will collaborate to form the global federated Maritime Cloud Identity Registry.</p>
@@ -720,10 +733,10 @@ attributes, and credentials.</p>
 <p>Once an organization has been registered (and validated), an identity administrator of that organization will be able to create and manage maritime identities that belong to this organization, such as Users, Vessels Devices or Services. This administration is typically done via the Maritime Cloud Portal which is a web based client. For some larger organizations it might make sense to integrate directly via the underlying APIs.</p>
 </div>
 <div class="paragraph">
-<p>All organizations that are registered in the Maritime Cloud must be registered with a unique &gt;=3 letter alphanumeric id.</p>
+<p>All organizations that are registered in the Maritime Cloud must be registered with a unique MRN.</p>
 </div>
 <div class="paragraph">
-<p>The id is used in numerous places. For example, all service specifications from a given organization is prefixed by the organization id.</p>
+<p>The MRN is used in numerous places. For example, all service specifications from a given organization includes the organizations MRN.</p>
 </div>
 <div class="paragraph">
 <p>Examples of valid organization ids:</p>
@@ -731,19 +744,19 @@ attributes, and credentials.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>IMO</p>
+<p>urn:mrn:mcl:org:IMO</p>
 </li>
 <li>
-<p>IALA</p>
+<p>urn:mrn:mcl:org:IALA</p>
 </li>
 <li>
-<p>DMA</p>
+<p>urn:mrn:mcl:org:DMA</p>
 </li>
 <li>
-<p>PortOfRotterdam</p>
+<p>urn:mrn:mcl:org:PortOfRotterdam</p>
 </li>
 <li>
-<p>VTS-Oeresund</p>
+<p>urn:mrn:mcl:org:VTS-Oeresund</p>
 </li>
 </ul>
 </div>
@@ -817,10 +830,10 @@ attributes, and credentials.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="user-federation"><a class="anchor" href="#user-federation"></a>4. User Federation</h2>
+<h2 id="brokered-user-federation"><a class="anchor" href="#brokered-user-federation"></a>4. Brokered User Federation</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>In the previous section we discussed digital certificates for use in machine to machine communication. There are no technical reason to why human users should not be able to use digital certificates to authenticate themselves as well. However, there are some serious practical ones that make it difficult to see them as a general solution for human user authentication. The first issue being that it requires that the certificate must always be present on the computer or mobile phone from which access is made. This is normally not a problem for machine to machine communication. Because, once installed the hardware configuration almost never changes. Unlike human users that uses their computer during the day to access information, their mobile phone on the way back from work and their tablet in the evening from home. Making sure that certificates are all installed on these devices and refreshing them once they expire is a lot of effort to require of users. And we believe having such a complicated setup would be a major barrier towards successful adoption of the Maritime Cloud. So for now, authentication of human users in the Maritime Cloud will be based on login through a web browser, using federation.</p>
+<p>In the previous section we discussed digital certificates for use in machine to machine communication. There are no technical reason to why human users should not be able to use digital certificates to authenticate themselves as well. However, there are some serious practical ones that make it difficult to see them as a general solution for human user authentication. The first issue being that it requires that the certificate must always be present on the computer or mobile phone from which access is made. This is normally not a problem for machine to machine communication. Because, once installed the hardware configuration almost never changes. Unlike human users that uses their computer during the day to access information, their mobile phone on the way back from work and their tablet in the evening from home. Making sure that certificates are all installed on these devices and refreshing them once they expire is a lot of effort to require of users. And we believe having such a complicated setup would be a major barrier towards successful adoption of the Maritime Cloud. So for now, authentication of human users in the Maritime Cloud will be based on login through a web browser, using brokered federation.</p>
 </div>
 <div class="paragraph">
 <p>Federation is the means of linking distinct identity management systems to a person&#8217;s electronic identity and attributes. For example, a shipping company might expose all their users in LDAP or Active Directory to the Maritime Cloud in such a way as they appear as Maritime Cloud users. Thereby bypassing the need to manage their users directly in the Maritime Cloud. This also means that the Maritime Cloud is not responsible for management of users. In practical terms, federation means that users asked to authenticate in the Maritime Cloud will be redirected to a login webpage supplied by their organization where they can login using their organizational id.</p>
@@ -846,7 +859,7 @@ attributes, and credentials.</p>
 <div class="sect2">
 <h3 id="maritime-cloud-user-federation-setup"><a class="anchor" href="#maritime-cloud-user-federation-setup"></a>4.2. Maritime Cloud User Federation Setup</h3>
 <div class="paragraph">
-<p>In most federated setups there is 1 step from the website (Service Provider) that need authentication and the Identity Provider, normally presented with a "Log in with X" link, where X could be Facebook, Google, etc. The setup used in the Maritime Cloud has 2 steps, where the first step is the Maritime Cloud Identity Broker which the presents the user with a list of available Identity Providers, which is the second step. For a deeper understanding of how this is actually done please read the  <a href="http://keycloak.github.io/docs/userguide/keycloak-server/html/identity-broker.html#identity-broker-overview">Identity Broker overview section from the Keycloak manual</a>. Keycloak is the software used for the Maritime Cloud Identity Broker.</p>
+<p>In most federated setups there is 1 step from the website (Service Provider) that need authentication and the Identity Provider, normally presented with a "Log in with X" link, where X could be Facebook, Google, etc. The setup used in the Maritime Cloud has 2 steps, where the first step is the Maritime Cloud Identity Broker which the presents the user with a list of available Identity Providers, which is the second step. For a deeper understanding of how this is actually done please read the  <a href="https://keycloak.gitbooks.io/server-adminstration-guide/content/topics/identity-broker/overview.html">Identity Broker overview section from the Keycloak manual</a>. Keycloak is the software used for the Maritime Cloud Identity Broker.</p>
 </div>
 <div class="paragraph">
 <p>The Maritime Cloud expects to provide the following attributes in the OpenID Connect JWT Access Token:</p>
@@ -865,7 +878,7 @@ attributes, and credentials.</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">preferred_username</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The users username in the parent organization.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The username of the user in the parent organization.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">email</p></td>
@@ -885,7 +898,7 @@ attributes, and credentials.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">org</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Id of the organization the user is a member of.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The Maritime Resource Name of the organization the user is a member of.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">permissions</p></td>
@@ -940,9 +953,111 @@ attributes, and credentials.</p>
 <p>If your organizations wishes to connect to the Maritime Cloud as an Identity Provider, to enable your uses to authenticate in the Maritime Cloud, please contact Tomas Christensen at <a href="mailto:tgc@dma.dk">tgc@dma.dk</a> in order to set it up. Note that currently you need to expose interfaces that supports either OpenID Connect or SAML2.</p>
 </div>
 <div class="paragraph">
-<p>Within the scope of the EfficienSea2 and STM validation projects, organizations can get users registered in special project Identity Providers, supplied by the Maritime Cloud. EfficienSea2 partners should contact Tomas Christensen at <a href="mailto:tgc@dma.dk">tgc@dma.dk</a>, while STM partners should contact &#8230;&#8203;?</p>
+<p>Within the scope of the EfficienSea2 and STM validation projects, organizations can get users registered in special project Identity Providers, supplied by the Maritime Cloud. EfficienSea2 partners should contact Tomas Christensen at <a href="mailto:tgc@dma.dk">tgc@dma.dk</a>, while STM partners should contact SMA.</p>
+</div>
+<div class="sect3">
+<h4 id="setting-up-an-openid-connect-identity-provider"><a class="anchor" href="#setting-up-an-openid-connect-identity-provider"></a>4.5.1. Setting up an OpenID Connect Identity Provider</h4>
+<div class="paragraph">
+<p>OpenID Connect is supported by the latest ADFS and <a href="http://keycloak.org">Keycloak</a> releases.</p>
+</div>
+<div class="paragraph">
+<p>As default the Maritime Cloud Identity Broker expect the following attributes to be provided by an OpenID Connect Identity Provider:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Attribute</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">preferred_username</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The username of the user in the parent organization.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">email</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The email of the user.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">given_name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Firstname of the user.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">family_name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Lastname of the user.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Full name of the user.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">permissions</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List of permissions for this user assigned by the organization the user is a member of.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>If your Identity Provider has the values in different attributes, some mapping can be set up.</p>
+</div>
+<div class="paragraph">
+<p>The Identity Broker will generate and attach the organizations MRN and the users MRN to the user.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="setting-up-an-saml2-identity-provider"><a class="anchor" href="#setting-up-an-saml2-identity-provider"></a>4.5.2. Setting up an SAML2 Identity Provider</h4>
+<div class="paragraph">
+<p>SAML2 is supported by older ADFS releases.</p>
+</div>
+<div class="paragraph">
+<p>As default the Maritime Cloud Identity Broker expect the following attributes to be provided by an OpenID Connect Identity Provider:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Attribute</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NAMEID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The username of the user in the parent organization.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress" class="bare">http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The email of the user.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname" class="bare">http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Firstname of the user.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname" class="bare">http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Lastname of the user.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://schemas.microsoft.com/ws/2008/06/identity/claims/role" class="bare">http://schemas.microsoft.com/ws/2008/06/identity/claims/role</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List of permissions for this user assigned by the organization the user is a member of.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>If your Identity Provider has the values in different attributes, some mapping can be set up.</p>
+</div>
+<div class="paragraph">
+<p>The Identity Broker will generate and attach the organizations MRN and the users MRN to the user.</p>
 </div>
 <div style="page-break-after: always;"></div>
+</div>
 </div>
 </div>
 </div>
@@ -960,8 +1075,9 @@ attributes, and credentials.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/ca.png" alt="Overview">
+<img src="images/ca.png" alt="ca">
 </div>
+<div class="title">PKI hierarchy</div>
 </div>
 <div class="paragraph">
 <p>In the current version of the Maritime Cloud we are working with a single sub CA that has the responsibility for issuing all certificates. This sub CA is located at the Maritime Cloud Identity Registry. However, this can gradually be changed to support another PKI hierarchy design.</p>
@@ -1069,12 +1185,12 @@ attributes, and credentials.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Full name</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Vessel name</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Device name</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Service Name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Service Domain Name</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Organization Name</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">O (Organization)</p></td>
-<td class="tableblock halign-center valign-bottom" colspan="5"><p class="tableblock">Organization Id+Name, separated by ";"</p></td>
+<td class="tableblock halign-center valign-bottom" colspan="5"><p class="tableblock">Organization MRN</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">OU (Organizational Unit)</p></td>
@@ -1098,8 +1214,8 @@ attributes, and credentials.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">UID</p></td>
-<td class="tableblock halign-center valign-bottom" colspan="4"><p class="tableblock">Entity unique organizational Id</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Organization shortname</p></td>
+<td class="tableblock halign-center valign-bottom" colspan="4"><p class="tableblock">Entity MRN</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Organization MRN</p></td>
 </tr>
 </tbody>
 </table>
@@ -1108,7 +1224,7 @@ attributes, and credentials.</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>C=DK, O=DMA;Danish Maritime Authority, OU=vessel, CN=JENS SØRENSEN, UID=dma.vessel2</pre>
+<pre>C=DK, O=urn:mrn:mcl:org:dma, OU=vessel, CN=JENS SØRENSEN, UID=urn:mrn:mcl:vessel:dma:jens-soerensen</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1496,7 +1612,7 @@ curl: (7) Failed to connect to localhost port 99: Connection refused</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-08-19 11:13:07 CEST
+Last updated 2016-08-19 11:13:37 CEST
 </div>
 </div>
 <script type="text/x-mathjax-config">
