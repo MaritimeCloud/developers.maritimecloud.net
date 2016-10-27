@@ -2,7 +2,7 @@
 
 if [ "$1" = "pdf" ]; then
    cd adoc
-   asciidoctor-pdf -r asciidoctor-diagram identity.adoc -D ../target
+   asciidoctor-pdf -r asciidoctor-diagram identity.adoc -D ../target -a imagesdir=../images/
    cd ..
    exit
 elif [ "$1" = "html" ]; then
