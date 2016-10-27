@@ -1,5 +1,5 @@
-== User Federation
-In the previous section we discussed digital certificates for use in machine to machine communication. There are no technical reason to why human users should not be able to use digital certificates to authenticate themselves as well. However, there are some serious practical ones that make it difficult to see them as a general solution for human user authentication. The first issue being that it requires that the certificate must always be present on the computer or mobile phone from which access is made. This is normally not a problem for machine to machine communication. Because, once installed the hardware configuration almost never changes. Unlike human users that uses their computer during the day to access information, their mobile phone on the way back from work and their tablet in the evening from home. Making sure that certificates are all installed on these devices and refreshing them once they expire is a lot of effort to require of users. And we believe having such a complicated setup would be a major barrier towards successful adoption of the Maritime Cloud. So for now, authentication of human users in the Maritime Cloud will be based on login through a web browser, using federation.
+== Brokered User Federation
+In the previous section we discussed digital certificates for use in machine to machine communication. There are no technical reason to why human users should not be able to use digital certificates to authenticate themselves as well. However, there are some serious practical ones that make it difficult to see them as a general solution for human user authentication. The first issue being that it requires that the certificate must always be present on the computer or mobile phone from which access is made. This is normally not a problem for machine to machine communication. Because, once installed the hardware configuration almost never changes. Unlike human users that uses their computer during the day to access information, their mobile phone on the way back from work and their tablet in the evening from home. Making sure that certificates are all installed on these devices and refreshing them once they expire is a lot of effort to require of users. And we believe having such a complicated setup would be a major barrier towards successful adoption of the Maritime Cloud. So for now, authentication of human users in the Maritime Cloud will be based on login through a web browser, using brokered federation.
 
 Federation is the means of linking distinct identity management systems to a person's electronic identity and attributes. For example, a shipping company might expose all their users in LDAP or Active Directory to the Maritime Cloud in such a way as they appear as Maritime Cloud users. Thereby bypassing the need to manage their users directly in the Maritime Cloud. This also means that the Maritime Cloud is not responsible for management of users. In practical terms, federation means that users asked to authenticate in the Maritime Cloud will be redirected to a login webpage supplied by their organization where they can login using their organizational id.
 
@@ -17,19 +17,19 @@ OpenID Connect allows for clients of all types, including browser-based JavaScri
 OpenID Connect provides authentication details in JWT tokens, that can be encrypted or digitally signed.
 
 === Maritime Cloud User Federation Setup
-In most federated setups there is 1 step from the website (Service Provider) that need authentication and the Identity Provider, normally presented with a "Log in with X" link, where X could be Facebook, Google, etc. The setup used in the Maritime Cloud has 2 steps, where the first step is the Maritime Cloud Identity Broker which the presents the user with a list of available Identity Providers, which is the second step. For a deeper understanding of how this is actually done please read the  http://keycloak.github.io/docs/userguide/keycloak-server/html/identity-broker.html#identity-broker-overview[Identity Broker overview section from the Keycloak manual]. Keycloak is the software used for the Maritime Cloud Identity Broker.
+In most federated setups there is 1 step from the website (Service Provider) that need authentication and the Identity Provider, normally presented with a "Log in with X" link, where X could be Facebook, Google, etc. The setup used in the Maritime Cloud has 2 steps, where the first step is the Maritime Cloud Identity Broker which the presents the user with a list of available Identity Providers, which is the second step. For a deeper understanding of how this is actually done please read the  https://keycloak.gitbooks.io/server-adminstration-guide/content/topics/identity-broker/overview.html[Identity Broker overview section from the Keycloak manual]. Keycloak is the software used for the Maritime Cloud Identity Broker.
 
 The Maritime Cloud expects to provide the following attributes in the OpenID Connect JWT Access Token:
 
 [options="header"]
 |===
 |Attribute|Description
-|preferred_username|The users username in the parent organization.
+|preferred_username|The username of the user in the parent organization.
 |email|The email of the user.
 |given_name|Firstname of the user.
 |family_name|Lastname of the user.
 |name|Full name of the user.
-|org|Id of the organization the user is a member of.
+|org|The Maritime Resource Name of the organization the user is a member of.
 |permissions|List of permissions for this user assigned by the organization the user is a member of.
 |mrn|The Maritime Resource Name of the user.
 |===
@@ -118,4 +118,43 @@ Keycloak is an open source product developed by RedHat. Keycloak can be set up t
 === Getting connected to the Maritime Cloud
 If your organizations wishes to connect to the Maritime Cloud as an Identity Provider, to enable your uses to authenticate in the Maritime Cloud, please contact Tomas Christensen at tgc@dma.dk in order to set it up. Note that currently you need to expose interfaces that supports either OpenID Connect or SAML2.
 
-Within the scope of the EfficienSea2 and STM validation projects, organizations can get users registered in special project Identity Providers, supplied by the Maritime Cloud. EfficienSea2 partners should contact Tomas Christensen at tgc@dma.dk, while STM partners should contact ...?
+Within the scope of the EfficienSea2 and STM validation projects, organizations can get users registered in special project Identity Providers, supplied by the Maritime Cloud. EfficienSea2 partners should contact Tomas Christensen at tgc@dma.dk, while STM partners should contact SMA.
+
+==== Setting up an OpenID Connect Identity Provider
+OpenID Connect is supported by the latest ADFS and http://keycloak.org[Keycloak] releases.
+
+As default the Maritime Cloud Identity Broker expect the following attributes to be provided by an OpenID Connect Identity Provider:
+
+[options="header"]
+|===
+|Attribute|Description
+|preferred_username|The username of the user in the parent organization.
+|email|The email of the user.
+|given_name|Firstname of the user.
+|family_name|Lastname of the user.
+|name|Full name of the user.
+|permissions|List of permissions for this user assigned by the organization the user is a member of.
+|===
+
+If your Identity Provider has the values in different attributes, some mapping can be set up.
+
+The Identity Broker will generate and attach the organizations MRN and the users MRN to the user.
+
+==== Setting up an SAML2 Identity Provider
+SAML2 is supported by older ADFS releases.
+
+As default the Maritime Cloud Identity Broker expect the following attributes to be provided by an OpenID Connect Identity Provider:
+
+[options="header"]
+|===
+|Attribute|Description
+|NAMEID|The username of the user in the parent organization.
+|http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress|The email of the user.
+|http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname|Firstname of the user.
+|http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname|Lastname of the user.
+|http://schemas.microsoft.com/ws/2008/06/identity/claims/role|List of permissions for this user assigned by the organization the user is a member of.
+|===
+
+If your Identity Provider has the values in different attributes, some mapping can be set up.
+
+The Identity Broker will generate and attach the organizations MRN and the users MRN to the user.

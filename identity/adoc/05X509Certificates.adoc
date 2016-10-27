@@ -5,7 +5,7 @@ The key piece in a PKI architecture is a PKI CA (Certificate Authority) which is
 
 One of the most important aspects of designing a PKI based architecture is the certificate hierarchy planning because the design will affect how certificates are validated and used by PKI-enabled actors. Normally a PKI based architecture is arranged in a tree like hierarchy with a single root entity in the top and with numerous leaves called sub CAs. Each sub CA can have their own sub CA thereby forming a tree with a single entity at the top. Each leave in the tree is responsible for creating certificates, for example, ships or organizations. The reason for doing this is to be able to delegate the responsibility to different parties. For example, in the case of the Maritime Cloud one could envision that at some point in the future every flag state would be their own sub CA. Having the sole responsibility of issuing certificates for vessels registered under their own flag.  
 
-image::ca.png[Overview]
+image::ca.png[title="PKI hierarchy"]
 
 In the current version of the Maritime Cloud we are working with a single sub CA that has the responsibility for issuing all certificates. This sub CA is located at the Maritime Cloud Identity Registry. However, this can gradually be changed to support another PKI hierarchy design.
 
@@ -52,17 +52,17 @@ The Subject distinguished name field will consists of the following items:
 [options="header"]
 |===
 |Field|User|Vessel|Device|Service|Organization
-|CN (CommonName)|Full name|Vessel name|Device name|Service Name|Organization Name
-|O (Organization) 5.1+^.>|Organization Id+Name, separated by ";"
+|CN (CommonName)|Full name|Vessel name|Device name|Service Domain Name|Organization Name
+|O (Organization) 5.1+^.>|Organization MRN
 |OU (Organizational Unit)|"user"|"vessel"|"device"|"service"|"organization"
 |E (Email)|User email||||Organization email
 |C (Country) 5.1+^.>|Organization country code
-|UID 4.1+^.>|Entity unique organizational Id|Organization shortname
+|UID 4.1+^.>|Entity MRN|Organization MRN
 |===
 
 An example of the fields for a vessel could look like this:
 ....
-C=DK, O=DMA;Danish Maritime Authority, OU=vessel, CN=JENS SØRENSEN, UID=dma.vessel2
+C=DK, O=urn:mrn:mcl:org:dma, OU=vessel, CN=JENS SØRENSEN, UID=urn:mrn:mcl:vessel:dma:jens-soerensen
 ....
 Finally, In additions to the information stored in the standard X.509 attributes listed above, the X509v3 extension SubjectAlternativeName (SAN) extension is used to store extra information. There already exists some predefined fields for the SAN extension, but they do not match the need we have for maritime related fields. Therefore the “otherName” field is used, which allows for using a Object Identifier (OID) to define custom fields. The OIDs currently used are not registered at ITU, but are randomly generated using a tool provided by ITU (see http://www.itu.int/en/ITU-T/asn1/Pages/UUID/uuids.aspx). See the table below for the fields defined, the OIDs of the fields and which kind of entities that uses the fields.
 
