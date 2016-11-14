@@ -1426,7 +1426,7 @@ curl: (7) Failed to connect to localhost port 99: Connection refused</pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>curl --data "grant_type=authorization_code&amp;client_id=cert2oidc&amp;code=hzBswPz5iFB1npYE4HpZDRG5eowNM2Uv3Lp7pEjN1do.fb978d60-683c-46be-8c49-9a50ee80c961&amp;redirect_uri=http%3A%2F%2Flocalhost" https://maritimeid.maritimecloud.net/auth/realms/MaritimeCloud/protocol/openid-connect/token</pre>
+<pre>curl --data "grant_type=authorization_code&amp;client_id=cert2oidc&amp;code=hzBswPz5iFB1npYE4HpZDRG5eowNM2Uv3Lp7pEjN1do.fb978d60-683c-46be-8c49-9a50ee80c961&amp;redirect_uri=http%3A%2F%2Flocalhost%3A99" https://maritimeid.maritimecloud.net/auth/realms/MaritimeCloud/protocol/openid-connect/token</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1444,7 +1444,7 @@ curl: (7) Failed to connect to localhost port 99: Connection refused</pre>
 <p><code>code=hzBswPz5iFB1npYE4HpZDRG5eowNM2Uv3Lp7pEjN1do.fb978d60-683c-46be-8c49-9a50ee80c961</code>: The code we obtained earlier.</p>
 </li>
 <li>
-<p><code>redirect_uri=http%3A%2F%2Flocalhost</code>: The redirect url, the same as before, though not actively used in this case.</p>
+<p><code>redirect_uri=http%3A%2F%2Flocalhost%3A99</code>: The redirect url, the same as before, though not used for actual redirection in this case.</p>
 </li>
 </ul>
 </div>
@@ -1612,7 +1612,7 @@ curl: (7) Failed to connect to localhost port 99: Connection refused</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-08-19 11:13:37 CEST
+Last updated 2016-10-27 15:28:40 CEST
 </div>
 </div>
 <script type="text/x-mathjax-config">
