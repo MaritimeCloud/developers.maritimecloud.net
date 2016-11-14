@@ -191,7 +191,7 @@ curl: (7) Failed to connect to localhost port 99: Connection refused
 Here we can recognize `http://localhost:99` from the `redirect_uri` parameter described earlier. We can also see that a `code` parameter is in the url, in this case with the value `hzBswPz5iFB1npYE4HpZDRG5eowNM2Uv3Lp7pEjN1do.fb978d60-683c-46be-8c49-9a50ee80c961`. It is this code we need to in the second step of authentication to get the OpenID Connect Tokens. We will again use `curl` in the second step:
 
 ....
-curl --data "grant_type=authorization_code&client_id=cert2oidc&code=hzBswPz5iFB1npYE4HpZDRG5eowNM2Uv3Lp7pEjN1do.fb978d60-683c-46be-8c49-9a50ee80c961&redirect_uri=http%3A%2F%2Flocalhost" https://maritimeid.maritimecloud.net/auth/realms/MaritimeCloud/protocol/openid-connect/token
+curl --data "grant_type=authorization_code&client_id=cert2oidc&code=hzBswPz5iFB1npYE4HpZDRG5eowNM2Uv3Lp7pEjN1do.fb978d60-683c-46be-8c49-9a50ee80c961&redirect_uri=http%3A%2F%2Flocalhost%3A99" https://maritimeid.maritimecloud.net/auth/realms/MaritimeCloud/protocol/openid-connect/token
 ....
 
 Again, let us break down the command. In this case the command consist of 3 parts, `curl` -- the tool itself, data-parameters and an URL. We will concentrated on the data-parameters. Note that this is a HTTP POST request, which is why the parameters is supplied in a separate argument and not as part of the URL.
@@ -199,7 +199,7 @@ Again, let us break down the command. In this case the command consist of 3 part
 * `grant_type=authorization_code`: This specifies that we will use an authorization code to authenticate ourself in this call.
 * `client_id=cert2oidc`: The id of the special client, as mentioned above.
 * `code=hzBswPz5iFB1npYE4HpZDRG5eowNM2Uv3Lp7pEjN1do.fb978d60-683c-46be-8c49-9a50ee80c961`: The code we obtained earlier.
-* `redirect_uri=http%3A%2F%2Flocalhost`: The redirect url, the same as before, though not actively used in this case.
+* `redirect_uri=http%3A%2F%2Flocalhost%3A99`: The redirect url, the same as before, though not used for actual redirection in this case.
 
 When this call runs there will be no redirection, so we do not need to tell `curl` to follow redirects. Instead the returned output will be the tokens that we wish to use, in a format like this:
 
