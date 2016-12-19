@@ -1,0 +1,36 @@
+== Introduction
+The Service Registry (SR) is part of the Maritime Cloud core services, and is used for service discovery and documentation. It fulfills the role of a design-time registry which stores human- and machine-readable documentation about the design and use of services, and a runtime registry containing the current information on where to reach a running service. Both these major parts come with extensive search functionality.
+
+This ensures the ability for service consumers to find the service they want to consume, as well as application developers to retrieve the documentation needed for learning how to interact with a service.
+
+=== Basic concepts
+To describe services, the SR features a logical concept that separates individual implementations from their design, and furthermore from the implemented service specification. Thus, the three main parts of a service description are as follows:
+
+* *Specification:* A technology-agnostic description of a service on a logical level, e.g. "A Weather Service"
+* *Technical Design:* A description of the technology-bound, actual realization of a service on a technical level.
+* *Instance:* Information about the actual URI and other relevant data about a specific running service instance.
+
+
+=== Service Specification
+A service specification provides operational information about a service without going into detail regarding the technology used. It is a logical description of the data and operations made available by that service, as well as their operational relevance. This information is available in both human readable DOC format, as well as machine-parseable XML, and contains the following:
+
+* *Operational context*
+* *Interface descriptions*
+* *Data structures*
+* *Dynamic behavior*
+* *Specification author*
+
+=== Technical Design
+The design goes into detail regarding the offered functions in a technology-specific manner, but does not contain information about a specific service instance. It contains:
+
+* *Reference to the corresponding specification*
+* *Description of the used technology*
+* *Detailed data structure description* (If different from the specification)
+* *Design author*
+
+=== Instance
+The service instance is described in human readable form via an *Implementation Manual*, and in machine readable XML form via the *Instance Description*.
+
+The *Implementation Manual* contains detailed information regarding the technologies used in the implementation, deployment instructions, and other instance-specific information. Different instances of the same specification may be run by different operators.
+
+The *Instance Description* contains the service coverage area, various descriptive fields (keywords, etc.), geographic area, UN/LOCODE, as well as the URI under which to access this service instance.

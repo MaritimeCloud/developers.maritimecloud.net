@@ -1,0 +1,25 @@
+== Basic Usage
+=== Registering a Service
+To register a service, the following steps should be followed:
+
+* *Authenticate with the Identity Registry*
+* *Register a Service Specification in the SR*
+* *Register a Service Design in the SR which refers to the Specification*
+* *Register a Service Instance*
+
+If any of the higher level requirements are already met, for example a new instance for an existing Design is to be registered, then the existing items don't have to be duplicated but can be referenced.
+
+Each of the service fragments (Specification, Design and Instance) consist of a human-readable (in DOC format) and a machine readable part (in XML). The Schema for the XML can be downloaded from the Service Registry.
+
+=== Querying the Service Registry
+To query the SR for a desired service, the flow is as follows:
+
+* *Authenticate with the Identity Registry*
+* *Get OAuth2 token*
+* *Access SR API to query Specifications, Designs and Instance information*
+
+
+
+
+=== API Access
+The SR is accessed by means of a REST API via HTTP protocol. It uses Swagger to describe the API, and an online API overview plus sample generation page can be found at https://sr.maritimecloud.net/swagger-ui/index.html

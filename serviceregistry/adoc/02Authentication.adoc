@@ -1,0 +1,6 @@
+== Authentication
+Usage of the Service Registry is subject to authentication. Since the SR uses a federated authentication system, the typical flow is that authentication is done with the Identity Registry (IR), which then issues an access token. This token is a Java Web Token (JWT) that is expected to be included in any API request. The token has to be included as part of the HTTP request headers:
+
+ Authorization: bearer JsqK1c18UUGJFAzz9xnH56584l4...
+
+Tokens may time out, so if the token is rejected, a new token should be requested from the Registry.
