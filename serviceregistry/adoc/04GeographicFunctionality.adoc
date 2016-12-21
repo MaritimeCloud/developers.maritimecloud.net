@@ -1,0 +1,20 @@
+== Geographic Functionality
+=== Service Coverage Geometry
+Each service instance may be registered with an associated coverage area. This area is encoded in the service instance XML description, and should be sent in Well Known Text (WKT) format.
+
+The service coverage area may consist of one or more geographic shapes or points. It should be noted that while a service may be defined using just one or more latitude/longitude point coordinates, it is advisable to always use an area shape like a polygon. Otherwise, queries using a point coordinate may not be able to intersect with and find the service instance.
+
+Services registered with no coverage geometry are treated as being available world-wide, unless an UN/LOCODE has been set.
+
+=== UN/LOCODE
+Alternatively to the WKT geometry definition, service instances may also be registered with a UN/LOCODE. This is an alphanumerical designation that is mapped to a lat/lon coordinate internally. This coordinate is then also considered in geographic searches where the search geometry forms an area, like a polygon. The primary use for UN/LOCODE is a direct match for that designator, so the geographic match is implemented as a secondary means to find location-based service instances.
+
+UN/LOCODE and custom geo-coverage are mutually exclusive. A service instance with an UN/LOCODE cannot also use a custom coverage geometry.
+
+=== Geographic Queries
+The SR provides several API functions for querying services based on geographic location:
+
+* *searchUnlocode* returns service instances that match the given UN/LOCODE
+* *searchLocation* returns instances whose coverage area intersects with a given lat/lon coordinate.
+* *searchGeometryWKT* finds all instances whose coverage area intersects with the given search geometry.
+* *searchGeometryGeoJSON* Same as the WKT search, but accepts the search geometry in GeoJSON format.
