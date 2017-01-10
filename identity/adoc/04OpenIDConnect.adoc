@@ -121,7 +121,7 @@ If your organizations wishes to connect to the Maritime Cloud as an Identity Pro
 Within the scope of the EfficienSea2 and STM validation projects, organizations can get users registered in special project Identity Providers, supplied by the Maritime Cloud. EfficienSea2 partners should contact Tomas Christensen at tgc@dma.dk, while STM partners should contact SMA.
 
 ==== Setting up an OpenID Connect Identity Provider
-OpenID Connect is supported by the latest ADFS and http://keycloak.org[Keycloak] releases.
+OpenID Connect is supported by the latest ADFS and http://keycloak.org[Keycloak] releases. The Maritime Cloud Identity Broker only supports the http://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth[OpenID Connect Authorization Code Flow] when connecting to Identity Providers. This limitation only applies when the Identity Broker connects to Identity Providers, not when Services/Clients connects to the Identity Broker.
 
 As default the Maritime Cloud Identity Broker expect the following attributes to be provided by an OpenID Connect Identity Provider:
 

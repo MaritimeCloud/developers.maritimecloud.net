@@ -44,7 +44,7 @@ The Identity Registry currently has these roles:
 
 A few things should be noted:
 
-* "Maintain" (as mentioned in the table above) means to be able to create, update and delete.
+* "Maintain" (as mentioned in the table above) means to be able to create, update and delete, as well as issuing and revoking certificates.
 * Excluding entities with the role ROLE_SITE_ADMIN, it is not possible for entities to see entities from other organizations.
 * A ROLE_SITE_ADMIN can maintain entities and organizations beyond his own organization.
 * Any entity, regardless of roles, can see all entities from its own organization, though some sensitive information from services is filtered for non-admins.
