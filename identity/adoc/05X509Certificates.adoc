@@ -19,11 +19,11 @@ After having issued a certificate the administrator can now install it on the sh
 
 In order to use the certificates issued by the Maritime Cloud Identity Registry it is needed to add the Maritime Cloud Root Certificates to the relevant trustchain. Here you can download the root certificates for the Maritime Cloud instances:
 
-The Maritime Cloud *Production* environment root certificates in http://manual.maritimecloud.net/prod-certificate/mc-ca-chain.pem[PEM] or http://manual.maritimecloud.net/identity/prod-certificate/mc-truststore-password-is-changeit.jks[JKS] format.
+The Maritime Cloud *Production* environment root certificates in http://developers.maritimecloud.net/identity/prod-certificate/mc-ca-chain.pem[PEM] or http://developers.maritimecloud.net/identity/prod-certificate/mc-truststore-password-is-changeit.jks[JKS] format.
 
-//The Maritime Cloud *Staging* environment root certificates in http://manual.maritimecloud.net/staging-certificate/mc-ca-chain.pem[PEM] or http://manual.maritimecloud.net/identity/staging-certificate/mc-truststore-password-is-changeit.jks[JKS] format.
+//The Maritime Cloud *Staging* environment root certificates in http://developers.maritimecloud.net/identity/staging-certificate/mc-ca-chain.pem[PEM] or http://developers.maritimecloud.net/identity/staging-certificate/mc-truststore-password-is-changeit.jks[JKS] format.
 
-The Maritime Cloud *Test* environment root certificates in http://manual.maritimecloud.net/test-certificate/mc-ca-chain.pem[PEM] or http://manual.maritimecloud.net/identity/test-certificate/mc-truststore-password-is-changeit.jks[JKS] format.
+The Maritime Cloud *Test* environment root certificates in http://developers.maritimecloud.net/identity/test-certificate/mc-ca-chain.pem[PEM] or http://developers.maritimecloud.net/identity/test-certificate/mc-truststore-password-is-changeit.jks[JKS] format.
 
 === Certificate Attributes
 The Maritime Cloud can issue X.509 certificates for the users which can then be used for authentication. Service providers relying on X.509 certificate authentication must obtain and install the Maritime Cloud root certificate into their webservice. 
