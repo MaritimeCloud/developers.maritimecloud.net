@@ -545,7 +545,7 @@ table.CodeRay td.code>pre{padding:0}
 </li>
 <li><a href="#pki-and-x-509-certificates">5. PKI and X.509 Certificates</a>
 <ul class="sectlevel2">
-<li><a href="#issuing-certificates">5.1. Issuing Certificates</a></li>
+<li><a href="#get-the-maritime-cloud-root-certificate">5.1. Get The Maritime Cloud Root Certificate</a></li>
 <li><a href="#certificate-attributes">5.2. Certificate Attributes</a></li>
 <li><a href="#revocation-of-certificates">5.3. Revocation of certificates</a></li>
 <li><a href="#certificate-authentication-flow">5.4. Certificate Authentication Flow</a></li>
@@ -639,6 +639,9 @@ As part of the e-Navigation process the Danish Maritime Authority had been worki
 <h3 id="signing-up"><a class="anchor" href="#signing-up"></a>1.3. Signing up</h3>
 <div class="paragraph">
 <p>In order to get an organization, its users and any ships the organization might own on to the Maritime Cloud, the organization needs to perform a signup process. The process is currently manual. To start the process, please fill out the <a href="https://management.maritimecloud.net/#/apply">registration form</a>.</p>
+</div>
+<div class="paragraph">
+<p>Once your organization has been approved you will have access to the Maritime Cloud and its services. You should probably start by looking at the <a href="https://management.maritimecloud.net/">Management Portal</a>. See the <a href="http://manual.maritimecloud.net/">manual</a> for how to use it.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1092,36 +1095,15 @@ attributes, and credentials.</p>
 <p>After having issued a certificate the administrator can now install it on the ship in some way. The actual logistics about how and where to install it is outside of the scope of the identity registry as this might vary a lot between organizations and projects. This also reduces the functionality of the identity registry to just provide the core functionality of Identity management. Allowing users to be able to build innovative solutions on top of it. This also applies directly to machine to machine communication. The identity registry places no restrictions about what kind of machine to machine communication protocols that should be used. It just provides the basic infrastructure to allow for each machine to authenticate the host in the other end. Letting each project select their protocols if needed.</p>
 </div>
 <div class="sect2">
-<h3 id="issuing-certificates"><a class="anchor" href="#issuing-certificates"></a>5.1. Issuing Certificates</h3>
+<h3 id="get-the-maritime-cloud-root-certificate"><a class="anchor" href="#get-the-maritime-cloud-root-certificate"></a>5.1. Get The Maritime Cloud Root Certificate</h3>
 <div class="paragraph">
-<p>As mentioned above, it is currently only the Maritime Cloud Identity Registry that can issue valid certificates for use within the Maritime Cloud context. At the moment it is possible to issue certificates for organizations, vessels, users, devices and services. Note that an organization currently cannot function as a sub CA, so it cannot use its certificate to issue other certificates. Also note that there are currently no support for generating certificates using a certificate signing request (CSR).</p>
-</div>
-<div class="paragraph">
-<p>To actually get a certificate from the Maritime Cloud Identity Registry, it is recommended to use the Maritime Cloud Management Portal, though it is also possible to directly use the REST interface of the Identity Registry, which is what the management portal does.</p>
+<p>In order to use the certificates issued by the Maritime Cloud Identity Registry it is needed to add the Maritime Cloud Root Certificates to the relevant trustchain. Here you can download the root certificates for the Maritime Cloud instances:</p>
 </div>
 <div class="paragraph">
-<p>When in the management portal first select the entity for which you wish to create a certificate. In this example we have created a vessel called "Harmony of the Seas". As can be seen from the screenshot the vessel currently has no certificates.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/new-certificate-step-1.png" alt="Overview">
-</div>
+<p>The Maritime Cloud <strong>Production</strong> environment root certificates in <a href="http://manual.maritimecloud.net/prod-certificate/mc-ca-chain.pem">PEM</a> or <a href="http://manual.maritimecloud.net/identity/prod-certificate/mc-truststore-password-is-changeit.jks">JKS</a> format.</p>
 </div>
 <div class="paragraph">
-<p>In order to create a new certificate for the vessel select <strong>+New Certificate</strong>. A new dialog box asking for confirmation is displayed. After having confirmed the generation. A new dialog box will de displayed where it is possible to download a zip file consisting of the generated certificate and its private and public key. It is important to remember to download the file as the the private key is no longer available after the page is closed.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/new-certificate-step-3.png" alt="Overview">
-</div>
-</div>
-<div class="paragraph">
-<p>After the certificate has been generated it can be seen in the list of registered certificates for the vessel. This can be used for revoking the certificate at a later stage.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/new-certificate-step-4.png" alt="Overview">
-</div>
+<p>The Maritime Cloud <strong>Test</strong> environment root certificates in <a href="http://manual.maritimecloud.net/test-certificate/mc-ca-chain.pem">PEM</a> or <a href="http://manual.maritimecloud.net/identity/test-certificate/mc-truststore-password-is-changeit.jks">JKS</a> format.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1752,7 +1734,7 @@ curl: (7) Failed to connect to localhost port 99: Connection refused</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-12-21 13:39:32 CET
+Last updated 2017-01-24 12:47:12 CET
 </div>
 </div>
 <script type="text/x-mathjax-config">
