@@ -33,6 +33,8 @@ This guide will predominantly discuss the identity registry.
 === Signing up
 In order to get an organization, its users and any ships the organization might own on to the Maritime Cloud, the organization needs to perform a signup process. The process is currently manual. To start the process, please fill out the https://management.maritimecloud.net/#/apply[registration form].
 
+Once your organization has been approved you will have access to the Maritime Cloud and its services. You should probably start by looking at the https://management.maritimecloud.net/[Management Portal]. See the http://manual.maritimecloud.net/[manual] for how to use it.
+
 === Feedback
 Readers may send feedback about errors, omissions, and ambiguities in this guide to tgc@dma.dk or even better submit a pull request to the documentation available at https://github.com/MaritimeCloud/developers.maritimecloud.net.
 

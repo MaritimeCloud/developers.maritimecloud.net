@@ -15,23 +15,15 @@ To issue a new certificate for, for example, a vessel. An administrator for the 
 
 After having issued a certificate the administrator can now install it on the ship in some way. The actual logistics about how and where to install it is outside of the scope of the identity registry as this might vary a lot between organizations and projects. This also reduces the functionality of the identity registry to just provide the core functionality of Identity management. Allowing users to be able to build innovative solutions on top of it. This also applies directly to machine to machine communication. The identity registry places no restrictions about what kind of machine to machine communication protocols that should be used. It just provides the basic infrastructure to allow for each machine to authenticate the host in the other end. Letting each project select their protocols if needed.
 
-=== Issuing Certificates
+=== Get The Maritime Cloud Root Certificate
 
-As mentioned above, it is currently only the Maritime Cloud Identity Registry that can issue valid certificates for use within the Maritime Cloud context. At the moment it is possible to issue certificates for organizations, vessels, users, devices and services. Note that an organization currently cannot function as a sub CA, so it cannot use its certificate to issue other certificates. Also note that there are currently no support for generating certificates using a certificate signing request (CSR).
+In order to use the certificates issued by the Maritime Cloud Identity Registry it is needed to add the Maritime Cloud Root Certificates to the relevant trustchain. Here you can download the root certificates for the Maritime Cloud instances:
 
-To actually get a certificate from the Maritime Cloud Identity Registry, it is recommended to use the Maritime Cloud Management Portal, though it is also possible to directly use the REST interface of the Identity Registry, which is what the management portal does.
+The Maritime Cloud *Production* environment root certificates in http://manual.maritimecloud.net/prod-certificate/mc-ca-chain.pem[PEM] or http://manual.maritimecloud.net/identity/prod-certificate/mc-truststore-password-is-changeit.jks[JKS] format.
 
-When in the management portal first select the entity for which you wish to create a certificate. In this example we have created a vessel called "Harmony of the Seas". As can be seen from the screenshot the vessel currently has no certificates.
+//The Maritime Cloud *Staging* environment root certificates in http://manual.maritimecloud.net/staging-certificate/mc-ca-chain.pem[PEM] or http://manual.maritimecloud.net/identity/staging-certificate/mc-truststore-password-is-changeit.jks[JKS] format.
 
-image::new-certificate-step-1.png[Overview]
-
-In order to create a new certificate for the vessel select *+New Certificate*. A new dialog box asking for confirmation is displayed. After having confirmed the generation. A new dialog box will de displayed where it is possible to download a zip file consisting of the generated certificate and its private and public key. It is important to remember to download the file as the the private key is no longer available after the page is closed.
-
-image::new-certificate-step-3.png[Overview]
-
-After the certificate has been generated it can be seen in the list of registered certificates for the vessel. This can be used for revoking the certificate at a later stage.
-
-image::new-certificate-step-4.png[Overview]
+The Maritime Cloud *Test* environment root certificates in http://manual.maritimecloud.net/test-certificate/mc-ca-chain.pem[PEM] or http://manual.maritimecloud.net/identity/test-certificate/mc-truststore-password-is-changeit.jks[JKS] format.
 
 === Certificate Attributes
 The Maritime Cloud can issue X.509 certificates for the users which can then be used for authentication. Service providers relying on X.509 certificate authentication must obtain and install the Maritime Cloud root certificate into their webservice. 
