@@ -57,3 +57,7 @@ include::03BasicUsage.adoc[]
 <<<
 
 include::04GeographicFunctionality.adoc[]
+
+<<<
+
+include::05QueryFormat.adoc[]

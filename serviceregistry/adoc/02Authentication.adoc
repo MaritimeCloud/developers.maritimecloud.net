@@ -1,6 +1,21 @@
 == Authentication
-Usage of the Service Registry is subject to authentication. Since the SR uses a federated authentication system, the typical flow is that authentication is done with the Identity Registry (IR), which then issues an access token. This token is a Java Web Token (JWT) that is expected to be included in any API request. The token has to be included as part of the HTTP request headers:
+The Service Registry is designed to be used in conjunction with the Maritime Identity Registry, which handles authorization. In general, the usage of the Service Registry can be summarized via the following steps:
 
- Authorization: bearer JsqK1c18UUGJFAzz9xnH56584l4...
+1.	Authenticate with Identity Registry via certificate/username and password/other means
+2.	Receive access token
+3.	Send requests to Service Registry, including the access token
+4.	Receive and handle the response to the request.
+
+The authentication with the Identity Registry is out of scope for this documentation, as more information on this topic can be found in the corresponding ID Registry documentation. The Bearer Token received from the ID Registry is a Java Web Token in Base64-encoded form, which has to be passed to the Service Registry with every request. The token has a limited time of validity, after which it has to be re-requested. The ServiceRegistry will respond with a HTTP 503 Error if the token is out of date, the authentication token is invalid, or no token was provided.
+To include the authentication token, it should be included in the HTTP header via the “Authorization” header field as follows:
+
+ GET /api/example HTTP/1.1
+ Host: sr.exampledomain.com
+ Authorization: Bearer SlAV32hkKG…
+
+The Service Registry API is stateless, there is no http session being used for authentication.
+The organization ID is encoded within the token and is set by the Identity Registry based on your authentication credentials. Services registered under your organization ID can only be modified by users or clients with the same organization ID.
+
+Both ServiceAdministrationInterface and ServiceLookupInterface work in the same fashion, with the exception of the administrative functions requiring the organization ID of the client to match the organization ID of the resource to be modified.
 
 Tokens may time out, so if the token is rejected, a new token should be requested from the Registry.

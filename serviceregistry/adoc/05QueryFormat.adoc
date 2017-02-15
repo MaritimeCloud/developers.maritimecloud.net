@@ -1,0 +1,28 @@
+== Query Filter Format
+Most API functions for retrieving service information support an optional field called "query", which can be used to narrow down results based on a set of filter attributes. For example, while a geo-query may return both REST and SOAP services, it is possible to apply a filter so only REST services are returned.
+
+=== Available Filter Attributes
+* instanceId
+* specificationId
+* designId
+* name
+* comment
+* status
+* organizationId
+* keywords
+* version
+* mmsi
+* imo
+* serviceType
+* unlocode
+* endpointUri
+* endpointType
+
+=== Query
+The query parameter is a string with the following layout:
+
+ field1:value1 AND field2:value2 AND field3:value3
+
+For example:
+
+ serviceType:VIS AND organizationId:SMA
