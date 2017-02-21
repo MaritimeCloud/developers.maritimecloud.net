@@ -538,6 +538,12 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#geographic-queries">4.3. Geographic Queries</a></li>
 </ul>
 </li>
+<li><a href="#query-filter-format">5. Query Filter Format</a>
+<ul class="sectlevel2">
+<li><a href="#available-filter-attributes">5.1. Available Filter Attributes</a></li>
+<li><a href="#query">5.2. Query</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -641,12 +647,41 @@ table.CodeRay td.code>pre{padding:0}
 <h2 id="authentication"><a class="anchor" href="#authentication"></a>2. Authentication</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Usage of the Service Registry is subject to authentication. Since the SR uses a federated authentication system, the typical flow is that authentication is done with the Identity Registry (IR), which then issues an access token. This token is a Java Web Token (JWT) that is expected to be included in any API request. The token has to be included as part of the HTTP request headers:</p>
+<p>The Service Registry is designed to be used in conjunction with the Maritime Identity Registry, which handles authorization. In general, the usage of the Service Registry can be summarized via the following steps:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Authenticate with Identity Registry via certificate/username and password/other means</p>
+</li>
+<li>
+<p>Receive access token</p>
+</li>
+<li>
+<p>Send requests to Service Registry, including the access token</p>
+</li>
+<li>
+<p>Receive and handle the response to the request.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The authentication with the Identity Registry is out of scope for this documentation, as more information on this topic can be found in the corresponding ID Registry documentation. The Bearer Token received from the ID Registry is a Java Web Token in Base64-encoded form, which has to be passed to the Service Registry with every request. The token has a limited time of validity, after which it has to be re-requested. The ServiceRegistry will respond with a HTTP 503 Error if the token is out of date, the authentication token is invalid, or no token was provided.
+To include the authentication token, it should be included in the HTTP header via the “Authorization” header field as follows:</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>Authorization: bearer JsqK1c18UUGJFAzz9xnH56584l4...</pre>
+<pre>GET /api/example HTTP/1.1
+Host: sr.exampledomain.com
+Authorization: Bearer SlAV32hkKG…</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>The Service Registry API is stateless, there is no http session being used for authentication.
+The organization ID is encoded within the token and is set by the Identity Registry based on your authentication credentials. Services registered under your organization ID can only be modified by users or clients with the same organization ID.</p>
+</div>
+<div class="paragraph">
+<p>Both ServiceAdministrationInterface and ServiceLookupInterface work in the same fashion, with the exception of the administrative functions requiring the organization ID of the client to match the organization ID of the resource to be modified.</p>
 </div>
 <div class="paragraph">
 <p>Tokens may time out, so if the token is rejected, a new token should be requested from the Registry.</p>
@@ -758,13 +793,93 @@ table.CodeRay td.code>pre{padding:0}
 </li>
 </ul>
 </div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="query-filter-format"><a class="anchor" href="#query-filter-format"></a>5. Query Filter Format</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Most API functions for retrieving service information support an optional field called "query", which can be used to narrow down results based on a set of filter attributes. For example, while a geo-query may return both REST and SOAP services, it is possible to apply a filter so only REST services are returned.</p>
+</div>
+<div class="sect2">
+<h3 id="available-filter-attributes"><a class="anchor" href="#available-filter-attributes"></a>5.1. Available Filter Attributes</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>instanceId</p>
+</li>
+<li>
+<p>specificationId</p>
+</li>
+<li>
+<p>designId</p>
+</li>
+<li>
+<p>name</p>
+</li>
+<li>
+<p>comment</p>
+</li>
+<li>
+<p>status</p>
+</li>
+<li>
+<p>organizationId</p>
+</li>
+<li>
+<p>keywords</p>
+</li>
+<li>
+<p>version</p>
+</li>
+<li>
+<p>mmsi</p>
+</li>
+<li>
+<p>imo</p>
+</li>
+<li>
+<p>serviceType</p>
+</li>
+<li>
+<p>unlocode</p>
+</li>
+<li>
+<p>endpointUri</p>
+</li>
+<li>
+<p>endpointType</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="query"><a class="anchor" href="#query"></a>5.2. Query</h3>
+<div class="paragraph">
+<p>The query parameter is a string with the following layout:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>field1:value1 AND field2:value2 AND field3:value3</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For example:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>serviceType:VIS AND organizationId:SMA</pre>
+</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-12-21 13:29:24 CET
+Last updated 2017-02-21 13:38:23 CET
 </div>
 </div>
 <script type="text/x-mathjax-config">
