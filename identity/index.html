@@ -747,19 +747,22 @@ attributes, and credentials.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>urn:mrn:mcl:org:IMO</p>
+<p>urn:mrn:mcl:org:imo</p>
 </li>
 <li>
-<p>urn:mrn:mcl:org:IALA</p>
+<p>urn:mrn:mcl:org:iala</p>
 </li>
 <li>
-<p>urn:mrn:mcl:org:DMA</p>
+<p>urn:mrn:mcl:org:dma</p>
 </li>
 <li>
-<p>urn:mrn:mcl:org:PortOfRotterdam</p>
+<p>urn:mrn:mcl:org:portofrotterdam</p>
 </li>
 <li>
-<p>urn:mrn:mcl:org:VTS-Oeresund</p>
+<p>urn:mrn:mcl:org:vts-oeresund</p>
+</li>
+<li>
+<p>urn:mrn:mcl:org:amsa@iala</p>
 </li>
 </ul>
 </div>
@@ -959,7 +962,7 @@ attributes, and credentials.</p>
 <p>Within the scope of the EfficienSea2 and STM validation projects, organizations can get users registered in special project Identity Providers, supplied by the Maritime Cloud. EfficienSea2 partners should contact Tomas Christensen at <a href="mailto:tgc@dma.dk">tgc@dma.dk</a>, while STM partners should contact SMA.</p>
 </div>
 <div class="sect3">
-<h4 id="setting-up-an-openid-connect-identity-provider"><a class="anchor" href="#setting-up-an-openid-connect-identity-provider"></a>4.5.1. Setting up an OpenID Connect Identity Provider</h4>
+<h4 id="setup-oidc-idp"><a class="anchor" href="#setup-oidc-idp"></a>4.5.1. Setting up an OpenID Connect Identity Provider</h4>
 <div class="paragraph">
 <p>OpenID Connect is supported by the latest ADFS and <a href="http://keycloak.org">Keycloak</a> releases. The Maritime Cloud Identity Broker only supports the <a href="http://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth">OpenID Connect Authorization Code Flow</a> when connecting to Identity Providers. This limitation only applies when the Identity Broker connects to Identity Providers, not when Services/Clients connects to the Identity Broker.</p>
 </div>
@@ -1012,12 +1015,54 @@ attributes, and credentials.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="setting-up-an-saml2-identity-provider"><a class="anchor" href="#setting-up-an-saml2-identity-provider"></a>4.5.2. Setting up an SAML2 Identity Provider</h4>
+<h4 id="setting-up-an-openid-connect-identity-provider-for-multiple-organizations"><a class="anchor" href="#setting-up-an-openid-connect-identity-provider-for-multiple-organizations"></a>4.5.2. Setting up an OpenID Connect Identity Provider for multiple organizations</h4>
 <div class="paragraph">
-<p>SAML2 is supported by older ADFS releases.</p>
+<p>The Maritime Cloud has some special Identity Providers that handles the authentication for multiple organizations. Current examples are "IALA" and "BIMCO ExtraNet". These Identity Providers are responsible for vetting the organizations they provide authentication for, so that it is confirmed that the organization is who they claim to be. New organizations can be added by these Identity Providers. Since the Maritime Cloud currently needs to know about organizations centrally to be able to (among other things) issue certificates, some extra information is needed from these Identity Providers, to be able to create them in the central Identity Registry, if they are not already known.</p>
+</div>
+<div class="paragraph">
+<p>The extra information must be given as attributes, in addition to the attributes mentioned in <a href="#setup-oidc-idp">Setting up an OpenID Connect Identity Provider</a>:</p>
 </div>
 <div class="paragraph">
 <p>As default the Maritime Cloud Identity Broker expect the following attributes to be provided by an OpenID Connect Identity Provider:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Attribute</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mrn</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The Maritime Resource Name of the user.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">org</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The Maritime Resource Name of the parent organization of the user.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">org-name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Human readable name of the parent organizations.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">org-address</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Address of the organization. It must be without linebreaks, ending with comma and the country of the address.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Note that the MRN must be on the form "urn:mrn:mcl:user:dma@iala:thc" and "urn:mrn:mcl:org:dma@iala" for user and organization respectively. In this case the organization is "dma" whos identity is guaranteed by "iala".</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="setting-up-an-saml2-identity-provider"><a class="anchor" href="#setting-up-an-saml2-identity-provider"></a>4.5.3. Setting up an SAML2 Identity Provider</h4>
+<div class="paragraph">
+<p>SAML2 is supported by older ADFS releases.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
@@ -1737,7 +1782,7 @@ curl: (7) Failed to connect to localhost port 99: Connection refused</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-05-10 14:23:12 CEST
+Last updated 2017-05-10 14:23:51 CEST
 </div>
 </div>
 <script type="text/x-mathjax-config">
