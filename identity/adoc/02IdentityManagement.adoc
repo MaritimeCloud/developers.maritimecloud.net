@@ -47,15 +47,14 @@ All organizations that are registered in the Maritime Cloud must be registered w
 
 The MRN is used in numerous places. For example, all service specifications from a given organization includes the organizations MRN.
 
-// Likewise must all MSDL files from a given organization be organized under the a namespace that starts with the organization id. For example, "package dma.mmsi;" In order to allow easy and consistent sharing and import of MSDL files between organizations.
-
 Examples of valid organization ids:
 
-** urn:mrn:mcl:org:IMO
-** urn:mrn:mcl:org:IALA
-** urn:mrn:mcl:org:DMA
-** urn:mrn:mcl:org:PortOfRotterdam
-** urn:mrn:mcl:org:VTS-Oeresund
+** urn:mrn:mcl:org:imo
+** urn:mrn:mcl:org:iala
+** urn:mrn:mcl:org:dma
+** urn:mrn:mcl:org:portofrotterdam
+** urn:mrn:mcl:org:vts-oeresund
+** urn:mrn:mcl:org:amsa@iala
 
 ==== Vessels
 Vessels describes any floating object used for the carriage of people or goods.

@@ -120,6 +120,7 @@ If your organizations wishes to connect to the Maritime Cloud as an Identity Pro
 
 Within the scope of the EfficienSea2 and STM validation projects, organizations can get users registered in special project Identity Providers, supplied by the Maritime Cloud. EfficienSea2 partners should contact Tomas Christensen at tgc@dma.dk, while STM partners should contact SMA.
 
+[[setup-oidc-idp]]
 ==== Setting up an OpenID Connect Identity Provider
 OpenID Connect is supported by the latest ADFS and http://keycloak.org[Keycloak] releases. The Maritime Cloud Identity Broker only supports the http://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth[OpenID Connect Authorization Code Flow] when connecting to Identity Providers. This limitation only applies when the Identity Broker connects to Identity Providers, not when Services/Clients connects to the Identity Broker.
 
@@ -140,10 +141,27 @@ If your Identity Provider has the values in different attributes, some mapping c
 
 The Identity Broker will generate and attach the organizations MRN and the users MRN to the user.
 
-==== Setting up an SAML2 Identity Provider
-SAML2 is supported by older ADFS releases.
+==== Setting up an OpenID Connect Identity Provider for multiple organizations
+The Maritime Cloud has some special Identity Providers that handles the authentication for multiple organizations. Current examples are "IALA" and "BIMCO ExtraNet". These Identity Providers are responsible for vetting the organizations they provide authentication for, so that it is confirmed that the organization is who they claim to be. New organizations can be added by these Identity Providers. Since the Maritime Cloud currently needs to know about organizations centrally to be able to (among other things) issue certificates, some extra information is needed from these Identity Providers, to be able to create them in the central Identity Registry, if they are not already known.
+
+The extra information must be given as attributes, in addition to the attributes mentioned in <<setup-oidc-idp>>:
 
 As default the Maritime Cloud Identity Broker expect the following attributes to be provided by an OpenID Connect Identity Provider:
+
+[options="header"]
+|===
+|Attribute|Description
+|mrn|The Maritime Resource Name of the user.
+|org|The Maritime Resource Name of the parent organization of the user.
+|org-name|Human readable name of the parent organizations.
+|org-address|Address of the organization. It must be without linebreaks, ending with comma and the country of the address.
+|===
+
+Note that the MRN must be on the form "urn:mrn:mcl:user:dma@iala:thc" and "urn:mrn:mcl:org:dma@iala" for user and organization respectively. In this case the organization is "dma" whos identity is guaranteed by "iala".
+
+
+==== Setting up an SAML2 Identity Provider
+SAML2 is supported by older ADFS releases.
 
 [options="header"]
 |===
