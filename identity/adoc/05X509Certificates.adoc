@@ -153,27 +153,27 @@ These 2 steps are actually standard in the http://openid.net/specs/openid-connec
 First we obtain the code by issuing this command:
 
 ....
-curl -v -L --key PrivateKey.pem --cert Certificate.pem 'https://maritimeid.maritimecloud.net/auth/realms/MaritimeCloud/protocol/openid-connect/auth?client_id=cert2oidc&redirect_uri=http%3A%2F%2Flocalhost%3A99&response_type=code&kc_idp_hint=certificates&scope=openid'
+curl --verbose --location --cookie "" --key PrivateKey.pem --cert Certificate.pem 'https://maritimeid.maritimecloud.net/auth/realms/MaritimeCloud/protocol/openid-connect/auth?client_id=cert2oidc&redirect_uri=http%3A%2F%2Flocalhost%3A99&response_type=code&kc_idp_hint=certificates&scope=openid'
 ....
 
 Let us break down the command:
 
-* `curl -v -L`: `curl` is the tool itself. `-v` means it will be in verbose mode and `-L` means curl will follow HTTP redirects. We need to follow redirects since that is used by OpenID Connect to go back and forth between servers, and the verbose mode is needed because we would like to see where we are redirected -- especially the last redirect, but more about that later.
+* `curl --verbose --location --cookie ""`: `curl` is the tool itself. `--verbose` means it will be in verbose mode, `--location` means curl will follow HTTP redirects and `--cookie ""` activates the use of HTTP cookies which means that cookies received will be remember and used during redirects. We need to follow redirects since that is used by OpenID Connect to go back and forth between servers, and the verbose mode is needed because we would like to see where we are redirected -- especially the last redirect, but more about that later.
 * `--key PrivateKey.pem --cert Certificate.pem`: Here the private key and the certificate is given to `curl` in PEM format.
 * The last part is the URL which itself is multiple parts:
 ** Address of the authentication endpoint: `https://maritimeid.maritimecloud.net/auth/realms/MaritimeCloud/protocol/openid-connect/auth`
 ** Parameters: `client_id=cert2oidc&redirect_uri=http%3A%2F%2Flocalhost&response_type=code&kc_idp_hint=certificates&scope=openid`. These can be also be broken down:
 *** `client_id=cert2oidc`: This is a special OpenID Connect client setup to be used for certificate authentication.
-*** `redirect_uri=http%3A%2F%2Flocalhost%3A99`: This is where the authentication server will redirect to at the end of the authentication. The parameter is URL encoded and decode looks like this: `http://localhost:99`. This address is meant to be invalid, since we want the last redirect to fail.
+*** `redirect_uri=http%3A%2F%2Flocalhost%3A99`: This is where the authentication server will redirect to at the end of the authentication. The parameter is URL encoded and decoded looks like this: `http://localhost:99`. This address is meant to be invalid, since we want the last redirect to fail.
 *** `response_type=code`: This defines that we uses the Authorization Flow as mentioned above.
 *** `kc_idp_hint=certificates`: This tells the Identity Broker that we wants to authenticate using the Certificate Identity Provider.
 *** `scope=openid`: And finally, this define that we are using OpenID Connect.
 
-When the command runs it returns a lot of output, due to being in verbose mode. We will not go into detail, but quite a few redirects happens, as described in the sequences diagram above. The last redirect however fails, which is intended. The final output will look like this:
+When the command runs it returns a lot of output, due to being in verbose mode. We will not go into detail, but quite a few redirects happens, as described in the sequences diagram above. The last redirect however fails, which is intended. The final output will look something like this:
 
 ....
-* Issue another request to this URL: 'http://localhost:99?code=hzBswPz5iFB1npYE4HpZDRG5eowNM2Uv3Lp7pEjN1do.fb978d60-683c-46be-8c49-9a50ee80c961'
-* Rebuilt URL to: http://localhost:99/?code=hzBswPz5iFB1npYE4HpZDRG5eowNM2Uv3Lp7pEjN1do.fb978d60-683c-46be-8c49-9a50ee80c961
+* Issue another request to this URL: 'http://localhost:99?code=uss.Yw6k4rXOJiR6IF4a2Y7tYC1-Eqoo8dHSUwjfuIFDfpI.543a63db-9d22-45f7-85b6-a258059c0825.6826c662-6b68-423a-a248-71bd3e69dab0'
+* Rebuilt URL to: http://localhost:99/?code=uss.Yw6k4rXOJiR6IF4a2Y7tYC1-Eqoo8dHSUwjfuIFDfpI.543a63db-9d22-45f7-85b6-a258059c0825.6826c662-6b68-423a-a248-71bd3e69dab0
 *   Trying 127.0.0.1...
 * connect to 127.0.0.1 port 99 failed: Connection refused
 * Failed to connect to localhost port 99: Connection refused
@@ -181,17 +181,17 @@ When the command runs it returns a lot of output, due to being in verbose mode. 
 curl: (7) Failed to connect to localhost port 99: Connection refused
 ....
 
-Here we can recognize `http://localhost:99` from the `redirect_uri` parameter described earlier. We can also see that a `code` parameter is in the url, in this case with the value `hzBswPz5iFB1npYE4HpZDRG5eowNM2Uv3Lp7pEjN1do.fb978d60-683c-46be-8c49-9a50ee80c961`. It is this code we need to in the second step of authentication to get the OpenID Connect Tokens. We will again use `curl` in the second step:
+Here we can recognize `http://localhost:99` from the `redirect_uri` parameter described earlier. We can also see that a `code` parameter is in the url, in this case with the value `uss.Yw6k4rXOJiR6IF4a2Y7tYC1-Eqoo8dHSUwjfuIFDfpI.543a63db-9d22-45f7-85b6-a258059c0825.6826c662-6b68-423a-a248-71bd3e69dab0`. It is this code we need to in the second step of authentication to get the OpenID Connect Tokens. The code is only valid for a very limited time (less than a minute) and can only be used once. We will again use `curl` in the second step:
 
 ....
-curl --data "grant_type=authorization_code&client_id=cert2oidc&code=hzBswPz5iFB1npYE4HpZDRG5eowNM2Uv3Lp7pEjN1do.fb978d60-683c-46be-8c49-9a50ee80c961&redirect_uri=http%3A%2F%2Flocalhost%3A99" https://maritimeid.maritimecloud.net/auth/realms/MaritimeCloud/protocol/openid-connect/token
+curl --data "grant_type=authorization_code&client_id=cert2oidc&code=uss.Yw6k4rXOJiR6IF4a2Y7tYC1-Eqoo8dHSUwjfuIFDfpI.543a63db-9d22-45f7-85b6-a258059c0825.6826c662-6b68-423a-a248-71bd3e69dab0&redirect_uri=http%3A%2F%2Flocalhost%3A99" https://maritimeid.maritimecloud.net/auth/realms/MaritimeCloud/protocol/openid-connect/token
 ....
 
 Again, let us break down the command. In this case the command consist of 3 parts, `curl` -- the tool itself, data-parameters and an URL. We will concentrated on the data-parameters. Note that this is a HTTP POST request, which is why the parameters is supplied in a separate argument and not as part of the URL.
 
 * `grant_type=authorization_code`: This specifies that we will use an authorization code to authenticate ourself in this call.
 * `client_id=cert2oidc`: The id of the special client, as mentioned above.
-* `code=hzBswPz5iFB1npYE4HpZDRG5eowNM2Uv3Lp7pEjN1do.fb978d60-683c-46be-8c49-9a50ee80c961`: The code we obtained earlier.
+* `code=uss.Yw6k4rXOJiR6IF4a2Y7tYC1-Eqoo8dHSUwjfuIFDfpI.543a63db-9d22-45f7-85b6-a258059c0825.6826c662-6b68-423a-a248-71bd3e69dab0`: The code we obtained earlier.
 * `redirect_uri=http%3A%2F%2Flocalhost%3A99`: The redirect url, the same as before, though not used for actual redirection in this case.
 
 When this call runs there will be no redirection, so we do not need to tell `curl` to follow redirects. Instead the returned output will be the tokens that we wish to use, in a format like this:
