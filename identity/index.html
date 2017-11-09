@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 1.5.4">
-<title>Maritime Cloud Identity Platform</title>
+<meta name="generator" content="Asciidoctor 1.5.6.1">
+<title>MCP Identity Platform</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -17,7 +17,6 @@ audio:not([controls]){display:none;height:0}
 [hidden],template{display:none}
 script{display:none!important}
 html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}
-body{margin:0}
 a{background:transparent}
 a:focus{outline:thin dotted}
 a:active,a:hover{outline:0}
@@ -52,7 +51,7 @@ textarea{overflow:auto;vertical-align:top}
 table{border-collapse:collapse;border-spacing:0}
 *,*:before,*:after{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}
 html,body{font-size:100%}
-body{background:#fff;color:rgba(0,0,0,.8);padding:0;margin:0;font-family:"Noto Serif","DejaVu Serif",serif;font-weight:400;font-style:normal;line-height:1;position:relative;cursor:auto}
+body{background:#fff;color:rgba(0,0,0,.8);padding:0;margin:0;font-family:"Noto Serif","DejaVu Serif",serif;font-weight:400;font-style:normal;line-height:1;position:relative;cursor:auto;tab-size:4;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased}
 a:hover{cursor:pointer}
 img,object,embed{max-width:100%;height:auto}
 object,embed{height:100%}
@@ -64,7 +63,6 @@ img{-ms-interpolation-mode:bicubic}
 .text-center{text-align:center!important}
 .text-justify{text-align:justify!important}
 .hide{display:none}
-body{-webkit-font-smoothing:antialiased}
 img,object,svg{display:inline-block;vertical-align:middle}
 textarea{height:auto;min-height:50px}
 select{width:100%}
@@ -91,13 +89,12 @@ strong,b{font-weight:bold;line-height:inherit}
 small{font-size:60%;line-height:inherit}
 code{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;color:rgba(0,0,0,.9)}
 ul,ol,dl{font-size:1em;line-height:1.6;margin-bottom:1.25em;list-style-position:outside;font-family:inherit}
-ul,ol,ul.no-bullet,ol.no-bullet{margin-left:1.5em}
+ul,ol{margin-left:1.5em}
 ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0;font-size:1em}
 ul.square li ul,ul.circle li ul,ul.disc li ul{list-style:inherit}
 ul.square{list-style-type:square}
 ul.circle{list-style-type:circle}
 ul.disc{list-style-type:disc}
-ul.no-bullet{list-style:none}
 ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
 dl dt{margin-bottom:.3125em;font-weight:bold}
 dl dd{margin-bottom:1.25em}
@@ -119,18 +116,25 @@ table thead tr th,table thead tr td,table tfoot tr th,table tfoot tr td{padding:
 table tr th,table tr td{padding:.5625em .625em;font-size:inherit;color:rgba(0,0,0,.8)}
 table tr.even,table tr.alt,table tr:nth-of-type(even){background:#f8f8f7}
 table thead tr th,table tfoot tr th,table tbody tr td,table tr td,table tfoot tr td{display:table-cell;line-height:1.6}
-body{tab-size:4}
 h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2;word-spacing:-.05em}
 h1 strong,h2 strong,h3 strong,#toctitle strong,.sidebarblock>.content>.title strong,h4 strong,h5 strong,h6 strong{font-weight:400}
 .clearfix:before,.clearfix:after,.float-group:before,.float-group:after{content:" ";display:table}
 .clearfix:after,.float-group:after{clear:both}
-*:not(pre)>code{font-size:.9375em;font-style:normal!important;letter-spacing:0;padding:.1em .5ex;word-spacing:-.15em;background-color:#f7f7f8;-webkit-border-radius:4px;border-radius:4px;line-height:1.45;text-rendering:optimizeSpeed}
+*:not(pre)>code{font-size:.9375em;font-style:normal!important;letter-spacing:0;padding:.1em .5ex;word-spacing:-.15em;background-color:#f7f7f8;-webkit-border-radius:4px;border-radius:4px;line-height:1.45;text-rendering:optimizeSpeed;word-wrap:break-word}
+*:not(pre)>code.nobreak{word-wrap:normal}
+*:not(pre)>code.nowrap{white-space:nowrap}
 pre,pre>code{line-height:1.45;color:rgba(0,0,0,.9);font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;text-rendering:optimizeSpeed}
+em em{font-style:normal}
+strong strong{font-weight:400}
 .keyseq{color:rgba(51,51,51,.8)}
 kbd{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;display:inline-block;color:rgba(0,0,0,.8);font-size:.65em;line-height:1.45;background-color:#f7f7f7;border:1px solid #ccc;-webkit-border-radius:3px;border-radius:3px;-webkit-box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em white inset;box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em #fff inset;margin:0 .15em;padding:.2em .5em;vertical-align:middle;position:relative;top:-.1em;white-space:nowrap}
 .keyseq kbd:first-child{margin-left:0}
 .keyseq kbd:last-child{margin-right:0}
-.menuseq,.menu{color:rgba(0,0,0,.8)}
+.menuseq,.menuref{color:#000}
+.menuseq b:not(.caret),.menuref{font-weight:inherit}
+.menuseq{word-spacing:-.02em}
+.menuseq b.caret{font-size:1.25em;line-height:.8}
+.menuseq i.caret{font-weight:bold;text-align:center;width:.45em}
 b.button:before,b.button:after{position:relative;top:-1px;font-weight:400}
 b.button:before{content:"[";padding:0 3px 0 2px}
 b.button:after{content:"]";padding:0 2px 0 3px}
@@ -197,7 +201,7 @@ table.tableblock>caption.title{white-space:nowrap;overflow:visible;max-width:0}
 table.tableblock #preamble>.sectionbody>.paragraph:first-of-type p{font-size:inherit}
 .admonitionblock>table{border-collapse:separate;border:0;background:none;width:100%}
 .admonitionblock>table td.icon{text-align:center;width:80px}
-.admonitionblock>table td.icon img{max-width:none}
+.admonitionblock>table td.icon img{max-width:initial}
 .admonitionblock>table td.icon .title{font-weight:bold;font-family:"Open Sans","DejaVu Sans",sans-serif;text-transform:uppercase}
 .admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #ddddd8;color:rgba(0,0,0,.6)}
 .admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
@@ -253,13 +257,13 @@ table.pyhltable .linenodiv{background:none!important;padding-right:0!important}
 table.tableblock{max-width:100%;border-collapse:separate}
 table.tableblock td>.paragraph:last-child p>p:last-child,table.tableblock th>p:last-child,table.tableblock td>p:last-child{margin-bottom:0}
 table.tableblock,th.tableblock,td.tableblock{border:0 solid #dedede}
-table.grid-all th.tableblock,table.grid-all td.tableblock{border-width:0 1px 1px 0}
-table.grid-all tfoot>tr>th.tableblock,table.grid-all tfoot>tr>td.tableblock{border-width:1px 1px 0 0}
-table.grid-cols th.tableblock,table.grid-cols td.tableblock{border-width:0 1px 0 0}
-table.grid-all *>tr>.tableblock:last-child,table.grid-cols *>tr>.tableblock:last-child{border-right-width:0}
-table.grid-rows th.tableblock,table.grid-rows td.tableblock{border-width:0 0 1px 0}
-table.grid-all tbody>tr:last-child>th.tableblock,table.grid-all tbody>tr:last-child>td.tableblock,table.grid-all thead:last-child>tr>th.tableblock,table.grid-rows tbody>tr:last-child>th.tableblock,table.grid-rows tbody>tr:last-child>td.tableblock,table.grid-rows thead:last-child>tr>th.tableblock{border-bottom-width:0}
-table.grid-rows tfoot>tr>th.tableblock,table.grid-rows tfoot>tr>td.tableblock{border-width:1px 0 0 0}
+table.grid-all>thead>tr>.tableblock,table.grid-all>tbody>tr>.tableblock{border-width:0 1px 1px 0}
+table.grid-all>tfoot>tr>.tableblock{border-width:1px 1px 0 0}
+table.grid-cols>*>tr>.tableblock{border-width:0 1px 0 0}
+table.grid-rows>thead>tr>.tableblock,table.grid-rows>tbody>tr>.tableblock{border-width:0 0 1px 0}
+table.grid-rows>tfoot>tr>.tableblock{border-width:1px 0 0 0}
+table.grid-all>*>tr>.tableblock:last-child,table.grid-cols>*>tr>.tableblock:last-child{border-right-width:0}
+table.grid-all>tbody>tr:last-child>.tableblock,table.grid-all>thead:last-child>tr>.tableblock,table.grid-rows>tbody>tr:last-child>.tableblock,table.grid-rows>thead:last-child>tr>.tableblock{border-bottom-width:0}
 table.frame-all{border-width:1px}
 table.frame-sides{border-width:0 1px}
 table.frame-topbot{border-width:1px 0}
@@ -280,10 +284,12 @@ ul li ol{margin-left:1.5em}
 dl dd{margin-left:1.125em}
 dl dd:last-child,dl dd:last-child>:last-child{margin-bottom:0}
 ol>li p,ul>li p,ul dd,ol dd,.olist .olist,.ulist .ulist,.ulist .olist,.olist .ulist{margin-bottom:.625em}
-ul.unstyled,ol.unnumbered,ul.checklist,ul.none{list-style-type:none}
-ul.unstyled,ol.unnumbered,ul.checklist{margin-left:.625em}
-ul.checklist li>p:first-child>.fa-square-o:first-child,ul.checklist li>p:first-child>.fa-check-square-o:first-child{width:1em;font-size:.85em}
-ul.checklist li>p:first-child>input[type="checkbox"]:first-child{width:1em;position:relative;top:1px}
+ul.checklist,ul.none,ol.none,ul.no-bullet,ol.no-bullet,ol.unnumbered,ul.unstyled,ol.unstyled{list-style-type:none}
+ul.no-bullet,ol.no-bullet,ol.unnumbered{margin-left:.625em}
+ul.unstyled,ol.unstyled{margin-left:0}
+ul.checklist{margin-left:.625em}
+ul.checklist li>p:first-child>.fa-square-o:first-child,ul.checklist li>p:first-child>.fa-check-square-o:first-child{width:1.25em;font-size:.8em;position:relative;bottom:.125em}
+ul.checklist li>p:first-child>input[type="checkbox"]:first-child{margin-right:.25em}
 ul.inline{margin:0 auto .625em auto;margin-left:-1.375em;margin-right:0;padding:0;list-style:none;overflow:hidden}
 ul.inline>li{list-style:none;float:left;margin-left:1.375em;display:block}
 ul.inline>li>*{display:block}
@@ -300,7 +306,8 @@ ol.lowergreek{list-style-type:lower-greek}
 td.hdlist1,td.hdlist2{vertical-align:top;padding:0 .625em}
 td.hdlist1{font-weight:bold;padding-bottom:1.25em}
 .literalblock+.colist,.listingblock+.colist{margin-top:-.5em}
-.colist>table tr>td:first-of-type{padding:0 .75em;line-height:1}
+.colist>table tr>td:first-of-type{padding:.4em .75em 0 .75em;line-height:1;vertical-align:top}
+.colist>table tr>td:first-of-type img{max-width:initial}
 .colist>table tr>td:last-of-type{padding:.25em 0}
 .thumb,.th{line-height:0;display:inline-block;border:solid 4px #fff;-webkit-box-shadow:0 0 0 1px #ddd;box-shadow:0 0 0 1px #ddd}
 .imageblock.left,.imageblock[style*="float: left"]{margin:.25em .625em 1.25em 0}
@@ -363,6 +370,7 @@ div.unbreakable{page-break-inside:avoid}
 .yellow{color:#bfbf00}
 .yellow-background{background-color:#fafa00}
 span.icon>.fa{cursor:default}
+a span.icon>.fa{cursor:inherit}
 .admonitionblock td.icon [class^="fa icon-"]{font-size:2.5em;text-shadow:1px 1px 2px rgba(0,0,0,.5);cursor:default}
 .admonitionblock td.icon .icon-note:before{content:"\f05a";color:#19407c}
 .admonitionblock td.icon .icon-tip:before{content:"\f0eb";text-shadow:1px 1px 2px rgba(155,155,0,.8);color:#111}
@@ -416,7 +424,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 .hide-for-print{display:none!important}
 .show-for-print{display:inherit!important}}
 </style>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 <style>
 /* Stylesheet for CodeRay to match GitHub theme | MIT License | http://foundation.zurb.com */
 /*pre.CodeRay {background-color:#f7f7f8;}*/
@@ -511,7 +519,7 @@ table.CodeRay td.code>pre{padding:0}
 </head>
 <body class="book toc2 toc-right">
 <div id="header">
-<h1>Maritime Cloud Identity Platform</h1>
+<h1>MCP Identity Platform</h1>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
@@ -537,15 +545,15 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#brokered-user-federation">4. Brokered User Federation</a>
 <ul class="sectlevel2">
 <li><a href="#openid-connect">4.1. OpenID Connect</a></li>
-<li><a href="#maritime-cloud-user-federation-setup">4.2. Maritime Cloud User Federation Setup</a></li>
+<li><a href="#mcp-user-federation-setup">4.2. MCP User Federation Setup</a></li>
 <li><a href="#openid-connect-authentication-flow">4.3. OpenID Connect Authentication Flow</a></li>
 <li><a href="#keycloack">4.4. Keycloack</a></li>
-<li><a href="#getting-connected-to-the-maritime-cloud">4.5. Getting connected to the Maritime Cloud</a></li>
+<li><a href="#getting-connected-to-mcp">4.5. Getting connected to MCP</a></li>
 </ul>
 </li>
 <li><a href="#pki-and-x-509-certificates">5. PKI and X.509 Certificates</a>
 <ul class="sectlevel2">
-<li><a href="#get-the-maritime-cloud-root-certificate">5.1. Get The Maritime Cloud Root Certificate</a></li>
+<li><a href="#get-mcp-root-certificate">5.1. Get MCP Root Certificate</a></li>
 <li><a href="#certificate-attributes">5.2. Certificate Attributes</a></li>
 <li><a href="#revocation-of-certificates">5.3. Revocation of certificates</a></li>
 <li><a href="#certificate-authentication-flow">5.4. Certificate Authentication Flow</a></li>
@@ -568,21 +576,21 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 </div>
 <div class="sect1">
-<h2 id="introduction"><a class="anchor" href="#introduction"></a>1. Introduction</h2>
+<h2 id="introduction"><a class="anchor" href="#introduction"></a><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This development guide on the Maritime Cloud identity platform describes the current state of the Maritime Cloud reference implementation as of {releaseDate}.</p>
+<p>This development guide on the MCP identity platform describes the current state of the MCP reference implementation as of {releaseDate}.</p>
 </div>
 <div class="paragraph">
 <p>Please do not email us directly about usage questions. Instead use our Google Group at <a href="https://groups.google.com/forum/#!forum/maritimecloud" class="bare">https://groups.google.com/forum/#!forum/maritimecloud</a> for general usage questions. In this way future users can see answers to commonly asked questions. Google Groups is also where we post information about new releases and updated documentation.</p>
 </div>
 <div class="paragraph">
-<p>This developer guide is intended to make you familiar with developing secure applications and services for the Maritime Cloud in particular with regards to Identity Management.</p>
+<p>This developer guide is intended to make you familiar with developing secure applications and services for MCP in particular with regards to Identity Management.</p>
 </div>
 <div class="sect2">
-<h3 id="a-bit-of-history"><a class="anchor" href="#a-bit-of-history"></a>1.1. A Bit of History</h3>
+<h3 id="a-bit-of-history"><a class="anchor" href="#a-bit-of-history"></a><a class="link" href="#a-bit-of-history">1.1. A Bit of History</a></h3>
 <div class="paragraph">
-<p>The Maritime Cloud project started out as an internal project at the Danish Maritime Authority in the autumn of 2012.
+<p>The MCP project started out as an internal project at the Danish Maritime Authority in the autumn of 2012.
 As part of the e-Navigation process the Danish Maritime Authority had been working on an e-Navigation Prototype Display system called EPD. The EPD consist of two applications for demonstrating potential e-navigation solutions. An ECDIS like ship side application and a shore side application.</p>
 </div>
 <div class="paragraph">
@@ -602,13 +610,13 @@ As part of the e-Navigation process the Danish Maritime Authority had been worki
 </ul>
 </div>
 <div class="paragraph">
-<p>The first prototype was built in the winter of 2012 and was implemented in the EPD in spring 2013. It just featured basic point to point communication. This is basically what is the Maritime Message Service now. During the summer of 2013 the vision for a general framework for maritime communication was created. Including registries for services and identities in addition to the message based framework. It also got its name the “Maritime Cloud” as a sort of umbralle name for the various underlying services. In 2014 the first release of the Maritime Cloud reference implementation was made available for the public.</p>
+<p>The first prototype was built in the winter of 2012 and was implemented in the EPD in spring 2013. It just featured basic point to point communication. This is basically what is the Maritime Message Service now. During the summer of 2013 the vision for a general framework for maritime communication was created. Including registries for services and identities in addition to the message based framework. It also got its name the “Maritime Connectivity Platform” as a sort of umbrella name for the various underlying services. In 2014 the first release of the MCP reference implementation was made available for the public.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="overview"><a class="anchor" href="#overview"></a>1.2. Overview</h3>
+<h3 id="overview"><a class="anchor" href="#overview"></a><a class="link" href="#overview">1.2. Overview</a></h3>
 <div class="paragraph">
-<p>Here is 10000 foot overview of the Maritime Cloud:</p>
+<p>Here is a 10000 foot overview of MCP:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -616,12 +624,12 @@ As part of the e-Navigation process the Danish Maritime Authority had been worki
 </div>
 </div>
 <div class="paragraph">
-<p>There are 3 different core services provided by the Maritime Cloud</p>
+<p>There are 3 different core services provided by MCP</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Maritime Identity Registry.</strong> A centralized authority for identities of persons, organizations or ships that are using the Maritime Cloud.</p>
+<p><strong>Maritime Identity Registry.</strong> A centralized authority for identities of persons, organizations or ships that are using the MCP.</p>
 </li>
 <li>
 <p><strong>Maritime Service Registry.</strong> A centralized repository of service standards and provisioned services world wide.</p>
@@ -636,28 +644,28 @@ As part of the e-Navigation process the Danish Maritime Authority had been worki
 </div>
 </div>
 <div class="sect2">
-<h3 id="signing-up"><a class="anchor" href="#signing-up"></a>1.3. Signing up</h3>
+<h3 id="signing-up"><a class="anchor" href="#signing-up"></a><a class="link" href="#signing-up">1.3. Signing up</a></h3>
 <div class="paragraph">
-<p>In order to get an organization, its users and any ships the organization might own on to the Maritime Cloud, the organization needs to perform a signup process. The process is currently manual. To start the process, please fill out the <a href="https://management.maritimecloud.net/#/apply">registration form</a>.</p>
+<p>In order to get an organization, its users and any ships the organization might own on to the MCP, the organization needs to perform a signup process. The process is currently manual. To start the process, please fill out the <a href="https://management.maritimecloud.net/#/apply">registration form</a>.</p>
 </div>
 <div class="paragraph">
-<p>Once your organization has been approved you will have access to the Maritime Cloud and its services. You should probably start by looking at the <a href="https://management.maritimecloud.net/">Management Portal</a>. See the <a href="http://manual.maritimecloud.net/">manual</a> for how to use it.</p>
+<p>Once your organization has been approved you will have access to MCP and its services. You should probably start by looking at the <a href="https://management.maritimecloud.net/">Management Portal</a>. See the <a href="http://manual.maritimecloud.net/">manual</a> for how to use it.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="feedback"><a class="anchor" href="#feedback"></a>1.4. Feedback</h3>
+<h3 id="feedback"><a class="anchor" href="#feedback"></a><a class="link" href="#feedback">1.4. Feedback</a></h3>
 <div class="paragraph">
-<p>Readers may send feedback about errors, omissions, and ambiguities in this guide to <a href="mailto:tgc@dma.dk">tgc@dma.dk</a> or even better submit a pull request to the documentation available at <a href="https://github.com/MaritimeCloud/developers.maritimecloud.net" class="bare">https://github.com/MaritimeCloud/developers.maritimecloud.net</a>.</p>
+<p>Readers may send feedback about errors, omissions, and ambiguities in this guide to <a href="mailto:osh@dma.dk">osh@dma.dk</a> or even better submit a pull request to the documentation available at <a href="https://github.com/MaritimeCloud/developers.maritimecloud.net" class="bare">https://github.com/MaritimeCloud/developers.maritimecloud.net</a>.</p>
 </div>
 <div class="paragraph">
-<p>As previously mentioned questions about usage of the Maritime Cloud should be directed to our Google Group at <a href="https://groups.google.com/forum/#!forum/maritimecloud" class="bare">https://groups.google.com/forum/#!forum/maritimecloud</a></p>
+<p>As previously mentioned questions about usage of MCP should be directed to our Google Group at <a href="https://groups.google.com/forum/#!forum/maritimecloud" class="bare">https://groups.google.com/forum/#!forum/maritimecloud</a></p>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="identity-management"><a class="anchor" href="#identity-management"></a>2. Identity Management</h2>
+<h2 id="identity-management"><a class="anchor" href="#identity-management"></a><a class="link" href="#identity-management">2. Identity Management</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Identity management refers to the process of employing technologies
@@ -667,15 +675,15 @@ security while lowering costs associated with managing users and their identitie
 attributes, and credentials.</p>
 </div>
 <div class="paragraph">
-<p>The goal of the Maritime Clouds Identity Registry is to create a solution that satisfies the most common identification needs for the entire maritime industry on a global scale.</p>
+<p>The goal of the MCP Identity Registry is to create a solution that satisfies the most common identification needs for the entire maritime industry on a global scale.</p>
 </div>
 <div class="paragraph">
-<p>This is not a simple task as any solution must support every possible user scenarios from small leisure sailors to multinational companies. The complexity of this task is why the functionality will be delivered over multiple milestones in the coming years. The most important things such as support for authentication will be implemented first. Additional functionality will be added based on user needs in the projects supported by the Maritime Cloud.</p>
+<p>This is not a simple task as any solution must support every possible user scenarios from small leisure sailors to multinational companies. The complexity of this task is why the functionality will be delivered over multiple milestones in the coming years. The most important things such as support for authentication will be implemented first. Additional functionality will be added based on user needs in the projects supported by MCP.</p>
 </div>
 <div class="sect2">
-<h3 id="the-identity-registry"><a class="anchor" href="#the-identity-registry"></a>2.1. The Identity Registry</h3>
+<h3 id="the-identity-registry"><a class="anchor" href="#the-identity-registry"></a><a class="link" href="#the-identity-registry">2.1. The Identity Registry</a></h3>
 <div class="paragraph">
-<p>In most of the documents that describe the Maritime Cloud there is the concept of an Identity Registry. In reality there are numerous systems both internal to the Maritime Cloud as well as external to the Maritime Cloud that makes up the identity registry. The main components of the Identity Registry are:</p>
+<p>In most of the documents that describe MCP there is the concept of an Identity Registry. In reality there are numerous systems both internal to MCP as well as external to MCP that makes up the identity registry. The main components of the Identity Registry are:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -688,17 +696,17 @@ attributes, and credentials.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>The Identity Registry API provides management of entities in the Maritime Cloud and will be described later in this document.</p>
+<p>The Identity Registry API provides management of entities in MCP and will be described later in this document.</p>
 </div>
 <div class="paragraph">
-<p>The Identity Broker provides links to trusted Identity Providers, owned by maritime organizations that wish to connect its users to the Maritime Cloud. Within the scope of the EfficienSea 2 and STM validation projects, a special Identity Provider is available where organizations can create users without linking their own Identity Provider.</p>
+<p>The Identity Broker provides links to trusted Identity Providers, owned by maritime organizations that wish to connect its users to MCP. Within the scope of the EfficienSea 2 and STM validation projects, a special Identity Provider is available where organizations can create users without linking their own Identity Provider.</p>
 </div>
 <div class="paragraph">
-<p>This will enable the participants in the projects to register actors to validate specific service concepts in testbed trials or utilize the operational services established by the projects, as well as validate the identity management concept of the Maritime Cloud. Beyond the scope of the project, it is foreseen that several identity registers will collaborate to form the global federated Maritime Cloud Identity Registry.</p>
+<p>This will enable the participants in the projects to register actors to validate specific service concepts in testbed trials or utilize the operational services established by the projects, as well as validate the identity management concept of MCP. Beyond the scope of the project, it is foreseen that several identity registers will collaborate to form the global federated MCP Identity Registry.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="key-actor-concepts"><a class="anchor" href="#key-actor-concepts"></a>2.2. Key Actor Concepts</h3>
+<h3 id="key-actor-concepts"><a class="anchor" href="#key-actor-concepts"></a><a class="link" href="#key-actor-concepts">2.2. Key Actor Concepts</a></h3>
 <div class="paragraph">
 <p>In order to be able to describe some of the concepts we are working with, here is a short introduction of the various actors we envision will interact with the identity registry.</p>
 </div>
@@ -722,21 +730,21 @@ attributes, and credentials.</p>
 <p>This does not prohibit a later revisiting of these goals. Or prohibit including work from other groups into a general framework at a later time. But for time being the identity registry will revolve about the 5 entities listed below.</p>
 </div>
 <div class="sect3">
-<h4 id="organization"><a class="anchor" href="#organization"></a>2.2.1. Organization</h4>
+<h4 id="organization"><a class="anchor" href="#organization"></a><a class="link" href="#organization">2.2.1. Organization</a></h4>
 <div class="paragraph">
-<p>In the Maritime Cloud an organization is an entity, such as an institution, company or an association, that has a collective goal and is linked to an external environment. Examples, include international organizations such as IMO, IALA, IHO. National authorities such as US Coastguard, Swedish Maritime Administration. Local authorities such as VTS-Oeresund, Port of Rotterdam, Hong Kong SAR. Or commercial companies such as Transas or Maris.</p>
+<p>In MCP an organization is an entity, such as an institution, company or an association, that has a collective goal and is linked to an external environment. Examples, include international organizations such as IMO, IALA, IHO. National authorities such as US Coastguard, Swedish Maritime Administration. Local authorities such as VTS-Oeresund, Port of Rotterdam, Hong Kong SAR. Or commercial companies such as Transas or Maris.</p>
 </div>
 <div class="paragraph">
-<p>In order to able to use the functions of the Maritime Cloud in any way, an organization needs to be signed up to the Maritime Cloud. In the context of the EfficienSea 2.0 and STM projects, this is currently done be sending an email with various information about the organization to a Maritime Cloud test bed administrator.</p>
+<p>In order to be able to use the functions of MCP in any way, an organization needs to be signed up to MCP. In the context of the EfficienSea 2.0 and STM projects, this is currently done be sending an email with various information about the organization to a MCP test bed administrator.</p>
 </div>
 <div class="paragraph">
 <p>In the future a more automated process involving a validation workflow by some organization may validate the relationship between an organization in the real world, and the issued maritime digital identity. How this validation is to take place is still up for discussion. However, one possible solution would be for the maritime authorities in which a given organization is registered to put the stamp of approval on the signup application.</p>
 </div>
 <div class="paragraph">
-<p>Once an organization has been registered (and validated), an identity administrator of that organization will be able to create and manage maritime identities that belong to this organization, such as Users, Vessels Devices or Services. This administration is typically done via the Maritime Cloud Portal which is a web based client. For some larger organizations it might make sense to integrate directly via the underlying APIs.</p>
+<p>Once an organization has been registered (and validated), an identity administrator of that organization will be able to create and manage maritime identities that belong to this organization, such as Users, Vessels Devices or Services. This administration is typically done via MCP Portal which is a web based client. For some larger organizations it might make sense to integrate directly via the underlying APIs.</p>
 </div>
 <div class="paragraph">
-<p>All organizations that are registered in the Maritime Cloud must be registered with a unique MRN.</p>
+<p>All organizations that are registered in MCP must be registered with a unique MRN.</p>
 </div>
 <div class="paragraph">
 <p>The MRN is used in numerous places. For example, all service specifications from a given organization includes the organizations MRN.</p>
@@ -768,31 +776,31 @@ attributes, and credentials.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="vessels"><a class="anchor" href="#vessels"></a>2.2.2. Vessels</h4>
+<h4 id="vessels"><a class="anchor" href="#vessels"></a><a class="link" href="#vessels">2.2.2. Vessels</a></h4>
 <div class="paragraph">
 <p>Vessels describes any floating object used for the carriage of people or goods.</p>
 </div>
 <div class="paragraph">
-<p>The main need for registering vessels in the Maritime Cloud is so that digital authentication certificates can be issued for them. Thereby enabling secure communication between vessels as well as digitally signing of documents. Users might also use these authentication certificates for other purposes. The important thing is that the functionality is there.</p>
+<p>The main need for registering vessels in MCP is so that digital authentication certificates can be issued for them. Thereby enabling secure communication between vessels as well as digitally signing of documents. Users might also use these authentication certificates for other purposes. The important thing is that the functionality is there.</p>
 </div>
 <div class="paragraph">
 <p>As part of the authentication certificate of a vessel its name, MMSI number, IMO number, callsign and possible other attributes is included in the header of the authentication certificate.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="services"><a class="anchor" href="#services"></a>2.2.3. Services</h4>
+<h4 id="services"><a class="anchor" href="#services"></a><a class="link" href="#services">2.2.3. Services</a></h4>
 <div class="paragraph">
 <p>Services refers to digital services. For example, a weather service that is available to other services for machine to machine communication. Services needs to be registered in such a way that it can successfully authenticate users.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="users"><a class="anchor" href="#users"></a>2.2.4. Users</h4>
+<h4 id="users"><a class="anchor" href="#users"></a><a class="link" href="#users">2.2.4. Users</a></h4>
 <div class="paragraph">
 <p>Users mainly refers to human users. Human users differ from other actors in that they typically use a username/password to login which implies a different interaction pattern with the identity registry then say communication between vessels.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="devices"><a class="anchor" href="#devices"></a>2.2.5. Devices</h4>
+<h4 id="devices"><a class="anchor" href="#devices"></a><a class="link" href="#devices">2.2.5. Devices</a></h4>
 <div class="paragraph">
 <p>Devices can be any number of entities that is not covered by the other entity types. It could for example be a lighthouse, an ECDIS or a server that needs to be able to authenticate itself.</p>
 </div>
@@ -802,13 +810,13 @@ attributes, and credentials.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="authentication"><a class="anchor" href="#authentication"></a>3. Authentication</h2>
+<h2 id="authentication"><a class="anchor" href="#authentication"></a><a class="link" href="#authentication">3. Authentication</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Authentication is any process by which a system verifies the identity of a user (human or machine) who wishes to access it. Since access control is normally based on the identity of the user who requests access to a resource, authentication is essential to effective security. In contrast to identification which refers to the act of stating a person or thing&#8217;s identity, authentication is the process of actually confirming that stated identity. It might involve verifying the authenticity of a website by a digital certificate that is provides, or validating a persons identity documents.</p>
 </div>
 <div class="sect2">
-<h3 id="overview-2"><a class="anchor" href="#overview-2"></a>3.1. Overview</h3>
+<h3 id="overview-2"><a class="anchor" href="#overview-2"></a><a class="link" href="#overview-2">3.1. Overview</a></h3>
 <div class="paragraph">
 <p>The way in which a human user or machine may be authenticated typically falls into three different categories, based on what is commonly known as the factors of authentication: something the user knows, something the user has, and something the user is. Each authentication factor covers a range of elements used to authenticate or verify a person&#8217;s identity prior to being granted access, approving a transaction request, signing a document or other work product, granting authority to others, and establishing a chain of authority.</p>
 </div>
@@ -826,7 +834,7 @@ attributes, and credentials.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>Currently the implementation effort in the Maritime Cloud is concentrating on passwords for human users and authentication certificates for machine users. In the future we will probably add more methods.</p>
+<p>Currently the implementation effort in MCP is concentrating on passwords for human users and authentication certificates for machine users. In the future we will probably add more methods.</p>
 </div>
 <div class="paragraph">
 <p>While the difference of using authentication certificates or passwords might seem minor from a user perspective the underlying implementation and usage is radically different which is why it has been split into to different sections.</p>
@@ -836,21 +844,21 @@ attributes, and credentials.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="brokered-user-federation"><a class="anchor" href="#brokered-user-federation"></a>4. Brokered User Federation</h2>
+<h2 id="brokered-user-federation"><a class="anchor" href="#brokered-user-federation"></a><a class="link" href="#brokered-user-federation">4. Brokered User Federation</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>In the previous section we discussed digital certificates for use in machine to machine communication. There are no technical reason to why human users should not be able to use digital certificates to authenticate themselves as well. However, there are some serious practical ones that make it difficult to see them as a general solution for human user authentication. The first issue being that it requires that the certificate must always be present on the computer or mobile phone from which access is made. This is normally not a problem for machine to machine communication. Because, once installed the hardware configuration almost never changes. Unlike human users that uses their computer during the day to access information, their mobile phone on the way back from work and their tablet in the evening from home. Making sure that certificates are all installed on these devices and refreshing them once they expire is a lot of effort to require of users. And we believe having such a complicated setup would be a major barrier towards successful adoption of the Maritime Cloud. So for now, authentication of human users in the Maritime Cloud will be based on login through a web browser, using brokered federation.</p>
+<p>In the previous section we discussed digital certificates for use in machine to machine communication. There are no technical reason to why human users should not be able to use digital certificates to authenticate themselves as well. However, there are some serious practical ones that make it difficult to see them as a general solution for human user authentication. The first issue being that it requires that the certificate must always be present on the computer or mobile phone from which access is made. This is normally not a problem for machine to machine communication. Because, once installed the hardware configuration almost never changes. Unlike human users that uses their computer during the day to access information, their mobile phone on the way back from work and their tablet in the evening from home. Making sure that certificates are all installed on these devices and refreshing them once they expire is a lot of effort to require of users. And we believe having such a complicated setup would be a major barrier towards successful adoption of MCP. So for now, authentication of human users in MCP will be based on login through a web browser, using brokered federation.</p>
 </div>
 <div class="paragraph">
-<p>Federation is the means of linking distinct identity management systems to a person&#8217;s electronic identity and attributes. For example, a shipping company might expose all their users in LDAP or Active Directory to the Maritime Cloud in such a way as they appear as Maritime Cloud users. Thereby bypassing the need to manage their users directly in the Maritime Cloud. This also means that the Maritime Cloud is not responsible for management of users. In practical terms, federation means that users asked to authenticate in the Maritime Cloud will be redirected to a login webpage supplied by their organization where they can login using their organizational id.</p>
+<p>Federation is the means of linking distinct identity management systems to a person&#8217;s electronic identity and attributes. For example, a shipping company might expose all their users in LDAP or Active Directory to MCP in such a way as they appear as MCP users. Thereby bypassing the need to manage their users directly in MCP. This also means that MCP is not responsible for management of users. In practical terms, federation means that users asked to authenticate in MCP will be redirected to a login webpage supplied by their organization where they can login using their organizational id.</p>
 </div>
 <div class="paragraph">
 <p>Since the authentication process is the responsibility of the organizations, it is also up to the individual organization to chose an appropriate authentication method. While most will likely use classic username/password authentication, multi factor security, biometric security or other approaches could be used.</p>
 </div>
 <div class="sect2">
-<h3 id="openid-connect"><a class="anchor" href="#openid-connect"></a>4.1. OpenID Connect</h3>
+<h3 id="openid-connect"><a class="anchor" href="#openid-connect"></a><a class="link" href="#openid-connect">4.1. OpenID Connect</a></h3>
 <div class="paragraph">
-<p><a href="http://openid.net/">OpenID Connect</a> is the protocol chosen to by used for user federation in the Maritime Cloud, and it should be supported by Service Providers. It is an interoperable authentication protocol based on the <a href="http://oauth.net/2/">OAuth 2.0</a> family of specifications. It uses straightforward REST/JSON message flows with a design goal of "making simple things simple and complicated things possible". It’s uniquely easy for developers to integrate, compared to any preceding Identity protocol.</p>
+<p><a href="http://openid.net/">OpenID Connect</a> is the protocol chosen to by used for user federation in MCP, and it should be supported by Service Providers. It is an interoperable authentication protocol based on the <a href="http://oauth.net/2/">OAuth 2.0</a> family of specifications. It uses straightforward REST/JSON message flows with a design goal of "making simple things simple and complicated things possible". It’s uniquely easy for developers to integrate, compared to any preceding Identity protocol.</p>
 </div>
 <div class="paragraph">
 <p>OpenID Connect lets developers authenticate their users across websites and apps without having to own and manage password files. For the app builder, it provides a secure verifiable, answer to the question: "What is the identity of the person currently using the browser or native app that is connected to me?"</p>
@@ -863,12 +871,12 @@ attributes, and credentials.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="maritime-cloud-user-federation-setup"><a class="anchor" href="#maritime-cloud-user-federation-setup"></a>4.2. Maritime Cloud User Federation Setup</h3>
+<h3 id="mcp-user-federation-setup"><a class="anchor" href="#mcp-user-federation-setup"></a><a class="link" href="#mcp-user-federation-setup">4.2. MCP User Federation Setup</a></h3>
 <div class="paragraph">
-<p>In most federated setups there is 1 step from the website (Service Provider) that need authentication and the Identity Provider, normally presented with a "Log in with X" link, where X could be Facebook, Google, etc. The setup used in the Maritime Cloud has 2 steps, where the first step is the Maritime Cloud Identity Broker which the presents the user with a list of available Identity Providers, which is the second step. For a deeper understanding of how this is actually done please read the  <a href="https://keycloak.gitbooks.io/server-adminstration-guide/content/topics/identity-broker/overview.html">Identity Broker overview section from the Keycloak manual</a>. Keycloak is the software used for the Maritime Cloud Identity Broker.</p>
+<p>In most federated setups there is 1 step from the website (Service Provider) that need authentication and the Identity Provider, normally presented with a "Log in with X" link, where X could be Facebook, Google, etc. The setup used in MCP has 2 steps, where the first step is MCP Identity Broker which the presents the user with a list of available Identity Providers, which is the second step. For a deeper understanding of how this is actually done please read the  <a href="https://keycloak.gitbooks.io/server-adminstration-guide/content/topics/identity-broker/overview.html">Identity Broker overview section from the Keycloak manual</a>. Keycloak is the software used for MCP Identity Broker.</p>
 </div>
 <div class="paragraph">
-<p>The Maritime Cloud expects to provide the following attributes in the OpenID Connect JWT Access Token:</p>
+<p>MCP expects to provide the following attributes in the OpenID Connect JWT Access Token:</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
@@ -921,7 +929,7 @@ attributes, and credentials.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="openid-connect-authentication-flow"><a class="anchor" href="#openid-connect-authentication-flow"></a>4.3. OpenID Connect Authentication Flow</h3>
+<h3 id="openid-connect-authentication-flow"><a class="anchor" href="#openid-connect-authentication-flow"></a><a class="link" href="#openid-connect-authentication-flow">4.3. OpenID Connect Authentication Flow</a></h3>
 <div class="paragraph">
 <p>To illustrate the authentication flows the sequence diagrams below is provided.</p>
 </div>
@@ -930,7 +938,7 @@ attributes, and credentials.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/diag-2dd32a8c4eb9f94a4c2fe1379ab95e1d.png" alt="Authentication flow" width="1065" height="786">
+<img src="images/diag-8288bd2f888ed35b987eca41c8e8254b.png" alt="Authentication flow" width="1065" height="785">
 </div>
 <div class="title">Authentication flow</div>
 </div>
@@ -939,35 +947,35 @@ attributes, and credentials.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/diag-d8689993dbab15217f351828ac681219.png" alt="Backend service authentication flow" width="631" height="287">
+<img src="images/diag-76383f9cc7a43c548dcc215c3a575628.png" alt="Backend service authentication flow" width="630" height="286">
 </div>
 <div class="title">Backend service authentication flow</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="keycloack"><a class="anchor" href="#keycloack"></a>4.4. Keycloack</h3>
+<h3 id="keycloack"><a class="anchor" href="#keycloack"></a><a class="link" href="#keycloack">4.4. Keycloack</a></h3>
 <div class="paragraph">
-<p>Keycloak is one of many products that includes support for OpenID Connect, and it is the product that currently provides the Maritime Cloud Identity Broker which is the cornerstone in the Maritime Cloud user federation.</p>
+<p>Keycloak is one of many products that includes support for OpenID Connect, and it is the product that currently provides MCP Identity Broker which is the cornerstone in MCP user federation.</p>
 </div>
 <div class="paragraph">
-<p>Keycloak is an open source product developed by RedHat. Keycloak can be set up to work in different ways. It can be set up as an Identity Broker in which case it will link to other Identity Providers, which is what the Maritime Cloud Identity Broker does, or it can be set up to work as an Identity Provider, using either a database or LDAP/AD as a backend. Due the ability to connect to LDAP/AD, Keycloak can be used as quick and easy way to set up a Identity Provider.</p>
+<p>Keycloak is an open source product developed by RedHat. Keycloak can be set up to work in different ways. It can be set up as an Identity Broker in which case it will link to other Identity Providers, which is what MCP Identity Broker does, or it can be set up to work as an Identity Provider, using either a database or LDAP/AD as a backend. Due the ability to connect to LDAP/AD, Keycloak can be used as quick and easy way to set up a Identity Provider.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="getting-connected-to-the-maritime-cloud"><a class="anchor" href="#getting-connected-to-the-maritime-cloud"></a>4.5. Getting connected to the Maritime Cloud</h3>
+<h3 id="getting-connected-to-mcp"><a class="anchor" href="#getting-connected-to-mcp"></a><a class="link" href="#getting-connected-to-mcp">4.5. Getting connected to MCP</a></h3>
 <div class="paragraph">
-<p>If your organizations wishes to connect to the Maritime Cloud as an Identity Provider, to enable your uses to authenticate in the Maritime Cloud, please contact Tomas Christensen at <a href="mailto:tgc@dma.dk">tgc@dma.dk</a> in order to set it up. Note that currently you need to expose interfaces that supports either OpenID Connect or SAML2.</p>
+<p>If your organizations wishes to connect to MCP as an Identity Provider, to enable your uses to authenticate in MCP, please contact Tomas Christensen at <a href="mailto:tgc@dma.dk">tgc@dma.dk</a> in order to set it up. Note that currently you need to expose interfaces that supports either OpenID Connect or SAML2.</p>
 </div>
 <div class="paragraph">
-<p>Within the scope of the EfficienSea2 and STM validation projects, organizations can get users registered in special project Identity Providers, supplied by the Maritime Cloud. EfficienSea2 partners should contact Tomas Christensen at <a href="mailto:tgc@dma.dk">tgc@dma.dk</a>, while STM partners should contact SMA.</p>
+<p>Within the scope of the EfficienSea2 and STM validation projects, organizations can get users registered in special project Identity Providers, supplied by MCP. EfficienSea2 partners should contact Tomas Christensen at <a href="mailto:tgc@dma.dk">tgc@dma.dk</a>, while STM partners should contact SMA.</p>
 </div>
 <div class="sect3">
-<h4 id="setup-oidc-idp"><a class="anchor" href="#setup-oidc-idp"></a>4.5.1. Setting up an OpenID Connect Identity Provider</h4>
+<h4 id="setup-oidc-idp"><a class="anchor" href="#setup-oidc-idp"></a><a class="link" href="#setup-oidc-idp">4.5.1. Setting up an OpenID Connect Identity Provider</a></h4>
 <div class="paragraph">
-<p>OpenID Connect is supported by the latest ADFS and <a href="http://keycloak.org">Keycloak</a> releases. The Maritime Cloud Identity Broker only supports the <a href="http://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth">OpenID Connect Authorization Code Flow</a> when connecting to Identity Providers. This limitation only applies when the Identity Broker connects to Identity Providers, not when Services/Clients connects to the Identity Broker.</p>
+<p>OpenID Connect is supported by the latest ADFS and <a href="http://keycloak.org">Keycloak</a> releases. MCP Identity Broker only supports the <a href="http://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth">OpenID Connect Authorization Code Flow</a> when connecting to Identity Providers. This limitation only applies when the Identity Broker connects to Identity Providers, not when Services/Clients connects to the Identity Broker.</p>
 </div>
 <div class="paragraph">
-<p>As default the Maritime Cloud Identity Broker expect the following attributes to be provided by an OpenID Connect Identity Provider:</p>
+<p>As default MCP Identity Broker expect the following attributes to be provided by an OpenID Connect Identity Provider:</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
@@ -1015,15 +1023,15 @@ attributes, and credentials.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="setting-up-an-openid-connect-identity-provider-for-multiple-organizations"><a class="anchor" href="#setting-up-an-openid-connect-identity-provider-for-multiple-organizations"></a>4.5.2. Setting up an OpenID Connect Identity Provider for multiple organizations</h4>
+<h4 id="setting-up-an-openid-connect-identity-provider-for-multiple-organizations"><a class="anchor" href="#setting-up-an-openid-connect-identity-provider-for-multiple-organizations"></a><a class="link" href="#setting-up-an-openid-connect-identity-provider-for-multiple-organizations">4.5.2. Setting up an OpenID Connect Identity Provider for multiple organizations</a></h4>
 <div class="paragraph">
-<p>The Maritime Cloud has some special Identity Providers that handles the authentication for multiple organizations. Current examples are "IALA" and "BIMCO ExtraNet". These Identity Providers are responsible for vetting the organizations they provide authentication for, so that it is confirmed that the organization is who they claim to be. New organizations can be added by these Identity Providers. Since the Maritime Cloud currently needs to know about organizations centrally to be able to (among other things) issue certificates, some extra information is needed from these Identity Providers, to be able to create them in the central Identity Registry, if they are not already known.</p>
+<p>MCP has some special Identity Providers that handles the authentication for multiple organizations. Current examples are "IALA" and "BIMCO ExtraNet". These Identity Providers are responsible for vetting the organizations they provide authentication for, so that it is confirmed that the organization is who they claim to be. New organizations can be added by these Identity Providers. Since MCP currently needs to know about organizations centrally to be able to (among other things) issue certificates, some extra information is needed from these Identity Providers, to be able to create them in the central Identity Registry, if they are not already known.</p>
 </div>
 <div class="paragraph">
 <p>The extra information must be given as attributes, in addition to the attributes mentioned in <a href="#setup-oidc-idp">Setting up an OpenID Connect Identity Provider</a>:</p>
 </div>
 <div class="paragraph">
-<p>As default the Maritime Cloud Identity Broker expect the following attributes to be provided by an OpenID Connect Identity Provider:</p>
+<p>As default MCP Identity Broker expect the following attributes to be provided by an OpenID Connect Identity Provider:</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
@@ -1060,7 +1068,7 @@ attributes, and credentials.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="setting-up-an-saml2-identity-provider"><a class="anchor" href="#setting-up-an-saml2-identity-provider"></a>4.5.3. Setting up an SAML2 Identity Provider</h4>
+<h4 id="setting-up-an-saml2-identity-provider"><a class="anchor" href="#setting-up-an-saml2-identity-provider"></a><a class="link" href="#setting-up-an-saml2-identity-provider">4.5.3. Setting up an SAML2 Identity Provider</a></h4>
 <div class="paragraph">
 <p>SAML2 is supported by older ADFS releases.</p>
 </div>
@@ -1110,16 +1118,16 @@ attributes, and credentials.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="pki-and-x-509-certificates"><a class="anchor" href="#pki-and-x-509-certificates"></a>5. PKI and X.509 Certificates</h2>
+<h2 id="pki-and-x-509-certificates"><a class="anchor" href="#pki-and-x-509-certificates"></a><a class="link" href="#pki-and-x-509-certificates">5. PKI and X.509 Certificates</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>A <strong>Public Key Infrastructure (PKI)</strong> is a set of hardware, software, people, policies, and procedures needed to create, manage, distribute, use, store, and revoke digital authentication certificates and manage public-key encryption. Thereby helping an organization establish and maintain a trustworthy networking environment. There is no inherent requirement for using a PKI based solution for enabling secure machine to machine (M2M) communication, but it is the most commonly used solution and lots of software, standards and best practices exists for utilizing it. The choice of using PKI based on the X.509 standard for M2M communication in the Maritime Cloud was thus straightforward.</p>
+<p>A <strong>Public Key Infrastructure (PKI)</strong> is a set of hardware, software, people, policies, and procedures needed to create, manage, distribute, use, store, and revoke digital authentication certificates and manage public-key encryption. Thereby helping an organization establish and maintain a trustworthy networking environment. There is no inherent requirement for using a PKI based solution for enabling secure machine to machine (M2M) communication, but it is the most commonly used solution and lots of software, standards and best practices exists for utilizing it. The choice of using PKI based on the X.509 standard for M2M communication in MCP was thus straightforward.</p>
 </div>
 <div class="paragraph">
 <p>The key piece in a PKI architecture is a PKI CA (Certificate Authority) which is an entity that issues digital authentication certificates. A digital certificate that certifies the ownership of a public key by the named subject of the certificate. An obvious example would be creating a certificate for a vessel, which can serve to certify that a given document was indeed signed by someone in possession of the certificate issued to that vessel.</p>
 </div>
 <div class="paragraph">
-<p>One of the most important aspects of designing a PKI based architecture is the certificate hierarchy planning because the design will affect how certificates are validated and used by PKI-enabled actors. Normally a PKI based architecture is arranged in a tree like hierarchy with a single root entity in the top and with numerous leaves called sub CAs. Each sub CA can have their own sub CA thereby forming a tree with a single entity at the top. Each leave in the tree is responsible for creating certificates, for example, ships or organizations. The reason for doing this is to be able to delegate the responsibility to different parties. For example, in the case of the Maritime Cloud one could envision that at some point in the future every flag state would be their own sub CA. Having the sole responsibility of issuing certificates for vessels registered under their own flag.</p>
+<p>One of the most important aspects of designing a PKI based architecture is the certificate hierarchy planning because the design will affect how certificates are validated and used by PKI-enabled actors. Normally a PKI based architecture is arranged in a tree like hierarchy with a single root entity in the top and with numerous leaves called sub CAs. Each sub CA can have their own sub CA thereby forming a tree with a single entity at the top. Each leave in the tree is responsible for creating certificates, for example, ships or organizations. The reason for doing this is to be able to delegate the responsibility to different parties. For example, in the case of MCP one could envision that at some point in the future every flag state would be their own sub CA. Having the sole responsibility of issuing certificates for vessels registered under their own flag.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1128,36 +1136,36 @@ attributes, and credentials.</p>
 <div class="title">PKI hierarchy</div>
 </div>
 <div class="paragraph">
-<p>In the current version of the Maritime Cloud we are working with a single sub CA that has the responsibility for issuing all certificates. This sub CA is located at the Maritime Cloud Identity Registry. However, this can gradually be changed to support another PKI hierarchy design.</p>
+<p>In the current version of MCP we are working with a single sub CA that has the responsibility for issuing all certificates. This sub CA is located at MCP Identity Registry. However, this can gradually be changed to support another PKI hierarchy design.</p>
 </div>
 <div class="paragraph">
-<p>The most important functionality of a CA is issuing digital certificates. A digital certificate certifies the ownership of a public key by the named subject of the certificate. This allows others (relying parties) to rely upon signatures or on assertions made about the private key that corresponds to the certified public key. In this model of trust relationships, a CA is a trusted third party—trusted both by the subject (owner) of the certificate and by the party relying upon the certificate. In the case of the Maritime Cloud these certificates are typically used to make secure connections between maritime actors over the Internet. A certificate is required in order to avoid the case that a malicious party which happens to be on the path to the target server pretends to be the actual target. Such a scenario is commonly referred to as a man-in-the-middle attack. The client uses the CA certificate to verify the CA signature on the server certificate, as part of the checks before establishing a secure connection. Likewise, the server has the option of inspecting the clients certificate before allowing it to connect.</p>
+<p>The most important functionality of a CA is issuing digital certificates. A digital certificate certifies the ownership of a public key by the named subject of the certificate. This allows others (relying parties) to rely upon signatures or on assertions made about the private key that corresponds to the certified public key. In this model of trust relationships, a CA is a trusted third party—trusted both by the subject (owner) of the certificate and by the party relying upon the certificate. In the case of MCP these certificates are typically used to make secure connections between maritime actors over the Internet. A certificate is required in order to avoid the case that a malicious party which happens to be on the path to the target server pretends to be the actual target. Such a scenario is commonly referred to as a man-in-the-middle attack. The client uses the CA certificate to verify the CA signature on the server certificate, as part of the checks before establishing a secure connection. Likewise, the server has the option of inspecting the clients certificate before allowing it to connect.</p>
 </div>
 <div class="paragraph">
-<p>To issue a new certificate for, for example, a vessel. An administrator for the organization who owns the ship will need to log in to the Maritime Cloud Portal and use its functionality for issuing new certificates. The certificate being issued will contain information about the name of the ship, the owner, the flag state and other attributes such as MMSI and IMO number. In the current implementation there is no validation of this information other than that the organization must have been accepted when signing up. We do not expect this to be a problem for the foreseeable future as the number of participating parties is still relatively small. In the future where a lot of more organizations has been added it might, for example, be possible to integrate with national registries. So an automated check of these information can be made.</p>
+<p>To issue a new certificate for, for example, a vessel. An administrator for the organization who owns the ship will need to log in to MCP Portal and use its functionality for issuing new certificates. The certificate being issued will contain information about the name of the ship, the owner, the flag state and other attributes such as MMSI and IMO number. In the current implementation there is no validation of this information other than that the organization must have been accepted when signing up. We do not expect this to be a problem for the foreseeable future as the number of participating parties is still relatively small. In the future where a lot of more organizations has been added it might, for example, be possible to integrate with national registries. So an automated check of these information can be made.</p>
 </div>
 <div class="paragraph">
 <p>After having issued a certificate the administrator can now install it on the ship in some way. The actual logistics about how and where to install it is outside of the scope of the identity registry as this might vary a lot between organizations and projects. This also reduces the functionality of the identity registry to just provide the core functionality of Identity management. Allowing users to be able to build innovative solutions on top of it. This also applies directly to machine to machine communication. The identity registry places no restrictions about what kind of machine to machine communication protocols that should be used. It just provides the basic infrastructure to allow for each machine to authenticate the host in the other end. Letting each project select their protocols if needed.</p>
 </div>
 <div class="sect2">
-<h3 id="get-the-maritime-cloud-root-certificate"><a class="anchor" href="#get-the-maritime-cloud-root-certificate"></a>5.1. Get The Maritime Cloud Root Certificate</h3>
+<h3 id="get-mcp-root-certificate"><a class="anchor" href="#get-mcp-root-certificate"></a><a class="link" href="#get-mcp-root-certificate">5.1. Get MCP Root Certificate</a></h3>
 <div class="paragraph">
-<p>In order to use the certificates issued by the Maritime Cloud Identity Registry it is needed to add the Maritime Cloud Root Certificates to the relevant trustchain. Here you can download the root certificates for the Maritime Cloud instances:</p>
+<p>In order to use the certificates issued by MCP Identity Registry it is needed to add MCP Root Certificates to the relevant trustchain. Here you can download the root certificates for MCP instances:</p>
 </div>
 <div class="paragraph">
-<p>The Maritime Cloud <strong>Production</strong> environment root certificates as <a href="http://developers.maritimecloud.net/identity/prod-certificate/mc-ca-chain.pem">PEM (one file, primarily for Apache/Nginx)</a>, in <a href="http://developers.maritimecloud.net/identity/prod-certificate/mc-truststore-password-is-changeit.jks">JKS (for Java)</a> or <a href="http://developers.maritimecloud.net/identity/prod-certificate/mc-ca-certs.zip">a zip with the separate files (for windows)</a>.</p>
+<p>MCP <strong>Production</strong> environment root certificates as <a href="http://developers.maritimecloud.net/identity/prod-certificate/mc-ca-chain.pem">PEM (one file, primarily for Apache/Nginx)</a>, in <a href="http://developers.maritimecloud.net/identity/prod-certificate/mc-truststore-password-is-changeit.jks">JKS (for Java)</a> or <a href="http://developers.maritimecloud.net/identity/prod-certificate/mc-ca-certs.zip">a zip with the separate files (for windows)</a>.</p>
 </div>
 <div class="paragraph">
-<p>The Maritime Cloud <strong>Staging</strong> environment root certificates as <a href="http://developers.maritimecloud.net/identity/staging-certificate/mc-ca-chain.pem">PEM (one file, primarily for Apache/Nginx)</a>, in <a href="http://developers.maritimecloud.net/identity/staging-certificate/mc-truststore-password-is-changeit.jks">JKS (for Java)</a> or <a href="http://developers.maritimecloud.net/identity/staging-certificate/mc-ca-certs.zip">a zip with the separate files (for windows)</a>.</p>
+<p>MCP <strong>Staging</strong> environment root certificates as <a href="http://developers.maritimecloud.net/identity/staging-certificate/mc-ca-chain.pem">PEM (one file, primarily for Apache/Nginx)</a>, in <a href="http://developers.maritimecloud.net/identity/staging-certificate/mc-truststore-password-is-changeit.jks">JKS (for Java)</a> or <a href="http://developers.maritimecloud.net/identity/staging-certificate/mc-ca-certs.zip">a zip with the separate files (for windows)</a>.</p>
 </div>
 <div class="paragraph">
-<p>The Maritime Cloud <strong>Test</strong> environment root certificates as <a href="http://developers.maritimecloud.net/identity/test-certificate/mc-ca-chain.pem">PEM (one file, primarily for Apache/Nginx)</a>, in <a href="http://developers.maritimecloud.net/identity/test-certificate/mc-truststore-password-is-changeit.jks">JKS (for Java)</a> or <a href="http://developers.maritimecloud.net/identity/test-certificate/mc-ca-certs.zip">a zip with the separate files (for windows)</a>.</p>
+<p>MCP <strong>Test</strong> environment root certificates as <a href="http://developers.maritimecloud.net/identity/test-certificate/mc-ca-chain.pem">PEM (one file, primarily for Apache/Nginx)</a>, in <a href="http://developers.maritimecloud.net/identity/test-certificate/mc-truststore-password-is-changeit.jks">JKS (for Java)</a> or <a href="http://developers.maritimecloud.net/identity/test-certificate/mc-ca-certs.zip">a zip with the separate files (for windows)</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="certificate-attributes"><a class="anchor" href="#certificate-attributes"></a>5.2. Certificate Attributes</h3>
+<h3 id="certificate-attributes"><a class="anchor" href="#certificate-attributes"></a><a class="link" href="#certificate-attributes">5.2. Certificate Attributes</a></h3>
 <div class="paragraph">
-<p>The Maritime Cloud can issue X.509 certificates for the users which can then be used for authentication. Service providers relying on X.509 certificate authentication must obtain and install the Maritime Cloud root certificate into their webservice.</p>
+<p>MCP can issue X.509 certificates for the users which can then be used for authentication. Service providers relying on X.509 certificate authentication must obtain and install MCP root certificate into their webservice.</p>
 </div>
 <div class="paragraph">
 <p>The standard information present in an X.509 certificate includes:</p>
@@ -1174,7 +1182,7 @@ attributes, and credentials.</p>
 <p><strong>Algorithm information</strong> – the algorithm used to sign the certificate</p>
 </li>
 <li>
-<p><strong>Issuer distinguished name</strong> – the name of the entity issuing the certificate (The Maritime Cloud)</p>
+<p><strong>Issuer distinguished name</strong> – the name of the entity issuing the certificate (MCP)</p>
 </li>
 <li>
 <p><strong>Validity period of the certificate</strong> – start/end date and time</p>
@@ -1318,7 +1326,7 @@ attributes, and credentials.</p>
 </table>
 </div>
 <div class="sect2">
-<h3 id="revocation-of-certificates"><a class="anchor" href="#revocation-of-certificates"></a>5.3. Revocation of certificates</h3>
+<h3 id="revocation-of-certificates"><a class="anchor" href="#revocation-of-certificates"></a><a class="link" href="#revocation-of-certificates">5.3. Revocation of certificates</a></h3>
 <div class="paragraph">
 <p>A crucial part of any PKI is to support revocation of certificates, so that certificates that belongs to entities who is no longer trusted, affiliation has change, etc., can be mark as not trusted any more. Anyone who wishes to validate a certificate can then check if the certificate has been marked as revoked. The checking of the certificate revocation status can be done in two ways:</p>
 </div>
@@ -1333,24 +1341,24 @@ attributes, and credentials.</p>
 </ol>
 </div>
 <div class="paragraph">
-<p>The endpoints for both the OCSP interface and the Certificate Revocation File are embedded into the certificates issued by the Maritime Cloud Identity Registry, and are currently <a href="https://api.maritimecloud.net/x509/api/certificates/crl" class="bare">https://api.maritimecloud.net/x509/api/certificates/crl</a> and <a href="https://api.maritimecloud.net/x509/api/certificates/ocsp" class="bare">https://api.maritimecloud.net/x509/api/certificates/ocsp</a>.</p>
+<p>The endpoints for both the OCSP interface and the Certificate Revocation File are embedded into the certificates issued by MCP Identity Registry, and are currently <a href="https://api.maritimecloud.net/x509/api/certificates/crl" class="bare">https://api.maritimecloud.net/x509/api/certificates/crl</a> and <a href="https://api.maritimecloud.net/x509/api/certificates/ocsp" class="bare">https://api.maritimecloud.net/x509/api/certificates/ocsp</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="certificate-authentication-flow"><a class="anchor" href="#certificate-authentication-flow"></a>5.4. Certificate Authentication Flow</h3>
+<h3 id="certificate-authentication-flow"><a class="anchor" href="#certificate-authentication-flow"></a><a class="link" href="#certificate-authentication-flow">5.4. Certificate Authentication Flow</a></h3>
 <div class="paragraph">
 <p>To illustrate the authentication flow the sequence diagram below is provided.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/diag-388cdd8d823f784525461566edc8c6de.png" alt="diag 388cdd8d823f784525461566edc8c6de" width="749" height="299">
+<img src="images/diag-7cd353fc09c685a22f21e7f38510ff9e.png" alt="diag 7cd353fc09c685a22f21e7f38510ff9e" width="748" height="298">
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="obtaining-a-openid-connect-token-using-a-certificate"><a class="anchor" href="#obtaining-a-openid-connect-token-using-a-certificate"></a>5.5. Obtaining a OpenId Connect Token using a Certificate</h3>
+<h3 id="obtaining-a-openid-connect-token-using-a-certificate"><a class="anchor" href="#obtaining-a-openid-connect-token-using-a-certificate"></a><a class="link" href="#obtaining-a-openid-connect-token-using-a-certificate">5.5. Obtaining a OpenId Connect Token using a Certificate</a></h3>
 <div class="paragraph">
-<p>It is possible to obtain OpenID Connect Tokens using certificate authentication. The idea is that instead of authenticating by being redirected to an Identity Provider as in the normal OpenID Connect flow, you authenticate at the Identity Broker by using your certificate (that has been issued by the Maritime Cloud Identity Registry). This authentication would work in the same way as when authenticating to any service. When authentication has been succesful the Identity Broker can then issue a JWT-token, which is what the OpenId Connect authentication use. So in effect what we have is a "bridge" between the 2 authentication approaches.</p>
+<p>It is possible to obtain OpenID Connect Tokens using certificate authentication. The idea is that instead of authenticating by being redirected to an Identity Provider as in the normal OpenID Connect flow, you authenticate at the Identity Broker by using your certificate (that has been issued by MCP Identity Registry). This authentication would work in the same way as when authenticating to any service. When authentication has been succesful the Identity Broker can then issue a JWT-token, which is what the OpenId Connect authentication use. So in effect what we have is a "bridge" between the 2 authentication approaches.</p>
 </div>
 <div class="paragraph">
 <p>An example of use could be that a device (which has been issued certificates) wishes to authenticate securely with a service, but the service only supports OpenId Connect authentication. Using the approach mentioned above, the device can use its certificate to get an OpenId Connect token, which can then be used to authenticate to the service.</p>
@@ -1360,11 +1368,11 @@ attributes, and credentials.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/diag-194a1042b4cbf35ffbd268ffb8811ec3.png" alt="diag 194a1042b4cbf35ffbd268ffb8811ec3" width="902" height="552">
+<img src="images/diag-9f6c8a8663a2d802fffbd4da7293afd6.png" alt="diag 9f6c8a8663a2d802fffbd4da7293afd6" width="901" height="551">
 </div>
 </div>
 <div class="sect3">
-<h4 id="example-of-obtaining-a-openid-connect-token-using-a-certificate"><a class="anchor" href="#example-of-obtaining-a-openid-connect-token-using-a-certificate"></a>5.5.1. Example of Obtaining a OpenId Connect Token using a Certificate</h4>
+<h4 id="example-of-obtaining-a-openid-connect-token-using-a-certificate"><a class="anchor" href="#example-of-obtaining-a-openid-connect-token-using-a-certificate"></a><a class="link" href="#example-of-obtaining-a-openid-connect-token-using-a-certificate">5.5.1. Example of Obtaining a OpenId Connect Token using a Certificate</a></h4>
 <div class="paragraph">
 <p>In this simple example we will assume that a certificate and key&#8212;&#8203;pair has been issued to the entity who wishes to authenticate. This example makes use of <code>curl</code> a commandline tool available on Linux and Mac OS X.</p>
 </div>
@@ -1496,7 +1504,7 @@ curl: (7) Failed to connect to localhost port 99: Connection refused</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>access_token</code> is the token that should be used we communicating with services in the Maritime Cloud context. The token should be embedded in the HTTP header. When using <code>curl</code> it can be done like this:</p>
+<p>The <code>access_token</code> is the token that should be used we communicating with services in MCP context. The token should be embedded in the HTTP header. When using <code>curl</code> it can be done like this:</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -1517,7 +1525,7 @@ curl: (7) Failed to connect to localhost port 99: Connection refused</pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="authorization"><a class="anchor" href="#authorization"></a>6. Authorization</h2>
+<h2 id="authorization"><a class="anchor" href="#authorization"></a><a class="link" href="#authorization">6. Authorization</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Another central aspect of Identity Management is the concept of authorization which is the process of determining a set of permissions that is granted to a specific trusted identity. In all practical senses, authorization follows authentication. Once a system knows who you are, the system can determine what is appropriate for you to be able to see or do. authorization can be determined based on the user identity alone, but in most cases requires additional attributes about the user, such as role, title, flag state, etc.</p>
@@ -1536,16 +1544,16 @@ curl: (7) Failed to connect to localhost port 99: Connection refused</pre>
 </ul>
 </div>
 <div class="paragraph">
-<p>Since authorization can always be done locally by the application that is being accessed, for example by storing user rights in a local database, we have decided that the Maritime Cloud will not prioritize central support for authorization for the next milestones. Instead focusing on getting authentication right.</p>
+<p>Since authorization can always be done locally by the application that is being accessed, for example by storing user rights in a local database, we have decided that MCP will not prioritize central support for authorization for the next milestones. Instead focusing on getting authentication right.</p>
 </div>
 <div class="paragraph">
 <p>Before implementation of centralized support for authorization can begin there are some obstacles that lie ahead. Mainly because there, unlike authentication, are no good standards for doing authorization.</p>
 </div>
 <div class="paragraph">
-<p>Even though there are no real standards there are a number of approaches that are commonly used. The most commonly used probably being role-based access control (RBAC). RBAC is an access control mechanism defined around roles and privileges. The components of RBAC such as role-permissions, user-role and role-role relationships make it simple to do user assignments of entitlements. However, adopting RBAC for the Maritime Cloud opens some questions. For example, who defines the roles and are they global roles. Or are they local to a particular service or a particular organization. For example, an "administrator" role might entail a list of certain privileges in one organization and another list of privileges in another organization.</p>
+<p>Even though there are no real standards there are a number of approaches that are commonly used. The most commonly used probably being role-based access control (RBAC). RBAC is an access control mechanism defined around roles and privileges. The components of RBAC such as role-permissions, user-role and role-role relationships make it simple to do user assignments of entitlements. However, adopting RBAC for MCP opens some questions. For example, who defines the roles and are they global roles. Or are they local to a particular service or a particular organization. For example, an "administrator" role might entail a list of certain privileges in one organization and another list of privileges in another organization.</p>
 </div>
 <div class="paragraph">
-<p>Given these issues and many other we have to decide not to implement central authorization in the Maritime Cloud. Instead the Maritime Cloud will provide the information that can be used for authorization in the services.</p>
+<p>Given these issues and many other we have to decide not to implement central authorization in MCP. Instead MCP will provide the information that can be used for authorization in the services.</p>
 </div>
 <div class="paragraph">
 <p>As described in the sections about <a href="#openid-connect">OpenID Connect</a> and <a href="#certificate-attributes">Certificate Attributes</a>, both authentication methods provides information about the authenticated user that can be used for authorization:</p>
@@ -1564,9 +1572,9 @@ curl: (7) Failed to connect to localhost port 99: Connection refused</pre>
 <p>When an organization wishes to use a service, the organization will then make an agreement with that about how access levels shall be defined in that service, based on the permissions. This will have to be done for each service the organization wishes to use.</p>
 </div>
 <div class="sect2">
-<h3 id="example-of-authorization"><a class="anchor" href="#example-of-authorization"></a>6.1. Example of Authorization</h3>
+<h3 id="example-of-authorization"><a class="anchor" href="#example-of-authorization"></a><a class="link" href="#example-of-authorization">6.1. Example of Authorization</a></h3>
 <div class="paragraph">
-<p>As an example of how authorization can be done, let us have a look at how it is handled inside the Maritime Cloud Identity Registry. When it comes to authorization, the Identity Registry will have the same information about its users as any other service in the Maritime Cloud.</p>
+<p>As an example of how authorization can be done, let us have a look at how it is handled inside the MCP Identity Registry. When it comes to authorization, the Identity Registry will have the same information about its users as any other service in MCP.</p>
 </div>
 <div class="paragraph">
 <p>The Identity Registry currently has these roles:</p>
@@ -1725,14 +1733,14 @@ curl: (7) Failed to connect to localhost port 99: Connection refused</pre>
 </ul>
 </div>
 <div class="paragraph">
-<p>In this example we will focus on <strong>ROLE_USER</strong> and <strong>ROLE_ORG_ADMIN</strong>. Let us assume that an Organization (DMA) wants to grant members of the internal "E-navigation" department administrative rights in the Maritime Cloud Identity Registry. In DMAs Identity Provider setup the department name is automatically added to the "permissions" attribute. So to make this mapping the current DMA administrator sets up a role mapping between the permission "E-navigation" and the role ROLE_ORG_ADMIN. Once this is done, all members of the DMA E-navigation department will have administrative rights for the DMA organization inside the Identity Registry. As noted earlier, these rights only apply inside the Identity Registry. Other services must create a similar setup with mapping of roles and permissions.</p>
+<p>In this example we will focus on <strong>ROLE_USER</strong> and <strong>ROLE_ORG_ADMIN</strong>. Let us assume that an Organization (DMA) wants to grant members of the internal "E-navigation" department administrative rights in the MCP Identity Registry. In DMAs Identity Provider setup the department name is automatically added to the "permissions" attribute. So to make this mapping the current DMA administrator sets up a role mapping between the permission "E-navigation" and the role ROLE_ORG_ADMIN. Once this is done, all members of the DMA E-navigation department will have administrative rights for the DMA organization inside the Identity Registry. As noted earlier, these rights only apply inside the Identity Registry. Other services must create a similar setup with mapping of roles and permissions.</p>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="terminology"><a class="anchor" href="#terminology"></a>7. Terminology</h2>
+<h2 id="terminology"><a class="anchor" href="#terminology"></a><a class="link" href="#terminology">7. Terminology</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Most of the terminology in this section has been taken from ISO/IEC 24760-1:2011 - A framework for identity management - Terminology and concepts</p>
@@ -1782,7 +1790,7 @@ curl: (7) Failed to connect to localhost port 99: Connection refused</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-06-18 20:45:47 CEST
+Last updated 2017-11-09 14:23:52 CET
 </div>
 </div>
 <script type="text/x-mathjax-config">
