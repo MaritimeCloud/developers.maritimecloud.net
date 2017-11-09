@@ -1,12 +1,12 @@
 == Introduction
-This development guide on the Maritime Cloud identity platform describes the current state of the Maritime Cloud reference implementation as of {releaseDate}.
+This development guide on the MCP identity platform describes the current state of the MCP reference implementation as of {releaseDate}.
 
 Please do not email us directly about usage questions. Instead use our Google Group at https://groups.google.com/forum/#!forum/maritimecloud for general usage questions. In this way future users can see answers to commonly asked questions. Google Groups is also where we post information about new releases and updated documentation.
 
-This developer guide is intended to make you familiar with developing secure applications and services for the Maritime Cloud in particular with regards to Identity Management.
+This developer guide is intended to make you familiar with developing secure applications and services for MCP in particular with regards to Identity Management.
 
 === A Bit of History
-The Maritime Cloud project started out as an internal project at the Danish Maritime Authority in the autumn of 2012.
+The MCP project started out as an internal project at the Danish Maritime Authority in the autumn of 2012.
 As part of the e-Navigation process the Danish Maritime Authority had been working on an e-Navigation Prototype Display system called EPD. The EPD consist of two applications for demonstrating potential e-navigation solutions. An ECDIS like ship side application and a shore side application. 
 
 During the development it was clear that AIS was a severe limiting factor when communicating between the ship side and the shore side. Putting a lot of limitations of the different kind of maritime services that could be developed. Especially three issues was identified. 
@@ -15,27 +15,27 @@ During the development it was clear that AIS was a severe limiting factor when c
 * *Ease of development.* There was no easy way to simulate AIS communication without a very complex developer environment.
 * *Limited Signal Coverage.* There are certain types of services where the actors communicating might not all be within reach of radio signals. 
 
-The first prototype was built in the winter of 2012 and was implemented in the EPD in spring 2013. It just featured basic point to point communication. This is basically what is the Maritime Message Service now. During the summer of 2013 the vision for a general framework for maritime communication was created. Including registries for services and identities in addition to the message based framework. It also got its name the “Maritime Cloud” as a sort of umbralle name for the various underlying services. In 2014 the first release of the Maritime Cloud reference implementation was made available for the public.
+The first prototype was built in the winter of 2012 and was implemented in the EPD in spring 2013. It just featured basic point to point communication. This is basically what is the Maritime Message Service now. During the summer of 2013 the vision for a general framework for maritime communication was created. Including registries for services and identities in addition to the message based framework. It also got its name the “Maritime Connectivity Platform” as a sort of umbrella name for the various underlying services. In 2014 the first release of the MCP reference implementation was made available for the public.
 
 === Overview
-Here is 10000 foot overview of the Maritime Cloud:
+Here is a 10000 foot overview of MCP:
 
 image::contentimage_TheMaritimeCloud_orange_no_img.png[Overview]
 
-There are 3 different core services provided by the Maritime Cloud
+There are 3 different core services provided by MCP
 
-* *Maritime Identity Registry.* A centralized authority for identities of persons, organizations or ships that are using the Maritime Cloud. 
+* *Maritime Identity Registry.* A centralized authority for identities of persons, organizations or ships that are using the MCP. 
 * *Maritime Service Registry.* A centralized repository of service standards and provisioned services world wide.
 * *Maritime Messaging Service (MMS).* A communication protocol on top of TCP/IP. Supporting reliable delivery of messages and geocastingfootnote:[Geocasting refers to the delivery of information to a group of actors identified by their geographical locations.].
 
 This guide will predominantly discuss the identity registry.
 
 === Signing up
-In order to get an organization, its users and any ships the organization might own on to the Maritime Cloud, the organization needs to perform a signup process. The process is currently manual. To start the process, please fill out the https://management.maritimecloud.net/#/apply[registration form].
+In order to get an organization, its users and any ships the organization might own on to the MCP, the organization needs to perform a signup process. The process is currently manual. To start the process, please fill out the https://management.maritimecloud.net/#/apply[registration form].
 
-Once your organization has been approved you will have access to the Maritime Cloud and its services. You should probably start by looking at the https://management.maritimecloud.net/[Management Portal]. See the http://manual.maritimecloud.net/[manual] for how to use it.
+Once your organization has been approved you will have access to MCP and its services. You should probably start by looking at the https://management.maritimecloud.net/[Management Portal]. See the http://manual.maritimecloud.net/[manual] for how to use it.
 
 === Feedback
-Readers may send feedback about errors, omissions, and ambiguities in this guide to tgc@dma.dk or even better submit a pull request to the documentation available at https://github.com/MaritimeCloud/developers.maritimecloud.net.
+Readers may send feedback about errors, omissions, and ambiguities in this guide to osh@dma.dk or even better submit a pull request to the documentation available at https://github.com/MaritimeCloud/developers.maritimecloud.net.
 
-As previously mentioned questions about usage of the Maritime Cloud should be directed to our Google Group at https://groups.google.com/forum/#!forum/maritimecloud
+As previously mentioned questions about usage of MCP should be directed to our Google Group at https://groups.google.com/forum/#!forum/maritimecloud

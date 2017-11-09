@@ -8,6 +8,6 @@ The way in which a human user or machine may be authenticated typically falls in
 * Ownership factors: ID card, Cell phone, authentication certificates,
 * Inheritance factors: Fingerprint, retinal patterns, face, voice,
 
-Currently the implementation effort in the Maritime Cloud is concentrating on passwords for human users and authentication certificates for machine users. In the future we will probably add more methods.
+Currently the implementation effort in MCP is concentrating on passwords for human users and authentication certificates for machine users. In the future we will probably add more methods.
 
 While the difference of using authentication certificates or passwords might seem minor from a user perspective the underlying implementation and usage is radically different which is why it has been split into to different sections. 

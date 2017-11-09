@@ -1,40 +1,40 @@
 == PKI and X.509 Certificates
-A *Public Key Infrastructure (PKI)* is a set of hardware, software, people, policies, and procedures needed to create, manage, distribute, use, store, and revoke digital authentication certificates and manage public-key encryption. Thereby helping an organization establish and maintain a trustworthy networking environment. There is no inherent requirement for using a PKI based solution for enabling secure machine to machine (M2M) communication, but it is the most commonly used solution and lots of software, standards and best practices exists for utilizing it. The choice of using PKI based on the X.509 standard for M2M communication in the Maritime Cloud was thus straightforward.
+A *Public Key Infrastructure (PKI)* is a set of hardware, software, people, policies, and procedures needed to create, manage, distribute, use, store, and revoke digital authentication certificates and manage public-key encryption. Thereby helping an organization establish and maintain a trustworthy networking environment. There is no inherent requirement for using a PKI based solution for enabling secure machine to machine (M2M) communication, but it is the most commonly used solution and lots of software, standards and best practices exists for utilizing it. The choice of using PKI based on the X.509 standard for M2M communication in MCP was thus straightforward.
 
 The key piece in a PKI architecture is a PKI CA (Certificate Authority) which is an entity that issues digital authentication certificates. A digital certificate that certifies the ownership of a public key by the named subject of the certificate. An obvious example would be creating a certificate for a vessel, which can serve to certify that a given document was indeed signed by someone in possession of the certificate issued to that vessel.
 
-One of the most important aspects of designing a PKI based architecture is the certificate hierarchy planning because the design will affect how certificates are validated and used by PKI-enabled actors. Normally a PKI based architecture is arranged in a tree like hierarchy with a single root entity in the top and with numerous leaves called sub CAs. Each sub CA can have their own sub CA thereby forming a tree with a single entity at the top. Each leave in the tree is responsible for creating certificates, for example, ships or organizations. The reason for doing this is to be able to delegate the responsibility to different parties. For example, in the case of the Maritime Cloud one could envision that at some point in the future every flag state would be their own sub CA. Having the sole responsibility of issuing certificates for vessels registered under their own flag.  
+One of the most important aspects of designing a PKI based architecture is the certificate hierarchy planning because the design will affect how certificates are validated and used by PKI-enabled actors. Normally a PKI based architecture is arranged in a tree like hierarchy with a single root entity in the top and with numerous leaves called sub CAs. Each sub CA can have their own sub CA thereby forming a tree with a single entity at the top. Each leave in the tree is responsible for creating certificates, for example, ships or organizations. The reason for doing this is to be able to delegate the responsibility to different parties. For example, in the case of MCP one could envision that at some point in the future every flag state would be their own sub CA. Having the sole responsibility of issuing certificates for vessels registered under their own flag.  
 
 image::ca.png[title="PKI hierarchy"]
 
-In the current version of the Maritime Cloud we are working with a single sub CA that has the responsibility for issuing all certificates. This sub CA is located at the Maritime Cloud Identity Registry. However, this can gradually be changed to support another PKI hierarchy design.
+In the current version of MCP we are working with a single sub CA that has the responsibility for issuing all certificates. This sub CA is located at MCP Identity Registry. However, this can gradually be changed to support another PKI hierarchy design.
 
-The most important functionality of a CA is issuing digital certificates. A digital certificate certifies the ownership of a public key by the named subject of the certificate. This allows others (relying parties) to rely upon signatures or on assertions made about the private key that corresponds to the certified public key. In this model of trust relationships, a CA is a trusted third party—trusted both by the subject (owner) of the certificate and by the party relying upon the certificate. In the case of the Maritime Cloud these certificates are typically used to make secure connections between maritime actors over the Internet. A certificate is required in order to avoid the case that a malicious party which happens to be on the path to the target server pretends to be the actual target. Such a scenario is commonly referred to as a man-in-the-middle attack. The client uses the CA certificate to verify the CA signature on the server certificate, as part of the checks before establishing a secure connection. Likewise, the server has the option of inspecting the clients certificate before allowing it to connect.
+The most important functionality of a CA is issuing digital certificates. A digital certificate certifies the ownership of a public key by the named subject of the certificate. This allows others (relying parties) to rely upon signatures or on assertions made about the private key that corresponds to the certified public key. In this model of trust relationships, a CA is a trusted third party—trusted both by the subject (owner) of the certificate and by the party relying upon the certificate. In the case of MCP these certificates are typically used to make secure connections between maritime actors over the Internet. A certificate is required in order to avoid the case that a malicious party which happens to be on the path to the target server pretends to be the actual target. Such a scenario is commonly referred to as a man-in-the-middle attack. The client uses the CA certificate to verify the CA signature on the server certificate, as part of the checks before establishing a secure connection. Likewise, the server has the option of inspecting the clients certificate before allowing it to connect.
 
-To issue a new certificate for, for example, a vessel. An administrator for the organization who owns the ship will need to log in to the Maritime Cloud Portal and use its functionality for issuing new certificates. The certificate being issued will contain information about the name of the ship, the owner, the flag state and other attributes such as MMSI and IMO number. In the current implementation there is no validation of this information other than that the organization must have been accepted when signing up. We do not expect this to be a problem for the foreseeable future as the number of participating parties is still relatively small. In the future where a lot of more organizations has been added it might, for example, be possible to integrate with national registries. So an automated check of these information can be made.
+To issue a new certificate for, for example, a vessel. An administrator for the organization who owns the ship will need to log in to MCP Portal and use its functionality for issuing new certificates. The certificate being issued will contain information about the name of the ship, the owner, the flag state and other attributes such as MMSI and IMO number. In the current implementation there is no validation of this information other than that the organization must have been accepted when signing up. We do not expect this to be a problem for the foreseeable future as the number of participating parties is still relatively small. In the future where a lot of more organizations has been added it might, for example, be possible to integrate with national registries. So an automated check of these information can be made.
 
 After having issued a certificate the administrator can now install it on the ship in some way. The actual logistics about how and where to install it is outside of the scope of the identity registry as this might vary a lot between organizations and projects. This also reduces the functionality of the identity registry to just provide the core functionality of Identity management. Allowing users to be able to build innovative solutions on top of it. This also applies directly to machine to machine communication. The identity registry places no restrictions about what kind of machine to machine communication protocols that should be used. It just provides the basic infrastructure to allow for each machine to authenticate the host in the other end. Letting each project select their protocols if needed.
 
-=== Get The Maritime Cloud Root Certificate
+=== Get MCP Root Certificate
 
-In order to use the certificates issued by the Maritime Cloud Identity Registry it is needed to add the Maritime Cloud Root Certificates to the relevant trustchain. Here you can download the root certificates for the Maritime Cloud instances:
+In order to use the certificates issued by MCP Identity Registry it is needed to add MCP Root Certificates to the relevant trustchain. Here you can download the root certificates for MCP instances:
 
-The Maritime Cloud *Production* environment root certificates as http://developers.maritimecloud.net/identity/prod-certificate/mc-ca-chain.pem[PEM (one file, primarily for Apache/Nginx)], in http://developers.maritimecloud.net/identity/prod-certificate/mc-truststore-password-is-changeit.jks[JKS (for Java)] or http://developers.maritimecloud.net/identity/prod-certificate/mc-ca-certs.zip[a zip with the separate files (for windows)].
+MCP *Production* environment root certificates as http://developers.maritimecloud.net/identity/prod-certificate/mc-ca-chain.pem[PEM (one file, primarily for Apache/Nginx)], in http://developers.maritimecloud.net/identity/prod-certificate/mc-truststore-password-is-changeit.jks[JKS (for Java)] or http://developers.maritimecloud.net/identity/prod-certificate/mc-ca-certs.zip[a zip with the separate files (for windows)].
 
-The Maritime Cloud *Staging* environment root certificates as http://developers.maritimecloud.net/identity/staging-certificate/mc-ca-chain.pem[PEM (one file, primarily for Apache/Nginx)], in http://developers.maritimecloud.net/identity/staging-certificate/mc-truststore-password-is-changeit.jks[JKS (for Java)] or http://developers.maritimecloud.net/identity/staging-certificate/mc-ca-certs.zip[a zip with the separate files (for windows)].
+MCP *Staging* environment root certificates as http://developers.maritimecloud.net/identity/staging-certificate/mc-ca-chain.pem[PEM (one file, primarily for Apache/Nginx)], in http://developers.maritimecloud.net/identity/staging-certificate/mc-truststore-password-is-changeit.jks[JKS (for Java)] or http://developers.maritimecloud.net/identity/staging-certificate/mc-ca-certs.zip[a zip with the separate files (for windows)].
 
-The Maritime Cloud *Test* environment root certificates as http://developers.maritimecloud.net/identity/test-certificate/mc-ca-chain.pem[PEM (one file, primarily for Apache/Nginx)], in http://developers.maritimecloud.net/identity/test-certificate/mc-truststore-password-is-changeit.jks[JKS (for Java)] or http://developers.maritimecloud.net/identity/test-certificate/mc-ca-certs.zip[a zip with the separate files (for windows)].
+MCP *Test* environment root certificates as http://developers.maritimecloud.net/identity/test-certificate/mc-ca-chain.pem[PEM (one file, primarily for Apache/Nginx)], in http://developers.maritimecloud.net/identity/test-certificate/mc-truststore-password-is-changeit.jks[JKS (for Java)] or http://developers.maritimecloud.net/identity/test-certificate/mc-ca-certs.zip[a zip with the separate files (for windows)].
 
 
 === Certificate Attributes
-The Maritime Cloud can issue X.509 certificates for the users which can then be used for authentication. Service providers relying on X.509 certificate authentication must obtain and install the Maritime Cloud root certificate into their webservice. 
+MCP can issue X.509 certificates for the users which can then be used for authentication. Service providers relying on X.509 certificate authentication must obtain and install MCP root certificate into their webservice. 
 
 The standard information present in an X.509 certificate includes:
 
 ** *Version* – which X.509 version applies to the certificate (which indicates what data the certificate must include)
 ** *Serial number* – A unique assigned serial number that distinguishes it from other certificates
 ** *Algorithm information* – the algorithm used to sign the certificate
-** *Issuer distinguished name* – the name of the entity issuing the certificate (The Maritime Cloud)
+** *Issuer distinguished name* – the name of the entity issuing the certificate (MCP)
 ** *Validity period of the certificate* – start/end date and time
 ** *Subject distinguished name* – the name of the identity the certificate is issued to
 ** *Subject public key information* – the public key associated with the identity
@@ -80,7 +80,7 @@ A crucial part of any PKI is to support revocation of certificates, so that cert
 . Call the OCSP interface provided by the Identity Registry for each certificate.
 . Periodically download a Certificate Revocation File from the Identity Registry and use it check certificates locally.
 
-The endpoints for both the OCSP interface and the Certificate Revocation File are embedded into the certificates issued by the Maritime Cloud Identity Registry, and are currently https://api.maritimecloud.net/x509/api/certificates/crl and https://api.maritimecloud.net/x509/api/certificates/ocsp.
+The endpoints for both the OCSP interface and the Certificate Revocation File are embedded into the certificates issued by MCP Identity Registry, and are currently https://api.maritimecloud.net/x509/api/certificates/crl and https://api.maritimecloud.net/x509/api/certificates/ocsp.
 
 
 === Certificate Authentication Flow
@@ -105,7 +105,7 @@ deactivate Service
 
 === Obtaining a OpenId Connect Token using a Certificate
 
-It is possible to obtain OpenID Connect Tokens using certificate authentication. The idea is that instead of authenticating by being redirected to an Identity Provider as in the normal OpenID Connect flow, you authenticate at the Identity Broker by using your certificate (that has been issued by the Maritime Cloud Identity Registry). This authentication would work in the same way as when authenticating to any service. When authentication has been succesful the Identity Broker can then issue a JWT-token, which is what the OpenId Connect authentication use. So in effect what we have is a "bridge" between the 2 authentication approaches.
+It is possible to obtain OpenID Connect Tokens using certificate authentication. The idea is that instead of authenticating by being redirected to an Identity Provider as in the normal OpenID Connect flow, you authenticate at the Identity Broker by using your certificate (that has been issued by MCP Identity Registry). This authentication would work in the same way as when authenticating to any service. When authentication has been succesful the Identity Broker can then issue a JWT-token, which is what the OpenId Connect authentication use. So in effect what we have is a "bridge" between the 2 authentication approaches.
 
 An example of use could be that a device (which has been issued certificates) wishes to authenticate securely with a service, but the service only supports OpenId Connect authentication. Using the approach mentioned above, the device can use its certificate to get an OpenId Connect token, which can then be used to authenticate to the service.
 
@@ -114,26 +114,26 @@ The flow looks like the diagram below:
 [plantuml]
 ....
 autonumber
-User -> "Maritime Cloud\nIdentity Broker": User requests OpenId Connect Authentication Code,\nconnects using certificate
-activate "Maritime Cloud\nIdentity Broker"
-"Maritime Cloud\nIdentity Broker" -> "Maritime Cloud\nIdentity Registry": Request certificate revocation status
-activate "Maritime Cloud\nIdentity Registry"
-"Maritime Cloud\nIdentity Registry" -> "Maritime Cloud\nIdentity Broker": Revocation status response
-deactivate "Maritime Cloud\nIdentity Registry"
-"Maritime Cloud\nIdentity Broker" -> "Maritime Cloud\nIdentity Broker": Generate OpenId Connect Authentication\nCode based on the certificate
-"Maritime Cloud\nIdentity Broker" -> User: Return OpenId Connect Authentication Code
-deactivate "Maritime Cloud\nIdentity Broker"
-User -> "Maritime Cloud\nIdentity Broker": User requests OpenId Connect Tokens,\npresents Authentication Code
-activate "Maritime Cloud\nIdentity Broker"
-"Maritime Cloud\nIdentity Broker" -> "Maritime Cloud\nIdentity Broker": Generate OpenId Connect Authentication Tokens
-"Maritime Cloud\nIdentity Broker" -> User: Return OpenId Connect Tokens
-deactivate "Maritime Cloud\nIdentity Broker"
+User -> "MCP\nIdentity Broker": User requests OpenId Connect Authentication Code,\nconnects using certificate
+activate "MCP\nIdentity Broker"
+"MCP\nIdentity Broker" -> "MCP\nIdentity Registry": Request certificate revocation status
+activate "MCP\nIdentity Registry"
+"MCP\nIdentity Registry" -> "MCP\nIdentity Broker": Revocation status response
+deactivate "MCP\nIdentity Registry"
+"MCP\nIdentity Broker" -> "MCP\nIdentity Broker": Generate OpenId Connect Authentication\nCode based on the certificate
+"MCP\nIdentity Broker" -> User: Return OpenId Connect Authentication Code
+deactivate "MCP\nIdentity Broker"
+User -> "MCP\nIdentity Broker": User requests OpenId Connect Tokens,\npresents Authentication Code
+activate "MCP\nIdentity Broker"
+"MCP\nIdentity Broker" -> "MCP\nIdentity Broker": Generate OpenId Connect Authentication Tokens
+"MCP\nIdentity Broker" -> User: Return OpenId Connect Tokens
+deactivate "MCP\nIdentity Broker"
 User -> Service: User connects using OpenID Connect Token
 activate Service
-Service -> "Maritime Cloud\nIdentity Broker": Request token validation
-activate "Maritime Cloud\nIdentity Broker"
-"Maritime Cloud\nIdentity Broker" -> Service: Response for token validation
-deactivate "Maritime Cloud\nIdentity Broker"
+Service -> "MCP\nIdentity Broker": Request token validation
+activate "MCP\nIdentity Broker"
+"MCP\nIdentity Broker" -> Service: Response for token validation
+deactivate "MCP\nIdentity Broker"
 Service -> User: Return response
 deactivate Service
 ....
@@ -209,7 +209,7 @@ When this call runs there will be no redirection, so we do not need to tell `cur
 }
 ....
 
-The `access_token` is the token that should be used we communicating with services in the Maritime Cloud context. The token should be embedded in the HTTP header. When using `curl` it can be done like this:
+The `access_token` is the token that should be used we communicating with services in MCP context. The token should be embedded in the HTTP header. When using `curl` it can be done like this:
 
 ....
 curl -H "Authorization: Bearer eyJhbGciOiJ...uXoHudIM1yiDBYj8g" https://api.maritimecloud.net/oidc/api/org/DMA

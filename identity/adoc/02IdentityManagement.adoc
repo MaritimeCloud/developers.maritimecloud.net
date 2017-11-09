@@ -5,21 +5,21 @@ resources. The goal of identity management is to improve productivity and
 security while lowering costs associated with managing users and their identities,
 attributes, and credentials.
 
-The goal of the Maritime Clouds Identity Registry is to create a solution that satisfies the most common identification needs for the entire maritime industry on a global scale.
+The goal of the MCP Identity Registry is to create a solution that satisfies the most common identification needs for the entire maritime industry on a global scale.
 
-This is not a simple task as any solution must support every possible user scenarios from small leisure sailors to multinational companies. The complexity of this task is why the functionality will be delivered over multiple milestones in the coming years. The most important things such as support for authentication will be implemented first. Additional functionality will be added based on user needs in the projects supported by the Maritime Cloud.
+This is not a simple task as any solution must support every possible user scenarios from small leisure sailors to multinational companies. The complexity of this task is why the functionality will be delivered over multiple milestones in the coming years. The most important things such as support for authentication will be implemented first. Additional functionality will be added based on user needs in the projects supported by MCP.
 
 === The Identity Registry
-In most of the documents that describe the Maritime Cloud there is the concept of an Identity Registry. In reality there are numerous systems both internal to the Maritime Cloud as well as external to the Maritime Cloud that makes up the identity registry. The main components of the Identity Registry are:
+In most of the documents that describe MCP there is the concept of an Identity Registry. In reality there are numerous systems both internal to MCP as well as external to MCP that makes up the identity registry. The main components of the Identity Registry are:
 
 ** The Identity Registry API
 ** The Identity Broker
 
-The Identity Registry API provides management of entities in the Maritime Cloud and will be described later in this document.
+The Identity Registry API provides management of entities in MCP and will be described later in this document.
 
-The Identity Broker provides links to trusted Identity Providers, owned by maritime organizations that wish to connect its users to the Maritime Cloud. Within the scope of the EfficienSea 2 and STM validation projects, a special Identity Provider is available where organizations can create users without linking their own Identity Provider.
+The Identity Broker provides links to trusted Identity Providers, owned by maritime organizations that wish to connect its users to MCP. Within the scope of the EfficienSea 2 and STM validation projects, a special Identity Provider is available where organizations can create users without linking their own Identity Provider.
 
-This will enable the participants in the projects to register actors to validate specific service concepts in testbed trials or utilize the operational services established by the projects, as well as validate the identity management concept of the Maritime Cloud. Beyond the scope of the project, it is foreseen that several identity registers will collaborate to form the global federated Maritime Cloud Identity Registry.
+This will enable the participants in the projects to register actors to validate specific service concepts in testbed trials or utilize the operational services established by the projects, as well as validate the identity management concept of MCP. Beyond the scope of the project, it is foreseen that several identity registers will collaborate to form the global federated MCP Identity Registry.
 
 === Key Actor Concepts
 In order to be able to describe some of the concepts we are working with, here is a short introduction of the various actors we envision will interact with the identity registry. 
@@ -35,15 +35,15 @@ This does not prohibit a later revisiting of these goals. Or prohibit including 
 
 
 ==== Organization
-In the Maritime Cloud an organization is an entity, such as an institution, company or an association, that has a collective goal and is linked to an external environment. Examples, include international organizations such as IMO, IALA, IHO. National authorities such as US Coastguard, Swedish Maritime Administration. Local authorities such as VTS-Oeresund, Port of Rotterdam, Hong Kong SAR. Or commercial companies such as Transas or Maris.
+In MCP an organization is an entity, such as an institution, company or an association, that has a collective goal and is linked to an external environment. Examples, include international organizations such as IMO, IALA, IHO. National authorities such as US Coastguard, Swedish Maritime Administration. Local authorities such as VTS-Oeresund, Port of Rotterdam, Hong Kong SAR. Or commercial companies such as Transas or Maris.
 
-In order to able to use the functions of the Maritime Cloud in any way, an organization needs to be signed up to the Maritime Cloud. In the context of the EfficienSea 2.0 and STM projects, this is currently done be sending an email with various information about the organization to a Maritime Cloud test bed administrator.
+In order to be able to use the functions of MCP in any way, an organization needs to be signed up to MCP. In the context of the EfficienSea 2.0 and STM projects, this is currently done be sending an email with various information about the organization to a MCP test bed administrator.
 
 In the future a more automated process involving a validation workflow by some organization may validate the relationship between an organization in the real world, and the issued maritime digital identity. How this validation is to take place is still up for discussion. However, one possible solution would be for the maritime authorities in which a given organization is registered to put the stamp of approval on the signup application.
 
-Once an organization has been registered (and validated), an identity administrator of that organization will be able to create and manage maritime identities that belong to this organization, such as Users, Vessels Devices or Services. This administration is typically done via the Maritime Cloud Portal which is a web based client. For some larger organizations it might make sense to integrate directly via the underlying APIs.
+Once an organization has been registered (and validated), an identity administrator of that organization will be able to create and manage maritime identities that belong to this organization, such as Users, Vessels Devices or Services. This administration is typically done via MCP Portal which is a web based client. For some larger organizations it might make sense to integrate directly via the underlying APIs.
 
-All organizations that are registered in the Maritime Cloud must be registered with a unique MRN.
+All organizations that are registered in MCP must be registered with a unique MRN.
 
 The MRN is used in numerous places. For example, all service specifications from a given organization includes the organizations MRN.
 
@@ -59,7 +59,7 @@ Examples of valid organization ids:
 ==== Vessels
 Vessels describes any floating object used for the carriage of people or goods.
 
-The main need for registering vessels in the Maritime Cloud is so that digital authentication certificates can be issued for them. Thereby enabling secure communication between vessels as well as digitally signing of documents. Users might also use these authentication certificates for other purposes. The important thing is that the functionality is there.
+The main need for registering vessels in MCP is so that digital authentication certificates can be issued for them. Thereby enabling secure communication between vessels as well as digitally signing of documents. Users might also use these authentication certificates for other purposes. The important thing is that the functionality is there.
 
 As part of the authentication certificate of a vessel its name, MMSI number, IMO number, callsign and possible other attributes is included in the header of the authentication certificate.
 

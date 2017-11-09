@@ -40,7 +40,7 @@
 ////
 
 
-= Maritime Cloud Identity Platform
+= MCP Identity Platform
 
 <<<
 

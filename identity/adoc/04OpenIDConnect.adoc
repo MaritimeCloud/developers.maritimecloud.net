@@ -1,12 +1,12 @@
 == Brokered User Federation
-In the previous section we discussed digital certificates for use in machine to machine communication. There are no technical reason to why human users should not be able to use digital certificates to authenticate themselves as well. However, there are some serious practical ones that make it difficult to see them as a general solution for human user authentication. The first issue being that it requires that the certificate must always be present on the computer or mobile phone from which access is made. This is normally not a problem for machine to machine communication. Because, once installed the hardware configuration almost never changes. Unlike human users that uses their computer during the day to access information, their mobile phone on the way back from work and their tablet in the evening from home. Making sure that certificates are all installed on these devices and refreshing them once they expire is a lot of effort to require of users. And we believe having such a complicated setup would be a major barrier towards successful adoption of the Maritime Cloud. So for now, authentication of human users in the Maritime Cloud will be based on login through a web browser, using brokered federation.
+In the previous section we discussed digital certificates for use in machine to machine communication. There are no technical reason to why human users should not be able to use digital certificates to authenticate themselves as well. However, there are some serious practical ones that make it difficult to see them as a general solution for human user authentication. The first issue being that it requires that the certificate must always be present on the computer or mobile phone from which access is made. This is normally not a problem for machine to machine communication. Because, once installed the hardware configuration almost never changes. Unlike human users that uses their computer during the day to access information, their mobile phone on the way back from work and their tablet in the evening from home. Making sure that certificates are all installed on these devices and refreshing them once they expire is a lot of effort to require of users. And we believe having such a complicated setup would be a major barrier towards successful adoption of MCP. So for now, authentication of human users in MCP will be based on login through a web browser, using brokered federation.
 
-Federation is the means of linking distinct identity management systems to a person's electronic identity and attributes. For example, a shipping company might expose all their users in LDAP or Active Directory to the Maritime Cloud in such a way as they appear as Maritime Cloud users. Thereby bypassing the need to manage their users directly in the Maritime Cloud. This also means that the Maritime Cloud is not responsible for management of users. In practical terms, federation means that users asked to authenticate in the Maritime Cloud will be redirected to a login webpage supplied by their organization where they can login using their organizational id.
+Federation is the means of linking distinct identity management systems to a person's electronic identity and attributes. For example, a shipping company might expose all their users in LDAP or Active Directory to MCP in such a way as they appear as MCP users. Thereby bypassing the need to manage their users directly in MCP. This also means that MCP is not responsible for management of users. In practical terms, federation means that users asked to authenticate in MCP will be redirected to a login webpage supplied by their organization where they can login using their organizational id.
 
 Since the authentication process is the responsibility of the organizations, it is also up to the individual organization to chose an appropriate authentication method. While most will likely use classic username/password authentication, multi factor security, biometric security or other approaches could be used.
 
 === OpenID Connect
-http://openid.net/[OpenID Connect] is the protocol chosen to by used for user federation in the Maritime Cloud, and it should be supported by Service Providers. It is an interoperable authentication protocol based on the http://oauth.net/2/[OAuth 2.0] family of specifications. It uses straightforward REST/JSON message flows with a design goal of "making simple things simple and complicated things possible". It’s uniquely easy for developers to integrate, compared to any preceding Identity protocol.
+http://openid.net/[OpenID Connect] is the protocol chosen to by used for user federation in MCP, and it should be supported by Service Providers. It is an interoperable authentication protocol based on the http://oauth.net/2/[OAuth 2.0] family of specifications. It uses straightforward REST/JSON message flows with a design goal of "making simple things simple and complicated things possible". It’s uniquely easy for developers to integrate, compared to any preceding Identity protocol.
 
 OpenID Connect lets developers authenticate their users across websites and apps without having to own and manage password files. For the app builder, it provides a secure verifiable, answer to the question: "What is the identity of the person currently using the browser or native app that is connected to me?"
 
@@ -16,10 +16,10 @@ OpenID Connect allows for clients of all types, including browser-based JavaScri
 
 OpenID Connect provides authentication details in JWT tokens, that can be encrypted or digitally signed.
 
-=== Maritime Cloud User Federation Setup
-In most federated setups there is 1 step from the website (Service Provider) that need authentication and the Identity Provider, normally presented with a "Log in with X" link, where X could be Facebook, Google, etc. The setup used in the Maritime Cloud has 2 steps, where the first step is the Maritime Cloud Identity Broker which the presents the user with a list of available Identity Providers, which is the second step. For a deeper understanding of how this is actually done please read the  https://keycloak.gitbooks.io/server-adminstration-guide/content/topics/identity-broker/overview.html[Identity Broker overview section from the Keycloak manual]. Keycloak is the software used for the Maritime Cloud Identity Broker.
+=== MCP User Federation Setup
+In most federated setups there is 1 step from the website (Service Provider) that need authentication and the Identity Provider, normally presented with a "Log in with X" link, where X could be Facebook, Google, etc. The setup used in MCP has 2 steps, where the first step is MCP Identity Broker which the presents the user with a list of available Identity Providers, which is the second step. For a deeper understanding of how this is actually done please read the  https://keycloak.gitbooks.io/server-adminstration-guide/content/topics/identity-broker/overview.html[Identity Broker overview section from the Keycloak manual]. Keycloak is the software used for MCP Identity Broker.
 
-The Maritime Cloud expects to provide the following attributes in the OpenID Connect JWT Access Token:
+MCP expects to provide the following attributes in the OpenID Connect JWT Access Token:
 
 [options="header"]
 |===
@@ -111,20 +111,20 @@ deactivate "Backend Service"
 ....
 
 === Keycloack
-Keycloak is one of many products that includes support for OpenID Connect, and it is the product that currently provides the Maritime Cloud Identity Broker which is the cornerstone in the Maritime Cloud user federation.
+Keycloak is one of many products that includes support for OpenID Connect, and it is the product that currently provides MCP Identity Broker which is the cornerstone in MCP user federation.
 
-Keycloak is an open source product developed by RedHat. Keycloak can be set up to work in different ways. It can be set up as an Identity Broker in which case it will link to other Identity Providers, which is what the Maritime Cloud Identity Broker does, or it can be set up to work as an Identity Provider, using either a database or LDAP/AD as a backend. Due the ability to connect to LDAP/AD, Keycloak can be used as quick and easy way to set up a Identity Provider.
+Keycloak is an open source product developed by RedHat. Keycloak can be set up to work in different ways. It can be set up as an Identity Broker in which case it will link to other Identity Providers, which is what MCP Identity Broker does, or it can be set up to work as an Identity Provider, using either a database or LDAP/AD as a backend. Due the ability to connect to LDAP/AD, Keycloak can be used as quick and easy way to set up a Identity Provider.
 
-=== Getting connected to the Maritime Cloud
-If your organizations wishes to connect to the Maritime Cloud as an Identity Provider, to enable your uses to authenticate in the Maritime Cloud, please contact Tomas Christensen at tgc@dma.dk in order to set it up. Note that currently you need to expose interfaces that supports either OpenID Connect or SAML2.
+=== Getting connected to MCP
+If your organizations wishes to connect to MCP as an Identity Provider, to enable your uses to authenticate in MCP, please contact Tomas Christensen at tgc@dma.dk in order to set it up. Note that currently you need to expose interfaces that supports either OpenID Connect or SAML2.
 
-Within the scope of the EfficienSea2 and STM validation projects, organizations can get users registered in special project Identity Providers, supplied by the Maritime Cloud. EfficienSea2 partners should contact Tomas Christensen at tgc@dma.dk, while STM partners should contact SMA.
+Within the scope of the EfficienSea2 and STM validation projects, organizations can get users registered in special project Identity Providers, supplied by MCP. EfficienSea2 partners should contact Tomas Christensen at tgc@dma.dk, while STM partners should contact SMA.
 
 [[setup-oidc-idp]]
 ==== Setting up an OpenID Connect Identity Provider
-OpenID Connect is supported by the latest ADFS and http://keycloak.org[Keycloak] releases. The Maritime Cloud Identity Broker only supports the http://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth[OpenID Connect Authorization Code Flow] when connecting to Identity Providers. This limitation only applies when the Identity Broker connects to Identity Providers, not when Services/Clients connects to the Identity Broker.
+OpenID Connect is supported by the latest ADFS and http://keycloak.org[Keycloak] releases. MCP Identity Broker only supports the http://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth[OpenID Connect Authorization Code Flow] when connecting to Identity Providers. This limitation only applies when the Identity Broker connects to Identity Providers, not when Services/Clients connects to the Identity Broker.
 
-As default the Maritime Cloud Identity Broker expect the following attributes to be provided by an OpenID Connect Identity Provider:
+As default MCP Identity Broker expect the following attributes to be provided by an OpenID Connect Identity Provider:
 
 [options="header"]
 |===
@@ -142,11 +142,11 @@ If your Identity Provider has the values in different attributes, some mapping c
 The Identity Broker will generate and attach the organizations MRN and the users MRN to the user.
 
 ==== Setting up an OpenID Connect Identity Provider for multiple organizations
-The Maritime Cloud has some special Identity Providers that handles the authentication for multiple organizations. Current examples are "IALA" and "BIMCO ExtraNet". These Identity Providers are responsible for vetting the organizations they provide authentication for, so that it is confirmed that the organization is who they claim to be. New organizations can be added by these Identity Providers. Since the Maritime Cloud currently needs to know about organizations centrally to be able to (among other things) issue certificates, some extra information is needed from these Identity Providers, to be able to create them in the central Identity Registry, if they are not already known.
+MCP has some special Identity Providers that handles the authentication for multiple organizations. Current examples are "IALA" and "BIMCO ExtraNet". These Identity Providers are responsible for vetting the organizations they provide authentication for, so that it is confirmed that the organization is who they claim to be. New organizations can be added by these Identity Providers. Since MCP currently needs to know about organizations centrally to be able to (among other things) issue certificates, some extra information is needed from these Identity Providers, to be able to create them in the central Identity Registry, if they are not already known.
 
 The extra information must be given as attributes, in addition to the attributes mentioned in <<setup-oidc-idp>>:
 
-As default the Maritime Cloud Identity Broker expect the following attributes to be provided by an OpenID Connect Identity Provider:
+As default MCP Identity Broker expect the following attributes to be provided by an OpenID Connect Identity Provider:
 
 [options="header"]
 |===
