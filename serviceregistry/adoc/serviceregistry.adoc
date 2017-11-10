@@ -40,7 +40,7 @@
 ////
 
 
-= Maritime Cloud Service Registry
+= MCP Service Registry
 
 <<<
 
