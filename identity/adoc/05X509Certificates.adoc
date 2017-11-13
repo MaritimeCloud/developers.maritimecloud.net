@@ -17,7 +17,7 @@ After having issued a certificate the administrator can now install it on the sh
 
 === Get MCP Root Certificate
 
-In order to use the certificates issued by MCP Identity Registry it is needed to add MCP Root Certificates to the relevant trustchain. Here you can download the root certificates for MCP instances:
+In order to use the certificates issued by the MCP Identity Registry it is needed to add MCP Root Certificates to the relevant trustchain. Here you can download the root certificates for MCP instances:
 
 MCP *Production* environment root certificates as http://developers.maritimecloud.net/identity/prod-certificate/mc-ca-chain.pem[PEM (one file, primarily for Apache/Nginx)], in http://developers.maritimecloud.net/identity/prod-certificate/mc-truststore-password-is-changeit.jks[JKS (for Java)] or http://developers.maritimecloud.net/identity/prod-certificate/mc-ca-certs.zip[a zip with the separate files (for windows)].
 
