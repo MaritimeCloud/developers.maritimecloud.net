@@ -78,19 +78,19 @@ activate "Identity Provider"
 "Identity Provider" -> "MC Identity Broker": Return tokens
 deactivate "Identity Provider"
 
-"MC Identity Broker" -> "User (Browser)": Redirect to Service with code
+"MC Identity Broker" -> "User (Browser)": Redirect to Service with tokens
 deactivate "MC Identity Broker"
 autonumber stop
 "User (Browser)" -> Service
 
 autonumber resume
-Service -> "MC Identity Broker": Request token in exchange for code
+Service -> "MC Identity Broker": Request token validation
 activate "MC Identity Broker"
-"MC Identity Broker" -> Service: Return tokens
+"MC Identity Broker" -> Service: Response for token validation
 deactivate "MC Identity Broker"
 |||
 Service -> Service: Extract Organization name and\nattributes for authorization
-Service -> "User (Browser)": User is authenticated
+Service -> "User (Browser)": If token is valid the user is authenticated
 deactivate Service
 ....
 
