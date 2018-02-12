@@ -56,19 +56,21 @@ Examples of valid organization ids:
 ** urn:mrn:mcl:org:vts-oeresund
 ** urn:mrn:mcl:org:amsa@iala
 
+MRN has been approved by https://www.iana.org/[IANA] as an official URN namespace. For more information on the MRN specification you can read more at https://www.iana.org/assignments/urn-formal/mrn
+
 ==== Vessels
-Vessels describes any floating object used for the carriage of people or goods.
+Vessels describe any floating object used for the carriage of people or goods.
 
 The main need for registering vessels in MCP is so that digital authentication certificates can be issued for them. Thereby enabling secure communication between vessels as well as digitally signing of documents. Users might also use these authentication certificates for other purposes. The important thing is that the functionality is there.
 
-As part of the authentication certificate of a vessel its name, MMSI number, IMO number, callsign and possible other attributes is included in the header of the authentication certificate.
+As part of the authentication certificate of a vessel its name, MMSI number, IMO number, callsign and possible other attributes are included in the header of the authentication certificate.
 
 ==== Services
-Services refers to digital services. For example, a weather service that is available to other services for machine to machine communication. Services needs to be registered in such a way that it can successfully authenticate users. 
+Services refer to digital services. For example, a weather service that is available to other services for machine to machine communication. Services need to be registered in such a way that it can successfully authenticate users. 
 
 ==== Users
-Users mainly refers to human users. Human users differ from other actors in that they typically use a username/password to login which implies a different interaction pattern with the identity registry then say communication between vessels. 
+Users mainly refer to human users. Human users differ from other actors in that they typically use a username/password to login which implies a different interaction pattern with the identity registry than say communication between vessels. 
 
 ==== Devices
-Devices can be any number of entities that is not covered by the other entity types. It could for example be a lighthouse, an ECDIS or a server that needs to be able to authenticate itself.
+Devices can be any number of entities that are not covered by the other entity types. It could for example be a lighthouse, an ECDIS or a server that needs to be able to authenticate itself.
 
