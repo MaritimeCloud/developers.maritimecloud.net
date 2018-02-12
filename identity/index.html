@@ -774,35 +774,38 @@ attributes, and credentials.</p>
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>MRN has been approved by <a href="https://www.iana.org/">IANA</a> as an official URN namespace. For more information on the MRN specification you can read more at <a href="https://www.iana.org/assignments/urn-formal/mrn" class="bare">https://www.iana.org/assignments/urn-formal/mrn</a></p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="vessels"><a class="anchor" href="#vessels"></a><a class="link" href="#vessels">2.2.2. Vessels</a></h4>
 <div class="paragraph">
-<p>Vessels describes any floating object used for the carriage of people or goods.</p>
+<p>Vessels describe any floating object used for the carriage of people or goods.</p>
 </div>
 <div class="paragraph">
 <p>The main need for registering vessels in MCP is so that digital authentication certificates can be issued for them. Thereby enabling secure communication between vessels as well as digitally signing of documents. Users might also use these authentication certificates for other purposes. The important thing is that the functionality is there.</p>
 </div>
 <div class="paragraph">
-<p>As part of the authentication certificate of a vessel its name, MMSI number, IMO number, callsign and possible other attributes is included in the header of the authentication certificate.</p>
+<p>As part of the authentication certificate of a vessel its name, MMSI number, IMO number, callsign and possible other attributes are included in the header of the authentication certificate.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="services"><a class="anchor" href="#services"></a><a class="link" href="#services">2.2.3. Services</a></h4>
 <div class="paragraph">
-<p>Services refers to digital services. For example, a weather service that is available to other services for machine to machine communication. Services needs to be registered in such a way that it can successfully authenticate users.</p>
+<p>Services refer to digital services. For example, a weather service that is available to other services for machine to machine communication. Services need to be registered in such a way that it can successfully authenticate users.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="users"><a class="anchor" href="#users"></a><a class="link" href="#users">2.2.4. Users</a></h4>
 <div class="paragraph">
-<p>Users mainly refers to human users. Human users differ from other actors in that they typically use a username/password to login which implies a different interaction pattern with the identity registry then say communication between vessels.</p>
+<p>Users mainly refer to human users. Human users differ from other actors in that they typically use a username/password to login which implies a different interaction pattern with the identity registry than say communication between vessels.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="devices"><a class="anchor" href="#devices"></a><a class="link" href="#devices">2.2.5. Devices</a></h4>
 <div class="paragraph">
-<p>Devices can be any number of entities that is not covered by the other entity types. It could for example be a lighthouse, an ECDIS or a server that needs to be able to authenticate itself.</p>
+<p>Devices can be any number of entities that are not covered by the other entity types. It could for example be a lighthouse, an ECDIS or a server that needs to be able to authenticate itself.</p>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
@@ -813,7 +816,7 @@ attributes, and credentials.</p>
 <h2 id="authentication"><a class="anchor" href="#authentication"></a><a class="link" href="#authentication">3. Authentication</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Authentication is any process by which a system verifies the identity of a user (human or machine) who wishes to access it. Since access control is normally based on the identity of the user who requests access to a resource, authentication is essential to effective security. In contrast to identification which refers to the act of stating a person or thing&#8217;s identity, authentication is the process of actually confirming that stated identity. It might involve verifying the authenticity of a website by a digital certificate that is provides, or validating a persons identity documents.</p>
+<p>Authentication is any process by which a system verifies the identity of a user (human or machine) who wishes to access it. Since access control is normally based on the identity of the user who requests access to a resource, authentication is essential to efficient security. In contrast to identification which refers to the act of stating a person or thing&#8217;s identity, authentication is the process of actually confirming the stated identity. It might involve verifying the authenticity of a website by a digital certificate that it provides, or validating a persons identity documents.</p>
 </div>
 <div class="sect2">
 <h3 id="overview-2"><a class="anchor" href="#overview-2"></a><a class="link" href="#overview-2">3.1. Overview</a></h3>
@@ -837,7 +840,7 @@ attributes, and credentials.</p>
 <p>Currently the implementation effort in MCP is concentrating on passwords for human users and authentication certificates for machine users. In the future we will probably add more methods.</p>
 </div>
 <div class="paragraph">
-<p>While the difference of using authentication certificates or passwords might seem minor from a user perspective the underlying implementation and usage is radically different which is why it has been split into to different sections.</p>
+<p>While the difference of using authentication certificates or passwords might seem minor from a user perspective the underlying implementation and usage is radically different which is why it has been split into different sections.</p>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
@@ -847,18 +850,18 @@ attributes, and credentials.</p>
 <h2 id="brokered-user-federation"><a class="anchor" href="#brokered-user-federation"></a><a class="link" href="#brokered-user-federation">4. Brokered User Federation</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>In the previous section we discussed digital certificates for use in machine to machine communication. There are no technical reason to why human users should not be able to use digital certificates to authenticate themselves as well. However, there are some serious practical ones that make it difficult to see them as a general solution for human user authentication. The first issue being that it requires that the certificate must always be present on the computer or mobile phone from which access is made. This is normally not a problem for machine to machine communication. Because, once installed the hardware configuration almost never changes. Unlike human users that uses their computer during the day to access information, their mobile phone on the way back from work and their tablet in the evening from home. Making sure that certificates are all installed on these devices and refreshing them once they expire is a lot of effort to require of users. And we believe having such a complicated setup would be a major barrier towards successful adoption of MCP. So for now, authentication of human users in MCP will be based on login through a web browser, using brokered federation.</p>
+<p>In the previous section we discussed digital certificates for use in machine to machine communication. There are no technical reasons to why human users should not be able to use digital certificates to authenticate themselves as well. However, there are some serious practical issues that make it difficult to see them as a general solution for human user authentication. The first issue being that it requires that the certificate must always be present on the computer or mobile phone from which access is made. This is normally not a problem for machine to machine communication. Because, once installed the hardware configuration almost never changes. Unlike human users that use their computer during the day to access information, their mobile phone on the way back from work and their tablet in the evening from home. Making sure that certificates are installed on all these devices and refreshing them once they expire is a lot of effort to require from users. We believe having such a complicated setup would be a major barrier towards successful adoption of MCP. So for now, authentication of human users in MCP will be based on login through a web browser, using brokered federation.</p>
 </div>
 <div class="paragraph">
 <p>Federation is the means of linking distinct identity management systems to a person&#8217;s electronic identity and attributes. For example, a shipping company might expose all their users in LDAP or Active Directory to MCP in such a way as they appear as MCP users. Thereby bypassing the need to manage their users directly in MCP. This also means that MCP is not responsible for management of users. In practical terms, federation means that users asked to authenticate in MCP will be redirected to a login webpage supplied by their organization where they can login using their organizational id.</p>
 </div>
 <div class="paragraph">
-<p>Since the authentication process is the responsibility of the organizations, it is also up to the individual organization to chose an appropriate authentication method. While most will likely use classic username/password authentication, multi factor security, biometric security or other approaches could be used.</p>
+<p>Since the authentication process is the responsibility of the organizations, it is also up to the individual organizations to choose an appropriate authentication method. While most will likely use classic username/password authentication, multi factor security, biometric security or other approaches could be used.</p>
 </div>
 <div class="sect2">
 <h3 id="openid-connect"><a class="anchor" href="#openid-connect"></a><a class="link" href="#openid-connect">4.1. OpenID Connect</a></h3>
 <div class="paragraph">
-<p><a href="http://openid.net/">OpenID Connect</a> is the protocol chosen to by used for user federation in MCP, and it should be supported by Service Providers. It is an interoperable authentication protocol based on the <a href="http://oauth.net/2/">OAuth 2.0</a> family of specifications. It uses straightforward REST/JSON message flows with a design goal of "making simple things simple and complicated things possible". It’s uniquely easy for developers to integrate, compared to any preceding Identity protocol.</p>
+<p><a href="http://openid.net/">OpenID Connect</a> is the protocol chosen to be used for user federation in MCP, and it should be supported by Service Providers. It is an interoperable authentication protocol based on the <a href="http://oauth.net/2/">OAuth 2.0</a> family of specifications. It uses straightforward REST/JSON message flows with a design goal of "making simple things simple and complicated things possible". It’s uniquely easy for developers to integrate, compared to any preceding Identity protocols.</p>
 </div>
 <div class="paragraph">
 <p>OpenID Connect lets developers authenticate their users across websites and apps without having to own and manage password files. For the app builder, it provides a secure verifiable, answer to the question: "What is the identity of the person currently using the browser or native app that is connected to me?"</p>
@@ -873,10 +876,10 @@ attributes, and credentials.</p>
 <div class="sect2">
 <h3 id="mcp-user-federation-setup"><a class="anchor" href="#mcp-user-federation-setup"></a><a class="link" href="#mcp-user-federation-setup">4.2. MCP User Federation Setup</a></h3>
 <div class="paragraph">
-<p>In most federated setups there is 1 step from the website (Service Provider) that need authentication and the Identity Provider, normally presented with a "Log in with X" link, where X could be Facebook, Google, etc. The setup used in MCP has 2 steps, where the first step is MCP Identity Broker which the presents the user with a list of available Identity Providers, which is the second step. For a deeper understanding of how this is actually done please read the  <a href="https://keycloak.gitbooks.io/server-adminstration-guide/content/topics/identity-broker/overview.html">Identity Broker overview section from the Keycloak manual</a>. Keycloak is the software used for MCP Identity Broker.</p>
+<p>In most federated setups there is 1 step from the website (Service Provider) that need authentication and the Identity Provider, normally presented with a "Log in with X" link, where X could be Facebook, Google, etc. The setup used in MCP has 2 steps, where the first step is MCP Identity Broker which presents the user with a list of available Identity Providers, which is the second step. For a deeper understanding of how this is actually done please read the <a href="http://www.keycloak.org/docs/3.0/server_admin/topics/identity-broker/overview.html">Identity Broker overview section from the Keycloak manual</a>. Keycloak is the software used for MCP Identity Broker.</p>
 </div>
 <div class="paragraph">
-<p>MCP expects to provide the following attributes in the OpenID Connect JWT Access Token:</p>
+<p>MCP expects the following attributes in the OpenID Connect JWT Access Token:</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
@@ -1795,7 +1798,7 @@ curl: (7) Failed to connect to localhost port 99: Connection refused</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-02-07 16:12:34 CET
+Last updated 2018-02-07 16:14:01 CET
 </div>
 </div>
 <script type="text/x-mathjax-config">
