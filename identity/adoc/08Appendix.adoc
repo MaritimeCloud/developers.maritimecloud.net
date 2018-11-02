@@ -1,3 +1,3 @@
 == Appendix
-** *The use of MCP as a login mechanism:* We share our experience from PortCDM on the use of MCP as a login mechanism based on Keycloak in http://manual.maritimeconnectivity.net/[this word file].
+** *The use of MCP as a login mechanism:* We share our experience from http://stmvalidation.eu/news/portcdm-information-sharing-in-real-time/[PortCDM] on the use of MCP as a login mechanism based on Keycloak in http://manual.maritimeconnectivity.net/[this word file].
 
