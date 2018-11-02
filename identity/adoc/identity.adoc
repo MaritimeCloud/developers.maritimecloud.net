@@ -69,3 +69,7 @@ include::06Authorisation.adoc[]
 <<<
 
 include::07Terminology.adoc[]
+
+<<<
+
+include::08Appendix.adoc[]
