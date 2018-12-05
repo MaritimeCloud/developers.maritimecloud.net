@@ -4,6 +4,8 @@ Each service instance may be registered with an associated coverage area. This a
 
 The service coverage area may consist of one or more geographic shapes or points. It should be noted that while a service may be defined using just one or more latitude/longitude point coordinates, it is advisable to always use an area shape like a polygon. Otherwise, queries using a point coordinate may not be able to intersect with and find the service instance.
 
+Service coverage geometries follow the right-hand rule, meaning that points of a polygon that encloses an area have to be defined in counterclockwise order. Holes in a covered area (exclusion zones) have to be expressed as a polygon with its points defined in clockwise order.
+
 Services registered with no coverage geometry are treated as being available world-wide, unless an UN/LOCODE has been set.
 
 === UN/LOCODE
@@ -18,3 +20,5 @@ The SR provides several API functions for querying services based on geographic 
 * *searchLocation* returns instances whose coverage area intersects with a given lat/lon coordinate.
 * *searchGeometryWKT* finds all instances whose coverage area intersects with the given search geometry.
 * *searchGeometryGeoJSON* Same as the WKT search, but accepts the search geometry in GeoJSON format.
+
+Note that the same rules as for the definition of coverage areas (right-hand rule) apply: inclusive shapes have to be in counter-clockwise order, exclusion shapes in clockwise order.
