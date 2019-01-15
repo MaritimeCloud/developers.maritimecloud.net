@@ -116,7 +116,7 @@ Keycloak is one of many products that includes support for OpenID Connect, and i
 Keycloak is an open source product developed by RedHat. Keycloak can be set up to work in different ways. It can be set up as an Identity Broker in which case it will link to other Identity Providers, which is what MCP Identity Broker does, or it can be set up to work as an Identity Provider, using either a database or LDAP/AD as a backend. Due the ability to connect to LDAP/AD, Keycloak can be used as quick and easy way to set up a Identity Provider.
 
 === Getting connected to MCP
-If your organizations wishes to connect to MCP as an Identity Provider, to enable your uses to authenticate in MCP, please contact Oliver Haagh at oliver@dmc.international in order to set it up. Note that currently you need to expose interfaces that supports either OpenID Connect or SAML2.
+If your organizations wishes to connect to MCP as an Identity Provider, to enable your uses to authenticate in MCP, please contact Oliver Haagh at mailto:oliver@dmc.international[oliver@dmc.international] in order to set it up. Note that currently you need to expose interfaces that supports either OpenID Connect or SAML2.
 
 Within the scope of the EfficienSea2 and STM validation projects, organizations can get users registered in special project Identity Providers, supplied by MCP. To join MCP please fill out the form at https://management.maritimecloud.net/#/apply[Apply].
 
