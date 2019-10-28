@@ -6,7 +6,7 @@ Federation is the means of linking distinct identity management systems to a per
 Since the authentication process is the responsibility of the organizations, it is also up to the individual organizations to choose an appropriate authentication method. While most will likely use classic username/password authentication, multi factor security, biometric security or other approaches could be used.
 
 === OpenID Connect
-http://openid.net/[OpenID Connect] is the protocol chosen to be used for user federation in MCP, and it should be supported by Service Providers. It is an interoperable authentication protocol based on the http://oauth.net/2/[OAuth 2.0] family of specifications. It uses straightforward REST/JSON message flows with a design goal of "making simple things simple and complicated things possible". It’s uniquely easy for developers to integrate, compared to any preceding Identity protocols.
+https://openid.net/connect[OpenID Connect] is the protocol chosen to be used for user federation in MCP, and it should be supported by Service Providers. It is an interoperable authentication protocol based on the https://oauth.net/2/[OAuth 2.0] family of specifications. It uses straightforward REST/JSON message flows with a design goal of "making simple things simple and complicated things possible". It’s uniquely easy for developers to integrate, compared to any preceding Identity protocols.
 
 OpenID Connect lets developers authenticate their users across websites and apps without having to own and manage password files. For the app builder, it provides a secure verifiable, answer to the question: "What is the identity of the person currently using the browser or native app that is connected to me?"
 
@@ -17,7 +17,7 @@ OpenID Connect allows for clients of all types, including browser-based JavaScri
 OpenID Connect provides authentication details in JWT tokens, that can be encrypted or digitally signed.
 
 === MCP User Federation Setup
-In most federated setups there is 1 step from the website (Service Provider) that need authentication and the Identity Provider, normally presented with a "Log in with X" link, where X could be Facebook, Google, etc. The setup used in MCP has 2 steps, where the first step is MCP Identity Broker which presents the user with a list of available Identity Providers, which is the second step. For a deeper understanding of how this is actually done please read the http://www.keycloak.org/docs/3.0/server_admin/topics/identity-broker/overview.html[Identity Broker overview section from the Keycloak manual]. Keycloak is the software used for MCP Identity Broker.
+In most federated setups there is 1 step from the website (Service Provider) that need authentication and the Identity Provider, normally presented with a "Log in with X" link, where X could be Facebook, Google, etc. The setup used in MCP has 2 steps, where the first step is MCP Identity Broker which presents the user with a list of available Identity Providers, which is the second step. For a deeper understanding of how this is actually done please read the https://www.keycloak.org/docs/latest/server_admin/index.html#_identity_broker_overview[Identity Broker overview section from the Keycloak manual]. Keycloak is the software used for MCP Identity Broker.
 
 MCP expects the following attributes in the OpenID Connect JWT Access Token:
 
