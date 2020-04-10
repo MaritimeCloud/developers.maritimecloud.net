@@ -3,11 +3,11 @@ A *Public Key Infrastructure (PKI)* is a set of hardware, software, people, po
 
 The key piece in a PKI architecture is a PKI CA (Certificate Authority) which is an entity that issues digital authentication certificates. A digital certificate that certifies the ownership of a public key by the named subject of the certificate. An obvious example would be creating a certificate for a vessel, which can serve to certify that a given document was indeed signed by someone in possession of the certificate issued to that vessel.
 
-One of the most important aspects of designing a PKI based architecture is the certificate hierarchy planning because the design will affect how certificates are validated and used by PKI-enabled actors. Normally a PKI based architecture is arranged in a tree like hierarchy with a single root entity in the top and with numerous leaves called sub CAs. Each sub CA can have their own sub CA thereby forming a tree with a single entity at the top. Each leave in the tree is responsible for creating certificates, for example, ships or organizations. The reason for doing this is to be able to delegate the responsibility to different parties. For example, in the case of MCP one could envision that at some point in the future every flag state would be their own sub CA. Having the sole responsibility of issuing certificates for vessels registered under their own flag.  
+One of the most important aspects of designing a PKI based architecture is the certificate hierarchy planning because the design will affect how certificates are validated and used by PKI-enabled actors. Normally a PKI based architecture is arranged in a tree like hierarchy with a single root entity in the top and with numerous leaves called sub CAs. Each sub CA can have their own sub CA thereby forming a tree with a single entity at the top. Each leave in the tree is responsible for creating certificates, for example, ships or organizations. The reason for doing this is to be able to delegate the responsibility to different parties. For example, in the case of MCP one could envision that at some point in the future every flag state would be their own sub CA. Having the sole responsibility of issuing certificates for vessels registered under their own flag.
 
 image::ca.png[title="PKI hierarchy"]
 
-In the current version of MCP we are working with four sub CAs that have the responsibility for issuing all certificates. The four sub CAs are IALA, BIMCO, SMART Navigation Project and the MCP Identity Registry itself. 
+In the current version of MCP we are working with four sub CAs that have the responsibility for issuing all certificates. The four sub CAs are IALA, BIMCO, SMART Navigation Project and the MCP Identity Registry itself.
 
 The most important functionality of a CA is issuing digital certificates. A digital certificate certifies the ownership of a public key by the named subject of the certificate. This allows others (relying parties) to rely upon signatures or on assertions made about the private key that corresponds to the certified public key. In this model of trust relationships, a CA is a trusted third party—trusted both by the subject (owner) of the certificate and by the party relying upon the certificate. In the case of MCP these certificates are typically used to make secure connections between maritime actors over the Internet. A certificate is required in order to avoid the case that a malicious party which happens to be on the path to the target server pretends to be the actual target. Such a scenario is commonly referred to as a man-in-the-middle attack. The client uses the CA certificate to verify the CA signature on the server certificate, as part of the checks before establishing a secure connection. Likewise, the server has the option of inspecting the clients certificate before allowing it to connect.
 
@@ -27,7 +27,7 @@ MCP *Test* environment root certificates as http://developers.maritimeconnectivi
 
 
 === Certificate Attributes
-MCP can issue X.509 certificates for the users which can then be used for authentication. Service providers relying on X.509 certificate authentication must obtain and install MCP root certificate into their webservice. 
+MCP can issue X.509 certificates for the users which can then be used for authentication. Service providers relying on X.509 certificate authentication must obtain and install MCP root certificate into their webservice.
 
 The standard information present in an X.509 certificate includes:
 
@@ -44,13 +44,13 @@ The Subject distinguished name field will consists of the following items:
 
 [options="header"]
 |===
-|Field|User|Vessel|Device|Service|Organization
-|CN (CommonName)|Full name|Vessel name|Device name|Service Domain Name|Organization Name
-|O (Organization) 5.1+^.>|Organization MRN
-|OU (Organizational Unit)|"user"|"vessel"|"device"|"service"|"organization"
-|E (Email)|User email||||Organization email
-|C (Country) 5.1+^.>|Organization country code
-|UID 4.1+^.>|Entity MRN|Organization MRN
+|Field|User|Vessel|Device|Service|MMS|Organization
+|CN (CommonName)|Full name|Vessel name|Device name|Service Domain Name|MMS name|Organization Name
+|O (Organization) 6.1+^.>|Organization MRN
+|OU (Organizational Unit)|"user"|"vessel"|"device"|"service"|"mms"|"organization"
+|E (Email)|User email|||||Organization email
+|C (Country) 6.1+^.>|Organization country code
+|UID 5.1+^.>|Entity MRN|Organization MRN
 |===
 
 An example of the fields for a vessel could look like this:
@@ -69,10 +69,14 @@ Finally, In additions to the information stored in the standard X.509 attributes
 |AIS shiptype|`2.25.107857171638679641902842130101018412315`|Vessels, Services
 |Port of register|`2.25.285632790821948647314354670918887798603`|Vessels, Services
 |Ship MRN|`2.25.268095117363717005222833833642941669792`|Services
-|MRN|`2.25.271477598449775373676560215839310464283`|Vessels, Users, Devices, Services
-|Permissions|`2.25.174437629172304915481663724171734402331`|Vessels, Users, Devices, Services
+|MRN|`2.25.271477598449775373676560215839310464283`|Vessels, Users, Devices, Services, MMS
+|Permissions|`2.25.174437629172304915481663724171734402331`|Vessels, Users, Devices, Services, MMS
+|Subsidiary MRN|`2.25.133833610339604538603087183843785923701`|Vessels, Users, Devices, Services, MMS
+|Home MMS URL|`2.25.171344478791913547554566856023141401757`|Vessels, Users, Devices, Services, MMS
+|URL|`2.25.245076023612240385163414144226581328607`|MMS
 |===
 
+Encoding of string values in certificates must follow the specifications defined in RFC 5280, and where possible it is highly recommended to use UTF-8.
 
 === Revocation of certificates
 
@@ -96,7 +100,7 @@ activate Service
 Service -> Service: Client certificate is validated
 Service -> "Identity Registry": Request certificate revocation status
 activate "Identity Registry"
-"Identity Registry" -> Service: Revocation status response 
+"Identity Registry" -> Service: Revocation status response
 deactivate "Identity Registry"
 Service -> Service: Extract Organization name and attributes for authorization
 Service -> User: Return response
@@ -144,7 +148,7 @@ deactivate Service
 
 In this simple example we will assume that a certificate and key--pair has been issued to the entity who wishes to authenticate. This example makes use of `curl` a commandline tool available on Linux and Mac OS X.
 
-The authentication involves 2 steps: 
+The authentication involves 2 steps:
 
 . Obtaining a temporary Authorization Code using a certificate.
 . Obtaining a OpenId Connect Token using the Authorization Code.

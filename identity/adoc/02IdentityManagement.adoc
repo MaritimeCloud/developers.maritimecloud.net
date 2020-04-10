@@ -22,14 +22,14 @@ The Identity Broker provides links to trusted Identity Providers, owned by marit
 This will enable the participants in the projects to register actors to validate specific service concepts in testbed trials or utilize the operational services established by the projects, as well as validate the identity management concept of MCP. Beyond the scope of the project, it is foreseen that several identity registers will collaborate to form the global federated MCP Identity Registry.
 
 === Key Actor Concepts
-In order to be able to describe some of the concepts we are working with, here is a short introduction of the various actors we envision will interact with the identity registry. 
+In order to be able to describe some of the concepts we are working with, here is a short introduction of the various actors we envision will interact with the identity registry.
 
 Identity management and security is a very complex and comprehensive field. So wherever possible we must limit non-essential functionality. So clearly, there are some maritime entities that should not be a part of the identity registry. Therefore, the Identity Registry should not be:
 
 ** Managing information about entities that does not need to have access rights. For example, route or container information. While information about routes can be accessed by various users and systems. Routes by them self does not need access rights to access other information. It is only users and systems/devices that need access right.
 ** Maintaining information about entities that are not security related. For example, business addresses of users and organizations. Or location information about entities that can be used, for example, for routing messages to the right location.
 
-The main reason for excluding all but non-essential security related information is that it opens up the never ending discussion about what exactly should be maintained in the identity registry. If we make a generalized information store that maintains and provides query capabilities for all kinds of information about users and systems/devices. For example, business addresses, geographical location. We might as well use this functionality for storing other queryable information. For example, maintaining information about routes or cargo. 
+The main reason for excluding all but non-essential security related information is that it opens up the never ending discussion about what exactly should be maintained in the identity registry. If we make a generalized information store that maintains and provides query capabilities for all kinds of information about users and systems/devices. For example, business addresses, geographical location. We might as well use this functionality for storing other queryable information. For example, maintaining information about routes or cargo.
 
 This does not prohibit a later revisiting of these goals. Or prohibit including work from other groups into a general framework at a later time. But for time being the identity registry will revolve about the 5 entities listed below.
 
@@ -66,11 +66,13 @@ The main need for registering vessels in MCP is so that digital authentication c
 As part of the authentication certificate of a vessel its name, MMSI number, IMO number, callsign and possible other attributes are included in the header of the authentication certificate.
 
 ==== Services
-Services refer to digital services. For example, a weather service that is available to other services for machine to machine communication. Services need to be registered in such a way that it can successfully authenticate users. 
+Services refer to digital services. For example, a weather service that is available to other services for machine to machine communication. Services need to be registered in such a way that it can successfully authenticate users.
 
 ==== Users
-Users mainly refer to human users. Human users differ from other actors in that they typically use a username/password to login which implies a different interaction pattern with the identity registry than say communication between vessels. 
+Users mainly refer to human users. Human users differ from other actors in that they typically use a username/password to login which implies a different interaction pattern with the identity registry than say communication between vessels.
 
 ==== Devices
 Devices can be any number of entities that are not covered by the other entity types. It could for example be a lighthouse, an ECDIS or a server that needs to be able to authenticate itself.
 
+==== MMS
+Maritime Messaging Service (MMS) is defined as an entity and a MCP-specific connectivity component hosted by an organization.

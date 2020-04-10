@@ -6,11 +6,11 @@ Authorization can typically be handled in two ways.
 * Locally by the application or service that is being accessed.
 * Centralizing the authorization policy decisions regardless of the location of the user or the application/service
 
-Since authorization can always be done locally by the application that is being accessed, for example by storing user rights in a local database, we have decided that MCP will not prioritize central support for authorization for the next milestones. Instead focusing on getting authentication right. 
+Since authorization can always be done locally by the application that is being accessed, for example by storing user rights in a local database, we have decided that MCP will not prioritize central support for authorization for the next milestones. Instead focusing on getting authentication right.
 
-Before implementation of centralized support for authorization can begin there are some obstacles that lie ahead. Mainly because there, unlike authentication, are no good standards for doing authorization. 
+Before implementation of centralized support for authorization can begin there are some obstacles that lie ahead. Mainly because there, unlike authentication, are no good standards for doing authorization.
 
-Even though there are no real standards there are a number of approaches that are commonly used. The most commonly used probably being role-based access control (RBAC). RBAC is an access control mechanism defined around roles and privileges. The components of RBAC such as role-permissions, user-role and role-role relationships make it simple to do user assignments of entitlements. However, adopting RBAC for MCP opens some questions. For example, who defines the roles and are they global roles. Or are they local to a particular service or a particular organization. For example, an "administrator" role might entail a list of certain privileges in one organization and another list of privileges in another organization. 
+Even though there are no real standards there are a number of approaches that are commonly used. The most commonly used probably being role-based access control (RBAC). RBAC is an access control mechanism defined around roles and privileges. The components of RBAC such as role-permissions, user-role and role-role relationships make it simple to do user assignments of entitlements. However, adopting RBAC for MCP opens some questions. For example, who defines the roles and are they global roles. Or are they local to a particular service or a particular organization. For example, an "administrator" role might entail a list of certain privileges in one organization and another list of privileges in another organization.
 
 Given these issues and many other we have to decide not to implement central authorization in MCP. Instead MCP will provide the information that can be used for authorization in the services.
 
@@ -30,16 +30,17 @@ The Identity Registry currently has these roles:
 .Identity Registry Roles
 [options="header", cols="<h,8*^"]
 |===
-| Role               | Approve New Org | Edit Own Org | Maintain Org Users | Maintain Org Vessels | Maintain Org Services | Maintain Org Devices | Maintain Org Roles | Delete Org
-| ROLE_SITE_ADMIN    | X               | X            | X                  | X                    | X                     | X                    | X                  | X         
-| ROLE_ORG_ADMIN     |                 | X            | X                  | X                    | X                     | X                    | X                  |           
-| ROLE_ENTITY_ADMIN  |                 |              | X                  | X                    | X                     | X                    |                    |           
-| ROLE_USER_ADMIN    |                 |              | X                  |                      |                       |                      |                    |           
-| ROLE_VESSEL_ADMIN  |                 |              |                    | X                    |                       |                      |                    |           
-| ROLE_SERVICE_ADMIN |                 |              |                    |                      | X                     |                      |                    |           
-| ROLE_DEVICE_ADMIN  |                 |              |                    |                      |                       | X                    |                    |           
-| ROLE_APPROVE_ORG   | X               |              |                    |                      |                       |                      |                    |           
-| ROLE_USER          |                 |              |                    |                      |                       |                      |                    |           
+| Role               | Approve New Org | Edit Own Org | Maintain Org Users | Maintain Org Vessels | Maintain Org Services | Maintain Org Devices | Maintain Org MMS   | Maintain Org Roles | Delete Org
+| ROLE_SITE_ADMIN    | X               | X            | X                  | X                    | X                     | X                    | X                  | X                  | X
+| ROLE_ORG_ADMIN     |                 | X            | X                  | X                    | X                     | X                    | X                  | X                  |
+| ROLE_ENTITY_ADMIN  |                 |              | X                  | X                    | X                     | X                    | X                  |                    |
+| ROLE_USER_ADMIN    |                 |              | X                  |                      |                       |                      |                    |                    |
+| ROLE_VESSEL_ADMIN  |                 |              |                    | X                    |                       |                      |                    |                    |
+| ROLE_SERVICE_ADMIN |                 |              |                    |                      | X                     |                      |                    |                    |
+| ROLE_DEVICE_ADMIN  |                 |              |                    |                      |                       | X                    |                    |                    |
+| ROLE_MMS_ADMIN     |                 |              |                    |                      |                       |                      | X                  |                    |
+| ROLE_APPROVE_ORG   | X               |              |                    |                      |                       |                      |                    |                    |
+| ROLE_USER          |                 |              |                    |                      |                       |                      |                    |                    |
 |===
 
 A few things should be noted:
@@ -50,5 +51,6 @@ A few things should be noted:
 * Any entity, regardless of roles, can see all entities from its own organization, though some sensitive information from services is filtered for non-admins.
 * Only a ROLE_SITE_ADMIN can assign ROLE_SITE_ADMIN and ROLE_APPROVE_ORG roles.
 * A ROLE_APPROVE_ORG can create a user for an organization if and only if there is no users for the organization (this is used for creating the first administrative user for an organization).
+* A ROLE_MMS_ADMIN can maintain MMS owned and operated by his own organization.
 
 In this example we will focus on *ROLE_USER* and *ROLE_ORG_ADMIN*. Let us assume that an Organization (DMA) wants to grant members of the internal "E-navigation" department administrative rights in the MCP Identity Registry. In DMAs Identity Provider setup the department name is automatically added to the "permissions" attribute. So to make this mapping the current DMA administrator sets up a role mapping between the permission "E-navigation" and the role ROLE_ORG_ADMIN. Once this is done, all members of the DMA E-navigation department will have administrative rights for the DMA organization inside the Identity Registry. As noted earlier, these rights only apply inside the Identity Registry. Other services must create a similar setup with mapping of roles and permissions.
