@@ -813,6 +813,12 @@ attributes, and credentials.</p>
 <div class="paragraph">
 <p>Devices can be any number of entities that are not covered by the other entity types. It could for example be a lighthouse, an ECDIS or a server that needs to be able to authenticate itself.</p>
 </div>
+</div>
+<div class="sect3">
+<h4 id="mms"><a class="anchor" href="#mms"></a><a class="link" href="#mms">2.2.6. MMS</a></h4>
+<div class="paragraph">
+<p>Maritime Messaging Service (MMS) is defined as an entity and a MCP-specific connectivity component hosted by an organization.</p>
+</div>
 <div style="page-break-after: always;"></div>
 </div>
 </div>
@@ -1209,12 +1215,13 @@ attributes, and credentials.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 16.6666%;">
-<col style="width: 16.6666%;">
-<col style="width: 16.6666%;">
-<col style="width: 16.6666%;">
-<col style="width: 16.6666%;">
-<col style="width: 16.667%;">
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 14.2858%;">
 </colgroup>
 <thead>
 <tr>
@@ -1223,6 +1230,7 @@ attributes, and credentials.</p>
 <th class="tableblock halign-left valign-top">Vessel</th>
 <th class="tableblock halign-left valign-top">Device</th>
 <th class="tableblock halign-left valign-top">Service</th>
+<th class="tableblock halign-left valign-top">MMS</th>
 <th class="tableblock halign-left valign-top">Organization</th>
 </tr>
 </thead>
@@ -1233,11 +1241,12 @@ attributes, and credentials.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Vessel name</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Device name</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Service Domain Name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MMS name</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Organization Name</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">O (Organization)</p></td>
-<td class="tableblock halign-center valign-bottom" colspan="5"><p class="tableblock">Organization MRN</p></td>
+<td class="tableblock halign-center valign-bottom" colspan="6"><p class="tableblock">Organization MRN</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">OU (Organizational Unit)</p></td>
@@ -1245,6 +1254,7 @@ attributes, and credentials.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">"vessel"</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">"device"</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">"service"</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"mms"</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">"organization"</p></td>
 </tr>
 <tr>
@@ -1253,15 +1263,16 @@ attributes, and credentials.</p>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Organization email</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">C (Country)</p></td>
-<td class="tableblock halign-center valign-bottom" colspan="5"><p class="tableblock">Organization country code</p></td>
+<td class="tableblock halign-center valign-bottom" colspan="6"><p class="tableblock">Organization country code</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">UID</p></td>
-<td class="tableblock halign-center valign-bottom" colspan="4"><p class="tableblock">Entity MRN</p></td>
+<td class="tableblock halign-center valign-bottom" colspan="5"><p class="tableblock">Entity MRN</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Organization MRN</p></td>
 </tr>
 </tbody>
@@ -1329,15 +1340,33 @@ attributes, and credentials.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MRN</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>2.25.271477598449775373676560215839310464283</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Vessels, Users, Devices, Services</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Vessels, Users, Devices, Services, MMS</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Permissions</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>2.25.174437629172304915481663724171734402331</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Vessels, Users, Devices, Services</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Vessels, Users, Devices, Services, MMS</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Subsidiary MRN</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>2.25.133833610339604538603087183843785923701</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Vessels, Users, Devices, Services, MMS</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Home MMS URL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>2.25.171344478791913547554566856023141401757</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Vessels, Users, Devices, Services, MMS</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">URL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>2.25.245076023612240385163414144226581328607</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MMS</p></td>
 </tr>
 </tbody>
 </table>
+<div class="paragraph">
+<p>Encoding of string values in certificates must follow the specifications defined in RFC 5280, and where possible it is highly recommended to use UTF-8.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="revocation-of-certificates"><a class="anchor" href="#revocation-of-certificates"></a><a class="link" href="#revocation-of-certificates">5.3. Revocation of certificates</a></h3>
@@ -1615,14 +1644,14 @@ curl: (7) Failed to connect to localhost port 99: Connection refused</pre>
 <th class="tableblock halign-center valign-top">Maintain Org Vessels</th>
 <th class="tableblock halign-center valign-top">Maintain Org Services</th>
 <th class="tableblock halign-center valign-top">Maintain Org Devices</th>
+<th class="tableblock halign-center valign-top">Maintain Org MMS</th>
 <th class="tableblock halign-center valign-top">Maintain Org Roles</th>
-<th class="tableblock halign-center valign-top">Delete Org</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<th class="tableblock halign-left valign-top"><p class="tableblock">ROLE_SITE_ADMIN</p></th>
-<td class="tableblock halign-center valign-top"><p class="tableblock">X</p></td>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Delete Org</p></th>
+<td class="tableblock halign-center valign-top"><p class="tableblock">ROLE_SITE_ADMIN</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">X</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">X</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">X</p></td>
@@ -1632,62 +1661,84 @@ curl: (7) Failed to connect to localhost port 99: Connection refused</pre>
 <td class="tableblock halign-center valign-top"><p class="tableblock">X</p></td>
 </tr>
 <tr>
-<th class="tableblock halign-left valign-top"><p class="tableblock">ROLE_ORG_ADMIN</p></th>
+<th class="tableblock halign-left valign-top"><p class="tableblock">X</p></th>
+<td class="tableblock halign-center valign-top"><p class="tableblock">X</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">ROLE_ORG_ADMIN</p></td>
 <td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">X</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">X</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">X</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">X</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">X</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">X</p></th>
+<td class="tableblock halign-center valign-top"><p class="tableblock">X</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">ROLE_ENTITY_ADMIN</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">X</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">X</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">X</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">X</p></th>
+<td class="tableblock halign-center valign-top"><p class="tableblock">X</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">ROLE_USER_ADMIN</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">X</p></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
-<th class="tableblock halign-left valign-top"><p class="tableblock">ROLE_ENTITY_ADMIN</p></th>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">X</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">X</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">X</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">X</p></td>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-center valign-top"></td>
-</tr>
-<tr>
-<th class="tableblock halign-left valign-top"><p class="tableblock">ROLE_USER_ADMIN</p></th>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">X</p></td>
+<th class="tableblock halign-left valign-top"></th>
 <td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-center valign-top"></td>
-</tr>
-<tr>
-<th class="tableblock halign-left valign-top"><p class="tableblock">ROLE_VESSEL_ADMIN</p></th>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">X</p></td>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-center valign-top"></td>
-</tr>
-<tr>
-<th class="tableblock halign-left valign-top"><p class="tableblock">ROLE_SERVICE_ADMIN</p></th>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">X</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">ROLE_VESSEL_ADMIN</p></td>
 <td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
-<th class="tableblock halign-left valign-top"><p class="tableblock">ROLE_DEVICE_ADMIN</p></th>
+<th class="tableblock halign-left valign-top"><p class="tableblock">X</p></th>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">ROLE_SERVICE_ADMIN</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">X</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">ROLE_DEVICE_ADMIN</p></td>
+<td class="tableblock halign-center valign-top"></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">X</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">ROLE_MMS_ADMIN</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
 <td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
@@ -1709,8 +1760,8 @@ curl: (7) Failed to connect to localhost port 99: Connection refused</pre>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
 <tr>
-<th class="tableblock halign-left valign-top"><p class="tableblock">ROLE_USER</p></th>
-<td class="tableblock halign-center valign-top"></td>
+<th class="tableblock halign-left valign-top"></th>
+<td class="tableblock halign-center valign-top"><p class="tableblock">ROLE_USER</p></td>
 <td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"></td>
@@ -1743,6 +1794,9 @@ curl: (7) Failed to connect to localhost port 99: Connection refused</pre>
 </li>
 <li>
 <p>A ROLE_APPROVE_ORG can create a user for an organization if and only if there is no users for the organization (this is used for creating the first administrative user for an organization).</p>
+</li>
+<li>
+<p>A ROLE_MMS_ADMIN can maintain MMS owned and operated by his own organization.</p>
 </li>
 </ul>
 </div>
@@ -1817,7 +1871,7 @@ curl: (7) Failed to connect to localhost port 99: Connection refused</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-01-15 14:46:12 +0100
+Last updated 2019-10-28 15:40:38 +0100
 </div>
 </div>
 <script type="text/x-mathjax-config">
