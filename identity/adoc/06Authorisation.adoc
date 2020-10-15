@@ -28,7 +28,7 @@ As an example of how authorization can be done, let us have a look at how it is 
 The Identity Registry currently has these roles:
 
 .Identity Registry Roles
-[options="header", cols="<h,8*^"]
+[options="header", cols="<h,9*^"]
 |===
 | Role               | Approve New Org | Edit Own Org | Maintain Org Users | Maintain Org Vessels | Maintain Org Services | Maintain Org Devices | Maintain Org MMS   | Maintain Org Roles | Delete Org
 | ROLE_SITE_ADMIN    | X               | X            | X                  | X                    | X                     | X                    | X                  | X                  | X
