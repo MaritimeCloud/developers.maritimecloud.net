@@ -31,9 +31,9 @@ There are 3 different core services provided by MCP
 This guide will predominantly discuss the identity registry.
 
 === Signing up
-In order to get an organization, its users and any ships the organization might own on to the MCP, the organization needs to perform a signup process. The process is currently manual. To start the process, please fill out the https://management.maritimecloud.net/#/apply[registration form].
+In order to get an organization, its users and any ships the organization might own on to the MCP, the organization needs to perform a signup process. The process is currently manual. To start the process, please fill out the https://management.maritimeconnectivity.net/#/apply[registration form].
 
-Once your organization has been approved you will have access to MCP and its services. You should probably start by looking at the https://management.maritimecloud.net/[Management Portal]. See the http://manual.maritimeconnectivity.net/[manual] for how to use it.
+Once your organization has been approved you will have access to MCP and its services. You should probably start by looking at the https://management.maritimeconnectivity.net/[Management Portal]. See the http://manual.maritimeconnectivity.net/[manual] for how to use it.
 
 === Feedback
 Readers may send feedback about errors, omissions, and ambiguities in this guide to mailto:oliver@dmc.international[oliver@dmc.international] or even better submit a pull request to the documentation available at https://github.com/MaritimeConnectivityPlatform/developers.maritimeconnectivity.net.

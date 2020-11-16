@@ -118,7 +118,7 @@ Keycloak is an open source product developed by RedHat. Keycloak can be set up t
 === Getting connected to MCP
 If your organizations wishes to connect to MCP as an Identity Provider, to enable your uses to authenticate in MCP, please contact Oliver Haagh at mailto:oliver@dmc.international[oliver@dmc.international] in order to set it up. Note that currently you need to expose interfaces that supports either OpenID Connect or SAML2.
 
-Within the scope of the EfficienSea2 and STM validation projects, organizations can get users registered in special project Identity Providers, supplied by MCP. To join MCP please fill out the form at https://management.maritimecloud.net/#/apply[Apply].
+Within the scope of the EfficienSea2 and STM validation projects, organizations can get users registered in special project Identity Providers, supplied by MCP. To join MCP please fill out the form at https://management.maritimeconnectivity.net/#/apply[Apply].
 
 [[setup-oidc-idp]]
 ==== Setting up an OpenID Connect Identity Provider

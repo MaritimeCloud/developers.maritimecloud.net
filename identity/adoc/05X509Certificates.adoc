@@ -85,7 +85,7 @@ A crucial part of any PKI is to support revocation of certificates, so that cert
 . Call the OCSP interface provided by the Identity Registry for each certificate.
 . Periodically download a Certificate Revocation File from the Identity Registry and use it check certificates locally.
 
-The endpoints for both the OCSP interface and the Certificate Revocation File are embedded into the certificates issued by MCP Identity Registry, and are currently https://api.maritimecloud.net/x509/api/certificates/crl and https://api.maritimecloud.net/x509/api/certificates/ocsp.
+The endpoints for both the OCSP interface and the Certificate Revocation File are embedded into the certificates issued by MCP Identity Registry, and are currently http://api.maritimeconnectivity.net/x509/api/certificates/crl and http://api.maritimeconnectivity.net/x509/api/certificates/ocsp.
 
 
 === Certificate Authentication Flow
@@ -158,7 +158,7 @@ These 2 steps are actually standard in the http://openid.net/specs/openid-connec
 First we obtain the code by issuing this command:
 
 ....
-curl --verbose --location --cookie "" --key PrivateKey.pem --cert Certificate.pem 'https://maritimeid.maritimecloud.net/auth/realms/MaritimeCloud/protocol/openid-connect/auth?client_id=cert2oidc&redirect_uri=http%3A%2F%2Flocalhost%3A99&response_type=code&kc_idp_hint=certificates&scope=openid'
+curl --verbose --location --cookie "" --key PrivateKey.pem --cert Certificate.pem 'https://maritimeid.maritimeconnectivity.net/auth/realms/MCP/protocol/openid-connect/auth?client_id=cert2oidc&redirect_uri=http%3A%2F%2Flocalhost%3A99&response_type=code&kc_idp_hint=certificates&scope=openid'
 ....
 
 Let us break down the command:
@@ -166,7 +166,7 @@ Let us break down the command:
 * `curl --verbose --location --cookie ""`: `curl` is the tool itself. `--verbose` means it will be in verbose mode, `--location` means curl will follow HTTP redirects and `--cookie ""` activates the use of HTTP cookies which means that cookies received will be remember and used during redirects. We need to follow redirects since that is used by OpenID Connect to go back and forth between servers, and the verbose mode is needed because we would like to see where we are redirected -- especially the last redirect, but more about that later.
 * `--key PrivateKey.pem --cert Certificate.pem`: Here the private key and the certificate is given to `curl` in PEM format.
 * The last part is the URL which itself is multiple parts:
-** Address of the authentication endpoint: `https://maritimeid.maritimecloud.net/auth/realms/MaritimeCloud/protocol/openid-connect/auth`
+** Address of the authentication endpoint: `https://maritimeid.maritimeconnectivity.net/auth/realms/MCP/protocol/openid-connect/auth`
 ** Parameters: `client_id=cert2oidc&redirect_uri=http%3A%2F%2Flocalhost&response_type=code&kc_idp_hint=certificates&scope=openid`. These can be also be broken down:
 *** `client_id=cert2oidc`: This is a special OpenID Connect client setup to be used for certificate authentication.
 *** `redirect_uri=http%3A%2F%2Flocalhost%3A99`: This is where the authentication server will redirect to at the end of the authentication. The parameter is URL encoded and decoded looks like this: `http://localhost:99`. This address is meant to be invalid, since we want the last redirect to fail.
@@ -189,7 +189,7 @@ curl: (7) Failed to connect to localhost port 99: Connection refused
 Here we can recognize `http://localhost:99` from the `redirect_uri` parameter described earlier. We can also see that a `code` parameter is in the url, in this case with the value `uss.Yw6k4rXOJiR6IF4a2Y7tYC1-Eqoo8dHSUwjfuIFDfpI.543a63db-9d22-45f7-85b6-a258059c0825.6826c662-6b68-423a-a248-71bd3e69dab0`. It is this code we need to in the second step of authentication to get the OpenID Connect Tokens. The code is only valid for a very limited time (less than a minute) and can only be used once. We will again use `curl` in the second step:
 
 ....
-curl --data "grant_type=authorization_code&client_id=cert2oidc&code=uss.Yw6k4rXOJiR6IF4a2Y7tYC1-Eqoo8dHSUwjfuIFDfpI.543a63db-9d22-45f7-85b6-a258059c0825.6826c662-6b68-423a-a248-71bd3e69dab0&redirect_uri=http%3A%2F%2Flocalhost%3A99" https://maritimeid.maritimecloud.net/auth/realms/MaritimeCloud/protocol/openid-connect/token
+curl --data "grant_type=authorization_code&client_id=cert2oidc&code=uss.Yw6k4rXOJiR6IF4a2Y7tYC1-Eqoo8dHSUwjfuIFDfpI.543a63db-9d22-45f7-85b6-a258059c0825.6826c662-6b68-423a-a248-71bd3e69dab0&redirect_uri=http%3A%2F%2Flocalhost%3A99" https://maritimeid.maritimeconnectivity.net/auth/realms/MCP/protocol/openid-connect/token
 ....
 
 Again, let us break down the command. In this case the command consist of 3 parts, `curl` -- the tool itself, data-parameters and an URL. We will concentrated on the data-parameters. Note that this is a HTTP POST request, which is why the parameters is supplied in a separate argument and not as part of the URL.
@@ -217,11 +217,11 @@ When this call runs there will be no redirection, so we do not need to tell `cur
 The `access_token` is the token that should be used we communicating with services in MCP context. The token should be embedded in the HTTP header. When using `curl` it can be done like this:
 
 ....
-curl -H "Authorization: Bearer eyJhbGciOiJ...uXoHudIM1yiDBYj8g" https://api.maritimecloud.net/oidc/api/org/DMA
+curl -H "Authorization: Bearer eyJhbGciOiJ...uXoHudIM1yiDBYj8g" https://api.maritimeconnectivity.net/oidc/api/org/DMA
 ....
 
 The `refresh_token` is used to re-authenticate to get a new set of tokens when the access_token has expired, in this case 300 seconds after it has been issued, as seen in the `expires_in` attribute. The new set of tokens can then be obtain with a HTTP POST like this:
 
 ....
-curl --data "grant_type=refresh_token&client_id=cert2oidc&refresh_token=eyJhbGciOiJ...iv7rKSa__IKy983Gg" https://maritimeid.maritimecloud.net/auth/realms/MaritimeCloud/protocol/openid-connect/token
+curl --data "grant_type=refresh_token&client_id=cert2oidc&refresh_token=eyJhbGciOiJ...iv7rKSa__IKy983Gg" https://maritimeid.maritimeconnectivity.net/auth/realms/MCP/protocol/openid-connect/token
 ....
